@@ -3,6 +3,7 @@
 # Copyright 2018, Aswin Babu Karuvally
 
 # import the serious stuff
+import socket
 
 
 # the main function
