@@ -11,7 +11,7 @@ def main():
 
     while True:
         client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        client_socket.connect((socket.gethostname(), port))
+        client_socket.connect(("192.168.42.102", port))
 
         message = bytes(input(">"), "utf-8")
     

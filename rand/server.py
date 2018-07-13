@@ -3,6 +3,12 @@
 
 # import serious stuff
 import socket
+import subprocess
+
+
+# shutdown the system
+def poweroff():
+    subprocess.run(["systemctl", "poweroff"])
 
 
 # the main function
@@ -10,7 +16,7 @@ def main():
     listen_port = 1337
 
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_socket.bind((socket.gethostname(), listen_port))
+    server_socket.bind(("0.0.0.0", listen_port))
 
     server_socket.listen()
 
@@ -27,8 +33,11 @@ def main():
             else:
                 break
 
-        print(received_message)
         connection.close()
+        print(received_message)
+
+        if received_message == "halt":
+            poweroff()
 
 
 # call the main function

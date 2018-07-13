@@ -1,3 +1,10 @@
-simple client, server           [x]
-allow custom client port        [ ]
+# TODO
+simple client-server            [x]
+test shutdown                   [x]
 log the stuff                   [ ]
+integrate exception handling    [ ]
+handle Ctrl+C                   [x]
+design simple pairing system    [ ]
+
+# NOTES
+using multi processing might turn out to be necessary
