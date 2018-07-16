@@ -1,10 +1,11 @@
 # TODO
 simple client-server            [x]
 test shutdown                   [x]
-log the stuff                   [ ]
-integrate exception handling    [ ]
-handle Ctrl+C                   [x]
+basic logging                   [ ]
 design simple pairing system    [ ]
+implement shutdown completeley  [ ]
+complete  exception handling    [ ]
+handle Ctrl+C                   [x]
 
 # NOTES
 using multi processing might turn out to be necessary

@@ -5,6 +5,32 @@
 # import the serious stuff
 import socket
 import subprocess
+import os
+import sys
+
+
+# check and set up essential stuff
+def initialize_system(config_dir):
+    if not os.path.isdir(config_dir):
+        try:
+            os.mkdir(config_dir)
+        except:
+            print("error: config dir cannot be created! exiting...")
+            sys.exit(1)
+
+
+#writes data to the log file
+def write_to_log (matter, config_dir):
+    log_path = os.path.join(config_dir, "log")
+    try:
+        log_file = open (log_path, "a")
+
+        log_file.write (time.strftime("[%d-%b-%Y %H:%M:%S] "))
+        log_file.write (matter + "\n")
+        log_file.close()
+    except:
+        print("error: cannot write to log! exiting...")
+        sys.exit(1)
 
 
 # create socket and listen
@@ -24,6 +50,12 @@ def create_socket():
 
 # the main function
 def main():
+    # essential variables
+    config_dir = os.path.join("/home", os.getlogin, ".green")
+
+    # start the system up
+    initialize_system()
+
     # create the socket for listening
     create_socket()
 
