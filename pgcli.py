@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Project Green, CLI Module
+# Project Green Shell, alpha release
 # Copyright 2018, Aswin Babu Karuvally
 
 # import the serious stuff
