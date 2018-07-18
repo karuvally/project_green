@@ -21,6 +21,7 @@ def main():
 
     # end of the journey
     write_to_log("exiting peacefully\n", config_dir)
+    sys.exit(0)
 
 
 # run the main function

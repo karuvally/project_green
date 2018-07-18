@@ -24,6 +24,9 @@ def main():
         received_message = ""
         print(">>", end = "")
         connection, client_address = server_socket.accept()
+
+        print(client_address)
+        print(dir(client_address))
         
         while True:
             data = connection.recv(16)

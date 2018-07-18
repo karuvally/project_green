@@ -9,6 +9,33 @@ import time
 import socket
 
 
+# handle the incoming data
+def receive_data(connection, client_address):
+    data = ""
+    while True:
+        try:
+            data_buffer = connection.recv(16)
+            if data_buffer:
+                data += data_buffer
+            else:
+                connection.close()
+        except:
+            print("error: cannot receive data from", client_address)
+            break
+
+
+# create client socket and send data
+def send_data(data, destination, port):
+    try:
+        client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        client_socket.connect((destination, port))
+
+        client_socket.sendall(data)
+        client_socket.close()
+    except:
+        print("error: cannot connect to host", destination, ",port", port) 
+
+
 # create server socket and listen
 def create_server_socket(port):
     try:
@@ -21,6 +48,7 @@ def create_server_socket(port):
 
     except KeyboardInterrupt:
         daemon_socket.close()
+        connection.close()
         return
     except:
         print("error: cannot bind to port", port)
