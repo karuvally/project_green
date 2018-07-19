@@ -13,45 +13,38 @@ import socket
 def receive_data(connection, client_address):
     data = ""
     while True:
-        try:
-            data_buffer = connection.recv(16)
-            if data_buffer:
-                data += data_buffer
-            else:
-                connection.close()
-        except:
-            print("error: cannot receive data from", client_address)
+        data_buffer = connection.recv(16)
+        if data_buffer:
+            data += data_buffer.decode()
+        else:
             break
+    
+    connection.close()
+    return data
 
 
 # create client socket and send data
 def send_data(data, destination, port):
-    try:
-        client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        client_socket.connect((destination, port))
-
-        client_socket.sendall(data)
-        client_socket.close()
-    except:
-        print("error: cannot connect to host", destination, ",port", port) 
+    data = bytes(data, "utf-8")
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    client_socket.connect((destination, port))
+    
+    client_socket.sendall(data)
+    client_socket.close()
 
 
 # create server socket and listen
 def create_server_socket(port):
-    try:
-        daemon_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        daemon_socket.bind(("0.0.0.0", port))
-        daemon_socket.listen(5) # debug
+    daemon_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    daemon_socket.bind(("0.0.0.0", port))
+    daemon_socket.listen(5) # debug
 
-        while True:
-            connection, client_address = daemon_socket.accept()
+    while True:
+        connection, client_address = daemon_socket.accept()
+        data = receive_data(connection, client_address) # implement threading
 
-    except KeyboardInterrupt:
-        daemon_socket.close()
-        connection.close()
-        return
-    except:
-        print("error: cannot bind to port", port)
+    daemon_socket.close()
+    connection.close()
 
 
 # check and set up essential stuff
