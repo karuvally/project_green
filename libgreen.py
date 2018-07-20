@@ -7,13 +7,29 @@ import os
 import sys
 import time
 import socket
+from Crypto.PublicKey import RSA
+
+
+# generate public-private key pair
+def generate_keys():
+    key = RSA.generate(1024)
+    
+    public_key = key.publickey().exportKey()
+    private_key = key.exportKey()
+
+    return({
+        "public_key": public_key,
+        "private_key": private_key
+    })
 
 
 # handle the incoming data
 def receive_data(connection, client_address):
     data = ""
+
     while True:
         data_buffer = connection.recv(16)
+
         if data_buffer:
             data += data_buffer.decode()
         else:
