@@ -8,6 +8,36 @@ import sys
 import time
 import socket
 from Crypto.PublicKey import RSA
+import ipaddress
+from subprocess import Popen, PIPE
+
+
+# find a host running project green
+def find_hosts(network_address, server = False):
+    if server == True:
+        port = 1994
+    else:
+        port = 1337
+
+    host_list = []
+    network = ipaddress.ip_network(network_address + "/24")
+
+    for ip_address in network.hosts():
+        ping = Popen(["ping", "-c", "1", str(ip_address)], stdout = PIPE)
+        ping_out = ping.communicate()[0]
+        return_code = ping.returncode
+
+        # check if port is open
+        if return_code == 0:
+            connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            port_status = connection.connect_ex((str(ip_address), port))
+
+            if port_status == 0:
+                host_list.append(ip_address)
+                if server == True:
+                    break
+
+    return host_list
 
 
 # generate public-private key pair

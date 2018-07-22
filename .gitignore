@@ -1,1 +1,3 @@
-.swp
+*swp
+test_client.py
+test_server.py
