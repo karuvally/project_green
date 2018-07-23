@@ -15,6 +15,8 @@ def main():
         print("please run the script as root")
         sys.exit(0)
 
+    # ask user to choose network interface
+
     # look if a server exists on network
     find_server("192.168.122.0")
 
