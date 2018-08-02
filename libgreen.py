@@ -12,6 +12,15 @@ import ipaddress
 from subprocess import Popen, PIPE
 
 
+# enable pairing mode on the server
+def start_pair_on_server(public_key):
+    pass
+    # create server socket
+    # if client connects, return server-public key
+    # accept client-public key
+    # close the connection
+
+
 # find a host running project green
 def find_hosts(network_address, server = False):
     # server listens on port 1994, clients on 1337
