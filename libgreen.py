@@ -12,11 +12,11 @@ import ipaddress
 from subprocess import Popen, PIPE
 
 
-# handle newly created collection
+# handle newly created connection, debug: implement threading
 def handle_connection(connection, client_address):
-    pass
     data = receive_data(connection)
-    # process the received data
+    # separate commands from information
+    # process commands, store data
     # send data back if necessary
     # end the connection?
 
@@ -100,7 +100,7 @@ def receive_data(connection):
             data += data_buffer.decode()
         else:
             break
-            
+
     return data
 
 
