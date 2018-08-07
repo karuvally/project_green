@@ -12,15 +12,24 @@ import ipaddress
 from subprocess import Popen, PIPE
 
 
+# handle newly created collection
+def handle_connection(connection, client_address):
+    pass
+    # receive data from the client
+    # process the received data
+    # send data back if necessary
+    # end the connection?
+
+
 # create server socket and listen
-def create_new_server_socket(port):
+def create_new_listen_socket(port):
     daemon_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     daemon_socket.bind(("0.0.0.0", port))
-    daemon_socket.listen(5) # debug
+    daemon_socket.listen(5) # debug: what does this mean?
 
     while True:
         connection, client_address = daemon_socket.accept()
-        data = receive_data(connection, client_address) # implement threading
+        handle_connection(connection, client_address) # debug: implement threading
 
     daemon_socket.close()
     connection.close()
@@ -106,7 +115,7 @@ def send_data(data, destination, port):
     client_socket.close()
 
 
-# create server socket and listen
+# create server socket and listen, debug: might be removed
 def create_server_socket(port):
     daemon_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     daemon_socket.bind(("0.0.0.0", port))
