@@ -12,7 +12,7 @@ import ipaddress
 from subprocess import Popen, PIPE
 
 # accept pairing request from client
-def accept_pairing_request(connection, payload):
+def accept_pairing_request(payload):
     pass
 
 
@@ -22,19 +22,19 @@ def handle_data(command, payload):
         return_data = accept_pairing_request(separated_data[1])
 
         # implement rest of the commands
+
         return return_data
 
 
 # handle newly created connection, debug: implement threading
-def handle_connection(connection, client_address):
+def handle_client_connection(connection, client_address):
     data = receive_data(connection)
     separated_data = data.split(",", 1)
 
     if return_data:
-        pass
-        # send data back to the client
+        connection.sendall(return_data)
 
-    # end the connection?
+    connection.close()
 
 
 # create server socket and listen
@@ -45,19 +45,10 @@ def create_new_listen_socket(port):
 
     while True:
         connection, client_address = daemon_socket.accept()
-        handle_connection(connection, client_address) # debug: implement threading
+        handle_client_connection(connection, client_address) # debug: implement threading
 
     daemon_socket.close()
     connection.close()
-
-
-# enable pairing mode on the server debug: function might be removed
-def start_pair_on_server(public_key):
-    pass
-    # create server socket
-    # if client connects, return server-public key
-    # accept client-public key
-    # close the connection
 
 
 # find a host running project green
@@ -120,7 +111,7 @@ def receive_data(connection):
     return data
 
 
-# create client socket and send data
+# create client socket and send data, debug: function might be removed
 def send_data(data, destination, port):
     data = bytes(data, "utf-8")
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -128,20 +119,6 @@ def send_data(data, destination, port):
     
     client_socket.sendall(data)
     client_socket.close()
-
-
-# create server socket and listen, debug: function might be removed
-def create_server_socket(port):
-    daemon_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    daemon_socket.bind(("0.0.0.0", port))
-    daemon_socket.listen(5) # debug
-
-    while True:
-        connection, client_address = daemon_socket.accept()
-        data = receive_data(connection, client_address) # implement threading
-
-    daemon_socket.close()
-    connection.close()
 
 
 # check and set up essential stuff
