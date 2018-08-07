@@ -15,7 +15,7 @@ from subprocess import Popen, PIPE
 # handle newly created collection
 def handle_connection(connection, client_address):
     pass
-    # receive data from the client
+    data = receive_data(connection)
     # process the received data
     # send data back if necessary
     # end the connection?
@@ -90,7 +90,7 @@ def generate_keys():
 
 
 # handle the incoming data
-def receive_data(connection, client_address):
+def receive_data(connection):
     data = ""
 
     while True:
@@ -100,8 +100,7 @@ def receive_data(connection, client_address):
             data += data_buffer.decode()
         else:
             break
-    
-    connection.close()
+            
     return data
 
 
