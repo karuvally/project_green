@@ -12,6 +12,20 @@ import ipaddress
 from subprocess import Popen, PIPE
 
 
+# create server socket and listen
+def create_new_server_socket(port):
+    daemon_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    daemon_socket.bind(("0.0.0.0", port))
+    daemon_socket.listen(5) # debug
+
+    while True:
+        connection, client_address = daemon_socket.accept()
+        data = receive_data(connection, client_address) # implement threading
+
+    daemon_socket.close()
+    connection.close()
+
+
 # enable pairing mode on the server
 def start_pair_on_server(public_key):
     pass
