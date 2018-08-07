@@ -11,24 +11,29 @@ from Crypto.PublicKey import RSA
 import ipaddress
 from subprocess import Popen, PIPE
 
-
-# act according to the data
-def handle_data(command, payload):
+# accept pairing request from client
+def accept_pairing_request(connection, payload):
     pass
-    # pass payload to appropriate functions
-    # return output data from functions
+
+
+# handle data and act accordingly
+def handle_data(command, payload):
+    if command == "pair":
+        return_data = accept_pairing_request(separated_data[1])
+
+        # implement rest of the commands
+        return return_data
 
 
 # handle newly created connection, debug: implement threading
 def handle_connection(connection, client_address):
     data = receive_data(connection)
     separated_data = data.split(",", 1)
-    
-    return_data = handle_data(separated_data[0], separated_data[1])
+
     if return_data:
         pass
         # send data back to the client
-        
+
     # end the connection?
 
 
@@ -46,7 +51,7 @@ def create_new_listen_socket(port):
     connection.close()
 
 
-# enable pairing mode on the server
+# enable pairing mode on the server debug: function might be removed
 def start_pair_on_server(public_key):
     pass
     # create server socket
@@ -125,7 +130,7 @@ def send_data(data, destination, port):
     client_socket.close()
 
 
-# create server socket and listen, debug: might be removed
+# create server socket and listen, debug: function might be removed
 def create_server_socket(port):
     daemon_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     daemon_socket.bind(("0.0.0.0", port))
