@@ -15,7 +15,8 @@ from subprocess import Popen, PIPE
 # handle newly created connection, debug: implement threading
 def handle_connection(connection, client_address):
     data = receive_data(connection)
-    # separate commands from information
+    
+    separated_data = data.split(",", 1)
     # process commands, store data
     # send data back if necessary
     # end the connection?
