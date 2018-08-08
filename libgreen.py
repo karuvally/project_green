@@ -14,13 +14,14 @@ from subprocess import Popen, PIPE
 # accept pairing request from client
 def accept_pairing_request(payload):
     pass
-    # separate public_id and hostname
-    # store the public_id, hostname pair to text file
-    # return public_id of the server
+    # separate public_key and hostname
+    # store the public_key, hostname pair to text file
+    # return public_key of the server
 
 
 # handle data and act accordingly
 def handle_data(command, payload):
+    # handle the pairing request
     if command == "pair":
         return_data = accept_pairing_request(separated_data[1])
 
@@ -32,11 +33,14 @@ def handle_data(command, payload):
 # handle newly created connection, debug: implement threading
 def handle_client_connection(connection, client_address):
     data = receive_data(connection)
+    # separate command and payload
     separated_data = data.split(",", 1)
 
+    # reply client with returned data
     if return_data:
         connection.sendall(return_data)
 
+    # close the connection :D
     connection.close()
 
 
