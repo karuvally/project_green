@@ -97,11 +97,14 @@ def find_hosts(network_address, server = False):
 
 # generate public-private key pair
 def generate_keys():
+    # set the size for the generated key
     key = RSA.generate(1024)
     
+    # create public-private key pair
     public_key = key.publickey().exportKey()
     private_key = key.exportKey()
 
+    # return key pair as dictionary
     return({
         "public_key": public_key,
         "private_key": private_key
