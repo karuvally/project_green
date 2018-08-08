@@ -14,6 +14,9 @@ from subprocess import Popen, PIPE
 # accept pairing request from client
 def accept_pairing_request(payload):
     pass
+    # separate public_id and hostname
+    # store the public_id, hostname pair to text file
+    # return public_id of the server
 
 
 # handle data and act accordingly
