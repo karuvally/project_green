@@ -142,15 +142,17 @@ def send_data(data, destination, port):
 
 # check and set up essential stuff
 def initialize_system(config_dir):
+    # if config directory does not exists, create it
     if not os.path.isdir(config_dir):
         try:
             os.mkdir(config_dir)
         except:
+            # show error and exit the application
             print("error: config dir cannot be created! exiting...")
             sys.exit(1)
 
 
-#writes data to the log file
+#writes data to the log file, debug: replace with python inbuilt logging
 def write_to_log (matter, config_dir):
     log_path = os.path.join(config_dir, "log")
     try:
