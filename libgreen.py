@@ -11,11 +11,28 @@ from Crypto.PublicKey import RSA
 import ipaddress
 from subprocess import Popen, PIPE
 
+
+# get the config directory
+def get_config_dir():
+    # get the username
+    user = os.getlogin()
+
+    # stich the complete path
+    config_dir = os.path.join("/home", user, ".netdog")
+
+    return config_dir
+
+
 # accept pairing request from client
 def accept_pairing_request(payload):
     pass
     # separate public_key and hostname
+    splitted_payload = payload.split(",", 1)
+
     # store the public_key, hostname pair to text file
+    config_dir = get_config_dir()
+    # code the rest
+
     # return public_key of the server
 
 
