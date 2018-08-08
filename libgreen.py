@@ -15,7 +15,7 @@ from subprocess import Popen, PIPE
 # get the config directory
 def get_config_dir():
     # get the username
-    user = os.getlogin()
+    user = os.getlogin() # debug: getlogin() might not work on all distros
 
     # stich the complete path
     config_dir = os.path.join("/home", user, ".netdog")
@@ -31,9 +31,13 @@ def accept_pairing_request(payload):
 
     # store the public_key, hostname pair to text file
     config_dir = get_config_dir()
-    # code the rest
+    with open(os.path.join(config_dir, "known_hosts"), "a") as known_hosts_file:
+        known_hosts_file.write(splitted_payload[1] + "," +
+            splitted_payload[2] + "\n")
 
     # return public_key of the server
+    with open(os.path.join(config_dir, "pub_key"), "r") as public_key_file:
+        public_key = public_key_file.read().rstrip()
 
 
 # handle data and act accordingly
