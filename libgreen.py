@@ -35,10 +35,12 @@ def accept_pairing_request(payload):
         known_hosts_file.write(splitted_payload[1] + "," +
             splitted_payload[2] + "\n")
 
-    # return public_key of the server
+    # get public_key of the server
     with open(os.path.join(config_dir, "pub_key"), "r") as public_key_file:
         public_key = public_key_file.read().rstrip()
 
+    # return the public key
+    return public_key
 
 # handle data and act accordingly
 def handle_data(command, payload):
