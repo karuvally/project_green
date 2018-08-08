@@ -113,12 +113,16 @@ def generate_keys():
 
 # handle the incoming data
 def receive_data(connection):
+    # an empty string for storing data
     data = ""
 
     while True:
+        # receive data with buffer size as 16 bytes
         data_buffer = connection.recv(16)
 
+        # continue if data_buffer is not None
         if data_buffer:
+            # convert received data to unicode
             data += data_buffer.decode()
         else:
             break
