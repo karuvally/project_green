@@ -2,7 +2,7 @@
 # Copyright 2018, Aswin Babu Karuvallly
 
 # what is this program?
-the netdog project started with the aim of designing a program which can easily
+The netdog project started with the aim of designing a program which can easily
 bring computers up and down remotely. The idea came from the realization that,
 quite a few computers were left powered up when the college lab closes for the
 day. Thus the initial name "Project Green".
@@ -12,3 +12,10 @@ computers even if their IP addresses changed, the ability to execute commands
 or scripts on a specified range of machines with a single command, and the
 ability to copy files to a range of machines without requiring protocols such
 as SFTP or FTP.
+
+The abilities does not end there and netdog provides many notable features such
+as early warning of HDD failure on the machines on the network. The exhaustive
+list of features is listed in the next section. Once completed, netdog will be
+a completely extensible system to which features an be easily added through
+plugins allowing third party developers to further extend the system.
+
