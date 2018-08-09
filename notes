@@ -29,7 +29,6 @@ Feature list
 * Secure client-server communication using public key encryption
 
 
-
 Track and identify clients through IP changes
 ---------------------------------------------
 Ability to track clients even if their IP address changes. The clients are
