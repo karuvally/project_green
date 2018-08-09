@@ -5,4 +5,10 @@
 the netdog project started with the aim of designing a program which can easily
 bring computers up and down remotely. The idea came from the realization that,
 quite a few computers were left powered up when the college lab closes for the
-day.
+day. Thus the initial name "Project Green".
+
+A number of features were added to the feature list, most importantly tracking
+computers even if their IP addresses changed, the ability to execute commands
+or scripts on a specified range of machines with a single command, and the
+ability to copy files to a range of machines without requiring protocols such
+as SFTP or FTP.
