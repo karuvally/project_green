@@ -153,16 +153,6 @@ def receive_data(connection):
     return data
 
 
-# create client socket and send data, debug: function might be removed
-def send_data(data, destination, port):
-    data = bytes(data, "utf-8")
-    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client_socket.connect((destination, port))
-    
-    client_socket.sendall(data)
-    client_socket.close()
-
-
 # check and set up essential stuff
 def initialize_system(config_dir):
     # if config directory does not exists, create it
