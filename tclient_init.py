@@ -7,7 +7,9 @@ from libgreen import *
 
 # the main function
 def main():
-    pass
+    # generate public-private key pair
+    # look for servers on the network
+    # send pair request to server
 
 
 # call the main function
