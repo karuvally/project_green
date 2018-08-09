@@ -22,9 +22,12 @@ plugins allowing third party developers to further extend the system.
 
 
 # Feature list
+Bring all computers on the network up and down remotely
+
 Track and identify clients even through IP changes
 
 Secure client-server communication using public key encryption
+
 
 
 # Track and identify clients through IP changes
