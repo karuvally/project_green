@@ -1,5 +1,8 @@
-# Project Green (netdog) author's log
+# Project Green (netdog) rudimentary documentation
 # Copyright 2018, Aswin Babu Karuvallly
 
-# quick-info
-these are rough notes, there are no definite order
+# what is this program?
+the netdog project started with the aim of designing a program which can easily
+bring computers up and down remotely. The idea came from the realization that,
+quite a few computers were left powered up when the college lab closes for the
+day.
