@@ -1,7 +1,8 @@
 # Project Green (netdog) rudimentary documentation
 # Copyright 2018, Aswin Babu Karuvallly
 
-# what is this program?
+
+# What is this program?
 The netdog project started with the aim of designing a program which can easily
 bring computers up and down remotely. The idea came from the realization that,
 quite a few computers were left powered up when the college lab closes for the
@@ -19,3 +20,18 @@ list of features is listed in the next section. Once completed, netdog will be
 a completely extensible system to which features an be easily added through
 plugins allowing third party developers to further extend the system.
 
+
+# Feature list
+Track and identify clients even through IP changes
+
+Secure client-server communication using public key encryption
+
+
+# Track and identify clients through IP changes
+Ability to track clients even if their IP address changes. The clients are
+identified not using their IPs, but using digital signatures. Upon installing
+the application, the client and server generates public-private key pair which
+is then used to identify the legitimate server and clients but also for
+securely transmitting data between the server and clients. The application has
+an inbuilt network scanner which can identify the server and clients on a
+a network, thus 
