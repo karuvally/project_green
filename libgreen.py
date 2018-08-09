@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Project Green Library, alpha release
+# libgreen, alpha release
 # Copyright 2018, Aswin Babu Karuvally
 
 # import essential libraries
@@ -187,4 +187,3 @@ def write_to_log (matter, config_dir):
     except:
         print("error: cannot write to log! exiting...")
         sys.exit(1)
-
