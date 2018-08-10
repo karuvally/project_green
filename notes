@@ -30,6 +30,8 @@ Feature list
 * Track and identify clients through IP changes
 * Secure client-server communication using public key encryption
 * List all machines on the network which are not clients (detect intruders)
+* Alert if daemon on a client is not running
+* Centralized logging of all data regarding clients
 
 
 Track and identify clients through IP changes
