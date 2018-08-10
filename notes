@@ -19,7 +19,7 @@ The abilities does not end there and netdog provides many notable features such
 as early warning of HDD failure on the machines on the network. The exhaustive
 list of features is listed in the next section. Once completed, netdog will be
 a completely extensible system to which features an be easily added through
-plugins allowing third party developers to further extend the system.
+plugins.
 
 
 Feature list
