@@ -39,7 +39,11 @@ Feature list
 * Flag undesirable/excessive network activity
 * Warn if machines have failing HDDs
 * Warn if machines are overheating
+* Flag users running undesirable processes
 * Control access to network addresses and services
+* Bring machines up and run ansible playbooks
+* Throttle bandwidth on machines on the network
+
 
 
 Track and identify clients through IP changes
