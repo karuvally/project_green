@@ -25,6 +25,7 @@ plugins allowing third party developers to further extend the system.
 Feature list
 ------------
 * Bring all computers on the network up and down remotely
+* Scheduled power up and down of computers
 * Execute commands/scripts remotely on machines
 * Copy files to remote machines without third party protocols
 * Track and identify clients through IP changes
@@ -35,7 +36,10 @@ Feature list
 * Track power-on power-off times and user login history
 * CLI and web interface
 * Log network traffic of clients
-* Flag undesirable network activity
+* Flag undesirable/excessive network activity
+* Warn if machines have failing HDDs
+* Warn if machines are overheating
+* Control access to network addresses and services
 
 
 Track and identify clients through IP changes
