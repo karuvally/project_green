@@ -32,6 +32,10 @@ Feature list
 * List all machines on the network which are not clients (detect intruders)
 * Alert if daemon on a client is not running
 * Centralized logging of all data regarding clients
+* Track power-on power-off times and user login history
+* CLI and web interface
+* Log network traffic of clients
+* Flag undesirable network activity
 
 
 Track and identify clients through IP changes
