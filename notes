@@ -26,6 +26,7 @@ Feature list
 ------------
 * Bring all computers on the network up and down remotely
 * Execute commands/scripts remotely on machines
+* Copy files to remote machines without third party protocols
 * Track and identify clients through IP changes
 * Secure client-server communication using public key encryption
 
