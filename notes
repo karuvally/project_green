@@ -1,4 +1,4 @@
-# Project Green (netdog) rudimentary documentation
+# Project Green (NetDog) rudimentary documentation
 # Copyright 2018, Aswin Babu Karuvallly
 
 
@@ -17,9 +17,19 @@ as SFTP or FTP.
 
 The abilities does not end there and netdog provides many notable features such
 as early warning of HDD failure on the machines on the network. The exhaustive
-list of features is listed in the next section. Once completed, netdog will be
+list of features is listed in later section. Once completed, netdog will be
 a completely extensible system to which features an be easily added through
 plugins.
+
+
+Basic architecture
+------------------
+NetDog has a client server architecture. The server is responsible for issuing
+commands to the clients and is to be used by the administrator of the network.
+The client application is to be run on machines on the network to be
+administered.
+
+After installing NetDog server 
 
 
 Feature list
