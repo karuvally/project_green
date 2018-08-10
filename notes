@@ -43,7 +43,7 @@ Feature list
 * Control access to network addresses and services
 * Bring machines up and run ansible playbooks
 * Throttle bandwidth on machines on the network
-
+* Except specific machines from being applied rules/commands
 
 
 Track and identify clients through IP changes
