@@ -29,6 +29,7 @@ Feature list
 * Copy files to remote machines without third party protocols
 * Track and identify clients through IP changes
 * Secure client-server communication using public key encryption
+* List all machines on the network which are not clients (detect intruders)
 
 
 Track and identify clients through IP changes
