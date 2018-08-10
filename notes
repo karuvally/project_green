@@ -34,6 +34,8 @@ key pair for the machine is generated which is then used for uniquely
 identifying the server and securing data transmission between the client and
 server.
 
+When NetDog client is installed onto a machine on the network, a public-private
+
 
 Feature list
 ------------
