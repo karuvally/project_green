@@ -44,6 +44,7 @@ Feature list
 * Bring machines up and run ansible playbooks
 * Throttle bandwidth on machines on the network
 * Except specific machines from being applied rules/commands
+* Plugin interface for extending features
 
 
 Track and identify clients through IP changes
