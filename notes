@@ -62,10 +62,15 @@ Client <--> Server communication
 --------------------------------
 The NetDog server and clients communicate through TCP connections. Except
 during pairing, the connections are secured using public key encryption. 
-
 Each message sent between client and server can be broken down into two parts,
 The ID and the data part. The data part is further broken into command and
 payload.
+
+The ID part contains the identifier of the machine from which the message has
+originated. This is usually the hostname of the machine. The command part
+contains the command which indicates the action to be performed. It does not
+imply a UNIX command, but one of the commands supported by the NetDog protocol,
+such as "PAIR".
 
 
 Feature list
