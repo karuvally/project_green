@@ -82,6 +82,10 @@ compromised during the trip to destination. If the data is illegible, the
 receiver sends the "RETRANSMIT" command to the sender, which then causes the
 sender to resend the whole message.
 
+If the receiver cannot match the ID part with any of the known hosts, if the
+receiver is the server, it initiates the pairing procedure and if the receiver
+is the client, it discards the message.
+
 
 Feature list
 ------------
