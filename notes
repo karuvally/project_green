@@ -58,6 +58,12 @@ remotely executing the shutdown command. It is also able to power up systems
 which support remote Wake-On-LAN feature, by sending magic packets.
 
 
+Client <--> Server communication
+--------------------------------
+The NetDog server and clients communicate using TCP connections using public
+key encryption.
+
+
 Feature list
 ------------
 * Bring all computers on the network up and down remotely
