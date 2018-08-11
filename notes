@@ -74,8 +74,10 @@ such as "PAIR".
 
 The ID is sent as plaintext, while the data part is encrypted first using the
 private key of the sender and then using the public key of the receiver. When
-the receiver receives the message, it tries to identify the sender from the ID
-part.
+the receiver receives the message, it tries to match the ID part with an entry
+in the known-hosts list. If succesfull, the receiver decrypts the data part
+first using its private key and then using public key of the sender. If the
+decryption process fails,
 
 
 Feature list
