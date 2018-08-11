@@ -40,6 +40,12 @@ port 1994. These ports serve dual purpose of facilitating communication and
 allowing the identification of server and clients from the rest of the machines
 on the network.
 
+When a client starts for the first time, it looks for active servers on the
+network. When it finds one, it starts the pairing procedure. During the pairing
+process, the client sends its hostname and public-key. The server in turn
+provides the client with it's public key. These keys are then used for
+identification and encrypted communication between machines.
+
 
 Feature list
 ------------
