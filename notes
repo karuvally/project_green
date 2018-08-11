@@ -60,8 +60,9 @@ which support remote Wake-On-LAN feature, by sending magic packets.
 
 Client <--> Server communication
 --------------------------------
-The NetDog server and clients communicate using TCP connections using public
-key encryption.
+The NetDog server and clients communicate through TCP connections. The
+connections are secured using public key encryption. A notable exception is
+when a client tries to pair with the server.
 
 
 Feature list
