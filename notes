@@ -77,7 +77,8 @@ private key of the sender and then using the public key of the receiver. When
 the receiver receives the message, it tries to match the ID part with an entry
 in the known-hosts list. If succesfull, the receiver decrypts the data part
 first using its private key and then using public key of the sender. If the
-decryption process fails,
+decryption process fails, it means the data is either corrupted or has been
+compromised during the trip to destination.
 
 
 Feature list
