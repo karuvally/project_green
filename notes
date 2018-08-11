@@ -78,7 +78,9 @@ the receiver receives the message, it tries to match the ID part with an entry
 in the known-hosts list. If succesfull, the receiver decrypts the data part
 first using its private key and then using public key of the sender. If the
 decryption process fails, it means the data is either corrupted or has been
-compromised during the trip to destination.
+compromised during the trip to destination. If the data is illegible, the
+receiver sends the "RETRANSMIT" command to the sender, which then causes the
+sender to resend the whole message.
 
 
 Feature list
