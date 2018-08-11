@@ -53,6 +53,9 @@ the server machine which will then be sent to all the clients on the network.
 A client can also contact the server occasionally, for example if the client
 detects undseriable network traffic or if the system is overheating.
 
+NetDog is capable of shutting down all the clients on the network at once by
+remotely executing the shutdown command. It is also able to power up systems
+which support remote Wake-On-LAN feature.
 
 
 Feature list
