@@ -55,7 +55,7 @@ detects undseriable network traffic or if the system is overheating.
 
 NetDog is capable of shutting down all the clients on the network at once by
 remotely executing the shutdown command. It is also able to power up systems
-which support remote Wake-On-LAN feature.
+which support remote Wake-On-LAN feature, by sending magic packets.
 
 
 Feature list
