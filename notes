@@ -87,6 +87,10 @@ receiver is the server, it initiates the pairing procedure and if the receiver
 is the client, it discards the message.
 
 
+Pairing process
+---------------
+
+
 Feature list
 ------------
 * Bring all computers on the network up and down remotely
