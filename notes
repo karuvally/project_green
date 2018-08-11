@@ -73,7 +73,9 @@ imply a UNIX command, but one of the commands supported by the NetDog protocol,
 such as "PAIR".
 
 The ID is sent as plaintext, while the data part is encrypted first using the
-private key of the sender and then using the public key of the receiver.
+private key of the sender and then using the public key of the receiver. When
+the receiver receives the message, it tries to identify the sender from the ID
+part.
 
 
 Feature list
