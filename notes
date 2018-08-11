@@ -70,7 +70,7 @@ The ID part contains the identifier of the machine from which the message has
 originated. This is usually the hostname of the machine. The command part
 contains the command which indicates the action to be performed. It does not
 imply a UNIX command, but one of the commands supported by the NetDog protocol,
-such as "PAIR".
+such as "pair".
 
 The ID is sent as plaintext, while the data part is encrypted first using the
 private key of the sender and then using the public key of the receiver. When
@@ -79,7 +79,7 @@ in the known-hosts list. If succesfull, the receiver decrypts the data part
 first using its private key and then using public key of the sender. If the
 decryption process fails, it means the data is either corrupted or has been
 compromised during the trip to destination. If the data is illegible, the
-receiver sends the "RETRANSMIT" command to the sender, which then causes the
+receiver sends the "retransmit" command to the sender, which then causes the
 sender to resend the whole message.
 
 If the receiver cannot match the ID part with any of the known hosts, if the
