@@ -34,6 +34,12 @@ key pair for the machine is generated which is then used for uniquely
 identifying the machine and securing data transmission between the client and
 server.
 
+Once the server program is up and running, it listens on the port 1337 for
+connections from clients. Once the client program is up, it starts listening on
+port 1994. These ports serve dual purpose of facilitating communication and
+allowing the identification of server and clients from the rest of the machines
+on the network.
+
 
 Feature list
 ------------
