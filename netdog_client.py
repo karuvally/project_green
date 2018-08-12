@@ -5,7 +5,7 @@
 
 # the main function
 def main():
-    pass
+    # initialize the system
 
 
 # call the main function

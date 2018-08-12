@@ -163,6 +163,8 @@ def initialize_system(config_dir):
             # show error and exit the application
             print("error: config dir cannot be created! exiting...")
             sys.exit(1)
+    
+    # debug: if client, check known_server file, pair if missing
 
 
 #writes data to the log file, debug: replace with python inbuilt logging
