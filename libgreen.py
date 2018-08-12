@@ -155,6 +155,9 @@ def receive_data(connection):
 
 # check and set up essential stuff
 def initialize_system(config_dir, client):
+    # essential variables
+    return_dict = {}
+
     # if config directory does not exists, create it
     if not os.path.isdir(config_dir):
         try:
@@ -164,7 +167,10 @@ def initialize_system(config_dir, client):
             print("error: config dir cannot be created! exiting...")
             sys.exit(1)
     
-    # debug: if client and known_server missing, return paired as False
+    # if client and known_server missing, return paired as False
+    if client == True:
+        if not os.path.exists(os.path.join(config_dir, "known_server")):
+            return_dict["paired"] = False
 
 
 #writes data to the log file, debug: replace with python inbuilt logging
