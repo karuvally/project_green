@@ -87,8 +87,11 @@ receiver is the server, it initiates the pairing procedure and if the receiver
 is the client, it discards the message.
 
 
-Pairing process
----------------
+Configuration directory
+-----------------------
+The NetDog configuration is maintained as plaintext files in the configuration
+directory. The configuration for the NetDog server is maintained inside the
+current user's home directory (~/.config/netdog).
 
 
 Feature list
