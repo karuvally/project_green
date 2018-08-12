@@ -103,6 +103,12 @@ The configuration directory of the server contains the following files:
 * private_key       -> private key of the server
 * config            -> miscellaneous configuration
 
+The configuration directory of the client contains the following files:
+* known_server      -> hostname (ID) and public key of the server
+* public_key
+* private_key
+* config
+
 
 Feature list
 ------------
