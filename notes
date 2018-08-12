@@ -93,7 +93,9 @@ The NetDog configuration is maintained in the form of plaintext files in the
 configuration directory. The configuration for the NetDog server resides inside
 the current user's home directory (/home/user/.config/netdog). The
 configuration for the client is maintained inside the netdog user's home
-directory (/home/netdog/.config/netdog).
+directory (/home/netdog/.config/netdog). Only the netdog process has write
+access to these files. This is to prevent other users from tampering the
+settings put in place by the network administrator. 
 
 
 Feature list
