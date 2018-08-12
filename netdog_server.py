@@ -6,6 +6,9 @@
 # the main function
 def main():
     # initialize the system
+    # listen for commands from UI
+    # listen for message from clients
+    # send message to clients if necessary
 
 
 # call the main function
