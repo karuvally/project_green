@@ -99,9 +99,9 @@ settings put in place by the network administrator.
 
 The configuration directory of the server contains the following files:
 * known_clients     -> hostnames (IDs) and public keys of known clients
-* public_key
-* private_key
-* config
+* public_key        -> public key of the server
+* private_key       -> private key of the server
+* config            -> miscellaneous configuration
 
 
 Feature list
