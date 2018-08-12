@@ -36,7 +36,7 @@ def accept_pairing_request(payload):
             splitted_payload[2] + "\n")
 
     # get public_key of the server
-    with open(os.path.join(config_dir, "pub_key"), "r") as public_key_file:
+    with open(os.path.join(config_dir, "public_key"), "r") as public_key_file:
         public_key = public_key_file.read().rstrip()
 
     # return the public key

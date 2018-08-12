@@ -95,7 +95,13 @@ the current user's home directory (/home/user/.config/netdog). The
 configuration for the client is maintained inside the netdog user's home
 directory (/home/netdog/.config/netdog). Only the netdog process has write
 access to these files. This is to prevent other users from tampering the
-settings put in place by the network administrator. 
+settings put in place by the network administrator.
+
+The configuration directory of the server contains the following files:
+* known_clients     -> hostnames (IDs) and public keys of known clients
+* public_key
+* private_key
+* config
 
 
 Feature list
