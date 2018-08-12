@@ -89,9 +89,11 @@ is the client, it discards the message.
 
 Configuration directory
 -----------------------
-The NetDog configuration is maintained as plaintext files in the configuration
-directory. The configuration for the NetDog server is maintained inside the
-current user's home directory (~/.config/netdog).
+The NetDog configuration is maintained in the form of plaintext files in the
+configuration directory. The configuration for the NetDog server resides inside
+the current user's home directory (/home/user/.config/netdog). The
+configuration for the client is maintained inside the netdog user's home
+directory (/home/netdog/.config/netdog).
 
 
 Feature list
