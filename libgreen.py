@@ -87,7 +87,7 @@ def create_new_listen_socket(port):
 
 
 # find a host running project green
-def find_hosts(network_address, server = False):
+def find_hosts(network_address):
     # server listens on port 1994, clients on 1337
     if server == True:
         port = 1994
@@ -154,7 +154,7 @@ def receive_data(connection):
 
 
 # check and set up essential stuff
-def initialize_system(config_dir):
+def initialize_system(config_dir, client):
     # if config directory does not exists, create it
     if not os.path.isdir(config_dir):
         try:
