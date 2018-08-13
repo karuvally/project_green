@@ -89,7 +89,8 @@ is the client, it discards the message.
 
 The pairing process
 -------------------
-The pairing process is special because it is the only instance in which the
+The pairing process happens when a new client is added to the network. The
+pairing process is special because it is the only instance in which the
 communication between client and server is unencrypted.
 
 
