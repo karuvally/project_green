@@ -87,6 +87,12 @@ receiver is the server, it initiates the pairing procedure and if the receiver
 is the client, it discards the message.
 
 
+The pairing process
+-------------------
+The pairing process is special because it is the only instance in which the
+communication between client and server is unencrypted.
+
+
 Configuration directory
 -----------------------
 The NetDog configuration is maintained in the form of plaintext files in the
