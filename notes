@@ -91,7 +91,10 @@ The pairing process
 -------------------
 The pairing process happens when a new client is added to the network. The
 pairing process is special because it is the only instance in which the
-communication between client and server is unencrypted.
+communication between client and server is unencrypted. The communication is
+unencrypted as the client and server does not posses each other's public keys
+and cannot possibly identify and decrypt data encrypted with the other's
+private key.
 
 
 Configuration directory
