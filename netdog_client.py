@@ -2,10 +2,15 @@
 # NetDog Client module, alpha release
 # Copyright 2018, Aswin Babu Karuvally
 
+# import the serious stuff
+from libgreen import *
+
 
 # the main function
 def main():
     # initialize the system
+    initialize_system(get_config_dir(), server = False)
+
     # pair client if necessary
     # listen for commmands from server
     # report back if necessary
