@@ -87,7 +87,7 @@ def create_new_listen_socket(port):
 
 
 # find a host running project green
-def find_hosts(network_address):
+def find_hosts(network_address, server):
     # server listens on port 1994, clients on 1337
     if server == True:
         port = 1994
@@ -154,7 +154,7 @@ def receive_data(connection):
 
 
 # check and set up essential stuff
-def initialize_system(config_dir, client):
+def initialize_system(config_dir, server):
     # if config directory does not exists, create it
     if not os.path.isdir(config_dir):
         try:
@@ -165,9 +165,11 @@ def initialize_system(config_dir, client):
             sys.exit(1)
     
     # if client and known_server missing, return paired as False
-    if client == True:
+    if server == False:
         if not os.path.exists(os.path.join(config_dir, "known_server")):
-            return "unpaired"
+            # debug: start client pairing request
+            pass
+            
 
 
 #writes data to the log file, debug: replace with python inbuilt logging
