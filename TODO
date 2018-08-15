@@ -10,7 +10,7 @@ complete exception handling     [ ]
 
 
 # Low Level TODO
-move logs to standard library   [ ]
+move logs to standard library   [x]
 test pairing system             [ ]
 test multiprocessing            [ ]
 test rest of the commands       [ ]

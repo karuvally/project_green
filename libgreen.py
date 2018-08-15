@@ -169,27 +169,13 @@ def initialize_system(config_dir, server):
         level = logging.DEBUG)
     
     # log initial messages
-    logging.info("NetDog server (alpha) is starting up")
+    logging.info("NetDog (alpha) is starting up")
     logging.info("System passed initial checks")
     
     # if client and known_server missing, return paired as False
     if server == False:
         # debug: function to cross check known_server with current server
         if not os.path.exists(os.path.join(config_dir, "known_server")):
+            logging.info("the client is not paired with a server")
             # debug: start client pairing request
             pass
-            
-
-
-#writes data to the log file, debug: replace with python inbuilt logging
-def write_to_log (matter, config_dir):
-    log_path = os.path.join(config_dir, "log")
-    try:
-        log_file = open (log_path, "a")
-
-        log_file.write (time.strftime("[%d-%b-%Y %H:%M:%S] "))
-        log_file.write (matter + "\n")
-        log_file.close()
-    except:
-        print("error: cannot write to log! exiting...")
-        sys.exit(1)
