@@ -131,12 +131,14 @@ def create_new_listen_socket(port):
 
 
 # find a host running project green
-def find_hosts(network_address, server):
-    # server listens on port 1994, clients on 1337
-    if server == True:
-        port = 1994
-    else:
-        port = 1337
+def find_hosts(network_address, mode):
+    # server listens on port 1337, clients on 1994
+    if mode == "server":
+        port_list = [1337]
+    elif mode == "client":
+        port_list = [1994]
+    elif mode == "both":
+        port_list = [1337, 1994]
 
     host_list = []
     network = ipaddress.ip_network(network_address + "/24")
@@ -149,8 +151,9 @@ def find_hosts(network_address, server):
         if return_code == 0:
             # check if specified ports are open on host
             connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            port_status = connection.connect_ex((str(ip_address), port))
-
+            for port in port_list:
+                port_status = connection.connect_ex((str(ip_address), port))
+                
             # port is open if port_status is 0
             if port_status == 0:
                 host_list.append(ip_address)
