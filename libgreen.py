@@ -167,10 +167,14 @@ def initialize_system(config_dir, server):
     # set up logging
     logging.basicConfig(filename = os.path.join(config_dir, "log"),
         level = logging.DEBUG)
-
+    
+    # log initial messages
+    logging.info("NetDog server (alpha) is starting up")
+    logging.info("System passed initial checks")
     
     # if client and known_server missing, return paired as False
     if server == False:
+        # debug: function to cross check known_server with current server
         if not os.path.exists(os.path.join(config_dir, "known_server")):
             # debug: start client pairing request
             pass
