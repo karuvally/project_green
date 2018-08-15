@@ -1,4 +1,4 @@
-# TODO
+# High level TODO
 simple client-server            [x]
 test shutdown                   [x]
 handle Ctrl+C                   [x]
@@ -8,5 +8,9 @@ design simple pairing system    [ ]
 implement shutdown completeley  [ ]
 complete exception handling     [ ]
 
-# NOTES
-using multi processing might turn out to be necessary
+
+# Low Level TODO
+move logs to standard library   [ ]
+test pairing system             [ ]
+test multiprocessing            [ ]
+test rest of the commands       [ ]
