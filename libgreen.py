@@ -48,9 +48,11 @@ def find_network():
             address_dict = netifaces.ifaddresses(network)
             network_address = address_dict[netifaces.AF_INET][0]["addr"]
 
-            # try finding hosts in each interface
-            # if sucessful, store it to known_network format: iface, address
-            pass
+            # if hosts can be found, set current network as default
+            host_list = find_hosts(network_address, mode = "both")
+            if host_list:
+                with open(known_network_file_path, "w") as known_network_file:
+                    known_network_file.write("network" + "," + network_address)
 
 
 # get the config directory
