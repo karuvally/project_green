@@ -10,6 +10,14 @@ import socket
 from Crypto.PublicKey import RSA
 import ipaddress
 from subprocess import Popen, PIPE
+import logging
+
+
+def find_network_address():
+    # find all available networks
+    # probe each network for hosts
+    # if host found, set as default network
+    pass
 
 
 # get the config directory
@@ -81,6 +89,7 @@ def create_new_listen_socket(port):
         connection, client_address = daemon_socket.accept()
 
         # pass the connection to connection handler
+        print(client_address)
         logging.info("new connection received from" + client_address)
         handle_client_connection(connection, client_address) # debug: implement threading
 
