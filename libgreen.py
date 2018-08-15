@@ -13,10 +13,14 @@ from subprocess import Popen, PIPE
 import logging
 
 
-def find_network_address():
-    # find all available networks
-    # probe each network for hosts
-    # if host found, set as default network
+def find_network():
+    # look if known_network exists
+    # look if network is up
+    # if any of above conditions is false,
+    # list all network interfaces
+    # find address of each interface and loop
+    # try finding hosts in each interface
+    # if sucessful, store it to known_network
     pass
 
 
