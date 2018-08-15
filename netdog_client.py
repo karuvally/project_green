@@ -2,7 +2,7 @@
 # NetDog Client module, alpha release
 # Copyright 2018, Aswin Babu Karuvally
 
-# import the serious stuff
+# import serious stuff
 from libgreen import *
 
 
