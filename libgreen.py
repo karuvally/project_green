@@ -70,6 +70,7 @@ def handle_client_connection(connection, client_address):
 # create server socket and listen
 def create_new_listen_socket(port):
     # create the socket
+    logging.info("trying to create listening socket")
     daemon_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     daemon_socket.bind(("0.0.0.0", port))
     daemon_socket.listen(5) # debug: what does this mean?
@@ -80,6 +81,7 @@ def create_new_listen_socket(port):
         connection, client_address = daemon_socket.accept()
 
         # pass the connection to connection handler
+        logging.info("new connection received from" + client_address)
         handle_client_connection(connection, client_address) # debug: implement threading
 
     # close the listen socket
