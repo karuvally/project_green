@@ -14,7 +14,15 @@ import logging
 
 
 def find_network():
+    # get the config directory
+    config_dir = get_config_dir()
+
     # look if known_network exists
+    known_network_file = os.path.join(config_dir, "known_network")
+    if os.path.exists(known_network_file):
+        with open(known_network_file, "r"):
+            network_address = known_network_file.read().rstrip()
+            
     # look if network is up
     # if any of above conditions is false,
     # list all network interfaces
