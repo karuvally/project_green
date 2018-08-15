@@ -164,6 +164,11 @@ def initialize_system(config_dir, server):
             print("error: config dir cannot be created! exiting...")
             sys.exit(1)
     
+    # set up logging
+    logging.basicConfig(filename = os.path.join(config_dir, "log"),
+        level = logging.DEBUG)
+
+    
     # if client and known_server missing, return paired as False
     if server == False:
         if not os.path.exists(os.path.join(config_dir, "known_server")):
