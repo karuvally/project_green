@@ -36,16 +36,21 @@ def find_network():
             network = known_network_file.read().rstrip().split(",")
 
         # look if network is up
-        network_status = ping_address(network[1])
+        network_status = ping_address(network[1], broadcast = True)
     else:
         network_status = 1
     
     # network is down if network_status == 1
-    # list all network interfaces
-    # find address of each interface and loop
-    # try finding hosts in each interface
-    # if sucessful, store it to known_network format: iface, address
-    pass
+    if network_status == 1:
+        # loop through interfaces
+        for network in netifaces.interfaces():
+            # find address of each interface
+            address_dict = netifaces.ifaddresses(network)
+            network_address = address_dict[netifaces.AF_INET][0]["addr"]
+
+            # try finding hosts in each interface
+            # if sucessful, store it to known_network format: iface, address
+            pass
 
 
 # get the config directory
