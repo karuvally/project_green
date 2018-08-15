@@ -15,15 +15,19 @@ import netifaces
 
 
 # ping ip address and return status
-def ping_address(ip_address):
-    ping = Popen(["ping", "-c", "1", str(ip_address)], stdout = PIPE)
+def ping_address(ip_address, broadcast = False):
+    if broadcast == True:
+        ping = Popen(["ping", "-b", "-c", "1", str(ip_address)], stdout = PIPE)
+    else:
+        ping = Popen(["ping", "-c", "1", str(ip_address)], stdout = PIPE)
     ping_out = ping.communicate()[0]
     return_code = ping.returncode
 
 
 def find_network():
-    # get the config directory
+    # essential variables
     config_dir = get_config_dir()
+    network_status = 0
 
     # look if known_network exists
     known_network_file_path = os.path.join(config_dir, "known_network")
@@ -31,10 +35,12 @@ def find_network():
         with open(known_network_file_path, "r") as known_network_file:
             network = known_network_file.read().rstrip().split(",")
 
-    # look if network is up
-    return_code = ping_address(network[1])
-
-    # if any of above conditions is false,
+        # look if network is up
+        network_status = ping_address(network[1])
+    else:
+        network_status = 1
+    
+    # network is down if network_status == 1
     # list all network interfaces
     # find address of each interface and loop
     # try finding hosts in each interface
