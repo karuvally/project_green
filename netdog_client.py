@@ -9,7 +9,7 @@ from libgreen import *
 # the main function
 def main():
     # initialize the system
-    initialize_system(get_config_dir(), server = False)
+    initialize_system(server = False)
 
     # pair client if necessary
     # listen for commmands from server
