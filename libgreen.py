@@ -11,6 +11,14 @@ from Crypto.PublicKey import RSA
 import ipaddress
 from subprocess import Popen, PIPE
 import logging
+import netifaces
+
+
+# ping ip address and return status
+def ping_address(ip_address):
+    ping = Popen(["ping", "-c", "1", str(ip_address)], stdout = PIPE)
+    ping_out = ping.communicate()[0]
+    return_code = ping.returncode
 
 
 def find_network():
@@ -18,17 +26,19 @@ def find_network():
     config_dir = get_config_dir()
 
     # look if known_network exists
-    known_network_file = os.path.join(config_dir, "known_network")
-    if os.path.exists(known_network_file):
-        with open(known_network_file, "r"):
-            network_address = known_network_file.read().rstrip()
-            
+    known_network_file_path = os.path.join(config_dir, "known_network")
+    if os.path.exists(known_network_file_path):
+        with open(known_network_file_path, "r") as known_network_file:
+            network = known_network_file.read().rstrip().split(",")
+
     # look if network is up
+    return_code = ping_address(network[1])
+
     # if any of above conditions is false,
     # list all network interfaces
     # find address of each interface and loop
     # try finding hosts in each interface
-    # if sucessful, store it to known_network
+    # if sucessful, store it to known_network format: iface, address
     pass
 
 
@@ -120,11 +130,9 @@ def find_hosts(network_address, server):
     host_list = []
     network = ipaddress.ip_network(network_address + "/24")
 
+    # try pinging each host
     for ip_address in network.hosts():
-        # try pinging each host
-        ping = Popen(["ping", "-c", "1", str(ip_address)], stdout = PIPE)
-        ping_out = ping.communicate()[0]
-        return_code = ping.returncode
+        return_code = ping_address(ip_address)
 
         # host is up if return_code is 0
         if return_code == 0:
