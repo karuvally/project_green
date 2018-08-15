@@ -18,7 +18,7 @@ def get_config_dir():
     user = os.getlogin() # debug: getlogin() might not work on all distros
 
     # stich the complete path
-    config_dir = os.path.join("/home", user, ".netdog")
+    config_dir = os.path.join("/home", user, ".config", "netdog")
 
     return config_dir
 
