@@ -33,10 +33,10 @@ def find_network():
     known_network_file_path = os.path.join(config_dir, "known_network")
     if os.path.exists(known_network_file_path):
         with open(known_network_file_path, "r") as known_network_file:
-            network = known_network_file.read().rstrip().split(",")
+            network_address = known_network_file.read().rstrip().split(",")
 
         # look if network is up
-        network_status = ping_address(network[1], broadcast = True)
+        network_status = ping_address(network_address[1], broadcast = True)
     else:
         network_status = 1
     
@@ -53,6 +53,9 @@ def find_network():
             if host_list:
                 with open(known_network_file_path, "w") as known_network_file:
                     known_network_file.write("network" + "," + network_address)
+    
+    # return network address to calling function
+    return network_address
 
 
 # get the config directory
