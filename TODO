@@ -12,5 +12,6 @@ complete exception handling     [ ]
 # Low Level TODO
 move logs to standard library   [x]
 test pairing system             [ ]
+extensively log functions       [ ]
 test multiprocessing            [ ]
 test rest of the commands       [ ]

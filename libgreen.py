@@ -14,6 +14,11 @@ import logging
 import netifaces
 
 
+# send request to server for pairing
+def request_to_pair():
+    pass
+
+
 # ping ip address and return status
 def ping_address(ip_address, broadcast = False):
     if broadcast == True:
@@ -226,8 +231,10 @@ def initialize_system(server):
     # if no known_server, initiate pairing
     if server == False:
         if os.path.exists(os.path.join(config_dir, "known_server")):
-            # check if known_server has a valid server
+            pass
+            # debug: future fix, check if known_server has a valid server
             pass:
         else:
+            # start client pairing request
             logging.info("the client is not paired with a server")
-            # debug: start client pairing request
+            request_to_pair()
