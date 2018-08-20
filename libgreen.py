@@ -223,10 +223,11 @@ def initialize_system(server):
     logging.info("NetDog (alpha) is starting up")
     logging.info("System passed initial checks")
     
-    # if client and known_server missing, return paired as False
+    # if no known_server, initiate pairing
     if server == False:
-        # debug: function to cross check known_server with current server
-        if not os.path.exists(os.path.join(config_dir, "known_server")):
+        if os.path.exists(os.path.join(config_dir, "known_server")):
+            # check if known_server has a valid server
+            pass:
+        else:
             logging.info("the client is not paired with a server")
             # debug: start client pairing request
-            pass
