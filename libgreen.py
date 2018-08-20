@@ -15,7 +15,11 @@ import netifaces
 
 
 # send request to server for pairing
-def request_to_pair():
+def request_to_pair(network_address):
+    # get configuration directory
+    # find server
+    # send pairing request
+    # store server details in known_server
     pass
 
 
@@ -237,4 +241,4 @@ def initialize_system(server):
         else:
             # start client pairing request
             logging.info("the client is not paired with a server")
-            request_to_pair()
+            request_to_pair(find_network())
