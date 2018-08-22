@@ -43,12 +43,14 @@ def find_network():
     # look if known_network exists
     known_network_file_path = os.path.join(config_dir, "known_network")
     if os.path.exists(known_network_file_path):
+        logging.info("using known network")
         with open(known_network_file_path, "r") as known_network_file:
             network_address = known_network_file.read().rstrip().split(",")
 
         # look if network is up
         network_status = ping_address(network_address[1], broadcast = True)
     else:
+        logging.info("no known network, starting search")
         network_status = 1
     
     # network is down if network_status == 1
