@@ -26,8 +26,10 @@ def request_to_pair(network_address):
 # ping ip address and return status
 def ping_address(ip_address, broadcast = False):
     if broadcast == True:
+        logging.info("checking if network " + str(ip_address) + " is up")
         ping = Popen(["ping", "-b", "-c", "1", str(ip_address)], stdout = PIPE)
     else:
+        logging.info("checking if node " + str(ip_address) + " is up")
         ping = Popen(["ping", "-c", "1", str(ip_address)], stdout = PIPE)
     ping_out = ping.communicate()[0]
     return_code = ping.returncode
