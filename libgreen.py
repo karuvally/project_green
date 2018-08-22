@@ -64,6 +64,7 @@ def find_network():
             # if hosts can be found, set current network as default
             host_list = find_hosts(network_address, mode = "both")
             if host_list:
+                logging.info("network: " + network_address + " found")
                 with open(known_network_file_path, "w") as known_network_file:
                     known_network_file.write("network" + "," + network_address)
     
