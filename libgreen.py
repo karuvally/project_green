@@ -85,11 +85,12 @@ def get_config_dir():
 
 # accept pairing request from client
 def accept_pairing_request(payload):
-    pass
+    logging.info("pairing request received")
     # separate public_key and hostname
     splitted_payload = payload.split(",", 1)
 
     # store the public_key, hostname pair to text file
+    logging.info("storing public key and ID of the client")
     config_dir = get_config_dir()
     with open(os.path.join(config_dir, "known_hosts"), "a") as known_hosts_file:
         known_hosts_file.write(splitted_payload[1] + "," +
