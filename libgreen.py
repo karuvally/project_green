@@ -240,6 +240,8 @@ def initialize_system(server):
     # log initial messages
     logging.info("NetDog (alpha) is starting up")
     logging.info("System passed initial checks")
+
+    # debug: if server, set network
     
     # if no known_server, initiate pairing
     if server == False:
