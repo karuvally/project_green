@@ -154,10 +154,13 @@ def create_new_listen_socket(port):
 def find_hosts(network_address, mode):
     # server listens on port 1337, clients on 1994
     if mode == "server":
+        logging.info("scanning for server")
         port_list = [1337]
     elif mode == "client":
+        logging.info("scanning for clients")
         port_list = [1994]
     elif mode == "both":
+        logging.info("scanning for nodes")
         port_list = [1337, 1994]
 
     host_list = []
