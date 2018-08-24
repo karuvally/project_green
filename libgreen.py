@@ -4,6 +4,7 @@
 
 # import essential libraries
 import os
+import pwd
 import sys
 import time
 import socket
@@ -75,7 +76,7 @@ def find_network():
 # get the config directory
 def get_config_dir():
     # get the username
-    user = os.getlogin() # debug: getlogin() might not work on all distros
+    user = pwd.getpwuid(os.getuid())[0]
 
     # stich the complete path
     config_dir = os.path.join("/home", user, ".config", "netdog")
