@@ -189,6 +189,7 @@ def find_hosts(network_address, mode):
 # generate public-private key pair
 def generate_keys():
     # set the size for the generated key
+    logging.info("generating public-private key pair")
     key = RSA.generate(1024)
     
     # create public-private key pair
@@ -217,7 +218,6 @@ def receive_data(connection):
             data += data_buffer.decode()
         else:
             break
-
     return data
 
 
