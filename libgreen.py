@@ -66,9 +66,14 @@ def find_network(server = False):
         available_interfaces = netifaces.interfaces()
         print("choose network interface")
         for i in range(0, len(available_interfaces)):
-            print(i+1 + ") " + available_interfaces[i] + ": " + network_address) # debug
+            address_dict = netifaces.ifaddresses(available_interfaces[i])
+            network_address = address_dict[netifaces.AF_INET][0]["addr"]
+            print(i+1 + ") " + available_interfaces[i] + ": " + network_address)
+
         user_choice = input(">")
         selected_interface = available_interfaces[user_choice - 1]
+
+        # store interface name, network address in known_network file
 
     else:
         # loop through interfaces
