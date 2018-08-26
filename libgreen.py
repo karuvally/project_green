@@ -71,23 +71,26 @@ def find_network(server = False):
             print(i+1 + ") " + available_interfaces[i] + ": " + network_address)
 
         user_choice = input(">")
-        selected_interface = available_interfaces[user_choice - 1]
+        interface = available_interfaces[user_choice - 1]
 
         # store interface name, network address in known_network file
 
     else:
         # loop through interfaces
-        for network in netifaces.interfaces():
+        for interface in netifaces.interfaces():
             # find address of each interface
-            address_dict = netifaces.ifaddresses(network)
+            address_dict = netifaces.ifaddresses(interface)
             network_address = address_dict[netifaces.AF_INET][0]["addr"]
 
             # if hosts can be found, set current network as default
             host_list = find_hosts(network_address, mode = "both")
+
             if host_list:
                 logging.info("network: " + network_address + " found")
-                with open(known_network_file_path, "w") as known_network_file:
-                    known_network_file.write("network" + "," + network_address)
+
+    if host_list or server == True:
+        with open(known_network_file_path, "w") as known_network_file:
+            known_network_file.write(interface + "," + network_address)
     
     # return network address to calling function
     return network_address
