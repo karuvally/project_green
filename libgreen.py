@@ -72,7 +72,8 @@ def find_network(server = False):
 
         user_choice = input(">")
         interface = available_interfaces[user_choice - 1]
-
+        logging.info("interface: " + interface + " with address: " +
+        network_address + " choosen by user")
         # store interface name, network address in known_network file
 
     else:
