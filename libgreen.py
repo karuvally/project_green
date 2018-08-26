@@ -48,7 +48,9 @@ def retrieve_network_info():
     if os.path.exists(known_network_file_path):
         logging.info("using known network")
         with open(known_network_file_path, "r") as known_network_file:
-            network_address = known_network_file.read().rstrip().split(",")
+            network_info = known_network_file.read().rstrip().split(",")
+            interface = network_info[0]
+            network_address = network_info[1]
 
         # look if network is up, network is up if network_status == 0
         network_status = ping_address(network_address[1], broadcast = True)
@@ -56,6 +58,7 @@ def retrieve_network_info():
         logging.info("no known network exists")
     
     return ({
+        "interface": interface,
         "network_address": network_address,
         "network_status": network_status
     })
@@ -72,9 +75,9 @@ def find_network(server = False):
 
         user_choice = input(">")
         interface = available_interfaces[user_choice - 1]
+        
         logging.info("interface: " + interface + " with address: " +
         network_address + " choosen by user")
-        # store interface name, network address in known_network file
 
     else:
         # loop through interfaces
@@ -86,6 +89,7 @@ def find_network(server = False):
             # if hosts can be found, set current network as default
             host_list = find_hosts(network_address, mode = "both")
 
+            # debug: anyway to make this more elegant?
             if host_list:
                 logging.info("network: " + network_address + " found")
 
