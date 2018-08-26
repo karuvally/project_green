@@ -50,7 +50,7 @@ def retrieve_network_info():
         with open(known_network_file_path, "r") as known_network_file:
             network_address = known_network_file.read().rstrip().split(",")
 
-        # look if network is up
+        # look if network is up, network is up if network_status == 0
         network_status = ping_address(network_address[1], broadcast = True)
     else:
         logging.info("no known network exists")
@@ -62,20 +62,18 @@ def retrieve_network_info():
 
 
 def find_network(server = False):    
-    # network is down if network_status == 1
-    if network_status == 1:
-        # loop through interfaces
-        for network in netifaces.interfaces():
-            # find address of each interface
-            address_dict = netifaces.ifaddresses(network)
-            network_address = address_dict[netifaces.AF_INET][0]["addr"]
+    # loop through interfaces
+    for network in netifaces.interfaces():
+        # find address of each interface
+        address_dict = netifaces.ifaddresses(network)
+        network_address = address_dict[netifaces.AF_INET][0]["addr"]
 
-            # if hosts can be found, set current network as default
-            host_list = find_hosts(network_address, mode = "both")
-            if host_list:
-                logging.info("network: " + network_address + " found")
-                with open(known_network_file_path, "w") as known_network_file:
-                    known_network_file.write("network" + "," + network_address)
+        # if hosts can be found, set current network as default
+        host_list = find_hosts(network_address, mode = "both")
+        if host_list:
+            logging.info("network: " + network_address + " found")
+            with open(known_network_file_path, "w") as known_network_file:
+                known_network_file.write("network" + "," + network_address)
     
     # return network address to calling function
     return network_address
