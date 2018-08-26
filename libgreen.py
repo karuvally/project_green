@@ -36,7 +36,8 @@ def ping_address(ip_address, broadcast = False):
     return_code = ping.returncode
 
 
-def find_network():
+# retrieve known_network if it exists
+def retrieve_network_info():
     # essential variables
     config_dir = get_config_dir()
     network_status = 0
@@ -53,7 +54,10 @@ def find_network():
     else:
         logging.info("no known network, starting search")
         network_status = 1
-    
+
+
+# search for the network across interfaces
+def find_network():    
     # network is down if network_status == 1
     if network_status == 1:
         # loop through interfaces
