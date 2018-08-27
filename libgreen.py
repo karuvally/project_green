@@ -42,6 +42,8 @@ def retrieve_network_info():
     config_dir = get_config_dir()
     network_address
     network_status = 0
+    interface = None
+    network_address = None
 
     # look if known_network exists
     known_network_file_path = os.path.join(config_dir, "known_network")
@@ -71,6 +73,7 @@ def find_network(server = False):
     if server == True:
         available_interfaces = netifaces.interfaces()
         print("choose network interface")
+        
         for i in range(0, len(available_interfaces)):
             address_dict = netifaces.ifaddresses(available_interfaces[i])
             network_address = address_dict[netifaces.AF_INET][0]["addr"]
@@ -273,6 +276,15 @@ def initialize_system(server):
     # log initial messages
     logging.info("NetDog (alpha) is starting up")
     logging.info("System passed initial checks")
+
+    # get the current network information
+    logging.info("getting network information")
+    network_info = retrieve_network_info()
+
+    if network_info["interface"] == None:
+        pass
+        # if server, ask admin to choose interface
+        # if client, automatic network detection
 
     # if server, set network manually
     if server = True:
