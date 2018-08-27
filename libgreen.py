@@ -64,7 +64,10 @@ def retrieve_network_info():
     })
 
 
-def find_network(server = False):    
+def find_network(server = False):
+    # essential variables
+    host_list = None
+
     if server == True:
         available_interfaces = netifaces.interfaces()
         print("choose network interface")
