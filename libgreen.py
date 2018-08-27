@@ -76,7 +76,7 @@ def find_network(server = False):
             network_address = address_dict[netifaces.AF_INET][0]["addr"]
             print(i+1 + ") " + available_interfaces[i] + ": " + network_address)
 
-        user_choice = input(">")
+        user_choice = int(input(">"))
         interface = available_interfaces[user_choice - 1]
         
         logging.info("interface: " + interface + " with address: " +
