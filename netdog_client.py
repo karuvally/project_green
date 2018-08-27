@@ -9,7 +9,7 @@ from libgreen import *
 # the main function
 def main():
     # initialize the system
-    initialize_system(server = False)
+    initialize_system()
 
     # start listening for connections
     # pair client if necessary
