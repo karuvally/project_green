@@ -282,14 +282,7 @@ def initialize_system(server = False):
     network_info = retrieve_network_info()
 
     if network_info["interface"] == None:
-        # if server, ask admin to choose interface
-        if server == True:
-            network_address = find_network(server = True)
-        
-        # if client, automatic network detection
-        else:
-            network_address = find_network()
-        
+        network_address = find_network(server)
 
     # if server, set network manually
     if server = True:
