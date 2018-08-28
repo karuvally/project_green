@@ -15,6 +15,20 @@ from Crypto.PublicKey import RSA
 from subprocess import Popen, PIPE
 
 
+# try to load public / private keys
+def load_keys(key_type):
+    # load public key, if it exists
+    public_key_path = os.path.join(config_dir, "public_key")
+    if os.path.exists(public_key_path):
+        logging.info("loading public key")
+        with open(public_key_path, "r") as public_key_file:
+            public_key = public_key_file.read().rstrip()
+    else:
+        logging.info("generating public key")
+        key_pair = generate_keys()
+        public_key = key_pair["public_key"]   
+
+
 # send request to server for pairing
 def request_to_pair(network_address):
     # get configuration directory
@@ -308,7 +322,6 @@ def initialize_system(server = False):
         
         with open(os.path.join(config_dir, "private_key")) as private_key_file:
             private_key_file.write(key_pair["private_key"])
-    
 
     # get the current network information
     logging.info("getting network information")
