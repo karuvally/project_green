@@ -302,6 +302,12 @@ def initialize_system(server = False):
         public_key = key_pair["public_key"]
 
         # write the newly generated keys to file
+        logging.info("writing generated keys to file")
+        with open(public_key_path, "w") as public_key_file:
+            public_key_file.write(public_key)
+        
+        with open(os.path.join(config_dir, "private_key")) as private_key_file:
+            private_key_file.write(key_pair["private_key"])
     
 
     # get the current network information
