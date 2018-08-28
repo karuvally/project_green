@@ -306,6 +306,7 @@ def initialize_system(server = False):
         except:
             # show error and exit the application
             print("error: config dir cannot be created! exiting...")
+            logging.critical("error: config dir cannot be created! exiting...")
             sys.exit(1)
     
     # set up logging
