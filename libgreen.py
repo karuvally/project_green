@@ -18,7 +18,11 @@ import netifaces
 # send request to server for pairing
 def request_to_pair(network_address):
     # get configuration directory
+    config_dir = get_config_dir()
+
     # find server
+    server = find_hosts(network_address, mode = "server")
+
     # send pairing request
     # store server details in known_server
     pass
