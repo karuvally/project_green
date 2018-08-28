@@ -8,11 +8,11 @@ import pwd
 import sys
 import time
 import socket
-from Crypto.PublicKey import RSA
 import ipaddress
-from subprocess import Popen, PIPE
 import logging
 import netifaces
+from Crypto.PublicKey import RSA
+from subprocess import Popen, PIPE
 
 
 # send request to server for pairing
@@ -21,9 +21,17 @@ def request_to_pair(network_address):
     config_dir = get_config_dir()
 
     # find server
+    logging.info("finding server")
     server = find_hosts(network_address, mode = "server")
 
+    # get the public key
+    # get the hostname of the machine
+
     # send pairing request
+    logging.info("sending pairing request")
+    # write the rest of the stuff
+
+
     # store server details in known_server
     pass
 
