@@ -112,6 +112,7 @@ def find_network(server = False):
             if host_list:
                 logging.info("network: " + network_address + " found")
 
+    # debug: future fix, move this block outside the function
     if host_list or server == True:
         with open(known_network_file_path, "w") as known_network_file:
             known_network_file.write(interface + "," + network_address)
@@ -289,6 +290,13 @@ def initialize_system(server = False):
     logging.info("NetDog (alpha) is starting up")
     logging.info("System passed initial checks")
 
+    # load public key, generate if non existant
+    public_key_path = os.path.join(config_dir, "public_key")
+    if os.path.exists(public_key_path):
+        with open(public_key_path, "r") as public_key_file:
+            public_key = public_key_file.read().rstrip()
+    
+
     # get the current network information
     logging.info("getting network information")
     network_info = retrieve_network_info()
@@ -299,8 +307,8 @@ def initialize_system(server = False):
     # if no known_server, initiate pairing
     if server == False:
         if os.path.exists(os.path.join(config_dir, "known_server")):
-            pass
             # debug: future fix, check if known_server has a valid server
+            pass
         else:
             # start client pairing request
             logging.info("the client is not paired with a server")
