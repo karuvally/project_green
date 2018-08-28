@@ -293,8 +293,15 @@ def initialize_system(server = False):
     # load public key, generate if non existant
     public_key_path = os.path.join(config_dir, "public_key")
     if os.path.exists(public_key_path):
+        logging.info("loading public key")
         with open(public_key_path, "r") as public_key_file:
             public_key = public_key_file.read().rstrip()
+    else:
+        logging.info("generating public key")
+        key_pair = generate_keys()
+        public_key = key_pair["public_key"]
+
+        # write the newly generated keys to file
     
 
     # get the current network information
