@@ -317,13 +317,9 @@ def initialize_system(server = False):
     logging.info("System passed initial checks")
 
     # load public key, generate if non existant
-    public_key_path = os.path.join(config_dir, "public_key")
-    if os.path.exists(public_key_path):
-        logging.info("loading public key")
-        with open(public_key_path, "r") as public_key_file:
-            public_key = public_key_file.read().rstrip()
-    else:
-        logging.info("generating public key")
+    public_key = load_keys("public")
+    
+    if public_key == None:
         key_pair = generate_keys()
         public_key = key_pair["public_key"]
 
@@ -334,6 +330,9 @@ def initialize_system(server = False):
         
         with open(os.path.join(config_dir, "private_key")) as private_key_file:
             private_key_file.write(key_pair["private_key"])
+    
+    else:
+        public_key = public_key["public_key"]
 
     # get the current network information
     logging.info("getting network information")
