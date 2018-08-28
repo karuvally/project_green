@@ -22,12 +22,22 @@ def load_keys(key_type):
 
     # load public key, if it exists
     public_key_path = os.path.join(config_dir, "public_key")
-    if os.path.exists(public_key_path):
-        logging.info("loading public key")
-        with open(public_key_path, "r") as public_key_file:
-            public_key = public_key_file.read().rstrip()
-            keys.append({"public_key": public_key})
+    private_key_path = os.path.join(config_dir, "private_key")
+
+    if key_type == "public" or "both":
+        if os.path.exists(public_key_path):
+            logging.info("loading public key")
+            with open(public_key_path, "r") as public_key_file:
+                public_key = public_key_file.read().rstrip()
+                keys.append({"public_key": public_key})
     
+    if key_type == "private" or "both":
+        if os.path.exists(private_key_path):
+            logging.info("loading private key")
+            with open(private_key_path, "r") as private_key_file:
+                public_key = private_key_file.read().rstrip()
+                keys.append({"private_key": private_key})
+
     return keys
 
 
