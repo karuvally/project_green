@@ -15,6 +15,16 @@ from Crypto.PublicKey import RSA
 from subprocess import Popen, PIPE
 
 
+# load the list of nodes on the network
+def load_nodes(server = False):
+    # essential varilables
+    # if server is false, look if known_server exist
+    # load known_server
+    # else, look if known_clients exist
+    # load known_clients
+    # return stuff
+
+
 # try to load public / private keys, debug: refactor ASAP!
 def load_keys(key_type):
     # essential varilables
@@ -57,7 +67,7 @@ def request_to_pair(network_address):
     hostname = socket.gethostname()
 
     # load known server info
-    server_address = load_hosts(server = False)
+    server_address = load_nodes()
 
     # send pairing request
     logging.info("sending pairing request")
