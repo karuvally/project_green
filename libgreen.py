@@ -15,7 +15,7 @@ from Crypto.PublicKey import RSA
 from subprocess import Popen, PIPE
 
 
-# try to load public / private keys
+# try to load public / private keys, debug: refactor ASAP!
 def load_keys(key_type):
     # essential varilables
     keys = {}
@@ -51,6 +51,7 @@ def request_to_pair(network_address):
     server = find_hosts(network_address, mode = "server")
 
     # get the public key
+    public_key = load_keys("public")["public_key"]
 
     # get the hostname of the machine
 
