@@ -54,10 +54,13 @@ def request_to_pair(network_address):
     public_key = load_keys("public")["public_key"]
 
     # get the hostname of the machine
+    hostname = socket.gethostname()
+
+    # load known server info
+    server_address = load_hosts(server = False)
 
     # send pairing request
     logging.info("sending pairing request")
-    # write the rest of the stuff
 
 
     # store server details in known_server
