@@ -329,9 +329,6 @@ def initialize_system(server = False):
         
         with open(os.path.join(config_dir, "private_key"), "w") as pri_key_file:
             pri_key_file.write(key_pair["private_key"])
-    
-    else:
-        public_key = public_key["public_key"]
 
     # get the current network information
     logging.info("getting network information")
