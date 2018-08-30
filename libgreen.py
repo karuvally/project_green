@@ -18,9 +18,15 @@ from subprocess import Popen, PIPE
 # load the list of nodes on the network
 def load_nodes(server = False):
     # essential varilables
+    config_dir = get_config_dir()
+    known_server_file = os.path.join(config_dir, "known_server")
+
     # if server is false, look if known_server exist
-    # load known_server
-    # else, look if known_clients exist
+    if server == False:
+        if os.path.exist(known_server_file)
+            # load known_server
+        else:
+            # else, look if known_clients exist
     # load known_clients
     # return stuff
 
