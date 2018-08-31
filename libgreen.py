@@ -19,24 +19,19 @@ from subprocess import Popen, PIPE
 def load_nodes(server = False):
     # essential varilables
     config_dir = get_config_dir()
-    known_server_path = os.path.join(config_dir, "known_server")
     return_data = []
 
-    # if client, look if known_server exist
-    if server == False:
-        if os.path.exist(known_server_file)
-            # load known_server
-            with open(known_server_path, "r") as known_server_file:
-                return_data.append(known_server_file.read().strip().split(','))
-        
-        else:
-            # else, look if known_clients exist
-            pass
-    # if server, load known_clients
+    if server == True:
+        node_file_path = os.path.join(config_dir, "known_clients")
     else:
-        pass
+        node_file_path = os.path.join(config_dir, "known_server")
+
+    if os.path.exist(node_file_path)
+        with open(node_file_path, "r") as node_file:
+            return_data.append(node_file.read().rstrip().split('\n'))
 
     # return stuff
+    return return_data
 
 
 # try to load public / private keys, debug: refactor ASAP!
