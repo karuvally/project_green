@@ -19,15 +19,21 @@ from subprocess import Popen, PIPE
 def load_nodes(server = False):
     # essential varilables
     config_dir = get_config_dir()
-    known_server_file = os.path.join(config_dir, "known_server")
+    known_server_path = os.path.join(config_dir, "known_server")
 
     # if client, look if known_server exist
     if server == False:
         if os.path.exist(known_server_file)
             # load known_server
+            with open(known_server_path, "r") as known_server_file:
+                known_nodes = known_server_file.read().rstrip().split(',')
         else:
             # else, look if known_clients exist
-    # load known_clients
+            pass
+    # if server, load known_clients
+    else:
+        pass
+
     # return stuff
 
 
