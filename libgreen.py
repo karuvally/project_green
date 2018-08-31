@@ -21,7 +21,7 @@ def load_nodes(server = False):
     config_dir = get_config_dir()
     known_server_file = os.path.join(config_dir, "known_server")
 
-    # if server is false, look if known_server exist
+    # if client, look if known_server exist
     if server == False:
         if os.path.exist(known_server_file)
             # load known_server
