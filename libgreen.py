@@ -20,13 +20,15 @@ def load_nodes(server = False):
     # essential varilables
     config_dir = get_config_dir()
     known_server_path = os.path.join(config_dir, "known_server")
+    return_data = []
 
     # if client, look if known_server exist
     if server == False:
         if os.path.exist(known_server_file)
             # load known_server
             with open(known_server_path, "r") as known_server_file:
-                known_nodes = known_server_file.read().rstrip().split(',')
+                return_data.append(known_server_file.read().strip().split(','))
+        
         else:
             # else, look if known_clients exist
             pass
