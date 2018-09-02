@@ -30,7 +30,7 @@ def load_nodes(server = False):
         with open(node_file_path, "r") as node_file:
             return_data.append(node_file.read().rstrip().split('\n'))
 
-    if server = True:
+    if server == True:
         return_data = [element.split(',') for element in return_data]
 
     # return stuff
