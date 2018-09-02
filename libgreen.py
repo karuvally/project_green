@@ -26,7 +26,7 @@ def load_nodes(server = False):
     else:
         node_file_path = os.path.join(config_dir, "known_server")
 
-    if os.path.exist(node_file_path)
+    if os.path.exists(node_file_path):
         with open(node_file_path, "r") as node_file:
             return_data.append(node_file.read().rstrip().split('\n'))
 
