@@ -190,26 +190,11 @@ networking hardware supported by Linux. If the clients on the network can
 succesfully communicate over the network using their network interface cards,
 you are good to go.
 
-\section{Software Interfaces}
-$<$Describe the connections between this product and other specific software 
-components (name and version), including databases, operating systems, tools, 
-libraries, and integrated commercial components. Identify the data items or 
-messages coming into the system and going out and describe the purpose of each.  
-Describe the services needed and the nature of communications. Refer to 
-documents that describe detailed application programming interface protocols.  
-Identify data that will be shared across software components. If the data 
-sharing mechanism must be implemented in a specific way (for example, use of a 
-global data area in a multitasking operating system), specify this as an 
-implementation constraint.$>$
-
 \section{Communications Interfaces}
-$<$Describe the requirements associated with any communications functions 
-required by this product, including e-mail, web browser, network server 
-communications protocols, electronic forms, and so on. Define any pertinent 
-message formatting. Identify any communication standards that will be used, such 
-as FTP or HTTP. Specify any communication security or encryption issues, data 
-transfer rates, and synchronization mechanisms.$>$
-
+The system uses the TCP/IP system for communication between server and clients.
+On top of TCP, the system uses a home grown higher level "NetDog" protocl for
+coordinating the client machine and servers. It is the NetDog protocol that
+ensures efficient communication and security.
 
 \chapter{System Features}
 $<$This template illustrates organizing the functional requirements for the 
@@ -259,14 +244,6 @@ developers understand the intent and make suitable design choices. Specify the
 timing relationships for real time systems. Make such requirements as specific 
 as possible. You may need to state performance requirements for individual 
 functional requirements or features.$>$
-
-\section{Safety Requirements}
-$<$Specify those requirements that are concerned with possible loss, damage, or 
-harm that could result from the use of the product. Define any safeguards or 
-actions that must be taken, as well as actions that must be prevented. Refer to 
-any external policies or regulations that state safety issues that affect the 
-product’s design or use. Define any safety certifications that must be 
-satisfied.$>$
 
 \section{Security Requirements}
 $<$Specify any requirements regarding security or privacy issues surrounding use 
