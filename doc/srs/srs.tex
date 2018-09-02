@@ -157,7 +157,8 @@ The initial release of NetDog will have the following features\\\\
 * Alert if daemon on a client is not running\\
 * Centralized logging of all data regarding clients\\
 * Track power-on power-off times and user login history\\
-* command line and web interface
+* command line and web interface\\
+* Plugin interface for extending features
 
 \section{Operating Environment}
 NetDog requires that the server and clients be running on a recent version of
@@ -169,27 +170,25 @@ latest version of Python available from the distribution's repoistories.
 
 \section{Assumptions and Dependencies}
 The system will not work properly on Python 2 without extensive modification.
-All the dependencies used for the project are part of Python Package Index and
-have been extensively tested.
+The system might have trouble working, if your Linux distribution is
+considerably old and you have an old release of Python 3 (eg. 3.1/3.2)
 
 \chapter{External Interface Requirements}
 
 \section{User Interfaces}
-$<$Describe the logical characteristics of each interface between the software 
-product and the users. This may include sample screen images, any GUI standards 
-or product family style guides that are to be followed, screen layout 
-constraints, standard buttons and functions (e.g., help) that will appear on 
-every screen, keyboard shortcuts, error message display standards, and so on.  
-Define the software components for which a user interface is needed. Details of 
-the user interface design should be documented in a separate user interface 
-specification.$>$
+NetDog is a very easy to use system. One of the main aims while designing the
+system was to abstract as much lower level details of the system as possible
+from the user. There is no user interface for the client machines. All of the
+system is controlled from the server. The server provides a command line
+interface and a very convinient web interface for administration. The whole
+system can be operated and configured from these interfaces.
 
 \section{Hardware Interfaces}
-$<$Describe the logical and physical characteristics of each interface between 
-the software product and the hardware components of the system. This may include 
-the supported device types, the nature of the data and control interactions 
-between the software and the hardware, and communication protocols to be 
-used.$>$
+The system tries hard not to reinvent the wheel. Thus, it uses existing Linux
+subsystems as much as possible. As a side effect, NetDog can work with any
+networking hardware supported by Linux. If the clients on the network can
+succesfully communicate over the network using their network interface cards,
+you are good to go.
 
 \section{Software Interfaces}
 $<$Describe the connections between this product and other specific software 
