@@ -345,7 +345,7 @@ def initialize_system(server = False):
     logging.info("System passed initial checks")
 
     # look if public key exists, generate if non existant
-    if not os.path.exists(os.path.join(config_dir, "public_key"):
+    if not os.path.exists(os.path.join(config_dir, "public_key")):
         key_pair = generate_keys()
 
         # write the newly generated keys to file
