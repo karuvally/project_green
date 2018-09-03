@@ -225,7 +225,7 @@ def handle_data(command, payload):
 
 
 # handle newly created connection, debug: implement threading
-def handle_client_connection(connection, client_address):
+def handle_connection(connection):
     data = receive_data(connection)
     # separate command and payload
     separated_data = data.split(",", 1) # debug: decide on structure of data
@@ -254,7 +254,7 @@ def create_new_listen_socket(port):
         # pass the connection to connection handler
         print(client_address)
         logging.info("new connection received from" + client_address)
-        handle_client_connection(connection, client_address) # debug: implement threading
+        handle_connection(connection) # debug: implement threading
 
     # close the listen socket
     daemon_socket.close()
