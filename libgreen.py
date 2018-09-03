@@ -128,7 +128,7 @@ def retrieve_network_info():
         "network_status": network_status
     })
 
-
+# find a usable network interface
 def find_network(server = False):
     # essential variables
     host_list = None
