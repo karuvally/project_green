@@ -15,6 +15,13 @@ from Crypto.PublicKey import RSA
 from subprocess import Popen, PIPE
 
 
+# send data through network
+def send_data(destination_ip, port, data):
+    # create socket, connect to destination IP
+    connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    connection.connect((destination_ip, port))
+
+
 # load the list of nodes on the network
 def load_nodes(server = False):
     # essential varilables
