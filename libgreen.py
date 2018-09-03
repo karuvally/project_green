@@ -21,6 +21,9 @@ def send_data(destination_ip, port, data):
     connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     connection.connect((destination_ip, port))
 
+    # send the actual data
+    connection.sendall(data)
+
 
 # load the list of nodes on the network
 def load_nodes(server = False):
