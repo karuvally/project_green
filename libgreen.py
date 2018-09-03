@@ -214,21 +214,27 @@ def accept_pairing_request(payload):
     return public_key
 
 # handle data and act accordingly
-def handle_data(command, payload):
+def handle_data(message):
+    # essential varilables
+    return_data = None
+
+    # brake down the message
+
     # handle the pairing request
     if command == "pair":
         return_data = accept_pairing_request(separated_data[1])
 
         # implement rest of the commands
 
-        return return_data
+    return return_data
 
 
 # handle newly created connection, debug: implement threading
 def handle_connection(connection):
-    data = receive_data(connection)
-    # separate command and payload
-    separated_data = data.split(",", 1) # debug: decide on structure of data
+    message = receive_data(connection)
+    
+    # handover message to data handler
+    return_data = handle_data(message)
 
     # reply client with returned data
     if return_data: # debug: did return_data just popped out of nowhere?
