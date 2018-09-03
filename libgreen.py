@@ -221,7 +221,7 @@ def handle_client_connection(connection, client_address):
     separated_data = data.split(",", 1)
 
     # reply client with returned data
-    if return_data:
+    if return_data: # debug: did return_data just popped out of nowhere?
         connection.sendall(return_data)
 
     # close the connection :D
