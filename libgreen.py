@@ -218,7 +218,7 @@ def handle_data(command, payload):
 def handle_client_connection(connection, client_address):
     data = receive_data(connection)
     # separate command and payload
-    separated_data = data.split(",", 1)
+    separated_data = data.split(",", 1) # debug: decide on structure of data
 
     # reply client with returned data
     if return_data: # debug: did return_data just popped out of nowhere?
