@@ -28,7 +28,7 @@ def load_nodes(server = False):
 
     if os.path.exists(node_file_path):
         with open(node_file_path, "r") as node_file:
-            return_data.append(node_file.read().rstrip().split('\n'))
+            return_data.append(node_file.read().rstrip().split('\n'))          
 
     if server == True:
         return_data = [element.split(',') for element in return_data]
@@ -84,9 +84,7 @@ def request_to_pair(network_address):
     # send pairing request
     logging.info("sending pairing request")
 
-
     # store server details in known_server
-    pass
 
 
 # ping ip address and return status
@@ -194,8 +192,8 @@ def accept_pairing_request(payload):
     # store the public_key, hostname pair to text file
     logging.info("storing public key and ID of the client")
     config_dir = get_config_dir()
-    with open(os.path.join(config_dir, "known_hosts"), "a") as known_hosts_file:
-        known_hosts_file.write(splitted_payload[1] + "," +
+    with open(os.path.join(config_dir, "known_clients"), "a") as known_clients_file:
+        known_clients_file.write(splitted_payload[1] + "," +
             splitted_payload[2] + "\n")
 
     # get public_key of the server
