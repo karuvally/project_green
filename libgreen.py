@@ -114,7 +114,6 @@ def ping_address(ip_address, broadcast = False):
 def retrieve_network_info():
     # essential variables
     config_dir = get_config_dir()
-    network_address
     network_status = 0
     interface = None
     network_address = None
