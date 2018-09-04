@@ -253,7 +253,7 @@ def handle_connection(connection):
     return_data = handle_data(message)
 
     # reply client with returned data
-    if return_data: # debug: did return_data just popped out of nowhere?
+    if return_data:
         connection.sendall(return_data)
 
     # close the connection :D
