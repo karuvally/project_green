@@ -1,17 +1,3 @@
-# High level TODO
-simple client-server            [x]
-test shutdown                   [x]
-handle Ctrl+C                   [x]
-migrate common functions        [x]
-basic logging                   [x]
-design simple pairing system    [ ]
-implement shutdown completeley  [ ]
-complete exception handling     [ ]
-
-
-# Low Level TODO
-move logs to standard library   [x]
-test pairing system             [ ]
-extensively log functions       [ ]
-test multiprocessing            [ ]
-test rest of the commands       [ ]
+questions
+---------
+* why if command == "pair" error raised during second connection

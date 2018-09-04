@@ -224,16 +224,21 @@ def accept_pairing_request(payload):
     # return the public key
     return public_key
 
-# handle data and act accordingly
+# handle data and act accordingly # debug add stuff for server
 def handle_data(message):
     # essential varilables
     return_data = None
 
-    # brake down the message
+    # command + payload cannot be splitted, might be encrypted
+    separated_data = message.split(",", 1)
+
+    # look if ID exists in known_clients or known_server
+
+    # if ID is not found and server == False, split payload
 
     # handle the pairing request
-    if command == "pair":
-        return_data = accept_pairing_request(separated_data[1])
+    if splitted_payload[0] == "pair":
+        return_data = accept_pairing_request(separated_data[1]) # raining bugs
 
         # implement rest of the commands
 
