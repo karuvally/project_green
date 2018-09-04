@@ -150,8 +150,13 @@ def find_network(server = False):
         
         for i in range(0, len(available_interfaces)):
             address_dict = netifaces.ifaddresses(available_interfaces[i])
+
+            # skip the interface if it lacks IPv4 stuff
+            if not netifaces.AF_INET in address_dict:
+                continue
+
             network_address = address_dict[netifaces.AF_INET][0]["addr"]
-            print(i+1 + ") " + available_interfaces[i] + ": " + network_address)
+            print(i+1, ") " + available_interfaces[i] + ": " + network_address)
 
         user_choice = int(input(">")) - 1
         interface = available_interfaces[user_choice]
