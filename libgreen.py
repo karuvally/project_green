@@ -269,8 +269,7 @@ def create_new_listen_socket(port):
         connection, client_address = daemon_socket.accept()
 
         # pass the connection to connection handler
-        print(client_address)
-        logging.info("new connection received from" + client_address)
+        logging.info("new connection received from" + client_address[0])
         handle_connection(connection) # debug: implement threading
 
     # close the listen socket
