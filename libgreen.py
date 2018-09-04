@@ -350,8 +350,10 @@ def receive_data(connection):
 
 # check and set up essential stuff
 def initialize_system(server = False):
-    # if config directory does not exists, create it
+    # essential variables
     config_dir = get_config_dir()
+
+    # if config directory does not exists, create it
     if not os.path.isdir(config_dir):
         try:
             os.mkdir(config_dir)
