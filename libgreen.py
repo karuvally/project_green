@@ -118,9 +118,9 @@ def retrieve_network_info():
     network_status = 0
     interface = None
     network_address = None
+    known_network_file_path = os.path.join(config_dir, "known_network")
 
     # look if known_network exists
-    known_network_file_path = os.path.join(config_dir, "known_network")
     if os.path.exists(known_network_file_path):
         logging.info("using known network")
         with open(known_network_file_path, "r") as known_network_file:
@@ -142,7 +142,9 @@ def retrieve_network_info():
 # find a usable network interface
 def find_network(server = False):
     # essential variables
+    config_dir = get_config_dir()
     host_list = None
+    known_network_file_path = os.path.join(config_dir, "known_network")
 
     if server == True:
         available_interfaces = netifaces.interfaces()
