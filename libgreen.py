@@ -366,10 +366,10 @@ def initialize_system(server = False):
         # write the newly generated keys to file
         logging.info("writing generated keys to file")
         with open(os.path.join(config_dir, "public_key"), "w") as pub_key_file:
-            pub_key_file.write(key_pair["public_key"])
+            pub_key_file.write(str(key_pair["public_key"]))
         
         with open(os.path.join(config_dir, "private_key"), "w") as pri_key_file:
-            pri_key_file.write(key_pair["private_key"])
+            pri_key_file.write(str(key_pair["private_key"]))
 
     # get the current network information
     logging.info("getting network information")
