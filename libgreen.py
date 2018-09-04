@@ -93,6 +93,7 @@ def request_to_pair(network_address):
 
     # send pairing request
     logging.info("sending pairing request")
+    # write the send_data() here
 
     # store server details in known_server
 
