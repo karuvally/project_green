@@ -48,6 +48,7 @@ def load_nodes(server = False):
 
 
 # try to load public / private keys, debug: refactor ASAP!
+# debug: byte to str conversion in initialize_system might cause errors 
 def load_keys(key_type):
     # essential varilables
     keys = {}
