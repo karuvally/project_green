@@ -100,6 +100,9 @@ unencrypted as the client and server does not posses each other's public keys
 and cannot possibly identify and decrypt data encrypted with the other's
 private key.
 
+The server is always listening for connections from nodes on the network. The
+client tries to initiate connection by sending the pair request to the server.
+
 
 Configuration directory
 -----------------------
