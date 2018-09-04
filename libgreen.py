@@ -155,6 +155,7 @@ def find_network(server = False):
             if not netifaces.AF_INET in address_dict:
                 continue
 
+            # debug: printing i values causes numbers to skip
             network_address = address_dict[netifaces.AF_INET][0]["addr"]
             print(i+1, ") " + available_interfaces[i] + ": " + network_address)
 
