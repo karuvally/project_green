@@ -159,8 +159,10 @@ def find_network(server = False):
             print(i+1, ") " + available_interfaces[i] + ": " + network_address)
 
         user_choice = int(input(">")) - 1
+
         interface = available_interfaces[user_choice]
-        network_address = address_dict[netifaces.AF_INET][user_choice]["addr"]
+        address_dict = netifaces.ifaddresses(interface)
+        network_address = address_dict[netifaces.AF_INET][0]["addr"]
         
         logging.info("interface: " + interface + " with address: " +
         network_address + " choosen by user")
