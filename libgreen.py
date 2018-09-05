@@ -223,9 +223,14 @@ def handle_data(message):
     return_data = None
 
     # command + payload cannot be splitted, might be encrypted
-    separated_data = message.split(",", 1)
-    node_id = separated_data[0]
-    payload = separated_data[1]
+    separated_message = message.split(",", 1)
+
+    if len(separated_message) != 2:
+        logging.critical("corrupt message received over network")
+        sys.exit() # debug: replace this by "retransmit" command
+
+    node_id = separated_message[0]
+    payload = separated_message[1]
 
     # look if ID exists in known_clients or known_server
     print(sys.argv[0], sys.argv[0].rfind("server"))
