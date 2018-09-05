@@ -22,7 +22,7 @@ def send_data(destination_ip, port, data):
     connection.connect((destination_ip, port))
 
     # send the actual data
-    connection.sendall(data)
+    connection.sendall(data.encode())
 
 
 # load the list of nodes on the network
