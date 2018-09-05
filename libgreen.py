@@ -139,6 +139,7 @@ def retrieve_network_info():
         "network_status": network_status
     })
 
+
 # find a usable network interface
 def find_network(server = False):
     # essential variables
@@ -398,7 +399,7 @@ def initialize_system(server = False):
     # if no known_server, initiate pairing
     if server == False:
         if os.path.exists(os.path.join(config_dir, "known_server")):
-            # debug: future fix, check if known_server has a valid server
+            # debug: future fix, check if known_server has a valid data
             pass
         else:
             # start client pairing request

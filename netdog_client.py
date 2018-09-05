@@ -12,8 +12,7 @@ def main():
     initialize_system()
 
     # start listening for connections
-    # pair client if necessary
-    # listen for commmands from server
+
     # report back if necessary
 
 
