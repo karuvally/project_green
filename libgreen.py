@@ -91,6 +91,7 @@ def request_to_pair(network_address):
 
     # send pairing request
     logging.info("sending pairing request")
+    
     # write the send_data() here
 
     # store server details in known_server
@@ -236,9 +237,10 @@ def handle_data(message):
         sys.exit() # debug: replace this by "retransmit" command
 
     node_id = separated_message[0]
-    payload = separated_message[1]
+    splitted_payload = separated_message[1].split(",", 1)
 
     # look if ID exists in known_clients or known_server
+    node_list = load_nodes()
 
     # if ID is not found and server == False, split payload
 
