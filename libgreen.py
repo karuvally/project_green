@@ -255,7 +255,7 @@ def handle_connection(connection):
     connection.close()
 
 
-# create server socket and listen
+# create listening socket and... listen for connections :D
 def create_new_listen_socket(port):
     # create the socket
     logging.info("trying to create listening socket")
@@ -266,10 +266,10 @@ def create_new_listen_socket(port):
     # listen for incoming connections
     while True:
         # accept connection
-        connection, client_address = daemon_socket.accept()
+        connection, source_address = daemon_socket.accept()
 
         # pass the connection to connection handler
-        logging.info("new connection received from" + client_address[0])
+        logging.info("new connection received from" + source_address[0])
         handle_connection(connection) # debug: implement threading
 
     # close the listen socket
