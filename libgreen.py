@@ -39,10 +39,7 @@ def load_nodes(server = False):
     config_dir = get_config_dir()
     return_data = []
 
-    if server == True:
-        node_file_path = os.path.join(config_dir, "known_clients")
-    else:
-        node_file_path = os.path.join(config_dir, "known_server")
+    node_file_path = os.path.join(config_dir, "known_nodes")
 
     if os.path.exists(node_file_path):
         with open(node_file_path, "r") as node_file:
@@ -214,7 +211,7 @@ def accept_pairing_request(payload):
     # store the public_key, hostname pair to text file
     logging.info("storing public key and ID of the client")
     config_dir = get_config_dir()
-    with open(os.path.join(config_dir, "known_clients"), "a") as known_clients_file:
+    with open(os.path.join(config_dir, "known_nodes"), "a") as known_clients_file:
         known_clients_file.write(splitted_payload[1] + "," +
             splitted_payload[2] + "\n")
 
@@ -404,7 +401,7 @@ def initialize_system(server = False):
     
     # if no known_server, initiate pairing
     if server == False:
-        if os.path.exists(os.path.join(config_dir, "known_server")):
+        if os.path.exists(os.path.join(config_dir, "known_nodes")):
             # debug: future fix, check if known_server has a valid data
             pass
         else:
