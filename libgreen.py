@@ -48,7 +48,6 @@ def load_nodes(server = False):
 
 
 # try to load public / private keys
-# debug: byte to str conversion in initialize_system might cause errors 
 def load_keys(key_type):
     # basic checks
     if key_type != "public_key" or "private_key":
@@ -77,7 +76,7 @@ def request_to_pair(network_address):
     server = find_hosts(network_address, mode = "server")
 
     # get the public key
-    public_key = load_keys("public")
+    public_key = load_keys("public_key")
 
     # get the hostname of the machine
     hostname = socket.gethostname()
@@ -376,11 +375,11 @@ def initialize_system(server = False):
 
         # write the newly generated keys to file
         logging.info("writing generated keys to file")
-        with open(os.path.join(config_dir, "public_key"), "w") as pub_key_file:
-            pub_key_file.write(str(key_pair["public_key"]))
+        with open(os.path.join(config_dir, "public_key"), "wb") as pub_key_file:
+            pub_key_file.write(key_pair["public_key"])
         
-        with open(os.path.join(config_dir, "private_key"), "w") as pri_key_file:
-            pri_key_file.write(str(key_pair["private_key"]))
+        with open(os.path.join(config_dir, "private_key"), "wb") as pri_key_file:
+            pri_key_file.write(key_pair["private_key"])
 
     # get the current network information
     logging.info("getting network information")
