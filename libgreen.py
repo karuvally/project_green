@@ -47,31 +47,24 @@ def load_nodes(server = False):
     return return_data
 
 
-# try to load public / private keys, debug: refactor ASAP!
+# try to load public / private keys
 # debug: byte to str conversion in initialize_system might cause errors 
 def load_keys(key_type):
+    # basic checks
+    if key_type != "public_key" or "private_key":
+        logging.critical("invalid arguments passed to load_keys()")
+        sys.exit()
+
     # essential varilables
-    keys = {}
+    key = None
+    key_path = os.path.join(config_dir, "key_type")
 
-    # load public key, if it exists
-    public_key_path = os.path.join(config_dir, "public_key")
-    private_key_path = os.path.join(config_dir, "private_key")
+    if os.path.exists(key_path):
+        logging.info("loading" + key_type)
+        with open(key_path, "r") as key_file:
+            key = key_file.read().rstrip()
 
-    if key_type == "public" or "both":
-        if os.path.exists(public_key_path):
-            logging.info("loading public key")
-            with open(public_key_path, "r") as public_key_file:
-                public_key = public_key_file.read().rstrip()
-                keys.append({"public_key": public_key})
-    
-    if key_type == "private" or "both":
-        if os.path.exists(private_key_path):
-            logging.info("loading private key")
-            with open(private_key_path, "r") as private_key_file:
-                public_key = private_key_file.read().rstrip()
-                keys.append({"private_key": private_key})
-
-    return keys
+    return key
 
 
 # send request to server for pairing
@@ -84,7 +77,7 @@ def request_to_pair(network_address):
     server = find_hosts(network_address, mode = "server")
 
     # get the public key
-    public_key = load_keys("public")["public_key"]
+    public_key = load_keys("public")
 
     # get the hostname of the machine
     hostname = socket.gethostname()
