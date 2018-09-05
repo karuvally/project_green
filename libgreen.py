@@ -231,14 +231,16 @@ def handle_data(message):
 
     # command + payload cannot be splitted, might be encrypted
     separated_data = message.split(",", 1)
+    node_id = separated_data[0]
+    payload = separated_data[1]
 
     # look if ID exists in known_clients or known_server
 
     # if ID is not found and server == False, split payload
 
     # handle the pairing request
-    if splitted_payload[0] == "pair":
-        return_data = accept_pairing_request(separated_data[1]) # raining bugs
+    if splitted_payload[0] == "pair":  # debug: its raining bugs
+        return_data = accept_pairing_request(separated_data[1])
 
         # implement rest of the commands
 
