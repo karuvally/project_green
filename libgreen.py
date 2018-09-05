@@ -229,6 +229,7 @@ def accept_pairing_request(payload):
 def handle_data(message):
     # essential varilables
     return_data = None
+    server = is_server()
 
     # command + payload cannot be splitted, might be encrypted
     separated_message = message.split(",", 1)
@@ -241,7 +242,6 @@ def handle_data(message):
     payload = separated_message[1]
 
     # look if ID exists in known_clients or known_server
-
 
     # if ID is not found and server == False, split payload
 

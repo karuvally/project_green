@@ -1,1 +1,4 @@
+TODO
+----
+* replace known_clients and known_server with known_nodes
 * make whole program create_new_listen_socket() client and server friendly
