@@ -228,6 +228,13 @@ def handle_data(message):
     payload = separated_data[1]
 
     # look if ID exists in known_clients or known_server
+    print(sys.argv[0], sys.argv[0].rfind("server"))
+    sys.exit() # debug: fix this when the time comes
+
+    if sys.argv[0].rfind("client") != -1:
+        server = False
+    else:
+        server = True
 
     # if ID is not found and server == False, split payload
 
