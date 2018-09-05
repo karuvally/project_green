@@ -15,6 +15,14 @@ from Crypto.PublicKey import RSA
 from subprocess import Popen, PIPE
 
 
+# check if the running program is server
+def is_server():
+    if sys.argv[0].rfind("server") != -1:
+        return True
+    else:
+        return False
+
+
 # send data through network
 def send_data(destination_ip, port, data):
     # create socket, connect to destination IP
@@ -233,13 +241,7 @@ def handle_data(message):
     payload = separated_message[1]
 
     # look if ID exists in known_clients or known_server
-    print(sys.argv[0], sys.argv[0].rfind("server"))
-    sys.exit() # debug: fix this when the time comes
 
-    if sys.argv[0].rfind("client") != -1:
-        server = False
-    else:
-        server = True
 
     # if ID is not found and server == False, split payload
 
