@@ -1,2 +1,2 @@
+* make whole program create_new_listen_socket() client and server friendly
 * why if command == "pair" error raised during second connection
-* make create_new_listen_socket() client and server friendly
