@@ -46,7 +46,7 @@ def load_nodes(server = False):
             return_data.append(node_file.read().rstrip().split('\n'))          
 
     if server == True:
-        return_data = [element.split(',') for element in return_data]
+        return_data = [element.split('\n') for element in return_data]
 
     # return stuff
     return return_data
@@ -237,11 +237,14 @@ def handle_data(message):
         logging.critical("corrupt message received over network")
         sys.exit() # debug: replace this by "retransmit" command
 
+    
+    # get the source node ID and payload
     node_id = separated_message[0]
-    splitted_payload = separated_message[1].split(",", 1)
+    payload = separated_message[1]
 
     # look if ID exists in known_clients or known_server
     node_list = load_nodes()
+    # do the rest
 
     # if ID is not found and server == False, split payload
 
