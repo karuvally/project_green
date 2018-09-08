@@ -232,6 +232,7 @@ def handle_data(message):
     # command + payload cannot be splitted, might be encrypted
     separated_message = message.split(",", 1)
 
+    # if message cannot be splitted, its corrupted
     if len(separated_message) != 2:
         logging.critical("corrupt message received over network")
         sys.exit() # debug: replace this by "retransmit" command
