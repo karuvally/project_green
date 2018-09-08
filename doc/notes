@@ -150,6 +150,7 @@ Feature list
 * Throttle bandwidth on machines on the network
 * Except specific machines from being applied rules/commands
 * Plugin interface for extending features
+* Alert if node hardware configuration changes
 
 
 Track and identify clients through IP changes
