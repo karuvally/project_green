@@ -1,4 +1,4 @@
 TODO
 ----
-* replace known_clients and known_server with known_nodes
+* change config_dir structure
 * make whole program create_new_listen_socket() client and server friendly
