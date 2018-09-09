@@ -241,7 +241,8 @@ def handle_data(message):
     # look if ID exists in known_clients or known_server
     node_id_list = [node_info[0] for node_info in load_nodes()]
 
-    # if ID is not found and server == False, split payload
+    if node_id not in node_id_list:
+        splitted_payload = payload.split(",")
 
     # handle the pairing request
     if splitted_payload[0] == "pair":
