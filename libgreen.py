@@ -201,14 +201,11 @@ def get_config_dir():
 
 
 # accept pairing request from client
-def accept_pairing_request(message):
+def accept_pairing_request(node_id, payload):
     logging.info("pairing request received")
-    # separate node_id, public_key and hostname
-    splitted_message = payload.split(",", 2)
-
-    # essential variables
-    node_id = splitted_message[0]
-    public_key = splitted_message[2]
+    
+    # retrieve public_key from the payload
+    public_key = payload.split(',', 1)[1]
 
     # store the public_key, hostname pair to text file
     logging.info("storing public key and ID of the client")
@@ -249,9 +246,9 @@ def handle_data(message):
 
     # handle the pairing request
     if splitted_payload[0] == "pair":
-        return_data = accept_pairing_request(separated_message)
+        return_data = accept_pairing_request(node_id, payload)
 
-        # implement rest of the commands
+    # implement rest of the commands
 
     return return_data
 
