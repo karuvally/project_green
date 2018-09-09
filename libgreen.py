@@ -38,15 +38,12 @@ def load_nodes(server = False):
     # essential varilables
     config_dir = get_config_dir()
     return_data = []
-    node_file_path = os.path.join(config_dir, "known_nodes")
+    known_nodes_dir = os.path.join(config_dir, "known_nodes")
 
-    # load data of each node as separate sublist
-    if os.path.exists(node_file_path):
-        with open(node_file_path, "r") as node_file:
-            node_data = node_file.read()
-            return_data = [[node] for node in node_data.rstrip().split('\n')]
-
-    return_data = [element[0].split(',') for element in return_data]
+    # load known nodes info
+    for node_id in os.listdir(known_nodes_dir):
+        with open(os.path.join(known_nodes_dir, node_id)) as known_node_file:
+            return_data.append([node_id, known_node_file.read()])
 
     # return stuff
     return return_data
