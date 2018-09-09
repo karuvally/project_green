@@ -205,7 +205,7 @@ def accept_pairing_request(node_id, payload):
     logging.info("pairing request received")
     
     # retrieve public_key from the payload
-    public_key = payload.split(',', 1)[1]
+    public_key = payload.split(",", 1)[1]
 
     # store the public_key, hostname pair to text file
     logging.info("storing public key and ID of the client")
@@ -241,12 +241,12 @@ def handle_data(message):
     # look if ID exists in known_clients or known_server
     node_id_list = [node_info[0] for node_info in load_nodes()]
 
+    # handle the pairing request
     if node_id not in node_id_list:
         splitted_payload = payload.split(",")
 
-    # handle the pairing request
-    if splitted_payload[0] == "pair":
-        return_data = accept_pairing_request(node_id, payload)
+        if splitted_payload[0] == "pair":
+            return_data = accept_pairing_request(node_id, payload)
 
     # implement rest of the commands
 
