@@ -248,8 +248,8 @@ def handle_data(message):
     # if ID is not found and server == False, split payload
 
     # handle the pairing request
-    if splitted_payload[0] == "pair":  # debug: its raining bugs
-        return_data = accept_pairing_request(separated_data)
+    if splitted_payload[0] == "pair":
+        return_data = accept_pairing_request(separated_message)
 
         # implement rest of the commands
 
