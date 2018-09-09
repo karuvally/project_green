@@ -209,12 +209,15 @@ def accept_pairing_request(message):
     # separate node_id, public_key and hostname
     splitted_message = payload.split(",", 2)
 
+    # essential variables
+    node_id = splitted_message[0]
+    public_key = splitted_message[2]
+
     # store the public_key, hostname pair to text file
     logging.info("storing public key and ID of the client")
-    config_dir = get_config_dir()
-    with open(os.path.join(config_dir, "known_nodes"), "a") as known_clients_file:
-        known_clients_file.write(splitted_message[1] + "," +
-            splitted_message[2] + "\n")
+    known_nodes_dir = os.path.join(get_config_dir(), "known_nodes")
+    with open(os.path.join(known_node_dir, node_id), "w") as known_node_file:
+        known_node_file.write(public_key)
 
     # get public_key of the server
     with open(os.path.join(config_dir, "public_key"), "r") as public_key_file:
