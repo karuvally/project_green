@@ -249,7 +249,7 @@ def handle_data(message):
 
     # handle the pairing request
     if splitted_payload[0] == "pair":  # debug: its raining bugs
-        return_data = accept_pairing_request(separated_data[1])
+        return_data = accept_pairing_request(separated_data)
 
         # implement rest of the commands
 
