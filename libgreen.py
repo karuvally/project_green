@@ -239,8 +239,7 @@ def handle_data(message):
     payload = separated_message[1]
 
     # look if ID exists in known_clients or known_server
-    node_list = load_nodes()
-    # do the rest
+    node_id_list = [node_info[0] for node_info in load_nodes()]
 
     # if ID is not found and server == False, split payload
 
