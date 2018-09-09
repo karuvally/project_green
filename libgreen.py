@@ -236,7 +236,6 @@ def handle_data(message):
     if len(separated_message) != 2:
         logging.critical("corrupt message received over network")
         sys.exit() # debug: replace this by "retransmit" command
-
     
     # get the source node ID and payload
     node_id = separated_message[0]
@@ -373,6 +372,7 @@ def initialize_system(server = False):
     if not os.path.isdir(config_dir):
         try:
             os.mkdir(config_dir)
+            os.mkdir(os.path.join(config_dir, "known_nodes"))
         except:
             # show error and exit the application
             print("error: config dir cannot be created! exiting...")
