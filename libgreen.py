@@ -203,6 +203,9 @@ def get_config_dir():
 # accept pairing request from client
 def accept_pairing_request(node_id, payload):
     logging.info("pairing request received")
+
+    # essential varilables
+    config_dir = get_config_dir()
     
     # retrieve public_key from the payload
     public_key = payload.split(",", 1)[1]
