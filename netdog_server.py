@@ -11,12 +11,8 @@ def main():
     # initialize the system
     initialize_system(server = True)
 
-    # listen for commands from UI
-    
     # listen for message from clients
     create_new_listen_socket(1337)
-
-    # send message to clients if necessary
 
 
 # call the main function
