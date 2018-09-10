@@ -259,6 +259,7 @@ def handle_data(message):
 
 # handle newly created connection, debug: implement threading
 def handle_connection(connection):
+    # receive data from client
     message = receive_data(connection)
     
     # handover message to data handler
@@ -266,7 +267,7 @@ def handle_connection(connection):
 
     # reply client with returned data
     if return_data:
-        connection.sendall(return_data)
+        connection.sendall(return_data.encode())
 
     # close the connection :D
     connection.close()
