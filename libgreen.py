@@ -210,7 +210,8 @@ def accept_pairing_request(node_id, payload):
     # store the public_key, hostname pair to text file
     logging.info("storing public key and ID of the client")
     known_nodes_dir = os.path.join(get_config_dir(), "known_nodes")
-    with open(os.path.join(known_node_dir, node_id), "w") as known_node_file:
+
+    with open(os.path.join(known_nodes_dir, node_id), "w") as known_node_file:
         known_node_file.write(public_key)
 
     # get public_key of the server
