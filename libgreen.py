@@ -142,11 +142,10 @@ def find_network(server = False):
     config_dir = get_config_dir()
     host_list = None
     known_network_file_path = os.path.join(config_dir, "known_network")
+    available_interfaces = netifaces.interfaces()
 
     if server == True:
-        available_interfaces = netifaces.interfaces()
         print("choose network interface")
-        
         for i in range(0, len(available_interfaces)):
             address_dict = netifaces.ifaddresses(available_interfaces[i])
 
@@ -169,7 +168,7 @@ def find_network(server = False):
 
     else:
         # loop through interfaces
-        for interface in netifaces.interfaces():
+        for interface in available_interfaces:
             # find address of each interface
             address_dict = netifaces.ifaddresses(interface)
             network_address = address_dict[netifaces.AF_INET][0]["addr"]
