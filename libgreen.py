@@ -11,6 +11,7 @@ import socket
 import ipaddress
 import logging
 import netifaces
+import pathlib
 from Crypto.PublicKey import RSA
 from subprocess import Popen, PIPE
 
@@ -369,12 +370,12 @@ def receive_data(connection):
 def initialize_system(server = False):
     # essential variables
     config_dir = get_config_dir()
+    known_nodes_dir = os.path.join(config_dir, "known_nodes")
 
-    # if config directory does not exists, create it
-    if not os.path.isdir(config_dir):
+    # create config and known_nodes dir
+    if not os.path.isdir(known_nodes_dir):
         try:
-            os.mkdir(config_dir)
-            os.mkdir(os.path.join(config_dir, "known_nodes"))
+            pathlib.Path(known_nodes_dir).mkdir(parents = True, exist_ok = True)
         except:
             # show error and exit the application
             print("error: config dir cannot be created! exiting...")
