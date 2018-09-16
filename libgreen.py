@@ -180,7 +180,7 @@ def find_network(server = False):
             address_dict = netifaces.ifaddresses(interface)
             network_address = address_dict[netifaces.AF_INET][0]["addr"]
             network_address = network_address[: network_address.rfind(".")]
-            + ".0"
+            network_address += ".0"
 
             # if hosts can be found, set current network as default
             host_list = find_hosts(network_address, mode = "both")
