@@ -164,7 +164,11 @@ def find_network(server = False):
 
         interface = available_interfaces[user_choice]
         address_dict = netifaces.ifaddresses(interface)
+
+        # find network adddress by replacing last part of host IP with 0
         network_address = address_dict[netifaces.AF_INET][0]["addr"]
+        network_address = network_address[: network_address.rfind(".")]
+        network_address += ".0"
         
         logging.info("interface: " + interface + " with address: " +
         network_address + " choosen by user")
@@ -175,6 +179,8 @@ def find_network(server = False):
             # find address of each interface
             address_dict = netifaces.ifaddresses(interface)
             network_address = address_dict[netifaces.AF_INET][0]["addr"]
+            network_address = network_address[: network_address.rfind(".")]
+            + ".0"
 
             # if hosts can be found, set current network as default
             host_list = find_hosts(network_address, mode = "both")
