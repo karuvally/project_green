@@ -142,7 +142,10 @@ def find_network(server = False):
     config_dir = get_config_dir()
     host_list = None
     known_network_file_path = os.path.join(config_dir, "known_network")
+
+    # find interfaces and remove loopback from them
     available_interfaces = netifaces.interfaces()
+    available_interfaces.remove("lo")
 
     if server == True:
         print("choose network interface")
