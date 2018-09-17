@@ -324,7 +324,7 @@ def find_hosts(network_address, mode):
 
     # try pinging each host
     for ip_address in network.hosts():
-        return_code = ping_address(str(ip_address))
+        return_code = ping_address(ip_address)
 
         # host is up if return_code is 0
         if return_code == 0:
