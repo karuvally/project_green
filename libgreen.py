@@ -104,7 +104,10 @@ def ping_address(ip_address, broadcast = False):
         logging.info("checking if node " + str(ip_address) + " is up")
         ping = Popen(["ping", "-c", "1", str(ip_address)], stdout = PIPE)
     ping_out = ping.communicate()[0]
+
+    # get the values home
     return_code = ping.returncode
+    return return_code
 
 
 # retrieve network info from known_network
@@ -321,7 +324,7 @@ def find_hosts(network_address, mode):
 
     # try pinging each host
     for ip_address in network.hosts():
-        return_code = ping_address(ip_address)
+        return_code = ping_address(str(ip_address))
 
         # host is up if return_code is 0
         if return_code == 0:
