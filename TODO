@@ -3,7 +3,6 @@ TODO
 * Switch to Socketserver
 * port open check closes server
 * test network address with host bit set
-* multiprocessing for ping
 * fix network search
 * do proper netmasking
 * to make sure client can receive public_key returned by the server
