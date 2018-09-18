@@ -319,7 +319,7 @@ def create_new_listen_socket(port):
     daemon_socket.close()
 
 
-# find a host running project green
+# find a host running NetDog
 def find_hosts(network_address, mode):
     # server listens on port 1337, clients on 1994
     if mode == "server":
@@ -348,8 +348,13 @@ def find_hosts(network_address, mode):
     for process in threads:
         process.join()
 
+    # generate list of online hosts
+    online_hosts = [host for host in host_info if host["online"] == True]
+    
+"""
+    for host in host_info:
         # check if host is listening on ports
-        if return_code == 0:
+        if host["online"] == True:
             # check if specified ports are open on host
             connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             for port in port_list:
@@ -360,8 +365,8 @@ def find_hosts(network_address, mode):
                     host_list.append(ip_address)
                     if server == True:
                         break
-
     return host_list
+"""
 
 
 # generate public-private key pair

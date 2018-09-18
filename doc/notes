@@ -151,6 +151,7 @@ Feature list
 * Except specific machines from being applied rules/commands
 * Plugin interface for extending features
 * Alert if node hardware configuration changes
+* Automated NetDog update system
 
 
 Track and identify clients through IP changes
