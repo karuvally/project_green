@@ -103,10 +103,10 @@ def ping_sweep(ip_address, result):
     ping_out = ping.communicate()[0]
 
     # returncode is 0 if ping is succesful, converting to bool
-    result = {
+    result.update({
         "ip_address": ip_address,
         "online": not bool(ping.returncode)
-    }
+    })
 
 
 # ping ip address and return status
