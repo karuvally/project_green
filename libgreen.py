@@ -369,7 +369,7 @@ def find_hosts(network_address, mode):
                     server = False
 
                 # add host to the node list
-                node_list.update({
+                node_list.append({
                     "ip_address": host["ip_address"],
                     "server": server
                 })
