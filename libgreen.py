@@ -118,16 +118,9 @@ def ping_address(ip_address, broadcast = False):
         logging.info("checking if node " + str(ip_address) + " is up")
         ping = Popen(["ping", "-c", "1", str(ip_address)], stdout = PIPE)
 
+    # do the ping and return result
     ping_out = ping.communicate()[0]
-
-    # returncode is 0 if ping is succesfull, converting to bool
-    host_info = {
-        "ip_address": ip_address,
-        "online": not bool(ping.returncode)
-    }
-
-    # return the values
-    return host_info
+    return(not bool(ping.returncode))
 
 
 # retrieve network info from known_network
