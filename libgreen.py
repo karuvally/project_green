@@ -95,24 +95,18 @@ def request_to_pair(network_address):
 
     # store server details in known_server
 
+
 # the ping function for threads 
 def ping_sweep(ip_address, result):
-    if broadcast == True:
-        logging.info("checking if network " + str(ip_address) + " is up")
-        ping = Popen(["ping", "-b", "-c", "1", str(ip_address)], stdout = PIPE)
-    else:
-        logging.info("checking if node " + str(ip_address) + " is up")
-        ping = Popen(["ping", "-c", "1", str(ip_address)], stdout = PIPE)
+    logging.info("checking if node " + str(ip_address) + " is up")
+    ping = Popen(["ping", "-c", "1", str(ip_address)], stdout = PIPE)
     ping_out = ping.communicate()[0]
 
-    # returncode is 0 if ping is succesfull, converting to bool
-    host_info = {
+    # returncode is 0 if ping is succesful, converting to bool
+    result = {
         "ip_address": ip_address,
         "online": not bool(ping.returncode)
     }
-
-    # return the values
-    return host_info
 
 
 # ping ip address and return status
@@ -123,6 +117,7 @@ def ping_address(ip_address, broadcast = False):
     else:
         logging.info("checking if node " + str(ip_address) + " is up")
         ping = Popen(["ping", "-c", "1", str(ip_address)], stdout = PIPE)
+
     ping_out = ping.communicate()[0]
 
     # returncode is 0 if ping is succesfull, converting to bool
