@@ -109,7 +109,7 @@ def ping_address(ip_address, broadcast = False):
     # returncode is 0 if ping is succesfull, converting to bool
     host_info = {
         "ip_address": ip_address,
-        "status": not bool(ping_out.returncode)
+        "online": not bool(ping.returncode)
     }
 
     # return the values
