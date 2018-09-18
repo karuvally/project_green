@@ -1,5 +1,6 @@
 TODO
 ----
+* Switch to Socketserver
 * port open check closes server
 * test network address with host bit
 * multiprocessing for ping
