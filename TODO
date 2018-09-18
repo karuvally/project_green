@@ -2,7 +2,7 @@ TODO
 ----
 * Switch to Socketserver
 * port open check closes server
-* test network address with host bit
+* test network address with host bit set
 * multiprocessing for ping
 * fix network search
 * do proper netmasking

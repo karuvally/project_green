@@ -12,6 +12,7 @@ import ipaddress
 import logging
 import netifaces
 import pathlib
+import threading
 from Crypto.PublicKey import RSA
 from subprocess import Popen, PIPE
 
@@ -105,9 +106,14 @@ def ping_address(ip_address, broadcast = False):
         ping = Popen(["ping", "-c", "1", str(ip_address)], stdout = PIPE)
     ping_out = ping.communicate()[0]
 
-    # get the values home
-    return_code = ping.returncode
-    return return_code
+    # returncode is 0 if ping is succesfull, converting to bool
+    host_info = {
+        "ip_address": ip_address,
+        "status": not bool(ping_out.returncode)
+    }
+
+    # return the values
+    return host_info
 
 
 # retrieve network info from known_network
@@ -319,12 +325,12 @@ def find_hosts(network_address, mode):
         logging.info("scanning for nodes")
         port_list = [1337, 1994]
 
-    host_list = []
+    host_info = {}
     network = ipaddress.ip_network(network_address + "/24")
 
     # try pinging each host
     for ip_address in network.hosts():
-        return_code = ping_address(ip_address)
+        host_info.append(ping_address(ip_address))
 
         # host is up if return_code is 0
         if return_code == 0:
