@@ -357,7 +357,7 @@ def find_hosts(network_address, mode):
 
         for port in port_list:
             # port is open if return value is 0
-            if connection.connect_ex((host["ip_address"], port)) == 0:
+            if connection.connect_ex((str(host["ip_address"]), port)) == 0:
                 # if network_check is true, tell caller that network is usable
                 if mode == "network_check":
                     return True
