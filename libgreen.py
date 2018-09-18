@@ -344,7 +344,11 @@ def find_hosts(network_address, mode):
         threads.append(ping_thread)
         ping_thread.start()
 
-        # host is up if return_code is 0
+    # wait until all threads are finished
+    for process in threads:
+        process.join()
+
+        # check if host is listening on ports
         if return_code == 0:
             # check if specified ports are open on host
             connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
