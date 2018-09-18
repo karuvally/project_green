@@ -1,8 +1,9 @@
 TODO
 ----
-* fix ping
+* port open check closes server
+* test network address with host bit
+* multiprocessing for ping
 * fix network search
-* generate proper network address in find_network()
 * do proper netmasking
 * to make sure client can receive public_key returned by the server
 * fix multithreading (create_new_listen_socket()) in client and server

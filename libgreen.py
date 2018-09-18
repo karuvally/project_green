@@ -331,13 +331,13 @@ def find_hosts(network_address, mode):
             # check if specified ports are open on host
             connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             for port in port_list:
-                port_status = connection.connect_ex((str(ip_address), port))
+                port_status = connection.connect_ex((ip_address, port))
                 
-            # port is open if port_status is 0
-            if port_status == 0:
-                host_list.append(ip_address)
-                if server == True:
-                    break
+                # port is open if port_status is 0
+                if port_status == 0:
+                    host_list.append(ip_address)
+                    if server == True:
+                        break
 
     return host_list
 
