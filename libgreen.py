@@ -350,23 +350,30 @@ def find_hosts(network_address, mode):
 
     # generate list of online hosts
     online_hosts = [host for host in host_info if host["online"] == True]
-    
-"""
-    for host in host_info:
-        # check if host is listening on ports
-        if host["online"] == True:
-            # check if specified ports are open on host
-            connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            for port in port_list:
-                port_status = connection.connect_ex((ip_address, port))
-                
-                # port is open if port_status is 0
-                if port_status == 0:
-                    host_list.append(ip_address)
-                    if server == True:
-                        break
-    return host_list
-"""
+
+    # look if the host is a NetDog server or client
+    for host in online_hosts:
+        connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+        for port in port_list:
+            # port is open if return value is 0
+            if connection.connect_ex((host["ip_address"], port)) == 0:
+                if port == 1337:
+                    server = True
+                else:
+                    server = False
+
+                # add host to the node list
+                node_list.update({
+                    "ip_address": host["ip_address"],
+                    "server": server
+                })
+
+                # break out of the loop
+                break
+
+    # return the node list
+    return node_list
 
 
 # generate public-private key pair
