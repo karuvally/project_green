@@ -355,6 +355,7 @@ def find_hosts(network_address, mode):
     for host in online_hosts:
         connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
+        node_list = []
         for port in port_list:
             # port is open if return value is 0
             if connection.connect_ex((str(host["ip_address"]), port)) == 0:
