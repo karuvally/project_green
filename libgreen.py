@@ -103,7 +103,7 @@ def ping_sweep(ip_address, result):
     ping_out = ping.communicate()[0]
 
     # returncode is 0 if ping is succesful, converting to bool
-    result.update({
+    result.append({
         "ip_address": ip_address,
         "online": not bool(ping.returncode)
     })
@@ -332,11 +332,17 @@ def find_hosts(network_address, mode):
         logging.info("scanning for nodes")
         port_list = [1337, 1994]
 
-    host_info = {}
+    host_info = []
+    threads = []
     network = ipaddress.ip_network(network_address + "/24")
 
-    # try pinging each host
+    # try new thread for each host
     for ip_address in network.hosts():
+        ping_thread = threading.Thread(target = ping_sweep,
+            args = (ip_address, host_info))
+
+        threads.append(ping_thread)
+        ping_thread.start()
 
         # host is up if return_code is 0
         if return_code == 0:
