@@ -1,9 +1,15 @@
 TODO
 ----
-* Switch to Socketserver
+* redesign ping_sweep()
+* network check if retrieve_network_info() is successful 
+* Check if close() after normal connect quits server
+* Implement socketserver if necessary
 * port open check closes server
 * test network address with host bit set
-* fix network search
 * do proper netmasking
-* to make sure client can receive public_key returned by the server
+* make sure client can receive public_key returned by the server
 * fix multithreading (create_new_listen_socket()) in client and server
+
+DONE
+----
+* fix network search
