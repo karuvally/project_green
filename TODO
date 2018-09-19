@@ -1,8 +1,8 @@
 TODO
 ----
+* Design usable server ASAP!
 * redesign ping_sweep()
 * network check if retrieve_network_info() is successful 
-* Check if close() after normal connect quits server
 * Implement socketserver if necessary
 * port open check closes server
 * test network address with host bit set
@@ -13,3 +13,4 @@ TODO
 DONE
 ----
 * fix network search
+* Check if close() after normal connect quits server
