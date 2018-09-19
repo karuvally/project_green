@@ -328,7 +328,7 @@ def find_hosts(network_address, mode):
     elif mode == "client":
         logging.info("scanning for clients")
         port_list = [1994]
-    elif mode == "both" or "network_check": 
+    elif mode == "both": 
         logging.info("scanning for nodes")
         port_list = [1337, 1994]
 
@@ -359,10 +359,6 @@ def find_hosts(network_address, mode):
         for port in port_list:
             # port is open if return value is 0
             if connection.connect_ex((str(host["ip_address"]), port)) == 0:
-                # if network_check is true, tell caller that network is usable
-                if mode == "network_check":
-                    return True
-
                 if port == 1337:
                     server = True
                 else:
