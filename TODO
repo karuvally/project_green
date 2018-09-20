@@ -1,9 +1,7 @@
 TODO
 ----
-* Design usable server ASAP!
 * redesign ping_sweep()
 * network check if retrieve_network_info() is successful 
-* Implement socketserver if necessary
 * port open check closes server
 * test network address with host bit set
 * do proper netmasking

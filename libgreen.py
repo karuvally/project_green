@@ -261,7 +261,7 @@ def handle_data(message):
     # if message cannot be splitted, its corrupted
     if len(separated_message) != 2:
         logging.critical("corrupt message received over network")
-        sys.exit() # debug: replace this by "retransmit" command
+        return None # debug: replace this by "retransmit" command
     
     # get the source node ID and payload
     node_id = separated_message[0]
