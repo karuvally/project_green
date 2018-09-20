@@ -294,9 +294,6 @@ def handle_connection(connection):
     if return_data:
         connection.sendall(return_data.encode())
 
-    # close the connection :D
-    connection.close()
-
 
 # create listening socket and... listen for connections :D
 def create_new_listen_socket(port):
@@ -313,7 +310,10 @@ def create_new_listen_socket(port):
 
         # pass the connection to connection handler
         logging.info("new connection received from " + source_address[0])
-        handle_connection(connection) # debug: implement threading
+        #handle_connection(connection) # debug: implement threading
+
+        # close the connection
+        connection.close()
 
     # close the listen socket
     daemon_socket.close()
