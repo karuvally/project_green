@@ -310,7 +310,7 @@ def create_new_listen_socket(port):
 
         # pass the connection to connection handler
         logging.info("new connection received from " + source_address[0])
-        #handle_connection(connection) # debug: implement threading
+        handle_connection(connection) # debug: implement threading
 
         # close the connection
         connection.close()
