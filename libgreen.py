@@ -181,11 +181,8 @@ def find_network(server = False):
         interface = available_interfaces[user_choice]
         address_dict = netifaces.ifaddresses(interface)
 
-        # find network adddress by replacing last part of host IP with 0
+        # find network address
         network_address = address_dict[netifaces.AF_INET][0]["addr"]
-        network_address = network_address[: network_address.rfind(".")]
-        network_address += ".0"
-        
         logging.info("interface: " + interface + " with address: " +
         network_address + " choosen by user")
 
@@ -195,10 +192,8 @@ def find_network(server = False):
             # find address of each interface
             address_dict = netifaces.ifaddresses(interface)
             network_address = address_dict[netifaces.AF_INET][0]["addr"]
-            network_address = network_address[: network_address.rfind(".")]
-            network_address += ".0"
 
-            # if hosts can be found, set current network as default
+            # if nodes can be found, set current network as default
             host_list = find_hosts(network_address, mode = "both")
 
             # debug: anyway to make this more elegant?
@@ -253,7 +248,6 @@ def accept_pairing_request(node_id, payload):
 def handle_data(message):
     # essential varilables
     return_data = None
-    server = is_server()
 
     # command + payload cannot be splitted, might be encrypted
     separated_message = message.split(",", 1)
@@ -334,7 +328,7 @@ def find_hosts(network_address, mode):
 
     host_info = []
     threads = []
-    network = ipaddress.ip_network(network_address + "/24")
+    network = ipaddress.ip_network(network_address + "/24", strict = False)
 
     # try new thread for each host
     for ip_address in network.hosts():
