@@ -141,7 +141,7 @@ def retrieve_network_info():
             network_address = network_info[1]
 
         # look if network is up, network is up if network_status == 0
-        network_status = ping_address(network_address[1], broadcast = True)
+        network_status = ping_address(network_address, broadcast = True)
     else:
         logging.info("no known network exists")
     
@@ -448,7 +448,7 @@ def initialize_system(server = False):
     logging.info("getting network information")
     network_info = retrieve_network_info()
 
-    if network_info["interface"] == None:
+    if network_info["interface"] == None or network_info["status"] == 1:
         network_address = find_network(server)
     
     # if no known_server, initiate pairing
