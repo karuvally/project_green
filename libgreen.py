@@ -424,6 +424,9 @@ def initialize_system(server = False):
     # set up logging
     logging.basicConfig(filename = os.path.join(config_dir, "log"),
         level = logging.DEBUG)
+
+    # print logs to stderr
+    logging.getLogger().addHandler(logging.StreamHandler())
     
     # log initial messages
     logging.info("NetDog (alpha) is starting up")
