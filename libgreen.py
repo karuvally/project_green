@@ -142,6 +142,10 @@ def retrieve_network_info():
 
         # look if network is up, network is up if network_status == 0
         network_status = ping_address(network_address, broadcast = True)
+
+        if network_status == 1:
+            logging.info("known network is down")
+
     else:
         logging.info("no known network exists")
     
