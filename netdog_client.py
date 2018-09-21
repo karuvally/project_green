@@ -12,8 +12,6 @@ def main():
     initialize_system()
 
     # start listening for connections
-    create_new_listen_socket(1994)
-
 
 # call the main function
 main()
