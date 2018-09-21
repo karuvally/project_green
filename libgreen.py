@@ -183,7 +183,7 @@ def find_network(server = False):
 
         # find network address
         network_address = address_dict[netifaces.AF_INET][0]["addr"]
-        logging.info("interface: " + interface + " with address: " +
+        logging.info("interface " + interface + " with address " +
         network_address + " choosen by user")
 
     else:
