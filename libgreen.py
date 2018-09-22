@@ -166,6 +166,7 @@ def find_network(server = False):
     config_dir = get_config_dir()
     host_list = None
     known_network_file_path = os.path.join(config_dir, "known_network")
+    network_info = {}
 
     # find interfaces and remove loopback from them
     available_interfaces = netifaces.interfaces()
@@ -191,10 +192,16 @@ def find_network(server = False):
 
         # find network address
         network_address = address_dict[netifaces.AF_INET][0]["addr"]
-        netmask = address_dict[netifaces.AF_INET][0]["netmask"]
-
         network_address = network_address[: network_address.rfind(".")]
         network_address += ".0"
+
+        netmask = address_dict[netifaces.AF_INET][0]["netmask"]
+
+        # append the data to network_info
+        network_info.append({
+            "network_address": network_address,
+            "netmask": netmask
+        })
 
         logging.info("interface " + interface + " with address " +
         network_address + " choosen by user")
@@ -205,13 +212,19 @@ def find_network(server = False):
             # find address of each interface
             address_dict = netifaces.ifaddresses(interface)
             network_address = address_dict[netifaces.AF_INET][0]["addr"]
-            netmask = address_dict[netifaces.AF_INET][0]["netmask"]
-
             network_address = network_address[: network_address.rfind(".")]
             network_address += ".0"
 
+            # append the data to network_info
+            network_info.append({
+                "network_address": network_address,
+                "netmask": netmask
+            })
+
+            netmask = address_dict[netifaces.AF_INET][0]["netmask"]
+
             # if nodes can be found, set current network as default
-            host_list = find_hosts(network_address, mode = "both")
+            host_list = find_hosts(network_info, mode = "both")
 
             # debug: anyway to make this more elegant?
             if host_list:
@@ -222,12 +235,6 @@ def find_network(server = False):
         with open(known_network_file_path, "w") as known_network_file:
             known_network_file.write(interface + "," + network_address
             + "," + netmask)
-
-    # prepare network_info to return data
-    network_info = {
-        "network_address": network_address,
-        "netmask": netmask,
-    }
     
     # return network address to calling function
     return network_info 
