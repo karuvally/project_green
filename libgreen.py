@@ -345,7 +345,7 @@ def create_new_listen_socket(port):
 
 
 # find a host running NetDog
-def find_hosts(network_address, mode):
+def find_hosts(network_info, mode):
     # server listens on port 1337, clients on 1994
     if mode == "server":
         logging.info("scanning for server")
@@ -357,9 +357,13 @@ def find_hosts(network_address, mode):
         logging.info("scanning for nodes")
         port_list = [1337, 1994]
 
+    # some essential variables
     host_info = []
     threads = []
-    network = ipaddress.ip_network(network_address + "/24", strict = False)
+    cidr_address = netaddr.IPNetwork(network_info["network_address"],
+        network_info["netmask"])
+
+    network = ipaddress.ip_network(cidr_address)
 
     # try new thread for each host
     for ip_address in network.hosts():
