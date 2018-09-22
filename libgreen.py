@@ -222,9 +222,15 @@ def find_network(server = False):
         with open(known_network_file_path, "w") as known_network_file:
             known_network_file.write(interface + "," + network_address
             + "," + netmask)
+
+    # prepare network_info to return data
+    network_info = {
+        "network_address": network_address,
+        "netmask": netmask,
+    }
     
     # return network address to calling function
-    return network_address
+    return network_info 
 
 
 # get the config directory
@@ -467,7 +473,7 @@ def initialize_system(server = False):
     network_info = retrieve_network_info()
 
     if network_info["interface"] == None or network_info["network_status"] == 1:
-        network_address = find_network(server)
+        network_info = find_network(server)
     
     # if no known_server, initiate pairing
     if server == False:
@@ -477,4 +483,4 @@ def initialize_system(server = False):
         else:
             # start client pairing request
             logging.info("the client is not paired with a server")
-            request_to_pair(network_address)
+            request_to_pair(network_info)
