@@ -198,7 +198,7 @@ def find_network(server = False):
         netmask = address_dict[netifaces.AF_INET][0]["netmask"]
 
         # append the data to network_info
-        network_info.append({
+        network_info.update({
             "network_address": network_address,
             "netmask": netmask
         })
@@ -216,7 +216,7 @@ def find_network(server = False):
             network_address += ".0"
 
             # append the data to network_info
-            network_info.append({
+            network_info.update({
                 "network_address": network_address,
                 "netmask": netmask
             })
