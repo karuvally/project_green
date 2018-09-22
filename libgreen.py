@@ -191,6 +191,8 @@ def find_network(server = False):
 
         # find network address
         network_address = address_dict[netifaces.AF_INET][0]["addr"]
+        netmask = address_dict[netifaces.AF_INET][0]["netmask"]
+
         network_address = network_address[: network_address.rfind(".")]
         network_address += ".0"
 
@@ -203,6 +205,8 @@ def find_network(server = False):
             # find address of each interface
             address_dict = netifaces.ifaddresses(interface)
             network_address = address_dict[netifaces.AF_INET][0]["addr"]
+            netmask = address_dict[netifaces.AF_INET][0]["netmask"]
+
             network_address = network_address[: network_address.rfind(".")]
             network_address += ".0"
 
@@ -216,7 +220,8 @@ def find_network(server = False):
     # debug: future fix, move this block outside the function
     if host_list or server == True:
         with open(known_network_file_path, "w") as known_network_file:
-            known_network_file.write(interface + "," + network_address)
+            known_network_file.write(interface + "," + network_address
+            + "," + netmask)
     
     # return network address to calling function
     return network_address
