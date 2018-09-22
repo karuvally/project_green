@@ -72,13 +72,13 @@ def load_keys(key_type):
 
 
 # send request to server for pairing
-def request_to_pair(network_address):
+def request_to_pair(network_info):
     # get configuration directory
     config_dir = get_config_dir()
 
     # find server
     logging.info("finding server")
-    server = find_hosts(network_address, mode = "server")
+    server = find_hosts(network_info, mode = "server")
 
     # get the public key
     public_key = load_keys("public_key")
