@@ -1,15 +1,16 @@
 TODO
 ----
-* refactor find_network()
-* enable log to console
-* network check if retrieve_network_info() is successful 
-* test network address with host bit set
 * do proper netmasking
 * make sure client can receive public_key returned by the server
 * fix multithreading (create_new_listen_socket()) in client and server
+* refactor find_network()
+* elegant code to find network address (without host bit)
 
 DONE
 ----
+* enable log to console
+* test network address with host bit set
 * fix network search
+* network check if retrieve_network_info() is successful 
 * Check if close() after normal connect quits server
 * port open check closes server

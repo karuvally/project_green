@@ -13,6 +13,7 @@ import logging
 import netifaces
 import pathlib
 import threading
+import netaddr
 from Crypto.PublicKey import RSA
 from subprocess import Popen, PIPE
 
@@ -130,6 +131,7 @@ def retrieve_network_info():
     network_status = 0
     interface = None
     network_address = None
+    netmask = None
     known_network_file_path = os.path.join(config_dir, "known_network")
 
     # look if known_network exists
@@ -139,6 +141,7 @@ def retrieve_network_info():
             network_info = known_network_file.read().rstrip().split(",")
             interface = network_info[0]
             network_address = network_info[1]
+            netmask = network_info[2]
 
         # look if network is up, network is up if network_status == 0
         network_status = ping_address(network_address, broadcast = True)
@@ -152,6 +155,7 @@ def retrieve_network_info():
     return ({
         "interface": interface,
         "network_address": network_address,
+        "netmask": netmask,
         "network_status": network_status
     })
 
