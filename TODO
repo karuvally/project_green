@@ -1,6 +1,5 @@
 TODO
 ----
-* do proper netmasking
 * make sure client can receive public_key returned by the server
 * fix multithreading (create_new_listen_socket()) in client and server
 * refactor find_network()
@@ -8,6 +7,7 @@ TODO
 
 DONE
 ----
+* do proper netmasking
 * enable log to console
 * test network address with host bit set
 * fix network search
