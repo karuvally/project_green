@@ -215,13 +215,13 @@ def find_network(server = False):
             network_address = network_address[: network_address.rfind(".")]
             network_address += ".0"
 
+            netmask = address_dict[netifaces.AF_INET][0]["netmask"]
+
             # append the data to network_info
             network_info.update({
                 "network_address": network_address,
                 "netmask": netmask
             })
-
-            netmask = address_dict[netifaces.AF_INET][0]["netmask"]
 
             # if nodes can be found, set current network as default
             host_list = find_hosts(network_info, mode = "both")
