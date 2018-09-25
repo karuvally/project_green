@@ -128,7 +128,7 @@ def ping_address(ip_address, broadcast = False):
 def retrieve_network_info():
     # essential variables
     config_dir = get_config_dir()
-    network_status = 0
+    network_status = False 
     interface = None
     network_address = None
     netmask = None
