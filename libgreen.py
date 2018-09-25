@@ -484,7 +484,7 @@ def initialize_system(server = False):
     logging.info("getting network information")
     network_info = retrieve_network_info()
 
-    if network_info["network_status"] == False):
+    if network_info["network_status"] == False:
         network_info = find_network(server)
     
     # if no known_server, initiate pairing
