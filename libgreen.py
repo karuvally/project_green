@@ -413,8 +413,6 @@ def find_hosts(network_info, mode):
                 # exit the loop
                 break
 
-    print(node_list) # debug
-
     # return the node list
     return node_list
 
