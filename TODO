@@ -1,5 +1,6 @@
 TODO
 ----
+* add firewall exceptions during installation
 * make sure client can receive public_key returned by the server
 * fix multithreading (create_new_listen_socket()) in client and server
 * refactor find_network()

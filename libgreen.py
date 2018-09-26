@@ -349,6 +349,11 @@ def create_new_listen_socket(port):
 
 # find a host running NetDog
 def find_hosts(network_info, mode):
+    # essential variables
+    node_list = []
+    host_info = []
+    threads = []
+
     # server listens on port 1337, clients on 1994
     if mode == "server":
         logging.info("scanning for server")
@@ -360,13 +365,7 @@ def find_hosts(network_info, mode):
         logging.info("scanning for nodes")
         port_list = [1337, 1994]
 
-    print(network_info)
-    sys.exit()
-
-    # some essential variables
-    host_info = []
-    threads = []
-    cidr_address = netaddr.IPNetwork(network_info["network_address"],
+        cidr_address = netaddr.IPNetwork(network_info["network_address"],
         network_info["netmask"])
 
     network = ipaddress.ip_network(cidr_address)
@@ -386,15 +385,17 @@ def find_hosts(network_info, mode):
     # generate list of online hosts
     online_hosts = [host for host in host_info if host["online"] == True]
 
-    # remove localhost from online_hosts
+    # find local host's IP
+    localhost_info = netifaces.ifaddresses(network_info["interface"])
+    localhost_addr = localhost_info[netifaces.AF_INET][0]["addr"]
 
-
-
-    # look if the host is a NetDog server or client
+    # skip if the client is localhost
     for host in online_hosts:
+        if str(host["ip_address"]) == localhost_addr:
+            continue
+
         connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-        node_list = []
         for port in port_list:
             # port is open if return value is 0
             if connection.connect_ex((str(host["ip_address"]), port)) == 0:
@@ -409,8 +410,10 @@ def find_hosts(network_info, mode):
                     "server": server
                 })
 
-                # break out of the loop
+                # exit the loop
                 break
+
+    print(node_list) # debug
 
     # return the node list
     return node_list
