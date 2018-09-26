@@ -99,7 +99,6 @@ def request_to_pair(network_info):
 
 # the ping function for threads 
 def ping_sweep(ip_address, result):
-    logging.info("checking if node " + str(ip_address) + " is up")
     ping = Popen(["ping", "-c", "1", str(ip_address)], stdout = PIPE)
     ping_out = ping.communicate()[0]
 
@@ -371,6 +370,7 @@ def find_hosts(network_info, mode):
     network = ipaddress.ip_network(cidr_address)
 
     # try new thread for each host
+    logging.info("performing ping sweep")
     for ip_address in network.hosts():
         ping_thread = threading.Thread(target = ping_sweep,
             args = (ip_address, host_info))
