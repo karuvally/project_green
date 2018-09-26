@@ -115,7 +115,7 @@ access to these files. This is to prevent other users from tampering the
 settings put in place by the network administrator.
 
 The configuration directory of the server contains the following files:
-* known_clients     -> hostnames (IDs) and public keys of known clients
+* known_nodes       -> directory having files named after hosts with public key
 * public_key        -> public key of the server
 * private_key       -> private key of the server
 * config            -> miscellaneous configuration
