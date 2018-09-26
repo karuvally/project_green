@@ -200,6 +200,7 @@ def find_network(server = False):
         network_info = {
             "network_address": network_address,
             "netmask": netmask
+            "interface": available_interfaces[user_choice]
         }
 
         logging.info("interface " + interface + " with address " +
@@ -220,6 +221,7 @@ def find_network(server = False):
             network_info = {
                 "network_address": network_address,
                 "netmask": netmask
+                "interface": interface
             }
 
             # if nodes can be found, set current network as default
@@ -228,6 +230,7 @@ def find_network(server = False):
             # debug: anyway to make this more elegant?
             if host_list:
                 logging.info("network: " + network_address + " found")
+                break
 
     # debug: future fix, move this block outside the function
     if host_list or server == True:
