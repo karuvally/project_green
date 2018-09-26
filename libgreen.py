@@ -166,7 +166,6 @@ def find_network(server = False):
     config_dir = get_config_dir()
     host_list = None
     known_network_file_path = os.path.join(config_dir, "known_network")
-    network_info = {}
 
     # find interfaces and remove loopback from them
     available_interfaces = netifaces.interfaces()
@@ -198,10 +197,10 @@ def find_network(server = False):
         netmask = address_dict[netifaces.AF_INET][0]["netmask"]
 
         # append the data to network_info
-        network_info.update({
+        network_info = {
             "network_address": network_address,
             "netmask": netmask
-        })
+        }
 
         logging.info("interface " + interface + " with address " +
         network_address + " choosen by user")
@@ -218,10 +217,10 @@ def find_network(server = False):
             netmask = address_dict[netifaces.AF_INET][0]["netmask"]
 
             # append the data to network_info
-            network_info.update({
+            network_info = {
                 "network_address": network_address,
                 "netmask": netmask
-            })
+            }
 
             # if nodes can be found, set current network as default
             host_list = find_hosts(network_info, mode = "both")
@@ -380,6 +379,10 @@ def find_hosts(network_info, mode):
 
     # generate list of online hosts
     online_hosts = [host for host in host_info if host["online"] == True]
+
+    # remove localhost from online_hosts
+
+
 
     # look if the host is a NetDog server or client
     for host in online_hosts:
