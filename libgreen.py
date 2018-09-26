@@ -199,7 +199,7 @@ def find_network(server = False):
         # append the data to network_info
         network_info = {
             "network_address": network_address,
-            "netmask": netmask
+            "netmask": netmask,
             "interface": available_interfaces[user_choice]
         }
 
@@ -220,7 +220,7 @@ def find_network(server = False):
             # append the data to network_info
             network_info = {
                 "network_address": network_address,
-                "netmask": netmask
+                "netmask": netmask,
                 "interface": interface
             }
 
@@ -359,6 +359,9 @@ def find_hosts(network_info, mode):
     elif mode == "both": 
         logging.info("scanning for nodes")
         port_list = [1337, 1994]
+
+    print(network_info)
+    sys.exit()
 
     # some essential variables
     host_info = []
