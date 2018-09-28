@@ -72,6 +72,7 @@ def load_nodes():
 # try to load public / private keys
 def load_keys(key_type):
     # essential varilables
+    config_dir = get_config_dir()
     key = None
     key_path = os.path.join(config_dir, "key_type")
 
