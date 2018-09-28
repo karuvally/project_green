@@ -41,8 +41,6 @@ def send_data(destination_ip, port, command, payload):
     # send the actual data
     connection.sendall(message.encode())
 
-    # get the return data
-
 
 # load information about known_server
 def load_known_server():
@@ -105,9 +103,8 @@ def request_to_pair(network_info):
 
     # send pairing request
     logging.info("sending pairing request")
+    send_data(server, 1337, "pair", public_key)
     
-    # get the return data
-
     # store server details in known_server
 
 
