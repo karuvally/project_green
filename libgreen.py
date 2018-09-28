@@ -27,13 +27,21 @@ def is_server():
 
 
 # send data through network
-def send_data(destination_ip, port, data):
+def send_data(destination_ip, port, command, payload):
+    # get the hostname of the machine
+    hostname = socket.gethostname()
+
+    # generate message
+    message = hostname + "," + command + "," + payload
+
     # create socket, connect to destination IP
     connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     connection.connect((destination_ip, port))
 
     # send the actual data
-    connection.sendall(data.encode())
+    connection.sendall(message.encode())
+
+    # get the return data
 
 
 # load information about known_server
@@ -77,7 +85,7 @@ def load_keys(key_type):
     key_path = os.path.join(config_dir, key_type) 
 
     if os.path.exists(key_path):
-        logging.info("loading" + key_type)
+        logging.info("loading " + key_type)
         with open(key_path, "r") as key_file:
             key = key_file.read()
 
@@ -94,9 +102,6 @@ def request_to_pair(network_info):
 
     # get the public key
     public_key = load_keys("public_key")
-
-    # get the hostname of the machine
-    hostname = socket.gethostname()
 
     # send pairing request
     logging.info("sending pairing request")
