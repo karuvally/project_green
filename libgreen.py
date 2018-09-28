@@ -74,12 +74,12 @@ def load_keys(key_type):
     # essential varilables
     config_dir = get_config_dir()
     key = None
-    key_path = os.path.join(config_dir, "key_type")
+    key_path = os.path.join(config_dir, key_type) 
 
     if os.path.exists(key_path):
         logging.info("loading" + key_type)
         with open(key_path, "r") as key_file:
-            key = key_file.read().rstrip()
+            key = key_file.read()
 
     return key
 
@@ -94,8 +94,6 @@ def request_to_pair(network_info):
 
     # get the public key
     public_key = load_keys("public_key")
-
-    print(public_key) # debug
 
     # get the hostname of the machine
     hostname = socket.gethostname()
