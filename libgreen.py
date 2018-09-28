@@ -43,7 +43,7 @@ def load_known_server():
     known_server_file_path = os.path.join(config_dir, "known_server"
 
     # exit if the known_server file does not exist
-    if not os.path.exists(known_server_file_path)
+    if not os.path.exists(known_server_file_path):
         logging.warning("known server does not exist. Bug?")
 
     # load data from known_server file
@@ -93,6 +93,8 @@ def request_to_pair(network_info):
 
     # get the public key
     public_key = load_keys("public_key")
+
+    print(public_key) # debug
 
     # get the hostname of the machine
     hostname = socket.gethostname()
