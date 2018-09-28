@@ -97,15 +97,16 @@ def request_to_pair(network_info):
 
     # find server
     server = find_hosts(network_info, mode = "server")
-
+    
     # get the public key
     public_key = load_keys("public_key")
 
     # send pairing request
     logging.info("sending pairing request")
-    send_data(server, 1337, "pair", public_key)
+    send_data(server[0]["ip_address"], 1337, "pair", public_key)
     
     # store server details in known_server
+    sys.exit() # debug
 
 
 # the ping function for threads 
@@ -339,7 +340,7 @@ def create_new_listen_socket(port):
     logging.info("trying to create listening socket")
     daemon_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     daemon_socket.bind(("0.0.0.0", port))
-    daemon_socket.listen(5) # debug: what does this mean?
+    daemon_socket.listen(5) 
 
     # listen for incoming connections
     while True:
