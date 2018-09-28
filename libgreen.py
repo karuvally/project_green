@@ -77,7 +77,6 @@ def request_to_pair(network_info):
     config_dir = get_config_dir()
 
     # find server
-    logging.info("finding server")
     server = find_hosts(network_info, mode = "server")
 
     # get the public key
@@ -364,7 +363,8 @@ def find_hosts(network_info, mode):
         logging.info("scanning for nodes")
         port_list = [1337, 1994]
 
-        cidr_address = netaddr.IPNetwork(network_info["network_address"],
+    # generate the cidr address
+    cidr_address = netaddr.IPNetwork(network_info["network_address"],
         network_info["netmask"])
 
     network = ipaddress.ip_network(cidr_address)
