@@ -419,7 +419,7 @@ def find_hosts(network_info, mode):
 
                 # add host to the node list
                 node_list.append({
-                    "ip_address": host["ip_address"],
+                    "ip_address": str(host["ip_address"]),
                     "server": server
                 })
 
