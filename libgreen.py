@@ -497,15 +497,13 @@ def initialize_system(server = False):
     if network_info["network_status"] == False:
         network_info = find_network(server)
 
-"""
     # if no known_server, initiate pairing
     if server == False:
-        if os.path.exists(os.path.join(known_nodes_dir, "server"):
+        if os.path.exists(os.path.join(config_dir, "known_server"):
             # debug: future fix, check if known_server has a valid data
             pass
         else:
             # start client pairing request
             logging.info("the client is not paired with a server")
             request_to_pair(network_info)
-"""
 
