@@ -40,7 +40,7 @@ def send_data(destination_ip, port, data):
 def load_known_server():
     # get configuration directory
     config_dir = get_config_dir()
-    known_server_file_path = os.path.join(config_dir, "known_server"
+    known_server_file_path = os.path.join(config_dir, "known_server")
 
     # exit if the known_server file does not exist
     if not os.path.exists(known_server_file_path):
