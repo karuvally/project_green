@@ -499,7 +499,7 @@ def initialize_system(server = False):
 
     # if no known_server, initiate pairing
     if server == False:
-        if os.path.exists(os.path.join(config_dir, "known_server"):
+        if os.path.exists(os.path.join(config_dir, "known_server")):
             # debug: future fix, check if known_server has a valid data
             pass
         else:
