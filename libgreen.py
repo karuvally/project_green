@@ -36,8 +36,11 @@ def send_data(destination_ip, port, data):
     connection.sendall(data.encode())
 
 
+# 
+
+
 # load the list of nodes on the network
-def load_nodes(server = False):
+def load_nodes():
     # essential varilables
     config_dir = get_config_dir()
     return_data = []
@@ -80,13 +83,10 @@ def request_to_pair(network_info):
     # get the hostname of the machine
     hostname = socket.gethostname()
 
-    # load known server info
-    server_address = load_nodes()
-
     # send pairing request
     logging.info("sending pairing request")
     
-    # write the send_data() here
+    # get the return data
 
     # store server details in known_server
 
