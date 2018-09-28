@@ -54,11 +54,6 @@ def load_nodes(server = False):
 
 # try to load public / private keys
 def load_keys(key_type):
-    # basic checks
-    if key_type != "public_key" or "private_key":
-        logging.critical("invalid arguments passed to load_keys()")
-        sys.exit()
-
     # essential varilables
     key = None
     key_path = os.path.join(config_dir, "key_type")
