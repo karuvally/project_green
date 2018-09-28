@@ -22,8 +22,8 @@ from subprocess import Popen, PIPE
 def is_server():
     if sys.argv[0].rfind("server") != -1:
         return True
-    else:
-        return False
+    
+    return False
 
 
 # send data through network
