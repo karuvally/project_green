@@ -8,9 +8,11 @@ from libgreen import *
 
 # the main function
 def main():
-    """
     # essential variables
     threads = []
+
+    # initialize the system
+    initialize_system()
 
     # start listening for connections
     listen_thread = threading.Thread(target = create_new_listen_socket,
@@ -18,10 +20,9 @@ def main():
 
     threads.append(listen_thread)
     listen_thread.start()
-    """
-    # initialize the system
-    initialize_system()
 
+    # make sure we have usable network
+    setup_network()
 
 # call the main function
 main()
