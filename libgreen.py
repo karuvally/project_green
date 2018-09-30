@@ -18,6 +18,11 @@ from Crypto.PublicKey import RSA
 from subprocess import Popen, PIPE
 
 
+# store the newly paired server info
+def store_server_info(node_id, payload):
+    pass
+
+
 # check if the running program is server
 def is_server():
     if sys.argv[0].rfind("server") != -1:
@@ -44,13 +49,16 @@ def send_message(destination_ip, port, command, payload):
 
 # load information about known_server
 def load_known_server():
+    # essential variables
+    known_server_info = None
+
     # get configuration directory
     config_dir = get_config_dir()
     known_server_file_path = os.path.join(config_dir, "known_server")
 
     # exit if the known_server file does not exist
     if not os.path.exists(known_server_file_path):
-        logging.warning("known server does not exist. Bug?")
+        logging.warning("known server does not exist :(")
 
     # load data from known_server file
     with open(known_server_file_path, "r") as known_server_file:
@@ -292,7 +300,8 @@ def accept_pairing_request(node_id, payload):
 # handle newly created connection, debug: implement threading
 def handle_connection(connection):
     # essential variables
-    source_ip = connection.getpeername()[0]
+    client_ip = connection.getpeername()[0]
+    config_dir = get_config_dir()
 
     # receive data from client
     message = receive_data(connection)
@@ -319,6 +328,11 @@ def handle_connection(connection):
         if splitted_payload[0] == "pair":
             public_key = accept_pairing_request(node_id, payload)
             send_message(client_ip, 1994, "pair_ack", public_key)
+
+    # handle pair acknowledgement
+    if not is_server():
+        if load_known_server() == None:
+            store_server_info(node_id, payload)
 
     # implement rest of the commands
 
