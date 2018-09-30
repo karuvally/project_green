@@ -8,10 +8,13 @@ from libgreen import *
 
 # the main function
 def main():
+    # start listening for connections
+    listen_thread = threading.Thread(target = create_new_listen_socket,
+        args = 1994)
+    
     # initialize the system
     initialize_system()
 
-    # start listening for connections
 
 # call the main function
 main()
