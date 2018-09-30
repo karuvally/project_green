@@ -466,7 +466,7 @@ def receive_data(connection):
 
 
 # check and set up essential stuff
-def initialize_system(server = False):
+def initialize_system():
     # essential variables
     config_dir = get_config_dir()
     known_nodes_dir = os.path.join(config_dir, "known_nodes")

@@ -9,7 +9,7 @@ from libgreen import *
 # the main function
 def main():
     # initialize the system
-    initialize_system(server = True)
+    initialize_system()
 
     # listen for message from clients
     create_new_listen_socket(1337)
