@@ -505,7 +505,7 @@ def initialize_system():
 
 
 # make sure NetDog can connect to network
-def setup_network(server = False)
+def setup_network(server = False):
     # get the current network information
     logging.info("getting network information")
     network_info = retrieve_network_info()
