@@ -291,6 +291,9 @@ def accept_pairing_request(node_id, payload):
 
 # handle newly created connection, debug: implement threading
 def handle_connection(connection):
+    # essential variables
+    source_ip = connection.getpeername()[0]
+
     # receive data from client
     message = receive_data(connection)
     
@@ -315,9 +318,9 @@ def handle_connection(connection):
 
         if splitted_payload[0] == "pair":
             public_key = accept_pairing_request(node_id, payload)
-            send_message()
+            send_message(client_ip, 1994, "pair_ack", public_key)
 
-   
+    # implement rest of the commands
 
 
 # create listening socket and... listen for connections :D
