@@ -317,9 +317,6 @@ def handle_data(message):
 
     # implement rest of the commands
 
-    # data to be returned to source
-    return return_data
-
 
 # handle newly created connection, debug: implement threading
 def handle_connection(connection):
@@ -327,11 +324,7 @@ def handle_connection(connection):
     message = receive_data(connection)
     
     # handover message to data handler
-    return_data = handle_data(message)
-
-    # reply client with returned data
-    if return_data:
-        connection.sendall(return_data.encode())
+    handle_data(message)
 
 
 # create listening socket and... listen for connections :D
