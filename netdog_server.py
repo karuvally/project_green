@@ -11,6 +11,9 @@ def main():
     # initialize the system
     initialize_system()
 
+    # make sure NetDog can connect to network
+    setup_network(server = True)
+
     # listen for message from clients
     create_new_listen_socket(1337)
 

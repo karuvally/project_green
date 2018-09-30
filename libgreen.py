@@ -503,6 +503,9 @@ def initialize_system():
         with open(os.path.join(config_dir, "private_key"), "wb") as pri_key_file:
             pri_key_file.write(key_pair["private_key"])
 
+
+# make sure NetDog can connect to network
+def setup_network(server = False)
     # get the current network information
     logging.info("getting network information")
     network_info = retrieve_network_info()
