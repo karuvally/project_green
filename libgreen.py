@@ -27,7 +27,7 @@ def is_server():
 
 
 # send data through network
-def send_data(destination_ip, port, command, payload):
+def send_message(destination_ip, port, command, payload):
     # get the hostname of the machine
     hostname = socket.gethostname()
 
@@ -103,7 +103,7 @@ def request_to_pair(network_info):
 
     # send pairing request
     logging.info("sending pairing request")
-    send_data(server[0]["ip_address"], 1337, "pair", public_key)
+    send_message(server[0]["ip_address"], 1337, "pair", public_key)
     
     # store server details in known_server
     sys.exit() # debug
