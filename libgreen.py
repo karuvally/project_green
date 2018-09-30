@@ -288,11 +288,12 @@ def accept_pairing_request(node_id, payload):
     # return the public key
     return public_key
 
-# handle data and act accordingly # debug add stuff for server
-def handle_data(message):
-    # essential varilables
-    return_data = None
 
+# handle newly created connection, debug: implement threading
+def handle_connection(connection):
+    # receive data from client
+    message = receive_data(connection)
+    
     # command + payload cannot be splitted, might be encrypted
     separated_message = message.split(",", 1)
 
@@ -313,18 +314,10 @@ def handle_data(message):
         splitted_payload = payload.split(",")
 
         if splitted_payload[0] == "pair":
-            return_data = accept_pairing_request(node_id, payload)
+            public_key = accept_pairing_request(node_id, payload)
+            send_message()
 
-    # implement rest of the commands
-
-
-# handle newly created connection, debug: implement threading
-def handle_connection(connection):
-    # receive data from client
-    message = receive_data(connection)
-    
-    # handover message to data handler
-    handle_data(message)
+   
 
 
 # create listening socket and... listen for connections :D
