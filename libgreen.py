@@ -19,8 +19,15 @@ from subprocess import Popen, PIPE
 
 
 # store the newly paired server info
-def store_server_info(server_id, payload):
+def store_server_info(server_id, public_key):
+    # essential stuff
+    config_dir = get_config_dir()
     logging.info("storing public key of server " + server_id)
+
+    # write the new server info to file
+    with open(os.path.join(config_dir, "known_server", "w")) as server_file:
+        server_file.write(server_id)
+        server_file.write(public_key)
 
 
 # check if the running program is server
