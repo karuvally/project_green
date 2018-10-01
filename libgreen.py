@@ -25,7 +25,7 @@ def store_server_info(server_id, public_key):
     logging.info("storing public key of server " + server_id)
 
     # write the new server info to file
-    with open(os.path.join(config_dir, "known_server", "w")) as server_file:
+    with open(os.path.join(config_dir, "known_server"), "w") as server_file:
         server_file.write(server_id)
         server_file.write(public_key)
 
