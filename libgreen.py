@@ -304,7 +304,7 @@ def handle_connection(connection):
     # receive data from client
     message = receive_data(connection)
     
-    # command + payload cannot be splitted, might be encrypted
+    # if command + payload cannot be splitted, might be encrypted
     separated_message = message.split(",", 1)
 
     # if message cannot be splitted, its corrupted
@@ -312,24 +312,26 @@ def handle_connection(connection):
         logging.critical("corrupt message received over network")
         return None # debug: replace this by "retransmit" command
     
-    # get the source node ID and payload
+    # get the source node ID and data 
     node_id = separated_message[0]
-    payload = separated_message[1]
+    data = separated_message[1]
 
     # look if ID exists in known_clients or known_server
     node_id_list = [node_info[0] for node_info in load_nodes()]
 
     # handle the pairing request
     if node_id not in node_id_list:
-        splitted_payload = payload.split(",")
+        data = data.split(",")
+        command = data[0]
+        payload = data[1]
 
-        if splitted_payload[0] == "pair":
-            public_key = accept_pairing_request(node_id, payload)
+        if command == "pair":
+            public_key = accept_pairing_request(node_id, payload) 
             send_message(client_ip, 1994, "pair_ack", public_key)
 
     # handle pair acknowledgement # debug: improve checks
     if not is_server() and load_known_server() == None:
-        if splitted_payload[0] == "pair_ack":
+        if command == "pair_ack":
             store_server_info(node_id, payload)
 
     # implement rest of the commands
