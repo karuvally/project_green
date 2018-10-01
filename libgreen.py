@@ -49,9 +49,6 @@ def send_message(destination_ip, port, command, payload):
 
 # load information about known_server
 def load_known_server():
-    # essential variables
-    known_server_info = None
-
     # get configuration directory
     config_dir = get_config_dir()
     known_server_file_path = os.path.join(config_dir, "known_server")
@@ -59,6 +56,7 @@ def load_known_server():
     # exit if the known_server file does not exist
     if not os.path.exists(known_server_file_path):
         logging.warning("known server does not exist :(")
+        return None
 
     # load data from known_server file
     with open(known_server_file_path, "r") as known_server_file:
