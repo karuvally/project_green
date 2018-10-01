@@ -18,11 +18,6 @@ from Crypto.PublicKey import RSA
 from subprocess import Popen, PIPE
 
 
-# store the newly paired server info
-def store_server_info(node_id, payload):
-    pass
-
-
 # check if the running program is server
 def is_server():
     if sys.argv[0].rfind("server") != -1:
@@ -332,7 +327,7 @@ def handle_connection(connection):
     # handle pair acknowledgement
     if not is_server():
         if load_known_server() == None:
-            store_server_info(node_id, payload)
+            pass
 
     # implement rest of the commands
 
