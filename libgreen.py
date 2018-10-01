@@ -278,15 +278,12 @@ def get_config_dir():
 
 
 # accept pairing request from client
-def accept_pairing_request(node_id, payload):
+def accept_pairing_request(node_id, public_key):
     logging.info("pairing request received")
 
     # essential varilables
     config_dir = get_config_dir()
     
-    # retrieve public_key from the payload
-    public_key = payload.split(",", 1)[1]
-
     # store the public_key, hostname pair to text file
     logging.info("storing public key and ID of the client")
     known_nodes_dir = os.path.join(get_config_dir(), "known_nodes")
