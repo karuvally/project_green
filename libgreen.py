@@ -26,7 +26,7 @@ def store_server_info(server_id, public_key):
 
     # write the new server info to file
     with open(os.path.join(config_dir, "known_server"), "w") as server_file:
-        server_file.write(server_id)
+        server_file.write(server_id + "\n")
         server_file.write(public_key)
 
 
@@ -285,7 +285,7 @@ def accept_pairing_request(node_id, public_key):
     config_dir = get_config_dir()
     
     # store the public_key, hostname pair to text file
-    logging.info("storing public key and ID of the client")
+    logging.info("storing public key and of client" + node_id)
     known_nodes_dir = os.path.join(get_config_dir(), "known_nodes")
 
     with open(os.path.join(known_nodes_dir, node_id), "w") as known_node_file:
