@@ -282,7 +282,7 @@ def accept_pairing_request(node_id, public_key):
     config_dir = get_config_dir()
     
     # store the public_key, hostname pair to text file
-    logging.info("storing public key and of client" + node_id)
+    logging.info("storing public key and of client " + node_id)
     known_nodes_dir = os.path.join(get_config_dir(), "known_nodes")
 
     with open(os.path.join(known_nodes_dir, node_id), "w") as known_node_file:
@@ -337,6 +337,9 @@ def handle_connection(connection):
 
     # implement rest of the commands
 
+    # close the listen socket
+    daemon_socket.close()
+
 
 # create listening socket and... listen for connections :D
 def create_new_listen_socket(port):
@@ -357,9 +360,6 @@ def create_new_listen_socket(port):
 
         # close the connection
         connection.close()
-
-    # close the listen socket
-    daemon_socket.close()
 
 
 # find a host running NetDog

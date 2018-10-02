@@ -1,9 +1,10 @@
 TODO
 ----
+* fix the numbering thing in probe_interfaces()
 * Intercept Ctrl + C and gracefully exit
 * add firewall exceptions during installation
 * each new connection should be separate thread in create_new_listen_socket()
-* refactor find_network()
+* refactor probe_interfaces()
 * elegant code to find network address (without host bit)
 
 DONE
