@@ -117,9 +117,6 @@ def request_to_pair(network_info):
     # send pairing request
     logging.info("sending pairing request")
     send_message(server[0]["ip_address"], 1337, "pair", public_key)
-    
-    # store server details in known_server
-    sys.exit() # debug
 
 
 # the ping function for threads 
