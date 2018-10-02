@@ -62,7 +62,7 @@ def load_known_server():
 
     # exit if the known_server file does not exist
     if not os.path.exists(known_server_file_path):
-        logging.warning("known server does not exist :(")
+        logging.warning("known_server file does not exist")
         return None
 
     # load data from known_server file
@@ -344,10 +344,10 @@ def handle_connection(connection):
 # create listening socket and... listen for connections :D
 def create_new_listen_socket(port):
     # create the socket
-    logging.info("trying to create listening socket")
     daemon_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     daemon_socket.bind(("0.0.0.0", port))
     daemon_socket.listen(5) 
+    logging.info("listening on port " + str(port))
 
     # listen for incoming connections
     while True:
