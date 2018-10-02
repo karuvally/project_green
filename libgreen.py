@@ -306,7 +306,7 @@ def handle_connection(connection):
     config_dir = get_config_dir()
 
     # receive data from client
-    message = receive_data(connection)
+    message = receive_message(connection)
     
     # if command + payload cannot be splitted, might be encrypted
     separated_message = message.split(",", 1)
@@ -455,7 +455,7 @@ def generate_keys():
 
 
 # handle the incoming data
-def receive_data(connection):
+def receive_message(connection):
     # an empty string for storing data
     data = ""
 
