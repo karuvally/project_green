@@ -182,7 +182,7 @@ def retrieve_network_info():
 
 
 # find a usable network interface
-def find_network(server = False):
+def probe_interfaces(server = False):
     # essential variables
     config_dir = get_config_dir()
     host_list = None
@@ -518,7 +518,7 @@ def setup_network(server = False):
     network_info = retrieve_network_info()
 
     if network_info["network_status"] == False:
-        network_info = find_network(server)
+        network_info = probe_interfaces(server)
 
     # if no known_server, initiate pairing
     if server == False:

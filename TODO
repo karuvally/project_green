@@ -2,13 +2,13 @@ TODO
 ----
 * Intercept Ctrl + C and gracefully exit
 * add firewall exceptions during installation
-* make sure client can receive public_key returned by the server
 * each new connection should be separate thread in create_new_listen_socket()
 * refactor find_network()
 * elegant code to find network address (without host bit)
 
 DONE
 ----
+* make sure client can receive public_key returned by the server
 * more useful logging for find_hosts()
 * do proper netmasking
 * enable log to console
