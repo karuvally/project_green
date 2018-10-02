@@ -336,9 +336,9 @@ def handle_connection(connection):
             store_server_info(node_id, payload)
 
     # implement rest of the commands
-
-    # close the listen socket
-    daemon_socket.close()
+    
+    # close the connection
+    connection.close()
 
 
 # create listening socket and... listen for connections :D
@@ -358,8 +358,8 @@ def create_new_listen_socket(port):
         logging.info("new connection received from " + source_address[0])
         handle_connection(connection) # debug: implement threading
 
-        # close the connection
-        connection.close()
+    # close the listen socket
+    daemon_socket.close()
 
 
 # find a host running NetDog
