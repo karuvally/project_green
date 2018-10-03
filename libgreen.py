@@ -187,7 +187,6 @@ def probe_interfaces(server = False):
     config_dir = get_config_dir()
     host_list = None
     known_network_file_path = os.path.join(config_dir, "known_network")
-    user_choice = None
 
     # find interfaces and remove loopback from them
     available_interfaces = netifaces.interfaces()
@@ -205,9 +204,9 @@ def probe_interfaces(server = False):
             network_address = address_dict[netifaces.AF_INET][0]["addr"]
             print(interface, ":", network_address)
 
-        while user_choice not in available_interfaces:
+        while interface not in available_interfaces:
             interface = input("interface>")
-            address_dict = netifaces.ifaddresses(user_choice)
+            address_dict = netifaces.ifaddresses(interface)
 
         # find network address
         network_address = address_dict[netifaces.AF_INET][0]["addr"]
@@ -220,7 +219,7 @@ def probe_interfaces(server = False):
         network_info = {
             "network_address": network_address,
             "netmask": netmask,
-            "interface": available_interfaces[user_choice]
+            "interface": interface 
         }
 
         logging.info("interface " + interface + " with address " +
