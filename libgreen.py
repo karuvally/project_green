@@ -484,6 +484,9 @@ def initialize_system():
     # essential variables
     config_dir = get_config_dir()
     known_nodes_dir = os.path.join(config_dir, "known_nodes")
+    
+    # make system capture Ctrl + C
+    signal.signal(signal.SIGINT, signal_handler)
 
     # create config and known_nodes dir
     if not os.path.isdir(known_nodes_dir):
