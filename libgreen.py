@@ -196,7 +196,7 @@ def probe_interfaces(server = False):
     if server == True:
         print("choose network interface")
         for interface in available_interfaces:
-            address_dict = netifaces.ifaddresses(available_interfaces[i])
+            address_dict = netifaces.ifaddresses(interface)
 
             # skip interface if it lacks IPV4 stuff
             if not netifaces.AF_INET in address_dict:
@@ -206,28 +206,8 @@ def probe_interfaces(server = False):
             print(interface, ":", network_address)
 
         while user_choice not in available_interfaces:
-            user_choice = input("interface>")
+            interface = input("interface>")
             address_dict = netifaces.ifaddresses(user_choice)
-
-
-        """
-        print("choose network interface")
-        for i in range(0, len(available_interfaces)):
-            address_dict = netifaces.ifaddresses(available_interfaces[i])
-
-            # skip the interface if it lacks IPv4 stuff
-            if not netifaces.AF_INET in address_dict:
-                continue
-
-            # debug: printing i values causes numbers to skip
-            network_address = address_dict[netifaces.AF_INET][0]["addr"]
-            print(i+1, ") " + available_interfaces[i] + ": " + network_address)
-
-        user_choice = int(input(">")) - 1
-
-        interface = available_interfaces[user_choice]
-        address_dict = netifaces.ifaddresses(interface)
-        """
 
         # find network address
         network_address = address_dict[netifaces.AF_INET][0]["addr"]
