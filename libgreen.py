@@ -14,8 +14,15 @@ import netifaces
 import pathlib
 import threading
 import netaddr
+import signal
 from Crypto.PublicKey import RSA
 from subprocess import Popen, PIPE
+
+
+# exit gracefully when SIGINT happens
+def signal_handler(signal, frame):
+    logging.info("exiting gracefully\n")
+    sys.exit(0)
 
 
 # store the newly paired server info
