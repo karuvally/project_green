@@ -20,6 +20,32 @@ from Crypto.PublicKey import RSA
 from subprocess import Popen, PIPE
 
 
+# retrieve ip of client from lookup table
+def retrieve_client_address(node_id):
+    # essential variables
+    config_dir = get_config_dir()
+    lookup_table_path = os.path.join(config_dir, "lookup_table.json")
+
+    # read lookup_table from disk if it exists
+    if os.path.exists(lookup_table_path):
+        with open(lookup_table_path, "r") as lookup_table_file:
+            lookup_table_raw = lookup_table_file.read()
+
+        # process the JSON data
+        lookup_table = json.loads(lookup_table_raw)
+
+    else:
+        logging.warning("lookup table does not exist")
+        return None
+
+    # if node_id is *, return the whole dictionary
+    if node_id == "*":
+        return lookup_table
+
+    else:
+        return lookup_table[node_id] 
+
+
 # update ip addresses in lookup table
 def update_lookup_table(node_id, ip_address):
     # essential variables
@@ -37,7 +63,7 @@ def update_lookup_table(node_id, ip_address):
     else:
         lookup_table = {}
 
-    # update the information
+    # update information, convert updated data to JSON
     lookup_table.update({node_id: ip_address})
     lookup_table_raw = json.dumps(lookup_table)
 
