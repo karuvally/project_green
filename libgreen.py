@@ -21,8 +21,16 @@ from subprocess import Popen, PIPE
 
 # update ip addresses in lookup table
 def update_lookup_table(node_id, ip_address):
-    pass
+    # essential variables
+    config_dir = get_config_dir()
+    lookup_table_path = os.path.join(config_dir, "lookup_table")
 
+    # read lookup_table from disk
+
+    # update the information
+
+    # write updated lookup table to disk
+    
 
 # exit gracefully when SIGINT happens
 def signal_handler(signal, frame):
