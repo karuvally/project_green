@@ -25,7 +25,14 @@ def update_lookup_table(node_id, ip_address):
     config_dir = get_config_dir()
     lookup_table_path = os.path.join(config_dir, "lookup_table")
 
-    # read lookup_table from disk
+    # read lookup_table from disk if it exists
+    if os.path.exists(lookup_table_path):
+        with open(lookup_table_path, "r") as lookup_table_file:
+            lookup_table_raw = lookup_table_file.read()
+    else:
+        lookup_table = {}
+
+    # process the json data
 
     # update the information
 
