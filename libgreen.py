@@ -19,6 +19,11 @@ from Crypto.PublicKey import RSA
 from subprocess import Popen, PIPE
 
 
+# update ip addresses in lookup table
+def update_lookup_table(node_id, ip_address):
+    pass
+
+
 # exit gracefully when SIGINT happens
 def signal_handler(signal, frame):
     logging.info("exiting gracefully\n")
