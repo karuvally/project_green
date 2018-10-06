@@ -39,10 +39,11 @@ def update_lookup_table(node_id, ip_address):
 
     # update the information
     lookup_table.update({node_id: ip_address})
+    lookup_table_raw = json.dumps(lookup_table)
 
     # write updated lookup table to disk
     with open(lookup_table_path, "w") as lookup_table_file:
-        lookup_table_file.write(lookup_table)
+        lookup_table_file.write(lookup_table_raw)
  
 
 # exit gracefully when SIGINT happens
