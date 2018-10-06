@@ -15,6 +15,7 @@ import pathlib
 import threading
 import netaddr
 import signal
+import json
 from Crypto.PublicKey import RSA
 from subprocess import Popen, PIPE
 
@@ -23,21 +24,26 @@ from subprocess import Popen, PIPE
 def update_lookup_table(node_id, ip_address):
     # essential variables
     config_dir = get_config_dir()
-    lookup_table_path = os.path.join(config_dir, "lookup_table")
+    lookup_table_path = os.path.join(config_dir, "lookup_table.json")
 
     # read lookup_table from disk if it exists
     if os.path.exists(lookup_table_path):
         with open(lookup_table_path, "r") as lookup_table_file:
             lookup_table_raw = lookup_table_file.read()
+
+        # process the JSON data
+        lookup_table = json.loads(lookup_table_raw)
+
     else:
         lookup_table = {}
 
-    # process the json data
-
     # update the information
+    lookup_table.update({node_id: ip_address})
 
     # write updated lookup table to disk
-    
+    with open(lookup_table_path, "w") as lookup_table_file:
+        lookup_table_file.write(lookup_table)
+ 
 
 # exit gracefully when SIGINT happens
 def signal_handler(signal, frame):
