@@ -609,8 +609,9 @@ def setup_network(server = False):
 
     # if the file does not, create it
     else:
+        last_known_address = network_info["localhost_address"]
         with open(last_known_address_path, "w") as last_known_address_file:
-            last_known_address_file.write(network_info["localhost_address"])
+            last_known_address_file.write(last_known_address)
 
     if network_info["network_status"] == False:
         network_info = probe_interfaces(server)
@@ -621,6 +622,10 @@ def setup_network(server = False):
             # start client pairing request
             logging.info("the client is not paired with a server")
             request_to_pair(network_info)
+
+        # cross check current and last known address
+        if network_info["localhost_address"] != last_known_address:
+            # send update_address message
 
         # debug: future fix, check if known_server has a valid data
 
