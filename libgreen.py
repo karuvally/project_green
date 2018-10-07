@@ -20,6 +20,10 @@ from Crypto.PublicKey import RSA
 from subprocess import Popen, PIPE
 
 
+# global variables
+lookup_table_lock = threading.Lock()
+
+
 # retrieve ip of client from lookup table
 def retrieve_client_address(node_id):
     # essential variables
@@ -51,6 +55,7 @@ def update_lookup_table(node_id, ip_address):
     # essential variables
     config_dir = get_config_dir()
     lookup_table_path = os.path.join(config_dir, "lookup_table.json")
+    global lookup_table_lock
 
     # read lookup_table from disk if it exists
     if os.path.exists(lookup_table_path):
@@ -67,9 +72,15 @@ def update_lookup_table(node_id, ip_address):
     lookup_table.update({node_id: ip_address})
     lookup_table_raw = json.dumps(lookup_table)
 
+    # acquire the lock
+    lookup_table_lock.acquire()
+
     # write updated lookup table to disk
     with open(lookup_table_path, "w") as lookup_table_file:
         lookup_table_file.write(lookup_table_raw)
+
+    # release the lock
+    lookup_table_lock.relase()
  
 
 # exit gracefully when SIGINT happens

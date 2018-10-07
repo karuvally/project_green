@@ -1,6 +1,7 @@
 TODO
 ----
-* store lookup table at shutdown
+* thread handling in lookup_table write
+* club the data into files
 * do not create known_nodes dir in client
 * add firewall exceptions during installation
 * refactor probe_interfaces()
@@ -8,6 +9,7 @@ TODO
 
 DONE
 ----
+* test retrieve_client_address()
 * each new connection should be separate thread in create_new_listen_socket()
 * Intercept Ctrl + C and gracefully exit
 * fix the numbering thing in probe_interfaces()
