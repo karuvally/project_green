@@ -282,7 +282,8 @@ def probe_interfaces(server = False):
             address_dict = netifaces.ifaddresses(user_choice)
 
         # find network address
-        network_address = address_dict[netifaces.AF_INET][0]["addr"]
+        localhost_address = address_dict[netifaces.AF_INET][0]["addr"]
+        network_address = localhost_address 
         network_address = network_address[: network_address.rfind(".")]
         network_address += ".0"
 
@@ -290,6 +291,7 @@ def probe_interfaces(server = False):
 
         # append the data to network_info
         network_info = {
+            "localhost_address": localhost_address,
             "network_address": network_address,
             "netmask": netmask,
             "interface": user_choice 
@@ -594,10 +596,16 @@ def initialize_system():
 def setup_network(server = False):
     # essential variables
     config_dir = get_config_dir()
+    last_known_address_path = os.path.join(config_dir, "last_known_address")
 
     # get the current network information
     logging.info("getting network information")
     network_info = retrieve_network_info()
+
+    # load last known address if it exists
+    if os.path.exists(last_known_address_path):
+        with open(last_known_address_path, "r") as last_known_address_file:
+            last_known_address = last_known_address_file.read()
 
     if network_info["network_status"] == False:
         network_info = probe_interfaces(server)

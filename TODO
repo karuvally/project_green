@@ -1,5 +1,6 @@
 TODO
 ----
+* handle situation when client finds no server
 * club the data into files
 * do not create known_nodes dir in client
 * add firewall exceptions during installation
