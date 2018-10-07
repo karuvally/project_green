@@ -1,6 +1,5 @@
 TODO
 ----
-* thread handling in lookup_table write
 * club the data into files
 * do not create known_nodes dir in client
 * add firewall exceptions during installation
@@ -9,6 +8,7 @@ TODO
 
 DONE
 ----
+* thread handling in lookup_table write
 * test retrieve_client_address()
 * each new connection should be separate thread in create_new_listen_socket()
 * Intercept Ctrl + C and gracefully exit

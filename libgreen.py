@@ -303,6 +303,11 @@ def probe_interfaces(server = False):
         for interface in available_interfaces:
             # find address of each interface
             address_dict = netifaces.ifaddresses(interface)
+
+            # skip interface if it lacks IPV4 stuff
+            if not netifaces.AF_INET in address_dict:
+                continue
+
             network_address = address_dict[netifaces.AF_INET][0]["addr"]
             network_address = network_address[: network_address.rfind(".")]
             network_address += ".0"
