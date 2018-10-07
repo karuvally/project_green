@@ -607,6 +607,11 @@ def setup_network(server = False):
         with open(last_known_address_path, "r") as last_known_address_file:
             last_known_address = last_known_address_file.read()
 
+    # if the file does not, create it
+    else:
+        with open(last_known_address_path, "w") as last_known_address_file:
+            last_known_address_file.write(network_info["localhost_address"])
+
     if network_info["network_status"] == False:
         network_info = probe_interfaces(server)
 
