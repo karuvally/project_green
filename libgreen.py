@@ -28,7 +28,7 @@ lookup_table_lock = threading.Lock()
 def retrieve_client_address(node_id):
     # essential variables
     config_dir = get_config_dir()
-    lookup_table_path = os.path.join(config_dir, "lookup_table.json")
+    lookup_table_path = os.path.join(config_dir, "lookup_table")
 
     # read lookup_table from disk if it exists
     if os.path.exists(lookup_table_path):
@@ -54,7 +54,7 @@ def retrieve_client_address(node_id):
 def update_lookup_table(node_id, ip_address):
     # essential variables
     config_dir = get_config_dir()
-    lookup_table_path = os.path.join(config_dir, "lookup_table.json")
+    lookup_table_path = os.path.join(config_dir, "lookup_table")
     global lookup_table_lock
 
     # read lookup_table from disk if it exists
@@ -625,7 +625,7 @@ def setup_network(server = False):
 
         # cross check current and last known address
         if network_info["localhost_address"] != last_known_address:
-            # send update_address message
+            # debug: send update_address message
 
         # debug: future fix, check if known_server has a valid data
 

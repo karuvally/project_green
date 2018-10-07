@@ -1,5 +1,7 @@
 TODO
 ----
+* convert known server to JSON
+* what to do when server can't be reached
 * handle situation when client finds no server
 * club the data into files
 * do not create known_nodes dir in client
