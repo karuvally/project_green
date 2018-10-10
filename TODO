@@ -1,6 +1,6 @@
 TODO
 ----
-* convert known server to JSON
+* convert known_server to JSON (server_id, ip, pub_key)
 * what to do when server can't be reached
 * handle situation when client finds no server
 * club the data into files

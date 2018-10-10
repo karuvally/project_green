@@ -80,7 +80,7 @@ def update_lookup_table(node_id, ip_address):
         lookup_table_file.write(lookup_table_raw)
 
     # release the lock
-    lookup_table_lock.relase()
+    lookup_table_lock.release()
  
 
 # exit gracefully when SIGINT happens
@@ -625,6 +625,7 @@ def setup_network(server = False):
 
         # cross check current and last known address
         if network_info["localhost_address"] != last_known_address:
+            pass
             # debug: send update_address message
 
         # debug: future fix, check if known_server has a valid data
