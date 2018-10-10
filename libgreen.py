@@ -144,7 +144,7 @@ def load_known_server():
 
     # load data from known_server file
     with open(known_server_file_path, "r") as known_server_file:
-        known_server_info = known_server_file.read().strip(",")
+        known_server_info = json.loads(known_server_file.read())
 
     return known_server_info
 
