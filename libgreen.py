@@ -90,7 +90,7 @@ def signal_handler(signal, frame):
 
 
 # store the newly paired server info
-def store_server_info(server_id, public_key):
+def store_server_info(server_id, server_ip, public_key):
     # essential stuff
     config_dir = get_config_dir()
     logging.info("storing public key of server " + server_id)
@@ -374,10 +374,10 @@ def accept_pairing_request(node_id, public_key):
     return public_key
 
 
-# handle newly created connection, debug: implement threading
+# handle newly created connection
 def handle_connection(connection):
     # essential variables
-    client_ip = connection.getpeername()[0]
+    node_ip = connection.getpeername()[0]
     config_dir = get_config_dir()
 
     # receive data from client
@@ -406,12 +406,12 @@ def handle_connection(connection):
 
         if command == "pair":
             public_key = accept_pairing_request(node_id, payload) 
-            send_message(client_ip, 1994, "pair_ack", public_key)
+            send_message(node_ip, 1994, "pair_ack", public_key)
 
     # handle pair acknowledgement # debug: improve checks
     if not is_server() and load_known_server() == None:
         if command == "pair_ack":
-            store_server_info(node_id, payload)
+            store_server_info(node_id, node_ip, payload)
 
     # implement rest of the commands
     
@@ -625,8 +625,7 @@ def setup_network(server = False):
 
         # cross check current and last known address
         if network_info["localhost_address"] != last_known_address:
-            pass
-            # debug: send update_address message
+            
 
         # debug: future fix, check if known_server has a valid data
 
