@@ -316,7 +316,8 @@ def probe_interfaces(server = False):
             if not netifaces.AF_INET in address_dict:
                 continue
 
-            network_address = address_dict[netifaces.AF_INET][0]["addr"]
+            localhost_address = address_dict[netifaces.AF_INET][0]["addr"]
+            network_address = localhost_address
             network_address = network_address[: network_address.rfind(".")]
             network_address += ".0"
 
@@ -324,6 +325,7 @@ def probe_interfaces(server = False):
 
             # append the data to network_info
             network_info = {
+                "localhost_address": localhost_address
                 "network_address": network_address,
                 "netmask": netmask,
                 "interface": interface
@@ -602,6 +604,7 @@ def initialize_system():
 def setup_network(server = False):
     # essential variables
     config_dir = get_config_dir()
+    last_known_address = None
     last_known_address_path = os.path.join(config_dir, "last_known_address")
 
     # get the current network information
@@ -613,25 +616,28 @@ def setup_network(server = False):
         with open(last_known_address_path, "r") as last_known_address_file:
             last_known_address = last_known_address_file.read()
 
-    # if the file does not, create it
-    else:
+    if network_info["network_status"] == False or last_known_address == None:
+        network_info = probe_interfaces(server)
+
+    # if the last_known_address file does not exist, create it
+    if last_known_address == None:
         last_known_address = network_info["localhost_address"]
         with open(last_known_address_path, "w") as last_known_address_file:
             last_known_address_file.write(last_known_address)
 
-    if network_info["network_status"] == False:
-        network_info = probe_interfaces(server)
-
-    # if no known_server, initiate pairing
+    # if localhost is client, do stuff :D
     if server == False:
+        # if no known_server is present, find one and pair
         if not os.path.exists(os.path.join(config_dir, "known_server")):
             # start client pairing request
             logging.info("the client is not paired with a server")
             request_to_pair(network_info)
 
-        # cross check current and last known address
+        # check if the server is reachable
+
+        # if current address != last known address, do address_update
         if network_info["localhost_address"] != last_known_address:
-            
+            pass # debug
 
         # debug: future fix, check if known_server has a valid data
 
