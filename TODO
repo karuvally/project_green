@@ -1,6 +1,7 @@
 TODO
 ----
-* convert known_server to JSON (server_id, ip, pub_key)
+* convert known_network to dict
+* convert messages to dict
 * what to do when server can't be reached
 * handle situation when client finds no server
 * club the data into files
@@ -11,6 +12,7 @@ TODO
 
 DONE
 ----
+* convert known_server to JSON (server_id, ip, pub_key)
 * thread handling in lookup_table write
 * test retrieve_client_address()
 * each new connection should be separate thread in create_new_listen_socket()

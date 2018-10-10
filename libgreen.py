@@ -325,7 +325,7 @@ def probe_interfaces(server = False):
 
             # append the data to network_info
             network_info = {
-                "localhost_address": localhost_address
+                "localhost_address": localhost_address,
                 "network_address": network_address,
                 "netmask": netmask,
                 "interface": interface
@@ -638,6 +638,4 @@ def setup_network(server = False):
         # if current address != last known address, do address_update
         if network_info["localhost_address"] != last_known_address:
             pass # debug
-
-        # debug: future fix, check if known_server has a valid data
 
