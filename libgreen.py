@@ -21,15 +21,24 @@ from subprocess import Popen, PIPE
 
 
 def new_probe_interfaces():
+    # essential variables
+    interface_list = []
+
     # list available interfaces and remove loopback
     available_interfaces = netifaces.interfaces()
     available_interfaces.remove("lo")
 
-    # remove interface if it lacks IPv4 stuff
+    for interface in available_interfaces:
+        # fetch interface_details
+        interface_details = netifaces.ifaddresses(interface)
 
-    # get network details
+        # remove interface if it lacks IPv4 stuff
+        if not netifaces.AF_INET in interface_details:
+            continue
 
-    # add it to interface_list
+        # generate network details dict
+
+    # return interface_list
 
 
 # global variables
