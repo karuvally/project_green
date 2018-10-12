@@ -292,16 +292,8 @@ def retrieve_network_info():
         with open(known_network_file_path, "r") as known_network_file:
             network_info = json.loads(known_network_file.read())
 
-        # look if network is up, network is up if network_status == 0
-        network_status = ping_address(network_info["localhost_address"])
-        if network_status == False:
-            logging.info("known network is down")
-
     else:
         logging.info("no known network exists")
-
-    # append network status to network_info
-    network_info.update({"network_status": network_status})
 
     # return network info
     return network_info
