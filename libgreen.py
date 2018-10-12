@@ -20,15 +20,18 @@ from Crypto.PublicKey import RSA
 from subprocess import Popen, PIPE
 
 
+# global variables
+lookup_table_lock = threading.Lock()
+
+
 # write configuration to disk in JSON
 def write_configuration(data, filename):
     # essential variables
+    config_dir = get_config_dir()
 
-    # acquire thread lock
-    
     # write configuration
-
-    # release lock
+    with open(filename, "w") as config_file:
+        config_file.write(json.dumps(data))
 
 
 # probe interfaces, the new way
@@ -67,10 +70,6 @@ def new_probe_interfaces():
 
     # return interface_list
     return interface_list
-
-
-# global variables
-lookup_table_lock = threading.Lock()
 
 
 # retrieve ip of client from lookup table
