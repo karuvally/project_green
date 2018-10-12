@@ -29,14 +29,25 @@ def new_probe_interfaces():
     available_interfaces.remove("lo")
 
     for interface in available_interfaces:
-        # fetch interface_details
+        # get all the information about the interface
         interface_details = netifaces.ifaddresses(interface)
 
         # remove interface if it lacks IPv4 stuff
         if not netifaces.AF_INET in interface_details:
             continue
 
-        # generate network details dict
+        # extract required information from interface_details
+        localhost_address = interface_details[netifaces.AF_INET][0]["addr"]
+        netmask = interface_details[netifaces.AF_INET][0]["netmask"] 
+        
+        # generate network address
+        network_address = localhost_address 
+        network_address = network_address[: network_address.rfind(".")]
+        network_address += ".0"
+
+        interface_list.append({
+            "localhost_address": localhost_address,
+        })
 
     # return interface_list
 
