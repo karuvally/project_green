@@ -20,6 +20,18 @@ from Crypto.PublicKey import RSA
 from subprocess import Popen, PIPE
 
 
+# write configuration to disk in JSON
+def write_configuration(data, filename):
+    # essential variables
+
+    # acquire thread lock
+    
+    # write configuration
+
+    # release lock
+
+
+# probe interfaces, the new way
 def new_probe_interfaces():
     # essential variables
     interface_list = []
