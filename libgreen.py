@@ -242,7 +242,7 @@ def retrieve_network_info():
             netmask = network_info[2]
 
         # look if network is up, network is up if network_status == 0
-        network_status = ping_address(network_address, broadcast = True)
+        network_status = ping_address(network_address)
 
         if network_status == False:
             logging.info("known network is down")
@@ -342,8 +342,7 @@ def probe_interfaces(server = False):
     # debug: future fix, move this block outside the function
     if host_list or server == True:
         with open(known_network_file_path, "w") as known_network_file:
-            known_network_file.write(interface + "," + network_address
-            + "," + netmask)
+            known_network_file.write(json.dumps(network_info))
     
     # return network address to calling function
     return network_info 
@@ -609,7 +608,7 @@ def setup_network(server = False):
 
     # get the current network information
     logging.info("getting network information")
-    network_info = retrieve_network_info()
+    network_info = retrieve_network_info() # debug
 
     # load last known address if it exists
     if os.path.exists(last_known_address_path):

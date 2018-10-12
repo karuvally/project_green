@@ -1,5 +1,11 @@
 TODO
 ----
+* integrate last_known_address into known_network
+* convert known_network into json
+* replace ping broadcast with own ping
+* do encryption
+* why is client not exiting peacfully?
+* properly find broadcast network of address
 * convert known_network to dict
 * convert messages to dict
 * what to do when server can't be reached
