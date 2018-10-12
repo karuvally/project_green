@@ -54,6 +54,7 @@ def new_probe_interfaces():
         })
 
     # return interface_list
+    return interface_list
 
 
 # global variables
