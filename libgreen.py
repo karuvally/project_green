@@ -20,6 +20,18 @@ from Crypto.PublicKey import RSA
 from subprocess import Popen, PIPE
 
 
+def new_probe_interfaces():
+    # list available interfaces and remove loopback
+    available_interfaces = netifaces.interfaces()
+    available_interfaces.remove("lo")
+
+    # remove interface if it lacks IPv4 stuff
+
+    # get network details
+
+    # add it to interface_list
+
+
 # global variables
 lookup_table_lock = threading.Lock()
 
@@ -249,7 +261,6 @@ def retrieve_network_info():
 
     # return network info
     return network_info
-    
 
 
 # find a usable network interface
@@ -596,10 +607,10 @@ def setup_network(server = False):
     last_known_address = None
     last_known_address_path = os.path.join(config_dir, "last_known_address")
 
-    # get the current network information
+    # get last known network information
     logging.info("getting network information")
     network_info = retrieve_network_info()
-
+    
     # load last known address if it exists
     if os.path.exists(last_known_address_path):
         with open(last_known_address_path, "r") as last_known_address_file:
