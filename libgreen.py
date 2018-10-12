@@ -45,8 +45,12 @@ def new_probe_interfaces():
         network_address = network_address[: network_address.rfind(".")]
         network_address += ".0"
 
+        # generate interface information dictionary
         interface_list.append({
             "localhost_address": localhost_address,
+            "network_address": network_address,
+            "netmask": netmask,
+            "interface": interface
         })
 
     # return interface_list
