@@ -21,17 +21,25 @@ from subprocess import Popen, PIPE
 
 
 # global variables
-lookup_table_lock = threading.Lock()
+thread_lock = threading.Lock()
 
 
 # write configuration to disk in JSON
 def write_configuration(data, filename):
     # essential variables
     config_dir = get_config_dir()
+    global thread_lock
 
+
+    # acquire thread lock
+    thread_lock.acquire()
+    
     # write configuration
     with open(filename, "w") as config_file:
         config_file.write(json.dumps(data))
+
+    # release lock
+    thread_lock.release()
 
 
 # probe interfaces, the new way
@@ -103,7 +111,7 @@ def update_lookup_table(node_id, ip_address):
     # essential variables
     config_dir = get_config_dir()
     lookup_table_path = os.path.join(config_dir, "lookup_table")
-    global lookup_table_lock
+    global thread_lock 
 
     # read lookup_table from disk if it exists
     if os.path.exists(lookup_table_path):
@@ -121,14 +129,14 @@ def update_lookup_table(node_id, ip_address):
     lookup_table_raw = json.dumps(lookup_table)
 
     # acquire the lock
-    lookup_table_lock.acquire()
+    thread_lock.acquire()
 
     # write updated lookup table to disk
     with open(lookup_table_path, "w") as lookup_table_file:
         lookup_table_file.write(lookup_table_raw)
 
     # release the lock
-    lookup_table_lock.release()
+    thread_lock.release()
  
 
 # exit gracefully when SIGINT happens
