@@ -259,6 +259,7 @@ def probe_interfaces(server = False):
     host_list = None
     known_network_file_path = os.path.join(config_dir, "known_network")
     user_choice = "" 
+    network_info = None
 
     # find interfaces and remove loopback from them
     available_interfaces = netifaces.interfaces()
@@ -333,11 +334,6 @@ def probe_interfaces(server = False):
                 logging.info("network: " + network_address + " found")
                 break
 
-    # debug: future fix, move this block outside the function
-    if host_list or server == True:
-        with open(known_network_file_path, "w") as known_network_file:
-            known_network_file.write(json.dumps(network_info))
-    
     # return network address to calling function
     return network_info 
 

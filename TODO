@@ -1,8 +1,6 @@
 TODO
 ----
-* integrate last_known_address into known_network
-* convert known_network into json
-* replace ping broadcast with own ping
+* store_known_network code
 * do encryption
 * why is client not exiting peacfully?
 * properly find broadcast network of address
@@ -18,6 +16,10 @@ TODO
 
 DONE
 ----
+* integrate last_known_address into known_network
+* move network_status outside retrieve_network_info()
+* replace ping broadcast with own ping
+* convert known_network into json
 * convert known_server to JSON (server_id, ip, pub_key)
 * thread handling in lookup_table write
 * test retrieve_client_address()
