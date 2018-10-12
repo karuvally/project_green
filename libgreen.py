@@ -226,36 +226,30 @@ def ping_address(ip_address, broadcast = False):
 def retrieve_network_info():
     # essential variables
     config_dir = get_config_dir()
-    network_status = False 
-    interface = None
-    network_address = None
-    netmask = None
     known_network_file_path = os.path.join(config_dir, "known_network")
+    network_status = False
+    network_info = {}
 
     # look if known_network exists
     if os.path.exists(known_network_file_path):
         logging.info("using known network")
         with open(known_network_file_path, "r") as known_network_file:
-            network_info = known_network_file.read().rstrip().split(",")
-            interface = network_info[0]
-            network_address = network_info[1]
-            netmask = network_info[2]
+            network_info = json.loads(known_network_file.read())
 
         # look if network is up, network is up if network_status == 0
-        network_status = ping_address(network_address)
-
+        network_status = ping_address(network_info["localhost_address"])
         if network_status == False:
             logging.info("known network is down")
 
     else:
         logging.info("no known network exists")
+
+    # append network status to network_info
+    network_info.append(network_status)
+
+    # return network info
+    return network_info
     
-    return ({
-        "interface": interface,
-        "network_address": network_address,
-        "netmask": netmask,
-        "network_status": network_status
-    })
 
 
 # find a usable network interface
@@ -608,7 +602,7 @@ def setup_network(server = False):
 
     # get the current network information
     logging.info("getting network information")
-    network_info = retrieve_network_info() # debug
+    network_info = retrieve_network_info()
 
     # load last known address if it exists
     if os.path.exists(last_known_address_path):
