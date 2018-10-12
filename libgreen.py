@@ -245,7 +245,7 @@ def retrieve_network_info():
         logging.info("no known network exists")
 
     # append network status to network_info
-    network_info.append(network_status)
+    network_info.update(network_status)
 
     # return network info
     return network_info
