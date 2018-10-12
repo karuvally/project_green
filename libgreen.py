@@ -25,7 +25,7 @@ thread_lock = threading.Lock()
 
 
 # write configuration to disk in JSON
-def write_configuration(data, filename):
+def write_configuration(config, filename):
     # essential variables
     config_dir = get_config_dir()
     global thread_lock
@@ -36,7 +36,7 @@ def write_configuration(data, filename):
     
     # write configuration
     with open(filename, "w") as config_file:
-        config_file.write(json.dumps(data))
+        config_file.write(json.dumps(config))
 
     # release lock
     thread_lock.release()
