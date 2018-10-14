@@ -28,14 +28,13 @@ thread_lock = threading.Lock()
 def read_configuration(filename):
     # essential variables
     config_dir = get_config_dir()
+    config = None
     config_file_path = os.path.join(config_dir, filename)
 
     # read configuration
     if os.path.exists(config_file_path):
         with open(config_file_path, "r") as config_file:
             config = json.loads(config_file.read())
-    else:
-        return None
 
     # return configuration
     return config
@@ -47,7 +46,6 @@ def write_configuration(config, filename):
     config_dir = get_config_dir()
     config_file_path = os.path.join(config_dir, filename)
     global thread_lock
-
 
     # acquire thread lock
     thread_lock.acquire()
