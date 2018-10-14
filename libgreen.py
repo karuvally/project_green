@@ -64,7 +64,7 @@ def write_configuration(config, filename):
 # probe interfaces, the new way
 def probe_interfaces():
     # essential variables
-    interface_list = []
+    interface_dict = {}
 
     # list available interfaces and remove loopback
     available_interfaces = netifaces.interfaces()
@@ -88,15 +88,15 @@ def probe_interfaces():
         network_address += ".0"
 
         # generate interface information dictionary
-        interface_list.append({
+        interface_dict.update({interface: {
             "localhost_address": localhost_address,
             "network_address": network_address,
             "netmask": netmask,
             "interface": interface
-        })
+        }})
 
-    # return interface_list
-    return interface_list
+    # return stuff
+    return interface_dict
 
 
 # retrieve ip of client from lookup table
@@ -664,19 +664,14 @@ def setup_network(server = False):
 
     # get last known network information
     logging.info("getting network information")
-    network_info = read_configuration("known_network")
+    known_network_info = read_configuration("known_network")
+    interface_dump = probe_interfaces()
+
+    if known_network_info["interface"] not in interface_dump:
+        pass
     
     # load last known address if it exists
-    last_known_address = network_info["localhost_address"]
-
-    if network_info["network_status"] == False or last_known_address == None:
-        network_info = probe_interfaces()
-
-    # if the last_known_address file does not exist, create it
-    if last_known_address == None:
-        last_known_address = network_info["localhost_address"]
-        with open(last_known_address_path, "w") as last_known_address_file:
-            last_known_address_file.write(last_known_address)
+    last_known_address = known_network_info["localhost_address"]
 
     # if localhost is client, do stuff :D
     if server == False:
