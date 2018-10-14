@@ -33,8 +33,11 @@ def read_configuration(filename):
 
     # read configuration
     if os.path.exists(config_file_path):
+        logging.info("reading " + filename)
         with open(config_file_path, "r") as config_file:
             config = json.loads(config_file.read())
+    else:
+        logging.warning(filename + " does not exist")
 
     # return configuration
     return config
@@ -294,6 +297,7 @@ def ping_address(ip_address, broadcast = False):
     return(not bool(ping.returncode))
 
 
+"""
 # retrieve network info from known_network
 def retrieve_network_info():
     # essential variables
@@ -314,7 +318,7 @@ def retrieve_network_info():
     # return network info
     return network_info
 
-"""
+
 # find a usable network interface
 def probe_interfaces(server = False):
     # essential variables
@@ -660,7 +664,7 @@ def setup_network(server = False):
 
     # get last known network information
     logging.info("getting network information")
-    network_info = retrieve_network_info()
+    network_info = read_configuration("known_network")
     
     # load last known address if it exists
     last_known_address = network_info["localhost_address"]
