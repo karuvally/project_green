@@ -24,6 +24,15 @@ from subprocess import Popen, PIPE
 thread_lock = threading.Lock()
 
 
+# read JSON configuration from disk
+def read_configuration(filename):
+    # essential variables
+
+    # read configuration
+
+    # return configuration
+
+
 # write configuration to disk in JSON
 def write_configuration(config, filename):
     # essential variables
@@ -648,7 +657,7 @@ def setup_network(server = False):
     logging.info("getting network information")
     network_info = retrieve_network_info()
     
-    # load last known address if it exists
+    # load last known address if it exists, debug: read_configuration()?
     if os.path.exists(last_known_address_path):
         with open(last_known_address_path, "r") as last_known_address_file:
             last_known_address = last_known_address_file.read()
