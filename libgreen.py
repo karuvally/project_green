@@ -43,7 +43,7 @@ def write_configuration(config, filename):
 
 
 # probe interfaces, the new way
-def new_probe_interfaces():
+def probe_interfaces():
     # essential variables
     interface_list = []
 
@@ -298,7 +298,7 @@ def retrieve_network_info():
     # return network info
     return network_info
 
-
+"""
 # find a usable network interface
 def probe_interfaces(server = False):
     # essential variables
@@ -383,6 +383,7 @@ def probe_interfaces(server = False):
 
     # return network address to calling function
     return network_info 
+"""
 
 
 # get the config directory
