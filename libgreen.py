@@ -42,6 +42,7 @@ def read_configuration(filename):
 def write_configuration(config, filename):
     # essential variables
     config_dir = get_config_dir()
+    config_file_path = os.path.join(config_dir, filename)
     global thread_lock
 
 
@@ -49,7 +50,7 @@ def write_configuration(config, filename):
     thread_lock.acquire()
     
     # write configuration
-    with open(filename, "w") as config_file:
+    with open(config_file_path, "w") as config_file:
         config_file.write(json.dumps(config))
 
     # release lock
