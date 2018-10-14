@@ -31,8 +31,11 @@ def read_configuration(filename):
     config_file_path = os.path.join(config_dir, filename)
 
     # read configuration
-    with open(config_file_path, "r") as config_file:
-        config = json.loads(config_file.read())
+    if os.path.exists(config_file_path):
+        with open(config_file_path, "r") as config_file:
+            config = json.loads(config_file.read())
+    else:
+        return None
 
     # return configuration
     return config
@@ -656,17 +659,13 @@ def initialize_system():
 def setup_network(server = False):
     # essential variables
     config_dir = get_config_dir()
-    last_known_address = None
-    last_known_address_path = os.path.join(config_dir, "last_known_address")
 
     # get last known network information
     logging.info("getting network information")
     network_info = retrieve_network_info()
     
-    # load last known address if it exists, debug: read_configuration()?
-    if os.path.exists(last_known_address_path):
-        with open(last_known_address_path, "r") as last_known_address_file:
-            last_known_address = last_known_address_file.read()
+    # load last known address if it exists
+    last_known_address = network_info["localhost_address"]
 
     if network_info["network_status"] == False or last_known_address == None:
         network_info = probe_interfaces(server)

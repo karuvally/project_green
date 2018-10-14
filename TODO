@@ -1,5 +1,7 @@
 TODO
 ----
+* replace retrieve_network_info()
+* return None if no file in read/write configuration()
 * store_known_network code
 * do encryption
 * why is client not exiting peacfully?
