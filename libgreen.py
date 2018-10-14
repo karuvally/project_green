@@ -670,7 +670,7 @@ def setup_network(server = False):
     last_known_address = network_info["localhost_address"]
 
     if network_info["network_status"] == False or last_known_address == None:
-        network_info = probe_interfaces(server)
+        network_info = probe_interfaces()
 
     # if the last_known_address file does not exist, create it
     if last_known_address == None:
