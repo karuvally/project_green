@@ -27,10 +27,14 @@ thread_lock = threading.Lock()
 # read JSON configuration from disk
 def read_configuration(filename):
     # essential variables
+    config_dir = get_config_dir()
 
     # read configuration
+    with open(filename, "r") as config_file:
+        config = json.loads(config_file.read())
 
     # return configuration
+    return config
 
 
 # write configuration to disk in JSON
