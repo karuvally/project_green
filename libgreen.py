@@ -28,9 +28,10 @@ thread_lock = threading.Lock()
 def read_configuration(filename):
     # essential variables
     config_dir = get_config_dir()
+    config_file_path = os.path.join(config_dir, filename)
 
     # read configuration
-    with open(filename, "r") as config_file:
+    with open(config_file_path, "r") as config_file:
         config = json.loads(config_file.read())
 
     # return configuration
