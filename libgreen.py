@@ -549,8 +549,7 @@ def find_hosts(network_info, mode):
     online_hosts = [host for host in host_info if host["online"] == True]
 
     # find local host's IP
-    localhost_info = netifaces.ifaddresses(network_info["interface"])
-    localhost_addr = localhost_info[netifaces.AF_INET][0]["addr"]
+    localhost_address = network_info["localhost_address"]
 
     # skip if the client is localhost
     for host in online_hosts:
