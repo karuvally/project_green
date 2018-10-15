@@ -47,7 +47,7 @@ def read_configuration(filename):
 
     # read configuration
     if os.path.exists(config_file_path):
-        logging.info("reading " + filename)
+        logging.info("reading from " + filename)
         with open(config_file_path, "r") as config_file:
             config = json.loads(config_file.read())
     else:
@@ -68,6 +68,7 @@ def write_configuration(config, filename):
     thread_lock.acquire()
     
     # write configuration
+    logging.info("writing into " + filename)
     with open(config_file_path, "w") as config_file:
         config_file.write(json.dumps(config))
 
@@ -691,6 +692,10 @@ def setup_network(server = False):
             while usable_interface == None:
                 usable_interface = find_network(interface_dump)
                 time.sleep(15)
+
+            # save the newly found network 
+            usable_interface_info = interface_dump[usable_interface]
+            write_configuration(usable_interface_info, "known_network")
 
     else:
         last_known_address = known_network_info["localhost_address"]
