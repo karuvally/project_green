@@ -668,7 +668,12 @@ def setup_network(server = False):
 
     # if no known network, find a usable one
     if known_network_info == None:
-        pass
+        if server:
+            pass
+
+        else:
+            for interface in interface_dump:
+                node_list = find_hosts(interface_dump[interface], "server")
 
     else:
         last_known_address = known_network_info["localhost_address"]
