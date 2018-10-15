@@ -553,11 +553,11 @@ def find_hosts(network_info, mode):
 
     # skip if the client is localhost
     for host in online_hosts:
-        if str(host["ip_address"]) == localhost_addr:
+        if str(host["ip_address"]) == localhost_address:
             continue
 
+        # try connecting to the host
         connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
         for port in port_list:
             # port is open if return value is 0
             if connection.connect_ex((str(host["ip_address"]), port)) == 0:
