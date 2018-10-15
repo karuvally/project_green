@@ -667,12 +667,17 @@ def setup_network(server = False):
     known_network_info = read_configuration("known_network")
     interface_dump = probe_interfaces()
 
-    if known_network_info["interface"] not in interface_dump:
-        pass
-    
-    # load last known address if it exists
     last_known_address = known_network_info["localhost_address"]
+    last_known_interface = known_network_info["interface"]
+    current_address = interface_dump[last_known_interface]["localhost_address"]
 
+    if known_network_info["interface"] in interface_dump:
+        if last_known_address == current_address:
+            pass
+        else:
+            pass
+
+    """
     # if localhost is client, do stuff :D
     if server == False:
         # if no known_server is present, find one and pair
@@ -686,4 +691,5 @@ def setup_network(server = False):
         # if current address != last known address, do address_update
         if network_info["localhost_address"] != last_known_address:
             pass # debug
+    """
 
