@@ -661,21 +661,31 @@ def initialize_system():
 def setup_network(server = False):
     # essential variables
     config_dir = get_config_dir()
+    interface_dump = probe_interfaces()
+    known_network_info = read_configuration("known_network")
 
     # get last known network information
     logging.info("getting network information")
-    known_network_info = read_configuration("known_network")
-    interface_dump = probe_interfaces()
 
     last_known_address = known_network_info["localhost_address"]
     last_known_interface = known_network_info["interface"]
     current_address = interface_dump[last_known_interface]["localhost_address"]
 
-    if known_network_info["interface"] in interface_dump:
-        if last_known_address == current_address:
+    if last_known_interface in interface_dump:
+        if last_known_address != current_address:
             pass
-        else:
-            pass
+            # send update_address
+        # ping current address 
+        # if ping fails, find hosts in other interfaces
+        # if hosts found in another network, set new known_network
+        # if hosts found in current network, break
+   
+    else:
+        pass
+        # find hosts in all interfaces
+        # if hosts found in another network, set new known_network
+        # if hosts found in current network, break
+
 
     """
     # if localhost is client, do stuff :D
