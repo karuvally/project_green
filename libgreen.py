@@ -667,11 +667,21 @@ def setup_network(server = False):
     # get last known network information
     logging.info("getting network information")
 
-    last_known_address = known_network_info["localhost_address"]
-    last_known_interface = known_network_info["interface"]
-    current_address = interface_dump[last_known_interface]["localhost_address"]
+    # if no known network, find a usable one
+    if known_network_info == None:
+        pass
 
+    else:
+        last_known_address = known_network_info["localhost_address"]
+        last_known_interface = known_network_info["interface"]
+
+    # check if network is reachable
     if last_known_interface in interface_dump:
+
+        # get last known interface's current info
+        last_known_interface_current_info = interface_dump[last_known_interface]
+        current_address = last_known_interface_current_info["localhost_address"]
+
         if last_known_address != current_address:
             pass
             # send update_address
