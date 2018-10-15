@@ -708,9 +708,6 @@ def setup_network(server = False):
         last_known_interface_current_info = interface_dump[last_known_interface]
         current_address = last_known_interface_current_info["localhost_address"]
 
-        if last_known_address != current_address:
-            pass
-            # send update_address
         # ping current address 
         # if ping fails, find hosts in other interfaces
         # if hosts found in another network, set new known_network
@@ -723,7 +720,6 @@ def setup_network(server = False):
         # if hosts found in current network, break
 
 
-    """
     # if localhost is client, do stuff :D
     if server == False:
         # if no known_server is present, find one and pair
@@ -737,5 +733,4 @@ def setup_network(server = False):
         # if current address != last known address, do address_update
         if network_info["localhost_address"] != last_known_address:
             pass # debug
-    """
 
