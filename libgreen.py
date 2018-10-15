@@ -186,15 +186,14 @@ def store_server_info(server_id, server_ip, public_key):
     logging.info("storing public key of server " + server_id)
 
     # prepare data to be written
-    server_info_dict = {
+    server_info = {
         "server_id": server_id,
         "server_ip": server_ip,
         "public_key": public_key
     }
 
     # write the new server info to file
-    with open(os.path.join(config_dir, "known_server"), "w") as server_file:
-        server_file.write(json.dumps(server_info_dict))
+    write_configuration(server_info, "known_server")
 
 
 # check if the running program is server
