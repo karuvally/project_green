@@ -19,9 +19,23 @@ import json
 from Crypto.PublicKey import RSA
 from subprocess import Popen, PIPE
 
-
 # global variables
 thread_lock = threading.Lock()
+
+
+# find usable interface for client
+def find_network(interface_dump):
+    for interface in interface_dump:
+        node_list = find_hosts(interface_dump[interface], "server")
+
+        # return the interface if it has nodes
+        if node_list != None:
+            return interface
+        else:
+            continue
+
+    # return None if no network is found
+    return None
 
 
 # read JSON configuration from disk
@@ -671,9 +685,13 @@ def setup_network(server = False):
         if server:
             pass
 
+        # if localhost is client, find network with netdog server
         else:
             for interface in interface_dump:
                 node_list = find_hosts(interface_dump[interface], "server")
+
+                if node_list != None:
+                    pass
 
     else:
         last_known_address = known_network_info["localhost_address"]
