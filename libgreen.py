@@ -23,7 +23,7 @@ from subprocess import Popen, PIPE
 thread_lock = threading.Lock()
 
 
-# find usable interface for client
+# find usable network for client
 def find_network(interface_dump):
     for interface in interface_dump:
         node_list = find_hosts(interface_dump[interface], "server")
@@ -676,6 +676,7 @@ def setup_network(server = False):
     config_dir = get_config_dir()
     interface_dump = probe_interfaces()
     known_network_info = read_configuration("known_network")
+    usable_interface = None
 
     # get last known network information
     logging.info("getting network information")
@@ -687,11 +688,9 @@ def setup_network(server = False):
 
         # if localhost is client, find network with netdog server
         else:
-            for interface in interface_dump:
-                node_list = find_hosts(interface_dump[interface], "server")
-
-                if node_list != None:
-                    pass
+            while usable_interface == None:
+                usable_interface = find_network(interface_dump)
+                time.sleep(15)
 
     else:
         last_known_address = known_network_info["localhost_address"]
