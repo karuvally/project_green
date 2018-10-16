@@ -709,8 +709,8 @@ def setup_network(server = False):
                 time.sleep(15)
 
             # save the newly found network 
-            usable_interface_info = interface_dump[usable_interface]
-            write_configuration(usable_interface_info, "known_network")
+            known_network_info = interface_dump[usable_interface]
+            write_configuration(known_network_info, "known_network")
 
     else:
         last_known_address = known_network_info["localhost_address"]
@@ -741,7 +741,7 @@ def setup_network(server = False):
         if not os.path.exists(os.path.join(config_dir, "known_server")):
             # start client pairing request
             logging.info("the client is not paired with a server")
-            request_to_pair(network_info)
+            request_to_pair(known_network_info)
 
         # check if the server is reachable
 
