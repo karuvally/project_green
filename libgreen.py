@@ -746,6 +746,6 @@ def setup_network(server = False):
         # check if the server is reachable
 
         # if current address != last known address, do address_update
-        if network_info["localhost_address"] != last_known_address:
+        if known_network_info["localhost_address"] != last_known_address:
             pass # debug
 

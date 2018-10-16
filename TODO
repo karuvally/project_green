@@ -1,5 +1,6 @@
 TODO
 ----
+* refactor setup_network()
 * ping command in netdog protocol
 * temporary UI for choosing netiface for server
 * store_known_network code
