@@ -684,7 +684,7 @@ def setup_network(server = False):
     # if no known network, find a usable one
     if known_network_info == None:
         if server:
-            pass
+            usable_interface = interface_chooser(interface_dump)
 
         # if localhost is client, find network with netdog server
         else:
