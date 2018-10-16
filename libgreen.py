@@ -23,6 +23,22 @@ from subprocess import Popen, PIPE
 thread_lock = threading.Lock()
 
 
+# cli for choosing network interface
+def interface_chooser(interface_dump):
+    # essential variables
+    user_choice = None
+
+    print("choose network interface")
+
+    while user_choice not in interface_dump:
+        for interface in interface_dump:
+            print(interface, interface_dump[interface]["network_address"])
+
+        user_choice = input(">")
+
+    return user_choice
+
+
 # find usable network for client
 def find_network(interface_dump):
     for interface in interface_dump:
