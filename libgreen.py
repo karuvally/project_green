@@ -32,7 +32,7 @@ def interface_chooser(interface_dump):
 
     while user_choice not in interface_dump:
         for interface in interface_dump:
-            print(interface, interface_dump[interface]["network_address"])
+            print(interface, ":", interface_dump[interface]["network_address"])
 
         user_choice = input(">")
 
