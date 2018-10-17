@@ -26,10 +26,13 @@ thread_lock = threading.Lock()
 # update a configuration file
 def update_configuration(config, filename):
     # read configuration from file
+    config_from_file = read_configuration(filename)
 
     # update configuration
+    config_from_file.update(config)
 
     # write configuration to file
+    write_configuration(config_from_file, filename)
 
 
 # cli for choosing network interface
