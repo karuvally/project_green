@@ -346,17 +346,20 @@ def accept_pairing_request(node_id, public_key):
     
     # store the public_key, hostname pair to text file
     logging.info("storing public key and of client " + node_id)
-    known_nodes_dir = os.path.join(get_config_dir(), "known_nodes")
+    node_info = {
+        node_id: {
+            "public_key": public_key
+        }
+    }
 
-    with open(os.path.join(known_nodes_dir, node_id), "w") as known_node_file:
-        known_node_file.write(public_key)
+    write_configuration(node_info, "known_nodes")
 
     # get public_key of the server
     with open(os.path.join(config_dir, "public_key"), "r") as public_key_file:
-        public_key = public_key_file.read().rstrip()
+        server_key = public_key_file.read().rstrip()
 
     # return the public key
-    return public_key
+    return server_key 
 
 
 # handle newly created connection
