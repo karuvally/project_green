@@ -2,11 +2,10 @@ TODO
 ----
 * eliminate pairing lag
 * add time to log
-* replace load_nodes() with read_configuration()
+* replace lookup_table with known_nodes
 * ip_address in known_nodes file
 * refactor setup_network()
 * ping command in netdog protocol
-* temporary UI for choosing netiface for server
 * store_known_network code
 * do encryption
 * why is client not exiting peacfully?
@@ -23,6 +22,8 @@ TODO
 
 DONE
 ----
+* temporary UI for choosing netiface for server
+* replace load_nodes() with read_configuration()
 * return None if no file in read configuration()
 * replace retrieve_network_info()
 * integrate last_known_address into known_network
