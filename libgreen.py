@@ -322,7 +322,7 @@ def get_config_dir():
 
 
 # accept pairing request from client
-def accept_pairing_request(node_id, public_key):
+def accept_pairing_request(node_id, node_ip, public_key):
     logging.info("pairing request received")
 
     # essential varilables
@@ -332,7 +332,8 @@ def accept_pairing_request(node_id, public_key):
     logging.info("storing public key and of client " + node_id)
     node_info = {
         node_id: {
-            "public_key": public_key
+            "public_key": public_key,
+            "last_known_address": node_ip
         }
     }
 
