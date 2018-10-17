@@ -693,6 +693,7 @@ def setup_network(server = False):
     interface_dump = probe_interfaces()
     known_network_info = read_configuration("known_network")
     usable_interface = None
+    last_known_address = None
 
     # get last known network information
     logging.info("getting network information")
