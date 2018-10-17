@@ -23,6 +23,15 @@ from subprocess import Popen, PIPE
 thread_lock = threading.Lock()
 
 
+# update a configuration file
+def update_configuration(config, filename):
+    # read configuration from file
+
+    # update configuration
+
+    # write configuration to file
+
+
 # cli for choosing network interface
 def interface_chooser(interface_dump):
     # essential variables
