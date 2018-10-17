@@ -383,7 +383,7 @@ def handle_connection(connection):
         payload = data[1]
 
         if command == "pair":
-            public_key = accept_pairing_request(node_id, payload) 
+            public_key = accept_pairing_request(node_id, node_ip, payload) 
             send_message(node_ip, 1994, "pair_ack", public_key)
 
     # handle pair acknowledgement # debug: improve checks
