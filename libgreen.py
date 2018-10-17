@@ -253,22 +253,6 @@ def send_message(destination_ip, port, command, payload):
     connection.sendall(message.encode())
 
 
-# load the list of nodes on the network
-def load_nodes():
-    # essential varilables
-    config_dir = get_config_dir()
-    return_data = []
-    known_nodes_dir = os.path.join(config_dir, "known_nodes")
-
-    # load known nodes info
-    for node_id in os.listdir(known_nodes_dir):
-        with open(os.path.join(known_nodes_dir, node_id)) as known_node_file:
-            return_data.append([node_id, known_node_file.read()])
-
-    # return stuff
-    return return_data
-
-
 # try to load public / private keys
 def load_keys(key_type):
     # essential varilables
