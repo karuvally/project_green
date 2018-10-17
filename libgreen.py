@@ -546,7 +546,7 @@ def initialize_system():
     signal.signal(signal.SIGINT, signal_handler)
 
     # create config dir
-    if config_dir == None:
+    if not os.path.isdir(config_dir):
         try:
             pathlib.Path(config_dir).mkdir(parents = True, exist_ok = True)
         except:
