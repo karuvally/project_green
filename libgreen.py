@@ -353,7 +353,7 @@ def accept_pairing_request(node_id, public_key):
     }
 
     # store the dictionary to known_nodes file
-    if os.path.isfile(os.path.join(config_dir, "known_nodes"):
+    if os.path.isfile(os.path.join(config_dir, "known_nodes")):
         update_configuration(node_info, "known_nodes")
     else:
         write_configuration(node_info, "known_nodes")
@@ -387,7 +387,7 @@ def handle_connection(connection):
     node_id = separated_message[0]
     data = separated_message[1]
 
-    # look if ID exists in known_clients or known_server
+    # look if ID exists in known_clients or known_server, debug
     node_id_list = [node_info[0] for node_info in load_nodes()]
 
     # handle the pairing request

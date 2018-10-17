@@ -1,5 +1,7 @@
 TODO
 ----
+* replace load_nodes() with read_configuration()
+* ip_address in known_nodes file
 * refactor setup_network()
 * ping command in netdog protocol
 * temporary UI for choosing netiface for server
