@@ -236,24 +236,6 @@ def send_message(destination_ip, port, command, payload):
     connection.sendall(message.encode())
 
 
-# load information about known_server
-def load_known_server():
-    # get configuration directory
-    config_dir = get_config_dir()
-    known_server_file_path = os.path.join(config_dir, "known_server")
-
-    # exit if the known_server file does not exist
-    if not os.path.exists(known_server_file_path):
-        logging.warning("known_server file does not exist")
-        return None
-
-    # load data from known_server file
-    with open(known_server_file_path, "r") as known_server_file:
-        known_server_info = json.loads(known_server_file.read())
-
-    return known_server_info
-
-
 # load the list of nodes on the network
 def load_nodes():
     # essential varilables
