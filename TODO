@@ -1,5 +1,6 @@
 TODO
 ----
+* eliminate pairing lag
 * add time to log
 * replace load_nodes() with read_configuration()
 * ip_address in known_nodes file

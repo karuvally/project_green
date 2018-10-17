@@ -387,11 +387,13 @@ def handle_connection(connection):
     node_id = separated_message[0]
     data = separated_message[1]
 
-    # look if ID exists in known_clients or known_server, debug
-    node_id_list = [node_id for node_id in read_configuration("known_nodes")]
+    # look if ID exists in known_clients or known_server
+    known_nodes_info = read_configuration("known_nodes")
+    if known_nodes_info != None:
+        node_id_list = [node_id for node_id in known_nodes_info]
 
     # handle the pairing request
-    if node_id not in node_id_list:
+    if known_nodes_info == None or node_id not in node_id_list:
         data = data.split(",")
         command = data[0]
         payload = data[1]
