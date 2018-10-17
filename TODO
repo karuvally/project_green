@@ -3,7 +3,6 @@ TODO
 * eliminate pairing lag
 * add time to log
 * replace lookup_table with known_nodes
-* ip_address in known_nodes file
 * refactor setup_network()
 * ping command in netdog protocol
 * store_known_network code
@@ -22,6 +21,7 @@ TODO
 
 DONE
 ----
+* ip_address in known_nodes file
 * temporary UI for choosing netiface for server
 * replace load_nodes() with read_configuration()
 * return None if no file in read configuration()

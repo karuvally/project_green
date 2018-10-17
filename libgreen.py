@@ -24,14 +24,18 @@ thread_lock = threading.Lock()
 
 
 # update a configuration file
-def update_configuration(config, filename):
+def update_configuration(config, filename, force = False):
     # read configuration from file
     config_from_file = read_configuration(filename)
 
-    # abort if no file
-    if config_from_file == None:
+    # abort if no config file and force is False
+    if not config_from_file and not force:
         logging.warning(filename + " does not exist")
         return
+
+    # continue if force is True
+    elif not config_from_file and force:
+        config_from_file = {}
 
     # update configuration
     config_from_file.update(config)
