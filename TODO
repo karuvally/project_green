@@ -1,5 +1,6 @@
 TODO
 ----
+* test new update_configuration()
 * eliminate pairing lag
 * add time to log
 * replace lookup_table with known_nodes
