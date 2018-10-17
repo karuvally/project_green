@@ -395,7 +395,7 @@ def handle_connection(connection):
             send_message(node_ip, 1994, "pair_ack", public_key)
 
     # handle pair acknowledgement # debug: improve checks
-    if not is_server() and load_known_server() == None:
+    if not is_server() and read_configuration("known_server") == None:
         if command == "pair_ack":
             store_server_info(node_id, node_ip, payload)
 
