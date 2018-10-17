@@ -28,6 +28,11 @@ def update_configuration(config, filename):
     # read configuration from file
     config_from_file = read_configuration(filename)
 
+    # abort if no file
+    if config_from_file == None:
+        logging.warning(filename + " does not exist")
+        return
+
     # update configuration
     config_from_file.update(config)
 
