@@ -388,7 +388,7 @@ def handle_connection(connection):
     data = separated_message[1]
 
     # look if ID exists in known_clients or known_server, debug
-    node_id_list = [node_info[0] for node_info in load_nodes()]
+    node_id_list = [node_id for node_id in read_configuration("known_nodes")]
 
     # handle the pairing request
     if node_id not in node_id_list:
