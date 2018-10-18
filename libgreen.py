@@ -331,7 +331,7 @@ def accept_pairing_request(node_id, node_ip, public_key):
     config_dir = get_config_dir()
     
     # generate node_info dictionary for storing 
-    logging.info("storing public key and of client " + node_id)
+    logging.info("storing public key of client " + node_id)
     node_info = {
         node_id: {
             "public_key": public_key,
@@ -340,8 +340,7 @@ def accept_pairing_request(node_id, node_ip, public_key):
     }
 
     # store the dictionary to known_nodes file
-    if os.path.isfile(os.path.join(config_dir, "known_nodes")):
-        update_configuration(node_info, "known_nodes", force = True)
+    update_configuration(node_info, "known_nodes", force = True)
 
     # get public_key of the server
     with open(os.path.join(config_dir, "public_key"), "r") as public_key_file:
