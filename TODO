@@ -2,18 +2,14 @@ TODO
 ----
 * eliminate pairing lag
 * add time to log
-* replace lookup_table with known_nodes
 * refactor setup_network()
 * ping command in netdog protocol
-* store_known_network code
 * do encryption
 * why is client not exiting peacfully?
 * properly find broadcast network of address
-* convert known_network to dict
 * convert messages to dict
 * what to do when server can't be reached
 * handle situation when client finds no server
-* club the data into files
 * do not create known_nodes dir in client
 * add firewall exceptions during installation
 * refactor probe_interfaces()
@@ -21,6 +17,10 @@ TODO
 
 DONE
 ----
+* club the data into files
+* convert known_network to dict
+* store_known_network code
+* replace lookup_table with known_nodes
 * test new update_configuration()
 * ip_address in known_nodes file
 * temporary UI for choosing netiface for server
