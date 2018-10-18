@@ -534,8 +534,10 @@ def initialize_system():
             sys.exit(1)
     
     # set up logging
-    logging.basicConfig(filename = os.path.join(config_dir, "log"),
-        level = logging.DEBUG)
+    logging.basicConfig(
+        filename = os.path.join(config_dir, "log"),
+        level = logging.DEBUG,
+        datefmt='%m-%d %H:%M')
 
     # print logs to stderr
     logging.getLogger().addHandler(logging.StreamHandler())
@@ -568,23 +570,25 @@ def setup_network(server = False):
     logging.info("getting network information")
 
     # if no known network, find a usable one
-    if not known_network_info and server:
-        # launch network chooser
-        usable_interface = interface_chooser(interface_dump)
+    if not known_network_info:
+        if server:
+            # launch network chooser
+            usable_interface = interface_chooser(interface_dump)
 
-    # if client, automatically find usable interface
-    elif not known_network_info and not server:
-        while True:
-            usable_interface = find_network(interface_dump)
-            if usable_interface:
-                break
-            time.sleep(15)
+        # if client, automatically find usable interface
+        elif not server:
+            while True:
+                usable_interface = find_network(interface_dump)
+                if usable_interface:
+                    break
+                time.sleep(30)
 
-    # save the newly found network 
-    known_network_info = interface_dump[usable_interface]
-    write_configuration(known_network_info, "known_network")
+        # save the newly found network 
+        known_network_info = interface_dump[usable_interface]
+        write_configuration(known_network_info, "known_network")
 
-    if known_network_info:
+    # if there is a known network, do as follows
+    else:
         last_known_address = known_network_info["localhost_address"]
         last_known_interface = known_network_info["interface"]
 

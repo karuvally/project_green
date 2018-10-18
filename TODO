@@ -1,7 +1,6 @@
 TODO
 ----
-* eliminate pairing lag
-* add time to log
+* add timestamp to log
 * refactor setup_network()
 * ping command in netdog protocol
 * do encryption
@@ -17,6 +16,7 @@ TODO
 
 DONE
 ----
+* eliminate pairing lag
 * club the data into files
 * convert known_network to dict
 * store_known_network code
