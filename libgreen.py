@@ -567,10 +567,11 @@ def setup_network(server = False):
 
     # if no known network, find a usable one
     if known_network_info == None:
+        # launch network chooser
         if server:
             usable_interface = interface_chooser(interface_dump)
 
-        # if localhost is client, find network with netdog server
+        # if client, automatically find usable interface
         else:
             while True:
                 usable_interface = find_network(interface_dump)
@@ -579,9 +580,9 @@ def setup_network(server = False):
                 else:
                     break
 
-            # save the newly found network 
-            known_network_info = interface_dump[usable_interface]
-            write_configuration(known_network_info, "known_network")
+        # save the newly found network 
+        known_network_info = interface_dump[usable_interface]
+        write_configuration(known_network_info, "known_network")
 
     else:
         last_known_address = known_network_info["localhost_address"]
