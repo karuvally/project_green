@@ -576,7 +576,7 @@ def setup_network(server = False):
     elif not known_network_info and not server:
         while True:
             usable_interface = find_network(interface_dump)
-            if usable_interface == None:
+            if not usable_interface:
                 time.sleep(15)
             else:
                 break
