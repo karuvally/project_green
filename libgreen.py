@@ -171,7 +171,7 @@ def retrieve_client_address(lookup_node):
     else:
         logging.warning(lookup_node + " not found")
 
-    return lookup_node
+    return lookup_table
 
 
 # update ip addresses in lookup table
