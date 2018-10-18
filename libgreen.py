@@ -560,7 +560,6 @@ def setup_network(server = False):
     config_dir = get_config_dir()
     interface_dump = probe_interfaces()
     known_network_info = read_configuration("known_network")
-    last_known_address = None
 
     # get last known network information
     logging.info("getting network information")
