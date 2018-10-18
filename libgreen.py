@@ -30,7 +30,6 @@ def update_configuration(config, filename, force = False):
 
     # abort if no config file and force is False
     if not config_from_file and not force:
-        logging.warning(filename + " does not exist")
         return
 
     # continue if force is True
