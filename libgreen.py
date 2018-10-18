@@ -152,28 +152,11 @@ def probe_interfaces():
 
 # retrieve ip of client from lookup table
 def retrieve_client_address(node_id):
-    # essential variables
-    config_dir = get_config_dir()
-    lookup_table_path = os.path.join(config_dir, "lookup_table")
+    # read the lookup table
 
-    # read lookup_table from disk if it exists
-    if os.path.exists(lookup_table_path):
-        with open(lookup_table_path, "r") as lookup_table_file:
-            lookup_table_raw = lookup_table_file.read()
+    # if node_id == *, return whole table
 
-        # process the JSON data
-        lookup_table = json.loads(lookup_table_raw)
-
-    else:
-        logging.warning("lookup table does not exist")
-        return None
-
-    # if node_id is *, return the whole dictionary
-    if node_id == "*":
-        return lookup_table
-
-    else:
-        return lookup_table[node_id] 
+    # else return IP of node_id
 
 
 # update ip addresses in lookup table
