@@ -576,10 +576,9 @@ def setup_network(server = False):
     elif not known_network_info and not server:
         while True:
             usable_interface = find_network(interface_dump)
-            if not usable_interface:
-                time.sleep(15)
-            else:
+            if usable_interface:
                 break
+            time.sleep(15)
 
     # save the newly found network 
     known_network_info = interface_dump[usable_interface]
