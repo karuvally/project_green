@@ -23,6 +23,9 @@ from subprocess import Popen, PIPE
 thread_lock = threading.Lock()
 
 
+# check if last known interface is usable
+
+
 # update a configuration file
 def update_configuration(config, filename, force = False):
     # read configuration from file
@@ -565,23 +568,22 @@ def setup_network(server = False):
     logging.info("getting network information")
 
     # if no known network, find a usable one
-    if known_network_info == None:
+    if not known_network_info and server:
         # launch network chooser
-        if server:
-            usable_interface = interface_chooser(interface_dump)
+        usable_interface = interface_chooser(interface_dump)
 
-        # if client, automatically find usable interface
-        else:
-            while True:
-                usable_interface = find_network(interface_dump)
-                if usable_interface == None:
-                    time.sleep(15)
-                else:
-                    break
+    # if client, automatically find usable interface
+    elif not known_network_info and not server:
+        while True:
+            usable_interface = find_network(interface_dump)
+            if usable_interface == None:
+                time.sleep(15)
+            else:
+                break
 
-        # save the newly found network 
-        known_network_info = interface_dump[usable_interface]
-        write_configuration(known_network_info, "known_network")
+    # save the newly found network 
+    known_network_info = interface_dump[usable_interface]
+    write_configuration(known_network_info, "known_network")
 
     else:
         last_known_address = known_network_info["localhost_address"]
