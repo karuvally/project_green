@@ -530,14 +530,14 @@ def initialize_system():
             pathlib.Path(config_dir).mkdir(parents = True, exist_ok = True)
         except:
             # show error and exit the application
-            logging.critical("error: config dir cannot be created! exiting")
+            print("error: config dir cannot be created! exiting")
             sys.exit(1)
     
     # set up logging
     logging.basicConfig(
         filename = os.path.join(config_dir, "log"),
         level = logging.DEBUG,
-        datefmt='%m-%d %H:%M')
+        )
 
     # print logs to stderr
     logging.getLogger().addHandler(logging.StreamHandler())
