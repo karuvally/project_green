@@ -165,7 +165,7 @@ def retrieve_client_address(lookup_node):
         lookup_table = [{node_id: node_id["last_known_address"]} for node_id in known_nodes]
 
     # get last_known_address of lookup_node
-    if lookup_node in known_nodes:
+    elif lookup_node in known_nodes:
         lookup_table = {lookup_node: known_nodes[lookup_node]["last_known_address"]}
     else:
         logging.warning(lookup_node + " not found")
