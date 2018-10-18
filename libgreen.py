@@ -173,39 +173,23 @@ def retrieve_client_address(lookup_node):
     return lookup_node
 
 
-
-
 # update ip addresses in lookup table
 def update_lookup_table(node_id, ip_address):
-    # essential variables
-    config_dir = get_config_dir()
-    lookup_table_path = os.path.join(config_dir, "lookup_table")
-    global thread_lock 
+    # check if node is known
+    known_nodes = read_configuration("known_nodes")
+    if node_id not in known_nodes:
+        logging.warning(node_id + " is unknown, address cannot be updated")
+        return None
 
-    # read lookup_table from disk if it exists
-    if os.path.exists(lookup_table_path):
-        with open(lookup_table_path, "r") as lookup_table_file:
-            lookup_table_raw = lookup_table_file.read()
+    # generate data to be updated
+    update_config = {
+        node_id: {
+            "last_known_address": ip_address
+        }
+    }
 
-        # process the JSON data
-        lookup_table = json.loads(lookup_table_raw)
-
-    else:
-        lookup_table = {}
-
-    # update information, convert updated data to JSON
-    lookup_table.update({node_id: ip_address})
-    lookup_table_raw = json.dumps(lookup_table)
-
-    # acquire the lock
-    thread_lock.acquire()
-
-    # write updated lookup table to disk
-    with open(lookup_table_path, "w") as lookup_table_file:
-        lookup_table_file.write(lookup_table_raw)
-
-    # release the lock
-    thread_lock.release()
+    # update the data
+    update_configuration(update_config, "known_nodes")
  
 
 # exit gracefully when SIGINT happens
