@@ -560,7 +560,6 @@ def setup_network(server = False):
     config_dir = get_config_dir()
     interface_dump = probe_interfaces()
     known_network_info = read_configuration("known_network")
-    usable_interface = None
     last_known_address = None
 
     # get last known network information
@@ -573,9 +572,12 @@ def setup_network(server = False):
 
         # if localhost is client, find network with netdog server
         else:
-            while usable_interface == None:
+            while True:
                 usable_interface = find_network(interface_dump)
-                time.sleep(15)
+                if usable_interface == None:
+                    time.sleep(15)
+                else:
+                    break
 
             # save the newly found network 
             known_network_info = interface_dump[usable_interface]
