@@ -162,7 +162,8 @@ def retrieve_client_address(lookup_node):
 
     # generate whole lookup_table if necessary
     if lookup_node == "*":
-        lookup_result = [{node_id: node_id["last_known_address"]} for node_id in known_nodes]
+        lookup_result = [{node_id: known_nodes[node_id]["last_known_address"]}
+            for node_id in known_nodes]
 
     # get last_known_address of lookup_node
     elif lookup_node in known_nodes:
