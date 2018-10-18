@@ -585,7 +585,7 @@ def setup_network(server = False):
     known_network_info = interface_dump[usable_interface]
     write_configuration(known_network_info, "known_network")
 
-    else:
+    if known_network_info:
         last_known_address = known_network_info["localhost_address"]
         last_known_interface = known_network_info["interface"]
 
