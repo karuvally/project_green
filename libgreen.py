@@ -536,8 +536,7 @@ def initialize_system():
     # set up logging
     logging.basicConfig(
         filename = os.path.join(config_dir, "log"),
-        level = logging.DEBUG,
-        )
+        level = logging.DEBUG)
 
     # print logs to stderr
     logging.getLogger().addHandler(logging.StreamHandler())
@@ -565,6 +564,7 @@ def setup_network(server = False):
     config_dir = get_config_dir()
     interface_dump = probe_interfaces()
     known_network_info = read_configuration("known_network")
+    last_known_address = None
 
     # get last known network information
     logging.info("getting network information")
