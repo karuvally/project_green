@@ -23,9 +23,6 @@ from subprocess import Popen, PIPE
 thread_lock = threading.Lock()
 
 
-# check if last known interface is usable
-
-
 # update a configuration file
 def update_configuration(config, filename, force = False):
     # read configuration from file
@@ -587,28 +584,9 @@ def setup_network(server = False):
         known_network_info = interface_dump[usable_interface]
         write_configuration(known_network_info, "known_network")
 
-    # if there is a known network, do as follows
+    # if there is a known network, do as follows, debug
     else:
-        last_known_address = known_network_info["localhost_address"]
-        last_known_interface = known_network_info["interface"]
-
-        # check if network is reachable
-        if last_known_interface in interface_dump:
-
-            # get last known interface's current info
-            last_known_interface_current  = interface_dump[last_known_interface]
-            current_address = last_known_interface_current["localhost_address"]
-
-            # ping current address 
-            # if ping fails, find hosts in other interfaces
-            # if hosts found in another network, set new known_network
-            # if hosts found in current network, break
-   
-        else:
-            pass
-            # find hosts in all interfaces
-            # if hosts found in another network, set new known_network
-            # if hosts found in current network, break
+        pass
 
 
     # if localhost is client, do stuff :D
