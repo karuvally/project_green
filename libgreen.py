@@ -25,18 +25,14 @@ thread_lock = threading.Lock()
 
 # stuff to do when client starts
 def client_checklist():
+    # essential variables
+    config_dir = get_config_dir()
+
     # if no known_server is present, find one and pair
     if not os.path.exists(os.path.join(config_dir, "known_server")):
         # start client pairing request
         logging.info("the client is not paired with a server")
         request_to_pair(known_network_info)
-
-    # check if the server is reachable
-
-    # if current address != last known address, do address_update
-    if known_network_info["localhost_address"] != last_known_address:
-        pass # debug
-
 
 
 # update a configuration file
