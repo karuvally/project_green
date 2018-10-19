@@ -24,7 +24,7 @@ thread_lock = threading.Lock()
 
 
 # stuff to do when client starts
-def client_checklist():
+def client_checklist(known_network_info):
     # essential variables
     config_dir = get_config_dir()
 
@@ -573,7 +573,6 @@ def setup_network(server = False):
     config_dir = get_config_dir()
     interface_dump = probe_interfaces()
     known_network_info = read_configuration("known_network")
-    last_known_address = None
 
     # get last known network information
     logging.info("getting network information")
@@ -602,4 +601,4 @@ def setup_network(server = False):
 
     # if localhost is client, do stuff :D
     if server == False:
-        client_checklist()
+        client_checklist(known_network_info)
