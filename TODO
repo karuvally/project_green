@@ -1,9 +1,10 @@
 TODO
 ----
-* add timestamp to log
-* refactor setup_network()
-* ping command in netdog protocol
 * do encryption
+* refactor handling of pairing
+* convert public/private key files to JSON
+* add timestamp to log
+* ping command in netdog protocol
 * why is client not exiting peacfully?
 * properly find broadcast network of address
 * convert messages to dict
@@ -16,6 +17,7 @@ TODO
 
 DONE
 ----
+* refactor setup_network()
 * eliminate pairing lag
 * club the data into files
 * convert known_network to dict

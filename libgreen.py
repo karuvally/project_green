@@ -23,6 +23,19 @@ from subprocess import Popen, PIPE
 thread_lock = threading.Lock()
 
 
+# encrypt data to be send inside message
+def encrypt_message():
+    # load private key of localhost
+
+    # load public key of receiver
+
+    # encrypt data with private key of sender
+    
+    # encrypt message with public key of receiver
+
+    # return the encrypted message
+
+
 # stuff to do when client starts
 def client_checklist(known_network_info):
     # essential variables
