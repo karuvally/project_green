@@ -2,7 +2,6 @@ TODO
 ----
 * do encryption
 * refactor handling of pairing
-* convert public/private key files to JSON
 * add timestamp to log
 * ping command in netdog protocol
 * why is client not exiting peacfully?
@@ -17,6 +16,7 @@ TODO
 
 DONE
 ----
+* convert public/private key files to JSON
 * refactor setup_network()
 * eliminate pairing lag
 * club the data into files
