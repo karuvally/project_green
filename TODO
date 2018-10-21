@@ -1,21 +1,21 @@
 TODO
 ----
 * do encryption
-* refactor handling of pairing
 * add timestamp to log
 * ping command in netdog protocol
 * why is client not exiting peacfully?
 * properly find broadcast network of address
-* convert messages to dict
 * what to do when server can't be reached
 * handle situation when client finds no server
-* do not create known_nodes dir in client
 * add firewall exceptions during installation
-* refactor probe_interfaces()
 * elegant code to find network address (without host bit)
 
 DONE
 ----
+* refactor probe_interfaces()
+* do not create known_nodes dir in client
+* convert messages to dict
+* refactor handling of pairing
 * convert public/private key files to JSON
 * refactor setup_network()
 * eliminate pairing lag
