@@ -234,24 +234,39 @@ def is_server():
 
 # send data through network
 def send_message(destination_ip, port, command, payload):
+    # essential variables
+    encrypt_flag = False
+
     # get the hostname of the machine
     hostname = socket.gethostname()
 
     # generate message
+    data = {
+        "command": command,
+        "payload": payload
+    }
+
     message = {
         "hostname": hostname,
-        "message": {
-            "command": command,
-            "payload": payload
-        }
+        "data": data
     }
 
     # create socket, connect to destination IP
     connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     connection.connect((destination_ip, port))
 
-    # send the actual data
-    connection.sendall(message.encode())
+    # if command not pair, encrypt message
+    if command != "pair":
+        encrypt_flag = True
+
+    # generate final output
+    output = {
+        "encrypted": encrypt_flag,
+        "message": message
+    }
+
+    # send the message
+    connection.sendall(output.encode())
 
 
 # send request to server for pairing
