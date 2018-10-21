@@ -23,6 +23,11 @@ from subprocess import Popen, PIPE
 thread_lock = threading.Lock()
 
 
+# pair with client if necessary
+def pair_if_necessary(message):
+    pass
+
+
 # encrypt data to be send inside message
 def encrypt_message(message, receiver_id):
     # essential variables
@@ -361,20 +366,12 @@ def handle_connection(connection):
     config_dir = get_config_dir()
 
     # receive data from client
-    message = receive_message(connection)
-    
-    # if command + payload cannot be splitted, might be encrypted
-    separated_message = message.split(",", 1)
+    input_transmission = receive_message(connection)
 
-    # if message cannot be splitted, its corrupted
-    if len(separated_message) != 2:
-        logging.critical("corrupt message received over network")
-        return None # debug: replace this by "retransmit" command
+    # if message is not encrypted, call pair
+    if not input_transmission["encrypted"]:
+        pair_if_necessary(input_transmission["message"])
     
-    # get the source node ID and data 
-    node_id = separated_message[0]
-    data = separated_message[1]
-
     # look if ID exists in known_clients or known_server
     known_nodes_info = read_configuration("known_nodes")
     if known_nodes_info != None:
@@ -517,19 +514,20 @@ def generate_keys():
 # handle the incoming data
 def receive_message(connection):
     # an empty string for storing data
-    data = ""
+    transmission = ""
 
     while True:
-        # receive data with buffer size as 16 bytes
-        data_buffer = connection.recv(16)
+        # receive transmission with buffer size as 16 bytes
+        transmission_buffer = connection.recv(16)
 
-        # continue if data_buffer is not None
-        if data_buffer:
-            # convert received data to unicode
-            data += data_buffer.decode()
+        # continue if transmission_buffer is not None
+        if transmission_buffer:
+            # convert received transmission to unicode
+            transmission += transmission_buffer.decode()
         else:
             break
-    return data
+
+    return dict(transmission)
 
 
 # check and set up essential stuff
