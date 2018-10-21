@@ -260,6 +260,12 @@ def send_message(port, command, payload, destination_id = None,
     # essential variables
     encrypt_flag = False
 
+    # following commands won't get encrypted
+    do_not_encrypt_list = [
+        "pair",
+        "pair_ack"
+    ]
+
     # get the hostname of the machine
     hostname = socket.gethostname()
 
@@ -279,7 +285,7 @@ def send_message(port, command, payload, destination_id = None,
     connection.connect((destination_ip, port))
 
     # if command not pair, encrypt message
-    if command != "pair":
+    if command not in do_not_encrypt_list:
         encrypt_flag = True
         message = encrypt_message(message, destination_id)
 
