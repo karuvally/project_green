@@ -267,21 +267,6 @@ def send_message(destination_ip, port, command, payload):
     connection.sendall(message.encode())
 
 
-# try to load public / private keys
-def load_keys(key_type):
-    # essential varilables
-    config_dir = get_config_dir()
-    key = None
-    key_path = os.path.join(config_dir, key_type) 
-
-    if os.path.exists(key_path):
-        logging.info("loading " + key_type)
-        with open(key_path, "r") as key_file:
-            key = key_file.read()
-
-    return key
-
-
 # send request to server for pairing
 def request_to_pair(network_info):
     # get configuration directory
