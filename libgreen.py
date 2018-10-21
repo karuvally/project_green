@@ -388,7 +388,7 @@ def handle_connection(connection):
     input_transmission = receive_message(connection)
 
     # if message is not encrypted, call pair
-    if not input_transmission["encrypted"]:
+    if not input_transmission and not input_transmission["encrypted"]:
         command = input_transmission["message"]["data"]["command"]
 
         if command == "pair":
