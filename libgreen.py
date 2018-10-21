@@ -233,8 +233,8 @@ def is_server():
 
 
 # send data through network
-def send_message(destination_id = None, destination_ip = None,
-        port, command, payload):
+def send_message(port, command, payload, destination_id = None,
+        destination_ip = None):
     # essential variables
     encrypt_flag = False
 
@@ -259,13 +259,14 @@ def send_message(destination_id = None, destination_ip = None,
     # if command not pair, encrypt message
     if command != "pair":
         encrypt_flag = True
-        message = encrypt_message(message, destination_ip)
+        message = encrypt_message(message, destination_id)
 
     # generate final output
     output = {
         "encrypted": encrypt_flag,
         "message": message
     }
+    output = str(output)
 
     # send the message
     connection.sendall(output.encode())
@@ -285,8 +286,8 @@ def request_to_pair(network_info):
 
     # send pairing request
     logging.info("sending pairing request")
-    send_message(destination_ip = server[0]["ip_address"], 1337, "pair",
-        public_key)
+    send_message(1337, "pair", public_key,
+        destination_ip = server[0]["ip_address"])
 
 
 # the ping function for threads 
@@ -387,8 +388,8 @@ def handle_connection(connection):
 
         if command == "pair":
             public_key = accept_pairing_request(node_id, node_ip, payload) 
-            send_message(destination_ip = node_ip, 1994, "pair_ack",
-                public_key)
+            send_message(1994, "pair_ack", public_key,
+                destination_ip = node_ip)
 
     # handle pair acknowledgement # debug: improve checks
     if not is_server() and read_configuration("known_server") == None:
