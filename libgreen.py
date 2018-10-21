@@ -355,8 +355,8 @@ def accept_pairing_request(node_id, node_ip, public_key):
     update_configuration(node_info, "known_nodes", force = True)
 
     # get public_key of the server
-    with open(os.path.join(config_dir, "public_key"), "r") as public_key_file:
-        server_key = public_key_file.read().rstrip()
+    key_pair = read_configuration("keys")
+    server_key = key_pair["public_key"]
 
     # return the public key
     return server_key 
