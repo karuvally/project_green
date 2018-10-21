@@ -25,10 +25,13 @@ thread_lock = threading.Lock()
 
 # encrypt data to be send inside message
 def encrypt_message(message, receiver_id):
-    pass
     # load private key of localhost
+    key_pair = read_configuration("keys")
+    private_key = key_pair["private_key"]
 
     # load public key of receiver
+    known_nodes = read_configuration("known_nodes")
+    public_key = known_nodes[received_id]["public_key"]
 
     # encrypt data with private key of sender
     
