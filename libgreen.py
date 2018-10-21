@@ -28,6 +28,7 @@ thread_lock = threading.Lock()
 def pair_if_necessary(message, node_ip):
     # essential variables
     sender_id = message["hostname"]
+    payload = message["data"]["payload"]
     known_nodes_info = read_configuration("known_nodes")
 
     # generate node list
