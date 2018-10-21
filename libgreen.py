@@ -534,6 +534,9 @@ def receive_message(connection):
         else:
             break
 
+    if not transmission:
+        return None
+
     return dict(transmission)
 
 
