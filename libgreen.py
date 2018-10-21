@@ -179,31 +179,6 @@ def probe_interfaces():
     return interface_dict
 
 
-# retrieve ip of client from lookup table
-def retrieve_client_address(lookup_node):
-    # essential variables
-    known_nodes = read_configuration("known_nodes")
-    lookup_result = {}
-
-    # quit if known nodes does not exist
-    if not known_nodes:
-        return None
-
-    # generate whole lookup_table if necessary
-    if lookup_node == "*":
-        lookup_result = [{node_id: known_nodes[node_id]["last_known_address"]}
-            for node_id in known_nodes]
-
-    # get last_known_address of lookup_node
-    elif lookup_node in known_nodes:
-        lookup_result = known_nodes[lookup_node]["last_known_address"]
-
-    else:
-        logging.warning(lookup_node + " not found")
-
-    return lookup_result
-
-
 # update ip addresses in lookup table
 def update_lookup_table(node_id, ip_address):
     # check if node is known
