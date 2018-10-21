@@ -502,8 +502,8 @@ def generate_keys():
 
     # return key pair as dictionary
     return({
-        "public_key": public_key,
-        "private_key": private_key
+        "public_key": public_key.decode(),
+        "private_key": private_key.decode()
     })
 
 
