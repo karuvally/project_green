@@ -24,7 +24,8 @@ thread_lock = threading.Lock()
 
 
 # encrypt data to be send inside message
-def encrypt_message():
+def encrypt_message(message, receiver_id):
+    pass
     # load private key of localhost
 
     # load public key of receiver
@@ -568,16 +569,9 @@ def initialize_system():
     logging.info("System passed initial checks")
 
     # look if public key exists, generate if non existant
-    if not os.path.exists(os.path.join(config_dir, "public_key")):
+    if not read_configuration("keys"):
         key_pair = generate_keys()
-
-        # write the newly generated keys to file
-        logging.info("writing generated keys to file")
-        with open(os.path.join(config_dir, "public_key"), "wb") as pub_key_file:
-            pub_key_file.write(key_pair["public_key"])
-        
-        with open(os.path.join(config_dir, "private_key"), "wb") as pri_key_file:
-            pri_key_file.write(key_pair["private_key"])
+        write_configuration(key_pair, "keys")
 
 
 # make sure NetDog can connect to network
