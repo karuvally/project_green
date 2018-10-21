@@ -16,6 +16,7 @@ import threading
 import netaddr
 import signal
 import json
+import ast
 from Crypto.PublicKey import RSA
 from subprocess import Popen, PIPE
 
@@ -25,10 +26,6 @@ thread_lock = threading.Lock()
 
 # pair with client if necessary
 def pair_if_necessary(message, node_ip):
-    # exit if message does not have pair command
-    if message["data"]["command"] != "pair":
-        return
-
     # essential variables
     sender_id = message["hostname"]
     known_nodes_info = read_configuration("known_nodes")
@@ -387,8 +384,12 @@ def handle_connection(connection):
     # receive data from client
     input_transmission = receive_message(connection)
 
+    if not input_transmission:
+        connection.close()
+        return
+
     # if message is not encrypted, call pair
-    if not input_transmission and not input_transmission["encrypted"]:
+    if not input_transmission["encrypted"]:
         command = input_transmission["message"]["data"]["command"]
 
         if command == "pair":
@@ -397,9 +398,6 @@ def handle_connection(connection):
         elif command == "pair_ack":
             store_server_info(node_id, node_ip, payload)
 
-        elif command == "ping":
-            pass
-    
     # implement rest of the commands
     
     # close the connection
@@ -537,7 +535,7 @@ def receive_message(connection):
     if not transmission:
         return None
 
-    return dict(transmission)
+    return ast.literal_eval(transmission)
 
 
 # check and set up essential stuff
