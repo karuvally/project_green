@@ -291,7 +291,8 @@ def request_to_pair(network_info):
     server = find_hosts(network_info, mode = "server")
     
     # get the public key
-    public_key = load_keys("public_key")
+    key_pair = read_configuration("keys")
+    public_key = key_pair["public_key"]
 
     # send pairing request
     logging.info("sending pairing request")
