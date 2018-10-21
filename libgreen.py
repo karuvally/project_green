@@ -24,8 +24,28 @@ thread_lock = threading.Lock()
 
 
 # pair with client if necessary
-def pair_if_necessary(message):
-    pass
+def pair_if_necessary(message, node_ip):
+    # exit if message does not have pair command
+    if message["data"]["command"] != "pair":
+        return
+
+    # essential variables
+    sender_id = message["hostname"]
+    known_nodes_info = read_configuration("known_nodes")
+
+    # generate node list
+    if known_nodes_info:
+        node_list = [node_id for node_id in known_nodes_info]
+
+    if known_nodes_info and sender_id in node_list:
+        return
+
+    # accept pair request and get public_key of server
+    public_key = accept_pairing_request(sender_id, node_ip, payload)
+
+    # send pair acknowledgement
+    send_message(1994, "pair_ack", public_key, destination_ip = node_ip)
+
 
 
 # encrypt data to be send inside message
@@ -370,7 +390,16 @@ def handle_connection(connection):
 
     # if message is not encrypted, call pair
     if not input_transmission["encrypted"]:
-        pair_if_necessary(input_transmission["message"])
+        command = input_transmission["message"]["data"]["command"]
+
+        if command == "pair":
+            pair_if_necessary(input_transmission["message"], node_ip)
+        
+        elif command == "pair_ack":
+            pass
+
+        elif command == "ping":
+            pass
     
     # look if ID exists in known_clients or known_server
     known_nodes_info = read_configuration("known_nodes")
