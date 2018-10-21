@@ -47,7 +47,6 @@ def pair_if_necessary(message, node_ip):
     send_message(1994, "pair_ack", public_key, destination_ip = node_ip)
 
 
-
 # encrypt data to be send inside message
 def encrypt_message(message, receiver_id):
     # essential variables
@@ -396,32 +395,11 @@ def handle_connection(connection):
             pair_if_necessary(input_transmission["message"], node_ip)
         
         elif command == "pair_ack":
-            pass
+            store_server_info(node_id, node_ip, payload)
 
         elif command == "ping":
             pass
     
-    # look if ID exists in known_clients or known_server
-    known_nodes_info = read_configuration("known_nodes")
-    if known_nodes_info != None:
-        node_id_list = [node_id for node_id in known_nodes_info]
-
-    # handle the pairing request
-    if known_nodes_info == None or node_id not in node_id_list:
-        data = data.split(",")
-        command = data[0]
-        payload = data[1]
-
-        if command == "pair":
-            public_key = accept_pairing_request(node_id, node_ip, payload) 
-            send_message(1994, "pair_ack", public_key,
-                destination_ip = node_ip)
-
-    # handle pair acknowledgement # debug: improve checks
-    if not is_server() and read_configuration("known_server") == None:
-        if command == "pair_ack":
-            store_server_info(node_id, node_ip, payload)
-
     # implement rest of the commands
     
     # close the connection
