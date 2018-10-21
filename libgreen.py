@@ -25,13 +25,16 @@ thread_lock = threading.Lock()
 
 # encrypt data to be send inside message
 def encrypt_message(message, receiver_id):
+    # essential variables
+    encrypted_message = {}
+
     # load private key of localhost
     key_pair = read_configuration("keys")
-    private_key = key_pair["private_key"]
+    private_key = RSA.importKey(key_pair["private_key"])
 
     # load public key of receiver
     known_nodes = read_configuration("known_nodes")
-    public_key = known_nodes[received_id]["public_key"]
+    public_key = RSA.importKey(known_nodes[receiver_id]["public_key"])
 
     # encrypt data with private key of sender
     
@@ -235,7 +238,13 @@ def send_message(destination_ip, port, command, payload):
     hostname = socket.gethostname()
 
     # generate message
-    message = hostname + "," + command + "," + payload
+    message = {
+        "hostname": hostname,
+        "message": {
+            "command": command,
+            "payload": payload
+        }
+    }
 
     # create socket, connect to destination IP
     connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
