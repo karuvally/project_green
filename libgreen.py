@@ -230,9 +230,13 @@ def signal_handler(signal, frame):
 
 
 # store the newly paired server info
-def store_server_info(server_id, server_ip, public_key):
+def store_server_info(message, server_ip):
     # essential stuff
     config_dir = get_config_dir()
+    server_id = message["hostname"]
+    public_key = message["data"]["payload"]
+
+    # write to log :)
     logging.info("storing public key of server " + server_id)
 
     # prepare data to be written
@@ -385,7 +389,7 @@ def accept_pairing_request(node_id, node_ip, public_key):
 # handle newly created connection
 def handle_connection(connection):
     # essential variables
-    node_ip = connection.getpeername()[0]
+    sender_ip = connection.getpeername()[0]
     config_dir = get_config_dir()
 
     # receive data from client
@@ -395,15 +399,18 @@ def handle_connection(connection):
         connection.close()
         return
 
+    # get the message part of transmission
+    message = input_transmission["message"]
+
     # if message is not encrypted, call pair
     if not input_transmission["encrypted"]:
-        command = input_transmission["message"]["data"]["command"]
+        command = message["data"]["command"]
 
         if command == "pair":
-            pair_if_necessary(input_transmission["message"], node_ip)
+            pair_if_necessary(message, sender_ip)
         
         elif command == "pair_ack":
-            store_server_info(node_id, node_ip, payload)
+            store_server_info(message, sender_ip)
 
     # implement rest of the commands
     
