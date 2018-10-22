@@ -550,9 +550,11 @@ def receive_message(connection):
         else:
             break
 
+    # pings produce empty transmissions
     if not transmission:
         return None
 
+    # convert string to dict and return it
     return ast.literal_eval(transmission)
 
 
