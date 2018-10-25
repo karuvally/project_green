@@ -26,10 +26,15 @@ thread_lock = threading.Lock()
 
 
 # do the actual encryption
-def encrypt_stuff(blob, key, chunk_size):
+def encrypt_stuff(blob, key, key_length_bits):
     # generate key object
     rsa_key = RSA.importKey(key)
     rsa_key = PKCS1.OAEP.new(rsa_key)
+
+    # calculate chunk size
+    key_length_bytes = key_length_bits / 8
+    chunk_size = key_length_bytes - 42
+
 
 
 # pair with client if necessary
