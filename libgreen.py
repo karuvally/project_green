@@ -18,6 +18,7 @@ import signal
 import json
 import ast
 from Crypto.PublicKey import RSA
+from Crypto.Cipher import PKCS1_OAEP
 from subprocess import Popen, PIPE
 
 # global variables
@@ -59,11 +60,11 @@ def encrypt_message(message, receiver_id):
     public_key = RSA.importKey(known_nodes[receiver_id]["public_key"])
 
     # encrypt data with private key of sender
-    encrypted_data = private_key.encrypt(message["data"])
+    encrypted_data = private_key.encrypt(str(message["data"]), 32)
     message.update({"data": encrypted_data})
     
     # encrypt message with public key of receiver
-    encrypted_message = public_key.encrypt(message)
+    encrypted_message = public_key.encrypt(str(message), 32)
 
     # return the encrypted message
     return encrypted_message
@@ -521,11 +522,11 @@ def find_hosts(network_info, mode):
 def generate_keys():
     # set the size for the generated key
     logging.info("generating public-private key pair")
-    key = RSA.generate(1024)
+    key = RSA.generate(4096, e = 65537)
     
     # create public-private key pair
-    public_key = key.publickey().exportKey()
-    private_key = key.exportKey()
+    public_key = key.publickey().exportKey("PEM")
+    private_key = key.exportKey("PEM")
 
     # return key pair as dictionary
     return({
