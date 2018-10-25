@@ -26,9 +26,7 @@ thread_lock = threading.Lock()
 
 
 # do the actual encryption
-def encrypt_stuff(blob, key):
-    # essential variables
-
+def encrypt_stuff(blob, key, chunk_size):
     # generate key object
     rsa_key = RSA.importKey(key)
     rsa_key = PKCS1.OAEP.new(rsa_key)
@@ -61,12 +59,15 @@ def encrypt_message(message, receiver_id):
     encrypted_message = {}
 
     # load private key of localhost
-    key_pair = read_configuration("keys")
-    private_key = key_pair["private_key"]
+    key_info = read_configuration("keys")
+    private_key = key_info["private_key"]
 
     # load public key of receiver
     known_nodes = read_configuration("known_nodes")
     public_key = known_nodes[receiver_id]["public_key"]
+
+    # get the key length
+    key_length = key_info["key_length_bytes"]
 
     # encrypt data with private key of sender
     encrypted_data = encrypt_stuff(str(message["data"]), private_key)
@@ -542,7 +543,7 @@ def generate_keys():
 
     # return key pair as dictionary
     return({
-        "key_length": key_length,
+        "key_length_bits": key_length,
         "public_key": public_key.decode(),
         "private_key": private_key.decode()
     })
