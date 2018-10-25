@@ -349,10 +349,12 @@ def send_message(port, command, payload, destination_id = None,
         "encrypted": encrypt_flag,
         "message": message
     }
-    output = str(output)
+
+    # convert output to bytes
+    output = str(output).encode()
 
     # send the message
-    connection.sendall(output.encode())
+    connection.sendall(output)
 
 
 # send request to server for pairing
