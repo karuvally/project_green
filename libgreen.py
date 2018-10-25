@@ -17,6 +17,7 @@ import netaddr
 import signal
 import json
 import ast
+import base64
 from Crypto.PublicKey import RSA
 from Crypto.Cipher import PKCS1_OAEP
 from subprocess import Popen, PIPE
@@ -27,6 +28,11 @@ thread_lock = threading.Lock()
 
 # do the actual encryption
 def encrypt_stuff(blob, key, key_length_bits):
+    # essential variables
+    offset = 0
+    encrypted_blob = ""
+    end_loop = False
+
     # generate key object
     rsa_key = RSA.importKey(key)
     rsa_key = PKCS1.OAEP.new(rsa_key)
@@ -35,6 +41,24 @@ def encrypt_stuff(blob, key, key_length_bits):
     key_length_bytes = key_length_bits / 8
     chunk_size = key_length_bytes - 42
 
+    # loop over blob till encryption completes 
+    while not end_loop:
+        # get the chunk
+        chunk = blob[offset : offset + chunk_size]
+
+        # if chunk is too small, do padding
+        if len(chunk) % chunk_size != 0:
+            end_loop = True
+            chunk += " " * (chunk_size - len(chunk))
+
+        # append chunk to overall blob 
+        encrypted_blob += rsa_key.encrypt(chunk)
+
+        # increase offset by chunk size
+        offset += chunk_size
+
+    # return encrypted blob in base64
+    return base64.b64encode(encrypted_blob)
 
 
 # pair with client if necessary
