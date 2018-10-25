@@ -25,6 +25,16 @@ from subprocess import Popen, PIPE
 thread_lock = threading.Lock()
 
 
+# do the actual encryption
+def encrypt_stuff(blob, key):
+    # essential variables
+
+
+    # generate key object
+    rsa_key = RSA.importKey(key)
+    rsa_key = PKCS1.OAEP.new(rsa_key)
+
+
 # pair with client if necessary
 def pair_if_necessary(message, node_ip):
     # essential variables
