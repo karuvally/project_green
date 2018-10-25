@@ -32,6 +32,9 @@ def encrypt_stuff(blob, key, key_length_bits):
     offset = 0
     encrypted_blob = ""
     end_loop = False
+    
+    # convert blob to bytes
+    blob = str(blob).encode()
 
     # generate key object
     rsa_key = RSA.importKey(key)
@@ -49,7 +52,7 @@ def encrypt_stuff(blob, key, key_length_bits):
         # if chunk is too small, do padding
         if len(chunk) % chunk_size != 0:
             end_loop = True
-            chunk += " " * (chunk_size - len(chunk))
+            chunk += b" " * (chunk_size - len(chunk))
 
         # debug
         print(encrypted_blob, type(blob))
