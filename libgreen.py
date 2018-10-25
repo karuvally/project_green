@@ -529,9 +529,12 @@ def find_hosts(network_info, mode):
 
 # generate public-private key pair
 def generate_keys():
+    # essential variables
+    key_length = 2048
+
     # set the size for the generated key
     logging.info("generating public-private key pair")
-    key = RSA.generate(2048, e = 65537)
+    key = RSA.generate(key_length, e = 65537)
     
     # create public-private key pair
     public_key = key.publickey().exportKey("PEM")
@@ -539,6 +542,7 @@ def generate_keys():
 
     # return key pair as dictionary
     return({
+        "key_length": key_length,
         "public_key": public_key.decode(),
         "private_key": private_key.decode()
     })
