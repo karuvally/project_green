@@ -30,7 +30,7 @@ thread_lock = threading.Lock()
 def encrypt_stuff(blob, key, key_length_bits):
     # essential variables
     offset = 0
-    encrypted_blob = ""
+    encrypted_blob = b""
     end_loop = False
     
     # convert blob to bytes
@@ -53,11 +53,6 @@ def encrypt_stuff(blob, key, key_length_bits):
         if len(chunk) % chunk_size != 0:
             end_loop = True
             chunk += b" " * (chunk_size - len(chunk))
-
-        # debug
-        print(encrypted_blob, type(blob))
-        print(rsa_key.encrypt(chunk))
-        sys.exit()
 
         # append chunk to overall blob 
         encrypted_blob += rsa_key.encrypt(chunk)
