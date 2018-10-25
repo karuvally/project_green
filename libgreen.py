@@ -60,11 +60,11 @@ def encrypt_message(message, receiver_id):
     public_key = RSA.importKey(known_nodes[receiver_id]["public_key"])
 
     # encrypt data with private key of sender
-    encrypted_data = private_key.encrypt(str(message["data"]), 32)
+    encrypted_data = encrypt_stuff(str(message["data"]), private_key)
     message.update({"data": encrypted_data})
     
     # encrypt message with public key of receiver
-    encrypted_message = public_key.encrypt(str(message), 32)
+    encrypted_message = encrypt_stuff(str(message), public_key)
 
     # return the encrypted message
     return encrypted_message
