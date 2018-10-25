@@ -53,11 +53,11 @@ def encrypt_message(message, receiver_id):
 
     # load private key of localhost
     key_pair = read_configuration("keys")
-    private_key = RSA.importKey(key_pair["private_key"])
+    private_key = key_pair["private_key"]
 
     # load public key of receiver
     known_nodes = read_configuration("known_nodes")
-    public_key = RSA.importKey(known_nodes[receiver_id]["public_key"])
+    public_key = known_nodes[receiver_id]["public_key"]
 
     # encrypt data with private key of sender
     encrypted_data = encrypt_stuff(str(message["data"]), private_key)
