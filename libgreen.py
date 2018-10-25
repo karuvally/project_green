@@ -39,7 +39,7 @@ def encrypt_stuff(blob, key, key_length_bits):
 
     # calculate chunk size
     key_length_bytes = key_length_bits / 8
-    chunk_size = key_length_bytes - 42
+    chunk_size = int(key_length_bytes - 42)
 
     # loop over blob till encryption completes 
     while not end_loop:
