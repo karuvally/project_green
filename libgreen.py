@@ -66,15 +66,17 @@ def encrypt_message(message, receiver_id):
     known_nodes = read_configuration("known_nodes")
     public_key = known_nodes[receiver_id]["public_key"]
 
-    # get the key length
-    key_length = key_info["key_length_bytes"]
+    # get key_length
+    key_length = key_info["key_length_bits"]
 
     # encrypt data with private key of sender
-    encrypted_data = encrypt_stuff(str(message["data"]), private_key)
+    encrypted_data = encrypt_stuff(str(message["data"]), private_key,
+        key_length)
+
     message.update({"data": encrypted_data})
     
     # encrypt message with public key of receiver
-    encrypted_message = encrypt_stuff(str(message), public_key)
+    encrypted_message = encrypt_stuff(str(message), public_key, key_length)
 
     # return the encrypted message
     return encrypted_message
