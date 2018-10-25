@@ -29,7 +29,6 @@ thread_lock = threading.Lock()
 def encrypt_stuff(blob, key):
     # essential variables
 
-
     # generate key object
     rsa_key = RSA.importKey(key)
     rsa_key = PKCS1.OAEP.new(rsa_key)
@@ -532,7 +531,7 @@ def find_hosts(network_info, mode):
 def generate_keys():
     # set the size for the generated key
     logging.info("generating public-private key pair")
-    key = RSA.generate(4096, e = 65537)
+    key = RSA.generate(2048, e = 65537)
     
     # create public-private key pair
     public_key = key.publickey().exportKey("PEM")
