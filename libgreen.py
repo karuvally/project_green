@@ -51,6 +51,11 @@ def encrypt_stuff(blob, key, key_length_bits):
             end_loop = True
             chunk += " " * (chunk_size - len(chunk))
 
+        # debug
+        print(encrypted_blob, type(blob))
+        print(rsa_key.encrypt(chunk))
+        sys.exit()
+
         # append chunk to overall blob 
         encrypted_blob += rsa_key.encrypt(chunk)
 
@@ -99,13 +104,13 @@ def encrypt_message(message, receiver_id):
     key_length = key_info["key_length_bits"]
 
     # encrypt data with private key of sender
-    encrypted_data = encrypt_stuff(str(message["data"]), private_key,
+    encrypted_data = encrypt_stuff(message["data"], private_key,
         key_length)
 
     message.update({"data": encrypted_data})
     
     # encrypt message with public key of receiver
-    encrypted_message = encrypt_stuff(str(message), public_key, key_length)
+    encrypted_message = encrypt_stuff(message, public_key, key_length)
 
     # return the encrypted message
     return encrypted_message
