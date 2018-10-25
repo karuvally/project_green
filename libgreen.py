@@ -35,7 +35,7 @@ def encrypt_stuff(blob, key, key_length_bits):
 
     # generate key object
     rsa_key = RSA.importKey(key)
-    rsa_key = PKCS1.OAEP.new(rsa_key)
+    rsa_key = PKCS1_OAEP.new(rsa_key)
 
     # calculate chunk size
     key_length_bytes = key_length_bits / 8
