@@ -35,15 +35,22 @@ def decrypt_message(message):
 
     # decrypt first layer of encryption
     message = decrypt_stuff(message, private_key, key_length)
-
-    # debug
-    print(message)
+    message = ast.literal_eval(message)
 
     # load public key of sender
+    known_nodes = read_configuration("known_nodes")
+    sender_id = message["hostname"]
+    public_key = known_nodes[sender_id]["public_key"] 
 
     # decrypt second layer of encryption
+    decrypted_data = decrypt_stuff(message["data"], public_key, key_length)
+    decrypted_data = ast.literal_eval(decrypted_data)
+
+    # update the message with decrypted data 
+    message.update({"data": decrypted_data})
 
     # return decrypted message
+    return message
 
 
 # do the actual decryption
@@ -51,7 +58,7 @@ def decrypt_stuff(blob, key, key_length_bits):
     # essential variables
     offset = 0
     decrypted_stuff = b""
-    chunk_size = key_length_bits
+    chunk_size = int(key_length_bits / 8)
 
     # do base64 decode
     blob = base64.b64decode(blob)
