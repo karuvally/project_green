@@ -36,6 +36,9 @@ def decrypt_message(message):
     # decrypt first layer of encryption
     message = decrypt_stuff(message, private_key, key_length)
 
+    # debug
+    print(message)
+
     # load public key of sender
 
     # decrypt second layer of encryption
@@ -58,7 +61,7 @@ def decrypt_stuff(blob, key, key_length_bits):
     rsakey = PKCS1_OAEP.new(rsakey)
 
     # loop till entire blob is decrypted
-    while offset < len(encrypted_blob):
+    while offset < len(blob):
         # get the chunk
         chunk = blob[offset : offset + chunk_size]
 
