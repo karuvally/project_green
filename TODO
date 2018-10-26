@@ -1,5 +1,6 @@
 TODO
 ----
+* figure out way to send key length to decrypt()
 * do encryption
 * add timestamp to log
 * ping command in netdog protocol

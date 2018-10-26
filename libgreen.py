@@ -26,6 +26,16 @@ from subprocess import Popen, PIPE
 thread_lock = threading.Lock()
 
 
+# decrypt an incoming message
+def decrypt_message(message):
+    pass
+
+
+# do the actual decryption
+def decrypt_stuff(blob, key, key_length_bits):
+    pass
+
+
 # do the actual encryption
 def encrypt_stuff(blob, key, key_length_bits):
     # essential variables
@@ -60,11 +70,8 @@ def encrypt_stuff(blob, key, key_length_bits):
         # increase offset by chunk size
         offset += chunk_size
 
-    # do base64 conversion
-    encrypted_blob = base64.b64encode(encrypted_blob)
-
     # return encrypted blob in base64
-    return encrypted_blob
+    return base64.b64encode(encrypted_blob)
 
 
 # pair with client if necessary
@@ -90,9 +97,6 @@ def pair_if_necessary(message, node_ip):
 
 # encrypt data to be send inside message
 def encrypt_message(message, receiver_id):
-    # essential variables
-    encrypted_message = {}
-
     # load private key of localhost
     key_info = read_configuration("keys")
     private_key = key_info["private_key"]
@@ -111,10 +115,10 @@ def encrypt_message(message, receiver_id):
     message.update({"data": encrypted_data})
     
     # encrypt message with public key of receiver
-    encrypted_message = encrypt_stuff(message, public_key, key_length)
+    message = encrypt_stuff(message, public_key, key_length)
 
     # return the encrypted message
-    return encrypted_message
+    return message 
 
 
 # stuff to do when client starts
