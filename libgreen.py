@@ -35,7 +35,9 @@ def decrypt_message(message):
 
     # decrypt first layer of encryption
     message = decrypt_stuff(message, private_key, key_length)
-    message = ast.literal_eval(message)
+
+    # recover the dictionary from message
+    message = ast.literal_eval(message.decode())
 
     # load public key of sender
     known_nodes = read_configuration("known_nodes")
