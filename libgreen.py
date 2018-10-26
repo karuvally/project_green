@@ -174,8 +174,8 @@ def client_checklist(known_network_info):
     # essential variables
     config_dir = get_config_dir()
 
-    # if no known_server is present, find one and pair
-    if not os.path.exists(os.path.join(config_dir, "known_server")):
+    # if no known_server present, find one and pair
+    if not os.path.exists(os.path.join(config_dir, "known_nodes")):
         # start client pairing request
         logging.info("the client is not paired with a server")
         request_to_pair(known_network_info)
