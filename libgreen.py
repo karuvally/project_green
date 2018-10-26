@@ -28,7 +28,18 @@ thread_lock = threading.Lock()
 
 # decrypt an incoming message
 def decrypt_message(message):
-    pass
+    # load localhost's keys
+    key_info = read_configuration("keys")
+    key_length = key_info["key_length_bits"]
+    private_key = key_info["private_key"]
+
+    # decrypt first layer of encryption
+
+    # load public key of sender
+
+    # decrypt second layer of encryption
+
+    # return decrypted message
 
 
 # do the actual decryption
