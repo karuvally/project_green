@@ -61,7 +61,7 @@ def encrypt_stuff(blob, key, key_length_bits):
         offset += chunk_size
 
     # do base64 conversion
-    # encrypted_blob = base64.b64encode(encrypted_blob)
+    encrypted_blob = base64.b64encode(encrypted_blob)
 
     # return encrypted blob in base64
     return encrypted_blob
