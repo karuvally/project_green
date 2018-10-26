@@ -345,13 +345,14 @@ def store_server_info(message, server_ip):
 
     # prepare data to be written
     server_info = {
-        "server_id": server_id,
-        "server_ip": server_ip,
-        "public_key": public_key
+        server_id: {
+            "last_known_address": server_ip,
+            "public_key": public_key
+        }
     }
 
     # write the new server info to file
-    write_configuration(server_info, "known_server")
+    write_configuration(server_info, "known_nodes")
 
 
 # check if the running program is server
