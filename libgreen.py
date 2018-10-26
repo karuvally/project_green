@@ -34,6 +34,7 @@ def decrypt_message(message):
     private_key = key_info["private_key"]
 
     # decrypt first layer of encryption
+    message = decrypt_stuff(message, private_key, key_length)
 
     # load public key of sender
 
@@ -44,7 +45,31 @@ def decrypt_message(message):
 
 # do the actual decryption
 def decrypt_stuff(blob, key, key_length_bits):
-    pass
+    # essential variables
+    offset = 0
+    decrypted_stuff = b""
+    chunk_size = key_length_bits
+
+    # do base64 decode
+    blob = base64.b64decode(blob)
+
+    # generate key object
+    rsakey = RSA.importKey(key)
+    rsakey = PKCS1_OAEP.new(rsakey)
+
+    # loop till entire blob is decrypted
+    while offset < len(encrypted_blob):
+        # get the chunk
+        chunk = blob[offset : offset + chunk_size]
+
+        # decrypt chunk, add it to decrypted stuff
+        decrypted_stuff += rsakey.decrypt(chunk)
+
+        # increase offset by chunk size
+        offset += chunk_size
+
+    # return stuff
+    return decrypted_stuff
 
 
 # do the actual encryption
@@ -126,10 +151,10 @@ def encrypt_message(message, receiver_id):
     message.update({"data": encrypted_data})
     
     # encrypt message with public key of receiver
-    message = encrypt_stuff(message, public_key, key_length)
+    encrypted_message = encrypt_stuff(message, public_key, key_length)
 
     # return the encrypted message
-    return message 
+    return encrypted_message 
 
 
 # stuff to do when client starts
