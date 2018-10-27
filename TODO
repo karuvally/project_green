@@ -1,8 +1,6 @@
 TODO
 ----
-* remove double encryption and decryption
 * implement signature
-* do encryption
 * add timestamp to log
 * ping command in netdog protocol
 * why is client not exiting peacfully?
@@ -14,6 +12,8 @@ TODO
 
 DONE
 ----
+* do encryption
+* remove double encryption and decryption
 * test encrypt/decrypt functions
 * figure out way to send key length to decrypt()
 * refactor probe_interfaces()
