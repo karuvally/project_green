@@ -33,7 +33,7 @@ def decrypt_message(message):
     key_length = key_info["key_length_bits"]
     private_key = key_info["private_key"]
 
-    # decrypt first layer of encryption
+    # decrypt the message
     message = decrypt_stuff(message, private_key, key_length)
 
     # recover the dictionary from message
@@ -43,13 +43,6 @@ def decrypt_message(message):
     known_nodes = read_configuration("known_nodes")
     sender_id = message["hostname"]
     public_key = known_nodes[sender_id]["public_key"] 
-
-    # decrypt second layer of encryption
-    decrypted_data = decrypt_stuff(message["data"], public_key, key_length)
-    decrypted_data = ast.literal_eval(decrypted_data)
-
-    # update the message with decrypted data 
-    message.update({"data": decrypted_data})
 
     # return decrypted message
     return message
