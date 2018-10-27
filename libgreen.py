@@ -156,12 +156,6 @@ def encrypt_message(message, receiver_id):
     # get key_length
     key_length = key_info["key_length_bits"]
 
-    # encrypt data with private key of sender
-    encrypted_data = encrypt_stuff(message["data"], private_key,
-        key_length)
-
-    message.update({"data": encrypted_data})
-    
     # encrypt message with public key of receiver
     encrypted_message = encrypt_stuff(message, public_key, key_length)
 

@@ -1,5 +1,7 @@
 TODO
 ----
+* remove double encryption and decryption
+* implement signature
 * do encryption
 * add timestamp to log
 * ping command in netdog protocol
