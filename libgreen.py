@@ -698,27 +698,27 @@ def setup_network(server = False):
     logging.info("getting network information")
 
     # if no known network, find a usable one
-    if not known_network_info:
-        if server:
-            # launch network chooser
-            usable_interface = interface_chooser(interface_dump)
+    if not known_network_info and if server:
+        # launch network chooser
+        usable_interface = interface_chooser(interface_dump)
 
-        # if client, automatically find usable interface
-        elif not server:
-            while True:
-                usable_interface = find_network(interface_dump)
-                if usable_interface:
-                    break
-                time.sleep(30)
+    # if client, automatically find usable interface
+    elif not known_network and not server:
+        while True:
+            usable_interface = find_network(interface_dump)
+            if usable_interface:
+                break
+            time.sleep(30)
 
+    if not known_network:
         # save the newly found network 
         known_network_info = interface_dump[usable_interface]
         write_configuration(known_network_info, "known_network")
 
     # if there is a known network, do as follows, debug
-    else:
+    if known_network:
         pass
 
     # if localhost is client, do stuff :D
-    if server == False:
+    if not server:
         client_checklist(known_network_info)
