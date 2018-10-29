@@ -388,6 +388,11 @@ def send_message(port, command, payload, destination_id = None,
         "data": data
     }
 
+    # retrieve destination_ip from id
+    if destination_id:
+        known_nodes = read_configuration("known_nodes")
+        destination_ip = known_nodes[destination_id]["last_known_address"]
+
     # create socket, connect to destination IP
     connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     connection.connect((destination_ip, port))

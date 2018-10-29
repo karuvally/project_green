@@ -1,5 +1,6 @@
 TODO
 ----
+* add auto port in send_message()
 * move logging to higher level functions
 * implement signature
 * add timestamp to log
