@@ -495,10 +495,10 @@ def handle_connection(connection):
 
     # get the message part of transmission
     message = input_transmission["message"]
+    command = message["data"]["command"]
 
     # if message is not encrypted, call pair
     if not input_transmission["encrypted"]:
-        command = message["data"]["command"]
 
         if command == "pair":
             pair_if_necessary(message, sender_ip)
