@@ -497,12 +497,15 @@ def handle_connection(connection):
     message = input_transmission["message"]
     command = message["data"]["command"]
 
-    # check for commands
+    # act according to received command
     if command == "pair":
         pair_if_necessary(message, sender_ip)
     
     elif command == "pair_ack":
         store_server_info(message, sender_ip)
+
+    elif command == "execute":
+        execute_command(message, sender_ip)
 
     # implement rest of the commands
     
