@@ -715,7 +715,7 @@ def setup_network(server = False):
         write_configuration(known_network_info, "known_network")
 
     # if there is a known network, do as follows, debug
-    if known_network:
+    if known_network_info:
         pass
 
     # if localhost is client, do stuff :D
