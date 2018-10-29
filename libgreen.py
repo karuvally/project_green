@@ -487,7 +487,7 @@ def handle_connection(connection):
     config_dir = get_config_dir()
 
     # receive data from client
-    input_transmission = receive_message(connection)
+    input_transmission = receive_transmission(connection)
 
     if not input_transmission:
         connection.close()
@@ -629,7 +629,7 @@ def generate_keys():
 
 
 # handle the incoming data
-def receive_message(connection):
+def receive_transmission(connection):
     # an empty string for storing data
     transmission = ""
 
