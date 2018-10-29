@@ -26,6 +26,18 @@ from subprocess import Popen, PIPE
 thread_lock = threading.Lock()
 
 
+# execute command, send back the result
+def execute_command(message, sender_ip):
+    # extract the command
+    command = message["data"]["payload"]
+
+    # create command object, execute
+    command_obj = Popen(command, stdout = PIPE)
+
+    # get the output
+    command_out = ping.communicate()
+
+
 # decrypt an incoming message
 def decrypt_message(message):
     # load localhost's keys
