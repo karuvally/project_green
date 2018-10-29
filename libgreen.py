@@ -657,7 +657,7 @@ def receive_transmission(connection):
         transmission.update({"message": message})
 
     # return message
-    return message
+    return transmission
 
 
 # check and set up essential stuff
