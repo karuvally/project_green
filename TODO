@@ -1,5 +1,6 @@
 TODO
 ----
+* decide when client should check if server is reachable
 * add auto port in send_message()
 * move logging to higher level functions
 * implement signature

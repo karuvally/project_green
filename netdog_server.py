@@ -14,11 +14,6 @@ def main():
     # make sure NetDog can connect to network
     setup_network(server = True)
 
-    # debug
-    time.sleep(10)
-    send_message(1994, "execute", ["shutdown" "-h" "0"],
-        destination_id = "netdog-client")
-
     # listen for message from clients
     create_new_listen_socket(1337)
 
