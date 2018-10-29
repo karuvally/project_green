@@ -346,7 +346,7 @@ def store_server_info(message, server_ip):
 def is_server():
     if sys.argv[0].rfind("server") != -1:
         return True
-    
+
     return False
 
 
@@ -698,7 +698,7 @@ def setup_network(server = False):
     logging.info("getting network information")
 
     # if no known network and server, launch network chooser
-    if not known_network_info and if server:
+    if not known_network_info and server:
         usable_interface = interface_chooser(interface_dump)
 
     # if no known network and client, automatically interface
