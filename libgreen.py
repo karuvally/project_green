@@ -702,7 +702,7 @@ def setup_network(server = False):
         usable_interface = interface_chooser(interface_dump)
 
     # if no known network and client, automatically interface
-    elif not known_network and not server:
+    elif not known_network_info and not server:
         while True:
             usable_interface = find_network(interface_dump)
             if usable_interface:
@@ -710,7 +710,7 @@ def setup_network(server = False):
             time.sleep(30)
 
     # save the newly found network 
-    if not known_network:
+    if not known_network_info:
         known_network_info = interface_dump[usable_interface]
         write_configuration(known_network_info, "known_network")
 
