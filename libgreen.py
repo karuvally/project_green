@@ -497,14 +497,12 @@ def handle_connection(connection):
     message = input_transmission["message"]
     command = message["data"]["command"]
 
-    # if message is not encrypted, call pair
-    if not input_transmission["encrypted"]:
-
-        if command == "pair":
-            pair_if_necessary(message, sender_ip)
-        
-        elif command == "pair_ack":
-            store_server_info(message, sender_ip)
+    # check for commands
+    if command == "pair":
+        pair_if_necessary(message, sender_ip)
+    
+    elif command == "pair_ack":
+        store_server_info(message, sender_ip)
 
     # implement rest of the commands
     
