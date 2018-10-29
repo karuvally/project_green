@@ -648,13 +648,13 @@ def receive_message(connection):
     if not transmission:
         return None
 
+    # convert the transmission to dictionary
+    transmission = ast.literal_eval(transmission)
+
     # decrypt if transmission is encrypted
     if transmission["encrypted"]:
         message = decrypt_message(transmission["message"])
-
-    # if unencrypted, convert message to dictionary
-    else:
-        message = ast.literal_eval(transmission["message"])
+        transmission.update({"message": message})
 
     # return message
     return message
