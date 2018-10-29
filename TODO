@@ -1,5 +1,6 @@
 TODO
 ----
+* move logging to higher level functions
 * implement signature
 * add timestamp to log
 * ping command in netdog protocol
