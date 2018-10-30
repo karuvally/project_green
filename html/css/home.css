@@ -4,12 +4,25 @@ body {
 
 .demo-card-wide.mdl-card {
   width: 512px;
+  box-sizing: border-box;
+  padding-left: 8px;
+  padding-top: 4px;
 }
+
 .demo-card-wide > .mdl-card__title {
   color: #fff;
   height: 176px;
   background: url('../assets/welcome_card.jpg') center / cover;
 }
+
+.mdl-grid .mdl-cell {
+  height: 200px;
+}
+
+.mdl-grid.center-items {
+  justify-content: center;
+}
+
 .demo-card-wide > .mdl-card__menu {
   color: #fff;
 }
