@@ -18,6 +18,8 @@ def main():
     listen_thread = threading.Thread(target = create_new_listen_socket,
         args = [1337])
 
+    listen_thread.start()
+
 
 # call the main function
 main()
