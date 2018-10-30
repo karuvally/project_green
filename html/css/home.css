@@ -8,7 +8,7 @@ body {
 .demo-card-wide > .mdl-card__title {
   color: #fff;
   height: 176px;
-  background: url('../assets/demos/welcome_card.jpg') center / cover;
+  background: url('assets/welcome_card.jpg') center / cover;
 }
 .demo-card-wide > .mdl-card__menu {
   color: #fff;
