@@ -1,5 +1,8 @@
 TODO
 ----
+* easy to use prewritten scripts
+* scheduled command execution
+* group clients
 * decide when client should check if server is reachable
 * add auto port in send_message()
 * move logging to higher level functions

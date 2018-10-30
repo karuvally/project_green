@@ -15,7 +15,8 @@ def main():
     setup_network(server = True)
 
     # listen for message from clients
-    create_new_listen_socket(1337)
+    listen_thread = threading.Thread(target = create_new_listen_socket,
+        args = [1337])
 
 
 # call the main function

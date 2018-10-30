@@ -8,9 +8,6 @@ from libgreen import *
 
 # the main function
 def main():
-    # essential variables
-    threads = []
-
     # initialize the system
     initialize_system()
 
@@ -18,7 +15,6 @@ def main():
     listen_thread = threading.Thread(target = create_new_listen_socket,
         args = [1994])
 
-    threads.append(listen_thread)
     listen_thread.start()
 
     # make sure we have usable network
