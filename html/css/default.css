@@ -2,6 +2,12 @@ body {
   background: #fafafa;
 }
 
+.mdl-textfield {
+  margin-left: 10px; 
+  margin-top: -5px;
+  margin-bottom: -12px;
+}
+
 .demo-card-wide.mdl-card {
   width: 512px;
   box-sizing: border-box;
