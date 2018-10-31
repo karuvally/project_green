@@ -13,5 +13,5 @@ def index():
 
 
 # the main function
-def main():
+def start_web_server():
     run(host = "0.0.0.0", port = 8080)
