@@ -9,10 +9,10 @@ from bottle import route, run, template
 
 # default page
 @route("/")
-def index():
+def home_page():
     return("Hello")
 
 
 # the main function
 def start_web_server():
-    run(host = "0.0.0.0", port = 9000)
+    run(host = "0.0.0.0", port = 9000, debug = True)
