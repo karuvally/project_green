@@ -18,8 +18,10 @@ def node_list():
     command = request.forms.get("command")
 
     # get known nodes
-    known_nodes_info = read_configuration("known_nodes")
+    known_nodes = read_configuration("known_nodes")
 
+    # generate the node list page
+    return template("select_nodes", known_nodes)
 
 
 # serve the command input page
