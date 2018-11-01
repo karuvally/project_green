@@ -12,6 +12,9 @@ node_list = None
 
 
 # store node list and start execution
+@post("/submit_nodes")
+def handle_execution():
+    pass
 
 
 # store the command from user, return node selection page

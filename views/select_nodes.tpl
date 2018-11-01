@@ -19,27 +19,29 @@
 
   <body>
     <div class="mdl-grid center-items">
-      <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp vertical-center">
-        <thead>
-          <tr>
-            <th class="mdl-data-table__cell--non-numeric">Computer's name</th>
-            <th>Address</th>
-          </tr>
-        </thead>
-        <tbody>
-          % for node in known_nodes:
-          <tr>
-            <td class="mdl-data-table__cell--non-numeric">{{node}}</td>
-            <td>{{known_nodes[node]["last_known_address"]}}</td>
-          </tr>
-          % end
-       </tbody>
-      </table>
-      <div class="execute-button">
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-      Lets do it!
-    </a>
-      </div>
+      <form action="submit_nodes", method="POST">
+        <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp vertical-center">
+          <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">Computer's name</th>
+              <th>Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            % index = 0
+            % for node in known_nodes:
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric" name={{index}} value={{node}}>{{node}}</td>
+              <td>{{known_nodes[node]["last_known_address"]}}</td>
+            </tr>
+            % index += 1
+            % end
+         </tbody>
+        </table>
+        <div class="execute-button">
+          <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="submit">Lets do it!</button>
+        </div>
+      </form>
     </div>
   </body>
 
