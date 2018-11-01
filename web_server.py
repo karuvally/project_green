@@ -21,13 +21,17 @@ def handle_execution():
 @post("/submit_command")
 def serve_node_list():
     # get the command from user
-    command = request.forms.get("command")
+    command = request.forms.get("command").split()
 
     # get known nodes
     known_nodes = read_configuration("known_nodes")
 
-    # generate the node list page
-    return template("select_nodes", known_nodes=known_nodes)
+    # run the command on each node
+    for node in known_nodes:
+        send_message(1994, "execute", command, destination_id=node)
+
+    # generate the node list page # debug
+    # return template("select_nodes", known_nodes=known_nodes)
 
 
 # serve the command input page
