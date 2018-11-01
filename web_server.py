@@ -6,18 +6,20 @@
 from libgreen import *
 from bottle import post, get, static_file, run, request
 
+# global variables
+command = None
+node_list = None
 
-# execute the command on all machines
+
+# store the command from user, return node selection page
 @post("/submit_command")
-def handle_execution():
+def node_list():
     # get the command from user
     command = request.forms.get("command")
-    print(command) # debug
 
-    # serve the node selection page
-    # node_list = serve_node_page()
+    # get known nodes
+    known_nodes_info = read_configuration("known_nodes")
 
-    # send the command to each node
 
 
 # serve the command input page
