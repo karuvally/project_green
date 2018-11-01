@@ -4,11 +4,11 @@
 
 # import serious stuff
 from libgreen import *
-from bottle import route, run, template
+from bottle import post, get, run
 
 
 # default page
-@route("/")
+@get("/")
 def home_page():
     return("Hello")
 
