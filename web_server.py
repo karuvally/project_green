@@ -4,15 +4,15 @@
 
 # import serious stuff
 from libgreen import *
-from bottle import post, get, run
+from bottle import post, get, run, static_file
 
 
-# default page
+# serve the landing page
 @get("/")
 def home_page():
-    return("Hello")
+    return static_file(filename="home.html", root="/html")
 
 
 # the main function
 def start_web_server():
-    run(host = "0.0.0.0", port = 9000, debug = True)
+    run(host="0.0.0.0", port=9000, debug=True)
