@@ -4,13 +4,19 @@
 
 # import serious stuff
 from libgreen import *
-from bottle import post, get, run, static_file
+from bottle import post, route, static_file, run
+
+
+# serve the CSS
+@route("/css/<css_file>")
+def serve_css(css_file):
+    return static_file(css_file, root="html/css")
 
 
 # serve the landing page
-@get("/")
+@route("/")
 def home_page():
-    return static_file(filename="home.html", root="/html")
+    return static_file("home.html", root="html")
 
 
 # the main function
