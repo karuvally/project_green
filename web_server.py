@@ -7,10 +7,10 @@ from libgreen import *
 from bottle import post, route, static_file, run
 
 
-# serve rest of the html files
-@route("/<file_name>.html")
-def serve_page(file_name):
-    return static_file(file_name + ".html", root="html")
+# serve the command input page
+@route("/execute.html")
+def serve_execute_page():
+    return static_file("execute.html", root="html")
 
 
 # serve the images 
