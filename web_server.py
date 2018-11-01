@@ -4,7 +4,7 @@
 
 # import serious stuff
 from libgreen import *
-from bottle import post, get, static_file, run, request
+from bottle import post, get, static_file, run, request, template
 
 # global variables
 command = None
