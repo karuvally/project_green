@@ -24,11 +24,12 @@
           <h2 class="mdl-card__title-text">Type the command to execute</h2>
         </div>
         <!-- TextField to enter the command -->
-        <form action="submit_command">
+        <form action="submit_command", method="POST">
           <div class="mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" type="text" id="command">
+            <input class="mdl-textfield__input" type="text" id="command" name="command">
             <label class="mdl-textfield__label" for="command">Command</label>
           </div>
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent command_button" type="submit">Next!</button>
         </form>
       </div>
     </div>

@@ -4,7 +4,7 @@
 
 # import serious stuff
 from libgreen import *
-from bottle import post, get, static_file, run
+from bottle import post, get, static_file, run, request
 
 
 # execute the command on all machines
@@ -12,9 +12,10 @@ from bottle import post, get, static_file, run
 def handle_execution():
     # get the command from user
     command = request.forms.get("command")
+    print(command) # debug
 
     # serve the node selection page
-    node_list = serve_node_page()
+    # node_list = serve_node_page()
 
     # send the command to each node
 
