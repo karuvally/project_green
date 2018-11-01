@@ -11,9 +11,12 @@ command = None
 node_list = None
 
 
+# store node list and start execution
+
+
 # store the command from user, return node selection page
 @post("/submit_command")
-def node_list():
+def serve_node_list():
     # get the command from user
     command = request.forms.get("command")
 
