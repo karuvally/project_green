@@ -4,29 +4,29 @@
 
 # import serious stuff
 from libgreen import *
-from bottle import post, route, static_file, run
+from bottle import post, get, static_file, run
 
 
 # serve the command input page
-@route("/execute.html")
+@get("/execute.html")
 def serve_execute_page():
     return static_file("execute.html", root="html")
 
 
 # serve the images 
-@route("/assets/<image_file>")
+@get("/assets/<image_file>")
 def serve_css(image_file):
     return static_file(image_file, root="html/assets")
 
 
 # serve the CSS
-@route("/css/<css_file>")
+@get("/css/<css_file>")
 def serve_css(css_file):
     return static_file(css_file, root="html/css")
 
 
 # serve the landing page
-@route("/")
+@get("/")
 def home_page():
     return static_file("home.html", root="html")
 
