@@ -6,6 +6,13 @@
 from libgreen import *
 from bottle import post, route, static_file, run
 
+
+# serve rest of the html files
+@route("/<file_name>.html")
+def serve_page(file_name):
+    return static_file(file_name + ".html", root="html")
+
+
 # serve the images 
 @route("/assets/<image_file>")
 def serve_css(image_file):
