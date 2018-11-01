@@ -33,6 +33,9 @@ def serve_node_list():
     # generate the node list page # debug
     # return template("select_nodes", known_nodes=known_nodes)
 
+    # return a happy page # debug
+    return static_file("happy_end.html", root="html")
+
 
 # serve the command input page
 @get("/execute.html")
