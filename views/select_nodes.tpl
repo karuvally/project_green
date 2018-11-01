@@ -31,6 +31,7 @@
             % for node in known_nodes:
               <td class="mdl-data-table__cell--non-numeric">{{node}}</td>
               <td>{{known_nodes[node]["last_known_address"]}}</td>
+            % end
           </tr>
        </tbody>
       </table>
