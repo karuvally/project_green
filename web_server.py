@@ -21,7 +21,7 @@ def node_list():
     known_nodes = read_configuration("known_nodes")
 
     # generate the node list page
-    return template("select_nodes", known_nodes)
+    return template("select_nodes", known_nodes=known_nodes)
 
 
 # serve the command input page

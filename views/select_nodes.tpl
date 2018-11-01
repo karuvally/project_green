@@ -28,18 +28,11 @@
         </thead>
         <tbody>
           <tr>
-            <td class="mdl-data-table__cell--non-numeric">ThinkPad-L440</td>
-            <td>192.168.0.123</td>
+            % for node in known_nodes:
+              <td class="mdl-data-table__cell--non-numeric">{{node}}</td>
+              <td>{{known_nodes[node]["last_known_address"]}}</td>
           </tr>
-          <tr>
-            <td class="mdl-data-table__cell--non-numeric">MacBook Pro</td>
-            <td>192.168.0.54</td>
-          </tr>
-          <tr>
-            <td class="mdl-data-table__cell--non-numeric">ThinkStation</td>
-            <td>192.168.0.112</td>
-          </tr>
-        </tbody>
+       </tbody>
       </table>
       <div class="execute-button">
     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
