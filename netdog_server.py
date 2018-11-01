@@ -6,6 +6,7 @@
 from libgreen import *
 from web_server import start_web_server
 
+
 # the main function
 def main():
     # initialize the system
@@ -22,7 +23,6 @@ def main():
 
     # start web server
     start_web_server()
-    
 
 
 # call the main function

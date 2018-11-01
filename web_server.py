@@ -7,6 +7,18 @@ from libgreen import *
 from bottle import post, get, static_file, run
 
 
+# execute the command on all machines
+@post("/submit_command")
+def handle_execution():
+    # get the command from user
+    command = request.forms.get("command")
+
+    # serve the node selection page
+    node_list = serve_node_page()
+
+    # send the command to each node
+
+
 # serve the command input page
 @get("/execute.html")
 def serve_execute_page():
