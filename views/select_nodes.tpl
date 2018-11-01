@@ -27,12 +27,12 @@
           </tr>
         </thead>
         <tbody>
+          % for node in known_nodes:
           <tr>
-            % for node in known_nodes:
-              <td class="mdl-data-table__cell--non-numeric">{{node}}</td>
-              <td>{{known_nodes[node]["last_known_address"]}}</td>
-            % end
+            <td class="mdl-data-table__cell--non-numeric">{{node}}</td>
+            <td>{{known_nodes[node]["last_known_address"]}}</td>
           </tr>
+          % end
        </tbody>
       </table>
       <div class="execute-button">
