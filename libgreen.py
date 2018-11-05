@@ -696,7 +696,7 @@ def initialize_system():
             sys.exit(1)
     
     # set up logging
-    format_string = "%(asctime)s: %(message)s"
+    format_string = "[%(asctime)s] %(message)s"
     date_format = "%Y-%m-%d %H:%M:%S"
 
     logging.basicConfig(
