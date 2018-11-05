@@ -696,9 +696,14 @@ def initialize_system():
             sys.exit(1)
     
     # set up logging
+    format_string = "%(asctime)s: %(message)s"
+    date_format = "%Y-%m-%d %H:%M:%S"
+
     logging.basicConfig(
         filename = os.path.join(config_dir, "log"),
-        level = logging.DEBUG)
+        level = logging.DEBUG,
+        format = format_string,
+        datefmt = date_format)
 
     # print logs to stderr
     logging.getLogger().addHandler(logging.StreamHandler())
