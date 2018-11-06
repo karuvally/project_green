@@ -27,25 +27,25 @@ thread_lock = threading.Lock()
 
 
 # check if the host is a netdog client/server
-def check_if_node(host, port_list):
-        # try connecting to the host
-        connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        for port in port_list:
-            # port is open if return value is 0
-            if connection.connect_ex((str(host["ip_address"]), port)) == 0:
-                if port == 1337:
-                    server = True
-                else:
-                    server = False
+def check_if_node(host, port_list, node_list):
+    # try connecting to the host
+    connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    for port in port_list:
+        # port is open if return value is 0
+        if connection.connect_ex((str(host["ip_address"]), port)) == 0:
+            if port == 1337:
+                server = True
+            else:
+                server = False
 
-                # add host to the node list
-                node_list.append({
-                    "ip_address": str(host["ip_address"]),
-                    "server": server
-                })
+            # add host to the node list
+            node_list.append({
+                "ip_address": str(host["ip_address"]),
+                "server": server
+            })
 
-                # exit the loop
-                break
+            # exit the loop
+            break
 
 
 # execute command, send back the result
@@ -626,10 +626,9 @@ def find_hosts(network_info, mode):
     # check if the host is a netdog client/server
     for host in online_hosts:
         checker_thread = threading.Thread(target = check_if_node,
-            args = [host, port_list])
+            args = [host, port_list, node_list])
 
         checker_thread.start()
-
 
     # return the node list
     return node_list
