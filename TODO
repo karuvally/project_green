@@ -9,7 +9,6 @@ TODO
 * add auto port in send_message()
 * move logging to higher level functions
 * implement signature
-* add timestamp to log
 * ping command in netdog protocol
 * why is client not exiting peacfully?
 * properly find broadcast network of address
@@ -20,6 +19,7 @@ TODO
 
 DONE
 ----
+* add timestamp to log
 * do encryption
 * remove double encryption and decryption
 * test encrypt/decrypt functions

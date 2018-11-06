@@ -26,6 +26,39 @@ from subprocess import Popen, PIPE
 thread_lock = threading.Lock()
 
 
+# find netdog clients or server from host list
+def check_if_node(node_list, localhost_address, port):
+    # find local host's IP
+    localhost_address = network_info["localhost_address"]
+
+    # skip if the client is localhost
+    for host in online_hosts:
+        if str(host["ip_address"]) == localhost_address:
+            continue
+
+        # try connecting to the host
+        connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        for port in port_list:
+            # port is open if return value is 0
+            if connection.connect_ex((str(host["ip_address"]), port)) == 0:
+                if port == 1337:
+                    server = True
+                else:
+                    server = False
+
+                # add host to the node list
+                node_list.append({
+                    "ip_address": str(host["ip_address"]),
+                    "server": server
+                })
+
+                # exit the loop
+                break
+
+    # return the node list
+    return node_list
+
+
 # execute command, send back the result
 def execute_command(message, sender_ip):
     # extract the command
