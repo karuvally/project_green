@@ -582,6 +582,7 @@ def find_hosts(network_info, mode):
     node_list = []
     host_info = []
     ping_threads = []
+    checker_threads = []
 
     # server listens on port 1337, clients on 1994
     if mode == "server":
@@ -610,8 +611,8 @@ def find_hosts(network_info, mode):
         ping_thread.start()
 
     # wait until all threads are finished
-    for process in ping_threads:
-        process.join()
+    for thread in ping_threads:
+        thread.join()
 
     # generate list of online hosts
     online_hosts = [host for host in host_info if host["online"] == True]
@@ -628,7 +629,12 @@ def find_hosts(network_info, mode):
         checker_thread = threading.Thread(target = check_if_node,
             args = [host, port_list, node_list])
 
+        checker_threads.append(checker_thread)
         checker_thread.start()
+
+    # wait for threads to finish
+    for thread in checker_threads:
+        thread.join()
 
     # return the node list
     return node_list
