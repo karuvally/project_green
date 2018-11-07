@@ -22,7 +22,7 @@ get it up and running using the following instructions.
 
 ### Installing
 
-- $ git clone https://github.com/karuvally/project_green.git
+    $ git clone https://github.com/karuvally/project_green.git
 
 
 Say what the step will be
