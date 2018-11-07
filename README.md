@@ -18,12 +18,16 @@ get it up and running using the following instructions.
 
 - A non ancient Linux Kernel
 - Python 3.4 or greater 
-- Pip
+- pip
+- Virtualenv
 
 ### Installing
 
-    $ git clone https://github.com/karuvally/project_green.git
-
+    $ python3 -m venv netdog && cd netdog
+    $ git clone https://github.com/karuvally/project_green.git src
+    $ source bin/activate
+    $ cd src 
+    $ pip -r requirements 
 
 Say what the step will be
 
