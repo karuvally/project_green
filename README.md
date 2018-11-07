@@ -15,16 +15,22 @@ NetDog is currenlty in pre-alpha stage and is under heavy development. You can
 get it up and running using the following instructions.
 
 ### Prerequisites
+
 - A non ancient Linux Kernel
 - Python 3.4 or greater 
 - pip
 - Virtualenv
 
 ### Installing
+
     $ python3 -m venv netdog && cd netdog
+
     $ git clone https://github.com/karuvally/project_green.git src
+
     $ source bin/activate
+
     $ cd src 
+
     $ pip -r requirements 
 
 Say what the step will be
