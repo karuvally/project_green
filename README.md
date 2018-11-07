@@ -36,8 +36,8 @@ get it up and running using the following instructions.
 ### Using NetDog
 
 - Run netdog_server.py on the server
-- Create user netdog in client computer
-- Configure visudo such that no password is asked when netdog invokes sudo
+- Create user "netdog" in client computer
+- Configure visudo such that no password is asked when user "netdog" invokes sudo
 - Run netdog_client.py on the client computer as user netdog
 - Use webserver at server_ip:9000 to access the interface
 
