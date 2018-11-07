@@ -1,6 +1,13 @@
 # NetDog 
 
-Dead simple configuration management, for your home or office.
+Dead simple configuration management and monitoring, for your home or office.
+
+## Introduction
+
+NetDog is a very simple to use configuration management and monitoring tool. You
+can use it to push configurations to machines on your network and monitor their
+health without spending considerable amount of time figuring out how to use it.
+As long as you know how to use a mouse and keyboard, you are good to go.
 
 ## Getting Started
 
