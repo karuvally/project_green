@@ -6,7 +6,7 @@ Dead simple configuration management and monitoring, for your home or office.
 
 NetDog is a very simple to use configuration management and monitoring tool. You
 can use it to push configurations to machines on your network and monitor their
-health without spending considerable amount of time figuring out how to use it.
+health without spending considerable amount of time figuring out how to use it.  
 As long as you know how to use a mouse and keyboard, you are good to go.
 
 ## Getting Started
@@ -33,17 +33,14 @@ get it up and running using the following instructions.
 
     $ pip -r requirements 
 
-Say what the step will be
+### Using NetDog
 
-```
-Give the example
-```
+    - Run netdog_server.py on the server
+    - Create user netdog in client computer
+    - Configure visudo such that no password is asked when netdog invokes sudo
+    - Run netdog_client.py on the client computer as user netdog
+    - Use webserver at server_ip:9000 to access the interface
 
-And repeat
-
-```
-until finished
-```
 
 End with an example of getting some data out of the system or using it for a little demo
 
