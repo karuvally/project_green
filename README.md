@@ -1,6 +1,6 @@
-# Project Title
+# NetDog 
 
-One Paragraph of project description goes here
+Dead simple configuration management, for your home or office.
 
 ## Getting Started
 
