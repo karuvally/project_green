@@ -11,7 +11,7 @@ As long as you know how to use a mouse and keyboard, you are good to go.
 
 ## Getting Started
 
-NetDog is currenlty in pre-alpha stage and is under heavy development. You can
+NetDog is currenlty in pre-alpha stage and thus there is no installer. You can
 get it up and running using the following instructions.
 
 ### Prerequisites
