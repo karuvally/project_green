@@ -11,19 +11,19 @@ As long as you know how to use a mouse and keyboard, you are good to go.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+NetDog is currenlty in pre-alpha stage and is under heavy development. You can
+get it up and running using the following instructions.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+- A non ancient Linux Kernel
+- Python 3.4 or greater 
+- Pip
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+- $ git clone https://github.com/karuvally/project_green.git
+
 
 Say what the step will be
 
