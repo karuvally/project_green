@@ -527,6 +527,7 @@ def handle_connection(connection):
     input_transmission = receive_transmission(connection)
 
     if not input_transmission:
+        logging.info("ping received from " + sender_ip)
         connection.close()
         return
 
@@ -564,7 +565,6 @@ def create_new_listen_socket(port):
         connection, source_address = daemon_socket.accept()
 
         # pass the connection to connection handler
-        logging.info("new connection received from " + source_address[0])
         handle_thread = threading.Thread(target = handle_connection,
             args = [connection])
 
