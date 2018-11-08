@@ -262,7 +262,6 @@ def read_configuration(filename):
 
     # read configuration
     if os.path.exists(config_file_path):
-        logging.info("reading from " + filename)
         with open(config_file_path, "r") as config_file:
             config = json.loads(config_file.read())
     else:
@@ -283,7 +282,6 @@ def write_configuration(config, filename):
     thread_lock.acquire()
     
     # write configuration
-    logging.info("writing into " + filename)
     with open(config_file_path, "w") as config_file:
         config_file.write(json.dumps(config))
 
