@@ -39,6 +39,9 @@ def generate_signature(message):
     message_hash = SHA256.new(message.encode())
     signature = pkcs1_15.new(private_key).sign(message_hash)
 
+    # encode the signature in base64
+    signature = base64.b64encode(signature)
+
     # return the signature
     return signature
 
