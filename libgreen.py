@@ -36,8 +36,11 @@ def generate_signature(message):
     private_key = RSA.import_key(private_key)
 
     # create the signature of message
-    message_hash = SHA256.new(message)
+    message_hash = SHA256.new(message.encode())
     signature = pkcs1_15.new(private_key).sign(message_hash)
+
+    # return the signature
+    return signature
 
 
 # check if the host is a netdog client/server
