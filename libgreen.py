@@ -28,6 +28,19 @@ from subprocess import Popen, PIPE
 thread_lock = threading.Lock()
 
 
+# sign the message
+def generate_signature(message):
+    # load private key of localhost
+    key_info = read_configuration("keys")
+    private_key = key_info["private_key"]
+    private_key = RSA.import_key(private_key)
+
+    # create the signature of message
+    message_hash = SHA256.new(message)
+    signature = pkcs1_15.new(private_key).sign(message_hash)
+
+
+
 # check if the host is a netdog client/server
 def check_if_node(host, port_list, node_list):
     # try connecting to the host
@@ -174,11 +187,6 @@ def pair_if_necessary(message, node_ip):
 
 # encrypt data to be send inside message
 def encrypt_message(message, receiver_id):
-    # load private key of localhost
-    key_info = read_configuration("keys")
-    private_key = key_info["private_key"]
-    private_key = RSA.import_key(private_key)
-
     # load public key of receiver
     known_nodes = read_configuration("known_nodes")
     public_key = known_nodes[receiver_id]["public_key"]
@@ -189,15 +197,8 @@ def encrypt_message(message, receiver_id):
     # encrypt message with public key of receiver
     encrypted_message = encrypt_stuff(message, public_key, key_length)
 
-    # create the signature of message
-    message_hash = SHA256.new(message)
-    signature = pkcs1_15.new(private_key).sign(message_hash)
-
     # return the encrypted message
-    return {
-        "message": encrypted_message,
-        "signature": signature
-    }
+    return encrypted_message
 
 
 # stuff to do when client starts
