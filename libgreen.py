@@ -40,7 +40,6 @@ def generate_signature(message):
     signature = pkcs1_15.new(private_key).sign(message_hash)
 
 
-
 # check if the host is a netdog client/server
 def check_if_node(host, port_list, node_list):
     # try connecting to the host
@@ -431,7 +430,7 @@ def send_message(port, command, payload, destination_id = None,
     # if command not pair, encrypt message
     if command not in do_not_encrypt_list:
         encrypt_flag = True
-        encryption_out = encrypt_message(message, destination_id)
+        message = encrypt_message(message, destination_id)
 
     # generate final output
     output = {
