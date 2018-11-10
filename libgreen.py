@@ -403,6 +403,7 @@ def send_message(port, command, payload, destination_id = None,
         destination_ip = None):
     # essential variables
     encrypt_flag = False
+    signature = None
 
     # following commands won't get encrypted
     do_not_encrypt_list = [
@@ -442,6 +443,7 @@ def send_message(port, command, payload, destination_id = None,
     # generate final output
     output = {
         "encrypted": encrypt_flag,
+        "signature": signature,
         "message": message
     }
 
