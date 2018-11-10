@@ -430,6 +430,7 @@ def send_message(port, command, payload, destination_id = None,
     # if command not pair, encrypt message
     if command not in do_not_encrypt_list:
         encrypt_flag = True
+        signature = generate_signature(message)
         message = encrypt_message(message, destination_id)
 
     # generate final output
