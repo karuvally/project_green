@@ -20,6 +20,8 @@ import ast
 import base64
 from Crypto.PublicKey import RSA
 from Crypto.Cipher import PKCS1_OAEP
+from Crypto.Signature import pkcs1_15
+from Crypto.Hash import SHA256
 from subprocess import Popen, PIPE
 
 # global variables
@@ -175,6 +177,7 @@ def encrypt_message(message, receiver_id):
     # load private key of localhost
     key_info = read_configuration("keys")
     private_key = key_info["private_key"]
+    private_key = RSA.import_key(private_key)
 
     # load public key of receiver
     known_nodes = read_configuration("known_nodes")
@@ -186,8 +189,15 @@ def encrypt_message(message, receiver_id):
     # encrypt message with public key of receiver
     encrypted_message = encrypt_stuff(message, public_key, key_length)
 
+    # create the signature of message
+    message_hash = SHA256.new(message)
+    signature = pkcs1_15.new(private_key).sign(message_hash)
+
     # return the encrypted message
-    return encrypted_message 
+    return {
+        "message": encrypted_message,
+        "signature": signature
+    }
 
 
 # stuff to do when client starts
@@ -420,7 +430,7 @@ def send_message(port, command, payload, destination_id = None,
     # if command not pair, encrypt message
     if command not in do_not_encrypt_list:
         encrypt_flag = True
-        message = encrypt_message(message, destination_id)
+        encryption_out = encrypt_message(message, destination_id)
 
     # generate final output
     output = {
