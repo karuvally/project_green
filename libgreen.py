@@ -560,6 +560,11 @@ def handle_connection(connection):
     signature = input_transmission["signature"]
     command = message["data"]["command"]
 
+    # verify if the message is legit
+    if not verify_signature(message, signature):
+        connection.close()
+        return
+
     # act according to received command
     if command == "pair":
         pair_if_necessary(message, sender_ip)
