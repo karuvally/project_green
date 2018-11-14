@@ -41,7 +41,11 @@ def verify_signature(message, signature):
     message_hash = SHA256.new(message)
 
     # verify the signature
-    verification = pkcs1_15.new(public_key).verify(message_hash, signature)
+    try:
+        pkcs1_15.new(public_key).verify(message_hash, signature)
+        return True
+    except ValueError:
+        return False
 
 
 # sign the message
