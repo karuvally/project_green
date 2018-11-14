@@ -29,8 +29,19 @@ thread_lock = threading.Lock()
 
 
 # verify a received signature
-def verify_signature():
-    pass
+def verify_signature(message, signature):
+    # read sender info
+    sender_id = message["hostname"]
+    known_nodes = read_configuration["known_nodes"]
+
+    # read the public_key of sender 
+    public_key = known_nodes[sender_id]["public_key"]
+
+    # generate hash from received message
+    message_hash = SHA256.new(message)
+
+    # verify the signature
+    verification = pkcs1_15.new(public_key).verify(message_hash, signature)
 
 
 # sign the message
