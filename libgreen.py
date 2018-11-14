@@ -28,6 +28,11 @@ from subprocess import Popen, PIPE
 thread_lock = threading.Lock()
 
 
+# verify a received signature
+def verify_signature():
+    pass
+
+
 # sign the message
 def generate_signature(message):
     # load private key of localhost
@@ -550,8 +555,9 @@ def handle_connection(connection):
         connection.close()
         return
 
-    # get the message part of transmission
+    # extract essential info from transmission
     message = input_transmission["message"]
+    signature = input_transmission["signature"]
     command = message["data"]["command"]
 
     # act according to received command
