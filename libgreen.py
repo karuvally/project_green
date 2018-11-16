@@ -36,13 +36,11 @@ def verify_signature(message, signature):
 
     # read the public_key of sender 
     public_key = known_nodes[sender_id]["public_key"]
+    public_key = public_key.encode()
 
     # generate hash from received message
     message_hash = SHA256.new(str(message).encode())
 
-    # convert values to bytes
-    signature = signature.encode()
-    public_key = public_key.encode()
 
     # verify the signature
     try:
