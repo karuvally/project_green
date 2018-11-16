@@ -40,6 +40,10 @@ def verify_signature(message, signature):
     # generate hash from received message
     message_hash = SHA256.new(str(message).encode())
 
+    # convert values to bytes
+    signature = signature.encode()
+    public_key = public_key.encode()
+
     # verify the signature
     try:
         pkcs1_15.new(public_key).verify(message_hash, signature)
