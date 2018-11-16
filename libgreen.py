@@ -56,7 +56,7 @@ def generate_signature(message):
     private_key = RSA.import_key(private_key)
 
     # create the signature of message
-    message_hash = SHA256.new(message.encode())
+    message_hash = SHA256.new(str(message).encode())
     signature = pkcs1_15.new(private_key).sign(message_hash)
 
     # encode the signature in base64
