@@ -41,6 +41,8 @@ def verify_signature(message, signature):
     # generate hash from received message
     message_hash = SHA256.new(str(message).encode())
 
+    # decode the signature to bytes
+    signature = base64.b64decode(signature)
 
     # verify the signature
     try:
