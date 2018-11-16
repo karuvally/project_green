@@ -217,6 +217,7 @@ def encrypt_message(message, receiver_id):
     public_key = known_nodes[receiver_id]["public_key"]
 
     # get key_length
+    key_info = read_configuration("keys")
     key_length = key_info["key_length_bits"]
 
     # encrypt message with public key of receiver
