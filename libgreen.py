@@ -32,7 +32,7 @@ thread_lock = threading.Lock()
 def verify_signature(message, signature):
     # read sender info
     sender_id = message["hostname"]
-    known_nodes = read_configuration["known_nodes"]
+    known_nodes = read_configuration("known_nodes")
 
     # read the public_key of sender 
     public_key = known_nodes[sender_id]["public_key"]
