@@ -9,7 +9,6 @@ TODO
 * decide when client should check if server is reachable
 * add auto port in send_message()
 * move logging to higher level functions
-* implement signature
 * ping command in netdog protocol
 * why is client not exiting peacfully?
 * properly find broadcast network of address
@@ -20,6 +19,7 @@ TODO
 
 DONE
 ----
+* implement signature
 * add timestamp to log
 * do encryption
 * remove double encryption and decryption
