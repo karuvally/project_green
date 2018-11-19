@@ -1,0 +1,14 @@
+
+
+\chapter{Introduction}
+	
+   \par Vehicle detection and tracking plays an effective and significant role in the area of traffic surveillance system where efficient traffic management and safety is the main concern. The vehicle detections can be traditionally achieved through inductive loop detector, infrared detector, radar detector or video-based solution. Compared to other techniques, the video-based solutions based on surveillance camera mounted outdoor are easily influenced by environments such as weather, illumination, shadow, etc. However, because video-based systems can offer several advantages over other methods such as traffic flow undisturbed, easily installed, conveniently modified, etc., they have drawn significant attention from researchers in the past decade.\\
+
+Automatic recognition of vehicle data has been widely used in the vehicle information system and intelligent traffic system. It has acquired more attention of researchers from the last decade with the advancement of digital imaging technology and computational capacity.  Automatic vehicle detection systems are keys to road traffic control nowadays; some applications of these systems are traffic response system, traffic signal controller, lane departure warning system, automatic vehicle accident detection and automatic traffic density estimation.\\
+
+An Automatic vehicle counting system makes use of video data acquired from stationary traffic cameras, performing causal mathematical operations over a set of frames obtained from the video to estimate the number of vehicles present in a scene. There are several methods for vehicle detection and counting proposed so far.\\
+\newpage 
+
+
+The proposed real time traffic analyzer for road safety includes, tracking, and counting the vehicles using Blob Detection methods. In this project, first, we differentiate the foreground from background in frames by learning the background. Here, foreground detector detects the object and a binary computation is done to define rectangular regions around every detected object. To detect the moving object correctly and to remove the noise some morphological operations have been applied. Then the final counting is done by tracking the detected objects and their regions. Finally, vehicles in a predefined virtual detection zone are recorded and counted. The traffic details and counts are continuously updated in the server using a timer and users can register in an Android app to get notified about traffic in real time. Thus, the proposed system consists of three main modules. The first module constitutes the Android application for user registration and to retrieve notifications regarding traffic in real time. The second module deals with the vehicle detecting and counting and the count is updated to the server with the help of a timer. The third module is the server, which stores user details, traffic details, routes and traffic updates. 
+

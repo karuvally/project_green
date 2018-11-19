@@ -1,0 +1,76 @@
+\chapter{Requirement Analysis}
+
+\section{Purpose}
+	
+	\par The purpose of this proposed work is to build a system to detect the traffic flow on the basis of monitoring video footages placed in roads for detecting congestions. The system will provide an app for the user to register about his route details. If the specified route has traffic, the server that store every traffic details in real time will notify him back through the app. Due to the result of the increase in vehicle traffic, many problems have appeared such as traffic accidents, traffic congestion, traffic induced air pollution and so on. Traffic congestion has been a significantly challenging problem. It has widely been realized that increases of preliminary transportation infrastructure, more pavements, and widened road, have not been able to relieve city congestion. To processes the information and monitors the results as better understand traffic flow, an increasing reliance on traffic surveillance is in a need for better vehicle detection at a wide-area. Automatic detecting vehicles in video surveillance data is a very challenging problem in computer vision with important practical applications, such as traffic analysis and security.\\
+	
+	The scope of the proposed system is to develop an automatic vehicle counting system, which can process videos recorded from stationary cameras over roads e.g. CCTV cameras installed near traffic intersections or junctions and counting the number of vehicles passing a spot in a particular time for further collection of vehicle / traffic data. A simple approach was carried out to tackle the problem by using Pixel Based Adaptive Segmenter - based object detection, a non-predictive regional tracking and a counting of tracked objects based on simple rules. The proposed system includes an android application for the registration of users. They can update the user details and route details. The vehicle count calculated is sent to the server by the OpenCV application where registered users details, traffic details are also saved and will notify the user in real time.\\
+\\
+\\
+\section{Overall Description}
+\\
+\\
+\par This system structure is computationally efficient and can run in a real-time basis while retaining very respectable detection rates. The appearance of larger vehicle or vehicle's shadow occluding the adjacent lanes also is known to trigger false detection. Consequently, the merit of using computer vision as a surveillance tool has been limited by focusing strictly on building reliable systems that can perform in real-time.\\
+
+The system comprises of three main modules. First module deals with an Android Application where users register with their details, update route details including source, destination, date and time for travel. Second module is an OpenCV application for tracking and detecting vehicles and vehicle count is updated to server in real time. The OpenCV application makes use of an existing video sequence. The first frame is considered as the reference frame. The subsequent frames are taken as the input frames. They are compared and the background is eliminated. If a vehicle is present in the input frame, it’ll be retained. The detected vehicle is thus tracked by various techniques. Vehicle detection is done by using Background Subtraction (BS) algorithm and for tracking blob tracker algorithm can be used. Third module is a PHP web server, where all the user and traffic details are stored and will notify the user in real time.  \\	
+\\
+\textbf{Product Functions}
+\\
+\\
+The main functions of the proposed product includes:\\ 
+\begin{itemize}
+\item Detects and count the vehicles
+\item Predicts Traffic flows
+\item Can be used to predict accident zone areas
+\item Ensures road safety
+\item Notify registered users about traffic jam
+\\
+\end{itemize}
+\textbf{Operating Environment}
+\\ \\
+The operating environment required are: \\
+\begin{itemize}
+\\
+\item\textbf{ Hardware Requirements} \\ \\
+Processor			:	Intel i3\\
+Storage				: 	5 GB hard disk space\\
+Memory				: 	8 GB RAM\\ 
+\\
+\item\textbf{Software Requirements} \\ \\
+Operating system	: 	Linux\\
+Database			: 	MySQL\\
+Frameworks			: 	Python,c++,java,php,cmake\\
+Server				: 	Apache2\\ \\ \\
+\end{itemize}
+\section{Functional requirements}  \\
+\\
+Functional requirements represent the intended behavior of the system. This behavior may be expressed as services, tasks or functions that the specified system is required to perform. The following functional requirements have been identified for this project.
+The proposed system consists of 3 modules. They are given below: \\ \\
+\begin{itemize}
+\item \textbf{ANDROID APPLICATION}\\ \\
+In order to make the proposed system user friendly, an android application is used to collect the user details. Users can register through the app, can enter details of their journey including source, destination and the route they are going through. From the details stored in the RTA server, they will get an update about the traffic conditions and vehicle count through the android application. \\ \\
+\item \textbf{OpenCV APPLICATION FOR VEHICLE DETECTION AND COUNTING}\\ \\
+An Automatic vehicle detecting and counting system makes use of video data acquired from stationary traffic cameras, performing causal mathematical operations over a set of frames obtained from the video to estimate the number of vehicles present in a scene. It is just the ability of automatically extract and recognize the traffic data e.g. total number of vehicles, vehicle number and label from a video. In each video frame, Pixel Based Adaptive Segmenter differentiates objects in motion from the background by tracking detected objects inside a specific region of the frame, and then counting is carried out. In this system, blob detection uses contrast in a binary image to compute a detected region, it’s centroid, and the area of the blob. The supplied pixels detected the foreground. These pixels are grouped, in current frame, together by utilizing a contour detection algorithm. The contour detection algorithm groups the individual pixels into disconnected classes, and then finds the contours surrounding each class. \\
+Each class is marked as a candidate blob (CB). These CB are then checked by their size and small blobs are removed from the algorithm to reduce false detections. The positions of the CB, in current frame, are compared using the k-Means clustering that finds the centers of clusters and groups the input samples CB around the clusters to identify the vehicles in each region. The moving vehicle is counted when it passes the base line. When the vehicle passes through that area, the frame is recorded. In each region the blob with the same label are analyzed and the vehicle count is incremented.\\ \\
+\item \textbf{Real-time Traffic Analyzer SERVER}\\ \\
+OpenCV application detects and counts the vehicle and the server gets updated with this count in every 15 minutes. Counting vehicles gives us the information needed to obtain a basic understanding over the flow of traffic in any region under surveillance. The total count of vehicles, including other traffic details such as source and destination of user are stored on the server. This will help to make a traffic analysis. The RTA server will notify the user in real time.\\ \\
+
+\end{itemize}
+\section{Non Functional requirements}
+\\ \\
+\par Non-Functional requirements define the general qualities of the software product. Non-functional requirement is in effect a constraint placed on the system or the development process. They are usually associated with the product descriptions such as maintainability, usability, portability, etc. it mainly limits the solutions for the problem. The solution should be good enough to meet the non-functional requirements.\\ 
+\\
+\textbf{Performance Requirements}\\
+\begin{itemize}
+\item Accuracy: Accuracy in functioning and the nature of user-friendliness should be
+maintained in the system.\\
+\item Speed: The system must be capable of offering speed.\\
+\end{itemize}
+\newpage
+\textbf{Quality Requirements}\\ \\
+\begin{itemize}
+\item Scalability: The software will meet all of the functional requirements. \\
+\item Maintainability: The system should be maintainable. It should keep backups to atone for system failures, and should log its activities periodically. \\
+\item Reliability: The acceptable threshold for down-time should be long as possible. i.e.mean time between failures should be large as possible. And if the system is broken,
+time required to get the system back up again should be minimum. \\
+\end{itemize}

@@ -1,0 +1,70 @@
+\chapter{Coding}
+
+\textbf{Android Application}
+\\
+\\
+\begin{algorithm}
+\begin{algorithmic}[1]
+\caption{Algorithm for Android Application is as follows:}
+
+\State Create splash screen activity to display welcome screen for 3 second by using Hander class
+\State Create activity for login and register. In register button onClickListener pass data to RTAnalyzer server through AsyncTaskdoinBackhround method. Parse data using JSONParser class and receive feedback from server though AsyncTask onPostExecute method.
+\State In login button onClickListener pass data through AsyncTask methods as before and when success message is received from user. Create a SharedPreference object and store username and password of user to start session.
+\State Create a navigation drawer Activity HomeActivity with navigation icons as home, view journey, about us, change password and logout. 
+\State In HomeActivity, create a FloatingActionButton for starting new journey and navigate to StartJourneyActivity on click.
+\State Create layouts and fragments for home, view journey, change password, about us and logout.
+\State Create PasswordChangeFragment to send username and new password to RTAnalyzer server and receive feedback on submit.
+\State In StartJourneyActivity, load routes available in server to a spinner by using AsyncTask and JSONParser on click of startjourney button. Pass wholedata to RTAnalyzer server using AsyncTask and JSONParser.
+\State Create notification reciver to recive notification from server in case of traffic jam.
+\end{algorithmic}
+\end{algorithm}
+
+\newpage
+\textbf{openCV Application}
+\\
+\\
+\begin{algorithm}
+\begin{algorithmic}[1]
+\caption{Algorithm for OpenCV Application is as follows:}
+
+\State Input video
+\State Set the number of frames
+\State Call PixelBasedAdaptiveSegmenter
+\State Call VehicleCounting 
+\State Call BlobTracking  
+\State Read each frame
+\State Process each frame and store in imgmask
+\State If imgmask is not None then go to step 9
+\State Process each imgmask and store in imgblob
+\State Set input for imgbob
+\State Set Tracks using getTracks
+\State Process each imgblob
+\State Update the ROI passed vehicle count and bounding box count in every 2 min to the server
+\State If imgmask is None then go to step 16
+\State Go to step 6 until true
+\State Release frame
+\State Update the counts
+\State Close all windows
+
+\end{algorithmic}
+\end{algorithm}
+\\
+\\
+\textbf{Real-time Traffic Analyzer SERVER}
+\\
+\\
+\begin{algorithm}
+\begin{algorithmic}[1]
+\caption{Algorithm for PHP server is as follows:}
+
+\State Start
+\State Enter login credentials
+\State List the active users, traffic details, vehicle count
+\State Setup a crontab to run in every 15 minutes
+\State Receive vehicle count from openCV application
+\State Generate notifications to active users if traffic is high in the specified route 
+\State Stop
+
+
+\end{algorithmic}
+\end{algorithm}
