@@ -92,6 +92,7 @@
 \end{figure}
 \vspace{1cm}
 \bf \Large{Mini Project 2018}\\
+
 \vspace{1cm}
 \tt
 Done By \\
@@ -100,17 +101,21 @@ Done By \\
 {\normalsize \bf {ASWIN BABU K}}\\
 %{\normalsize \bf {student-name}}\\
 %{\normalsize \bf {student-name}}\\
+
 \vspace{1cm}
 {\tt{Guided By}} \\
+
 \vspace{.5cm}
- \hspace{.05cm} 
- {\normalsize \bf {Prof.Sini S Raj}}\\
- {\normalsize \bf {Assisstant Professor}}\\
+\hspace{.05cm} 
+{\normalsize \bf {Prof. Baby Syla}}\\
+{\normalsize \bf {Assisstant Professor}}\\
+
 \vspace{2cm}
 {\bf Department of Computer Applications \\ 
 College of Engineering\\
 Trivandrum-695016}\\
 } 
+
 \pagebreak
 \end{titlepage}
 }
