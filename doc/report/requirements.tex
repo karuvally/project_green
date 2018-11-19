@@ -71,28 +71,7 @@ The main functions of the proposed product includes \\
     \item 100 mbps Network Interface Card
 \end{itemize}
 
-\item\textbf{Software Requirements} \\ \\
-Operating system	: 	Linux\\
-Database			: 	MySQL\\
-Frameworks			: 	Python,c++,java,php,cmake\\
-Server				: 	Apache2\\ \\ \\
-\end{itemize}
-\section{Functional requirements}  \\
-\\
-Functional requirements represent the intended behavior of the system. This behavior may be expressed as services, tasks or functions that the specified system is required to perform. The following functional requirements have been identified for this project.
-The proposed system consists of 3 modules. They are given below: \\ \\
-\begin{itemize}
-\item \textbf{ANDROID APPLICATION}\\ \\
-In order to make the proposed system user friendly, an android application is used to collect the user details. Users can register through the app, can enter details of their journey including source, destination and the route they are going through. From the details stored in the RTA server, they will get an update about the traffic conditions and vehicle count through the android application. \\ \\
-\item \textbf{OpenCV APPLICATION FOR VEHICLE DETECTION AND COUNTING}\\ \\
-An Automatic vehicle detecting and counting system makes use of video data acquired from stationary traffic cameras, performing causal mathematical operations over a set of frames obtained from the video to estimate the number of vehicles present in a scene. It is just the ability of automatically extract and recognize the traffic data e.g. total number of vehicles, vehicle number and label from a video. In each video frame, Pixel Based Adaptive Segmenter differentiates objects in motion from the background by tracking detected objects inside a specific region of the frame, and then counting is carried out. In this system, blob detection uses contrast in a binary image to compute a detected region, it’s centroid, and the area of the blob. The supplied pixels detected the foreground. These pixels are grouped, in current frame, together by utilizing a contour detection algorithm. The contour detection algorithm groups the individual pixels into disconnected classes, and then finds the contours surrounding each class. \\
-Each class is marked as a candidate blob (CB). These CB are then checked by their size and small blobs are removed from the algorithm to reduce false detections. The positions of the CB, in current frame, are compared using the k-Means clustering that finds the centers of clusters and groups the input samples CB around the clusters to identify the vehicles in each region. The moving vehicle is counted when it passes the base line. When the vehicle passes through that area, the frame is recorded. In each region the blob with the same label are analyzed and the vehicle count is incremented.\\ \\
-\item \textbf{Real-time Traffic Analyzer SERVER}\\ \\
-OpenCV application detects and counts the vehicle and the server gets updated with this count in every 15 minutes. Counting vehicles gives us the information needed to obtain a basic understanding over the flow of traffic in any region under surveillance. The total count of vehicles, including other traffic details such as source and destination of user are stored on the server. This will help to make a traffic analysis. The RTA server will notify the user in real time.\\ \\
+\subsection{Software Requirements}
 
-\end{itemize}
-\section{Non Functional requirements}
-\\ \\
-\par Non-Functional requirements define the general qualities of the software product. Non-functional requirement is in effect a constraint placed on the system or the development process. They are usually associated with the product descriptions such as maintainability, usability, portability, etc. it mainly limits the solutions for the problem. The solution should be good enough to meet the non-functional requirements.\\ 
-\\
+\section{Functional requirements}
 
