@@ -13,17 +13,44 @@ The learning curve makes these systems unsuitable to small office environments,
 schools or colleges where the systems are managed by regular employees. NetDog
 is dead simple, with zero learning curve. As long as a person is aware of the
 command he/she wishes to execute on the remote machine, the person is ready to
-use NetDog.
-	
-\\
-\\
-\section{Overall Description}
-\\
-\\
-\par This system structure is computationally efficient and can run in a real-time basis while retaining very respectable detection rates. The appearance of larger vehicle or vehicle's shadow occluding the adjacent lanes also is known to trigger false detection. Consequently, the merit of using computer vision as a surveillance tool has been limited by focusing strictly on building reliable systems that can perform in real-time.\\
+use NetDog. \\
 
-The system comprises of three main modules. First module deals with an Android Application where users register with their details, update route details including source, destination, date and time for travel. Second module is an OpenCV application for tracking and detecting vehicles and vehicle count is updated to server in real time. The OpenCV application makes use of an existing video sequence. The first frame is considered as the reference frame. The subsequent frames are taken as the input frames. They are compared and the background is eliminated. If a vehicle is present in the input frame, it’ll be retained. The detected vehicle is thus tracked by various techniques. Vehicle detection is done by using Background Subtraction (BS) algorithm and for tracking blob tracker algorithm can be used. Third module is a PHP web server, where all the user and traffic details are stored and will notify the user in real time.  \\	
-\\
+\section{Overall Description}
+\par
+NetDog has a client server architecture. The server is responsible for issuing
+commands to the clients and is to be used by the administrator of the network.
+The client application is to be run on machines on the network to be
+administered.
+
+After installing NetDog server or client on a machine, a unique public-private
+key pair for the machine is generated which is then used for uniquely
+identifying the machine and securing data transmission between the client and
+server.
+
+Once the server program is up and running, it listens on the port 1337 for
+connections from clients. Once the client program is up, it starts listening on
+port 1994. These ports serve dual purpose of facilitating communication and
+allowing the identification of server and clients from the rest of the machines
+on the network. Both NetDog server and client are daemons. They are system 
+services which remain in memory and automatically starts during system boot.
+
+When a client starts for the first time, it looks for active servers on the
+network. When it finds one, it starts the pairing procedure. During the pairing
+process, the client sends its hostname and public-key. The server in turn
+provides the client with it's public key. These keys are then used for
+identification and encrypted communication between machines.
+
+The client and server uses public key encryption to identify and secure the
+communication between them. The network admininstrator can issue commands from
+the server machine which will then be sent to all the clients on the network.
+A client can also contact the server occasionally, for example if the client
+detects undseriable network traffic or if the system is overheating.
+
+NetDog is capable of shutting down all the clients on the network at once by
+remotely executing the shutdown command. It is also able to power up systems
+which support remote Wake-On-LAN feature, by sending magic packets.
+
+
 \textbf{Product Functions}
 \\
 \\
