@@ -82,10 +82,10 @@
 \thispagestyle{empty}
 \vspace*{0.7cm}
 {\centering     
+
 \huge
-{\rm\bf REAL TIME TRAFFIC CONGESTION ANALYZER FOR ROAD SAFETY}\\
-%Title must be in capital letters
-%Adjust space here if the title goes to more than one line
+{\rm\bf NETDOG - CONFIGURATION MANAGEMENT AND MONITORING SYSTEM}\\
+
 \vspace{1cm}
 \begin{figure}[ht] 
 {\centering {\includegraphics[scale=.5]{2.jpg}}\par}
@@ -97,8 +97,7 @@
 Done By \\
 \vspace{.5cm}
 \rm
-{\normalsize \bf {ELISA SANTHOSH}}\\
-{\normalsize \bf {JABIR ALI V}}\\
+{\normalsize \bf {ASWIN BABU K}}\\
 %{\normalsize \bf {student-name}}\\
 %{\normalsize \bf {student-name}}\\
 \vspace{1cm}
