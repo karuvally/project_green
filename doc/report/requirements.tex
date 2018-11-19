@@ -76,5 +76,20 @@ which support remote Wake-On-LAN feature, by sending magic packets.\\
     \item pip
 \end{itemize}
 
-\section{Functional requirements}
+\section{Functional Requirements}
+The system is should be designed to accept communication requests from many
+clients at once. For this, a multi threaded server is necessary. Also, network
+outages can occur during the operation. The server should be resilient enough
+so that, it checks the status of the connection every once in a while and
+restarts the communication process once the network is up and running again.
+Also, the functions should extensively log themselves so that in case of a
+system failure, the culprit can be easily found.
+
+\section{Performance Requirements}
+The system would need a gigabit ethernet controller for the server to make sure
+that it can properly handle connections from multiple clients on the network.
+The client can work satisfactorily well even on old hardware such as a 10 mbit
+network card. There are no specific requirements for the CPU or the rest of the
+hardware. The machine must be powerful enough to run a recent version of Linux,
+which means any usable computing hardware would do.
 
