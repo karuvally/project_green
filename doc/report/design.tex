@@ -41,6 +41,14 @@ machines. The client module listens for connections from the server at port
 1994. Once a connection is received, it is handled as per the command it
 contains.
 
+\subsection{Web Server}
+\par
+The webserver module provides the web interface for use by the administrator.
+Written using the bottle library, it resides in the file ``web_server.py''. The
+web server also uses the libgreen library extensively, to serve its clients. It
+is not directly invoked from the file, rather the contents of ``web_server.py''
+is imported into ``netdog_server.py'' and started as a separate thread.
+
 \subsection{NetDog protocol}
 \par
 The NetDog client and server operates using the NetDog protocol. NetDog protocol
