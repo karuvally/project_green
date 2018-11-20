@@ -575,6 +575,9 @@ def handle_connection(connection):
         connection.close()
         return
 
+    # report the received connection
+    logging.info("connection received from " + sender_ip)
+
     # extract essential info from transmission
     message = input_transmission["message"]
     signature = input_transmission["signature"]
