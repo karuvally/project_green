@@ -26,6 +26,20 @@ specifically for use in NetDog.
 
 \subsection{NetDog Server}
 \par
+The NetDog server module acts as the server. The server module resides in the
+file ``netdog_server.py'' It uses functions part of the libgreen library to
+setup a server working on the netdog protocol.\\
+
+It listens for connections from clients on port 1337 and also provides the web
+interface. The server is completeley multithreaded and this allows it to
+perform tasks involving hundreds of machines at a surprisingly quick rate.
+
+\subsection{NetDog client}
+\par
+The NetDog client module is the part of NetDog that is run on the client
+machines. The client module listens for connections from the server at port
+1994. Once a connection is received, it is handled as per the command it
+contains.
 
 \subsection{DataFlow Diagram}
 
