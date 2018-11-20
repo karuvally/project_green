@@ -368,8 +368,8 @@ def probe_interfaces():
     return interface_dict
 
 
-# update ip addresses in lookup table
-def update_lookup_table(node_id, ip_address):
+# update ip addresses in known nodes 
+def update_known_nodes(node_id, ip_address):
     # check if node is known
     known_nodes = read_configuration("known_nodes")
     if node_id not in known_nodes:
