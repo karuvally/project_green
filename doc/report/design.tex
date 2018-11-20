@@ -27,7 +27,7 @@ specifically for use in NetDog.
 \subsection{NetDog Server}
 \par
 The NetDog server module acts as the server. The server module resides in the
-file ``netdog_server.py'' It uses functions part of the libgreen library to
+file ``netdog\_server.py'' It uses functions part of the libgreen library to
 setup a server working on the netdog protocol.\\
 
 It listens for connections from clients on port 1337 and also provides the web
@@ -44,10 +44,10 @@ contains.
 \subsection{Web Server}
 \par
 The webserver module provides the web interface for use by the administrator.
-Written using the bottle library, it resides in the file ``web_server.py''. The
+Written using the bottle library, it resides in the file ``web\_server.py''. The
 web server also uses the libgreen library extensively, to serve its clients. It
-is not directly invoked from the file, rather the contents of ``web_server.py''
-is imported into ``netdog_server.py'' and started as a separate thread.
+is not directly invoked from the file, rather the contents of ``web\_server.py''
+is imported into ``netdog\_server.py'' and started as a separate thread.
 
 \subsection{NetDog protocol}
 \par
@@ -64,6 +64,8 @@ and the clients. The message has primarily three parts:
     \item encrypted flag, whether the message is encrypted or not
     \item data, which is further divided into command and payload
 \end{itemize}
+
+% debug: diagram of the protocol
 
 \subsection{DataFlow Diagram}
 
