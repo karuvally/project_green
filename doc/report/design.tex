@@ -41,5 +41,21 @@ machines. The client module listens for connections from the server at port
 1994. Once a connection is received, it is handled as per the command it
 contains.
 
+\subsection{NetDog protocol}
+\par
+The NetDog client and server operates using the NetDog protocol. NetDog protocol
+is a custom built protocol, that has been developed on top of the Sockets
+library part of standard Python installation. The mechanism as well as the
+policies for the protocol is defined inside the libgreen library.\\
+
+The NetDog protocol defines the structure of messages passed between the server
+and the clients. The message has primarily three parts:
+
+\begin{itemize}
+    \item Hostname, which is the hostname of the sender
+    \item encrypted flag, whether the message is encrypted or not
+    \item data, which is further divided into command and payload
+\end{itemize}
+
 \subsection{DataFlow Diagram}
 
