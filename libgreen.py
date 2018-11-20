@@ -49,6 +49,7 @@ def verify_signature(message, signature):
         pkcs1_15.new(public_key).verify(message_hash, signature)
         return True
     except ValueError:
+        logging.warning("message with invalid signature received")
         return False
 
 
