@@ -108,7 +108,7 @@ Done By \\
 \vspace{.5cm}
 \hspace{.05cm} 
 {\normalsize \bf {Prof. Baby Syla}}\\
-{\normalsize \bf {Assisstant Professor}}\\
+{\normalsize \bf {Assistant Professor}}\\
 
 \vspace{2cm}
 {\bf Department of Computer Applications \\ 
