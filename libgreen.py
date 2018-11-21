@@ -584,11 +584,7 @@ def handle_connection(connection):
     signature = input_transmission["signature"]
     command = message["data"]["command"]
 
-    # verify if the message is legit
-    if input_transmission["encrypted"]:
-        if not verify_signature(message, signature):
-            connection.close()
-            return
+    # debug: verify the message signature 
 
     # act according to received command
     if command == "pair":
