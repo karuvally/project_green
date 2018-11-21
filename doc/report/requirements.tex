@@ -76,6 +76,29 @@ which support remote Wake-On-LAN feature, by sending magic packets.\\
     \item pip
 \end{itemize}
 
+\section{User Interfaces}
+NetDog is a very easy to use system. One of the main aims while designing the
+system was to abstract as much lower level details of the system as possible
+from the user. There is no user interface for the client machines. All of the
+system is controlled from the server. The server provides a command line
+interface and a very convinient web interface for administration. The whole
+system can be operated and configured from these interfaces.
+
+\section{Hardware Interfaces}
+The system tries hard not to reinvent the wheel. Thus, it uses existing Linux
+subsystems as much as possible. As a side effect, NetDog can work with any
+networking hardware supported by Linux. If the clients on the network can
+succesfully communicate over the network using their network interface cards,
+you are good to go.
+
+\section{Communications Interfaces}
+The system uses the TCP/IP system for communication between server and clients.
+On top of TCP, the system uses a home grown higher level "NetDog" protocl for
+coordinating the client machine and servers. It is the NetDog protocol that
+ensures efficient communication and security. The protocol specification is
+under heavy development and the exact specification will be relased in further
+revisions of this document.
+
 \section{Functional Requirements}
 The system is should be designed to accept communication requests from many
 clients at once. For this, a multi threaded server is necessary. Also, network
