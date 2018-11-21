@@ -99,10 +99,10 @@ def execute_command(message, sender_ip):
     command = message["data"]["payload"]
 
     # create command object, execute
-    command_obj = Popen(command, stdout = PIPE)
+    command_object = Popen(command, stdout = PIPE)
 
     # get the output
-    command_out = ping.communicate()
+    command_out = command_object.communicate()
 
 
 # decrypt an incoming message
