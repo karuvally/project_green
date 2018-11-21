@@ -1,0 +1,2 @@
+{'message': {'hostname': 'netdog-client', 'data': {'command': 'pair', 'payload': '-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+oct9Yup4A4juyGydsyDdxkwd\n6OzEscrP4sbGt2qCC2hUYLlFKlXiRHG7gh1NWydrN3a9GHAJCml9KJcuEHSdvN2z\nYeW0VtWgmlWAItMGwHxx4fFCKzqQfN/F3n968YjHfqV3I9d+fbFQflykCAsmtCie\nDJPMUtrjzV8Wpe6X5QIDAQAB\n-----END PUBLIC KEY-----'}}, 'encrypted': False}
+
