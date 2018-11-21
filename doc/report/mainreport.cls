@@ -107,7 +107,7 @@ Done By \\
 
 \vspace{.5cm}
 \hspace{.05cm} 
-{\normalsize \bf {Prof. Baby Syla}}\\
+{\normalsize \bf {Prof. Baby Syla L}}\\
 {\normalsize \bf {Assistant Professor}}\\
 
 \vspace{2cm}
