@@ -1,57 +1,12 @@
 This is makeindex, version 2.15 [TeX Live 2017] (kpathsea + Thai support).
-Scanning input file master.aux...
-!! Input index error (file = master.aux, line = 1):
-   -- Missing arguments -- need two (premature LFD).
-!! Input index error (file = master.aux, line = 2):
-   -- Unknown index keyword \providecommand\hyper@newdestlabel[2].
-!! Input index error (file = master.aux, line = 3):
-   -- Unknown index keyword \providecommand\HyperFirstAtBeginDocument.
-!! Input index error (file = master.aux, line = 4):
-   -- Unknown index keyword \HyperFirstAtBeginDocument.
-!! Input index error (file = master.aux, line = 5):
-   -- Missing arguments -- need two (premature LFD).
-!! Input index error (file = master.aux, line = 6):
-   -- Unknown index keyword \gdef\contentsline#1#2#3#4.
-!! Input index error (file = master.aux, line = 7):
-   -- Missing arguments -- need two (premature LFD).
-!! Input index error (file = master.aux, line = 8):
-   -- Unknown index keyword \gdef\newlabel#1#2.
-!! Input index error (file = master.aux, line = 9):
-   -- Unknown index keyword \gdef\newlabelxx#1#2#3#4#5#6.
-!! Input index error (file = master.aux, line = 10):
-   -- Unknown index keyword \AtEndDocument.
-!! Input index error (file = master.aux, line = 11):
-   -- Missing arguments -- need two (premature LFD).
-!! Input index error (file = master.aux, line = 12):
-   -- Missing arguments -- need two (premature LFD).
-!! Input index error (file = master.aux, line = 13):
-   -- Missing arguments -- need two (premature LFD).
-!! Input index error (file = master.aux, line = 14):
-   -- Missing arguments -- need two (premature LFD).
-!! Input index error (file = master.aux, line = 15):
-   -- Missing arguments -- need two (premature LFD).
-!! Input index error (file = master.aux, line = 16):
-   -- Unknown index keyword \gdef\HyperFirstAtBeginDocument#1.
-!! Input index error (file = master.aux, line = 17):
-   -- Unknown index keyword \providecommand\HyField@AuxAddToFields[1].
-!! Input index error (file = master.aux, line = 18):
-   -- Unknown index keyword \providecommand\HyField@AuxAddToCoFields[2].
-!! Input index error (file = master.aux, line = 19):
-   -- Unknown index keyword \bibstyle.
-!! Input index error (file = master.aux, line = 20):
-   -- Unknown index keyword \@writefile.
-!! Input index error (file = master.aux, line = 21):
-   -- Unknown index keyword \@writefile.
-!! Input index error (file = master.aux, line = 22):
-   -- Unknown index keyword \@writefile.
-!! Input index error (file = master.aux, line = 23):
-   -- Unknown index keyword \@writefile.
-!! Input index error (file = master.aux, line = 24):
-   -- Unknown index keyword \@writefile.
-!! Input index error (file = master.aux, line = 25):
-   -- Unknown index keyword \bibstyle.
-!! Input index error (file = master.aux, line = 26):
-   -- Unknown index keyword \bibdata.
-done (0 entries accepted, 26 rejected).
-Nothing written in master.ind.
+Scanning style file /usr/share/texlive/texmf-dist/makeindex/nomencl/nomencl.ist.......
+** Input style error (file = /usr/share/texlive/texmf-dist/makeindex/nomencl/nomencl.ist, line = 70):
+   -- Unknown specifier lethead_prefix.
+** Input style error (file = /usr/share/texlive/texmf-dist/makeindex/nomencl/nomencl.ist, line = 71):
+   -- Unknown specifier lethead_suffix.
+** Input style error (file = /usr/share/texlive/texmf-dist/makeindex/nomencl/nomencl.ist, line = 72):
+   -- Unknown specifier lethead_flag.
+...done (10 attributes redefined, 3 ignored).
+Scanning input file master.nlo...done (0 entries accepted, 0 rejected).
+Nothing written in master.nls.
 Transcript written in master.ilg.
