@@ -69,7 +69,7 @@
 \fancyhfoffset{10pt}
 %------------
 \usepackage{geometry}
-\geometry{verbose,a4paper,tmargin=25.4mm,bmargin=31.75mm,lmargin=38.1mm,rmargin=31.75mm}
+\geometry{verbose,a4paper,tmargin=25mm,bmargin=25mm,lmargin=35mm,rmargin=25mm}
 
 %To generate list of abbreviations
 \usepackage{nomencl}
