@@ -113,7 +113,7 @@ Done By \\
 {\normalsize \bf {Prof. Baby Syla L}}\\
 {\normalsize \bf {Assistant Professor}}\\
 
-\vspace{2cm}
+\vspace{1cm}
 {\bf Department of Computer Applications \\ 
 College of Engineering\\
 Trivandrum-695016}\\
