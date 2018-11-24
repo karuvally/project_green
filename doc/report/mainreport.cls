@@ -21,6 +21,10 @@
 \ProcessOptions
 \LoadClass[12pt,oneside]{report}
 
+% attempt to use Times New Roman
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
 % set linespacing
 \linespread{1.25}
 
