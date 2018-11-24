@@ -67,6 +67,13 @@
 \usepackage{sectsty}
 \sectionfont{\fontsize{12}{15}\selectfont}
 \subsectionfont{\fontsize{12}{15}\selectfont}
+\subsubsectionfont{\fontsize{12}{15}\selectfont}
+
+% set spacing between chapter title and text
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries\centering}{\chaptertitlename\ \thechapter}{14pt}{\Huge}
+\titlespacing*{\chapter}{14pt}{14pt}{14pt}
 
 % setup of titlepage
 \def\maketitle{%
