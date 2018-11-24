@@ -59,12 +59,16 @@
 \usepackage{geometry}
 \geometry{verbose,a4paper,tmargin=25mm,bmargin=25mm,lmargin=35mm,rmargin=25mm}
 
-%To generate list of abbreviations
+% To generate list of abbreviations
 \usepackage{nomencl}
 \makenomenclature
 
+% set section size
+\usepackage{sectsty}
+\sectionfont{\fontsize{12}{15}\selectfont}
+\subsectionfont{\fontsize{12}{15}\selectfont}
+
 % setup of titlepage
-%
 \def\maketitle{%
 \begin{titlepage}
 \thispagestyle{empty}
