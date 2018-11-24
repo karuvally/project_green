@@ -23,10 +23,9 @@
 
 \LoadClass[12pt,oneside]{report}
 
-\RequirePackage{graphicx}
 
 % The list of packages needed for creating an advanced report class.
-
+\RequirePackage{graphicx}
 \RequirePackage{fancyhdr}
 \RequirePackage{amsmath}
 \RequirePackage{geometry}
@@ -119,6 +118,7 @@ Trivandrum-695016}\\
 \pagebreak
 \end{titlepage}
 }
+
 
 
 
