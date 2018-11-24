@@ -17,12 +17,9 @@
 %    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 \ProvidesClass{mainreport}[]
-
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions
-
 \LoadClass[12pt,oneside]{report}
-
 
 % The list of packages needed for creating an advanced report class.
 \RequirePackage{graphicx}
@@ -31,32 +28,21 @@
 \RequirePackage{geometry}
 \RequirePackage{setspace}
 
+% disable page numbers from appearing before contents
+\pagenumbering{gobble}
+
 % Macro for List of Symbols
 \def\listofsymbols{\input{symbols} \clearpage}
 \def\addsymbol #1: #2#3{$#1$ \> \parbox{5in}{#2 \dotfill \pageref{#3}}\\}
 \def\newsymbol#1{\label{#1}} 
 
-\pagenumbering{roman}
-
-\setcounter{secnumdepth}{5}
-\setcounter{tocdepth}{5}
-
-
+% the footer stuff
+\newcommand{\changefont}{\fontsize{12}{12}\selectfont}
 \fancypagestyle{plain}{
-\fancyhf{}
-%\lhead{section \bfseries \thesection}
-\chead{Mini Project, 2018}
-\cfoot{Department of Computer Applications\\ \thepage }
+\fancyfoot[C]{\thepage \changefont}
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0.5pt}
 }
-
-\pagestyle{fancy}
-%\lhead{eries \thesection}
-\rhead{}
-\fancyfoot{}
-\lfoot{Department of Computer Applications}
-\rfoot{\thepage}
 
 % for setting up alternative directory paths to graphics files,
 % remember to comment in "graphics" package
