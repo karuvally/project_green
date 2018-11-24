@@ -21,6 +21,9 @@
 \ProcessOptions
 \LoadClass[12pt,oneside]{report}
 
+% set linespacing
+\linespread{1.25}
+
 % The list of packages needed for creating an advanced report class.
 \RequirePackage{graphicx}
 \RequirePackage{fancyhdr}
@@ -104,7 +107,3 @@ Trivandrum-695016}\\
 \pagebreak
 \end{titlepage}
 }
-
-
-
-
