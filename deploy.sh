@@ -11,5 +11,10 @@ then
 fi
 
 # create user netdog
+adduser --disabled-password --gecos "NetDog User" netdog
+
+# set password for netdog
+echo "netdog:netdog" | chpasswd
 
 # add user netdog to group sudo
+gpasswd -a netdog sudo
