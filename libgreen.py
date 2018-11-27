@@ -28,6 +28,9 @@ from subprocess import Popen, PIPE
 thread_lock = threading.Lock()
 
 
+# receive the file from broadcast
+
+
 # send a file to all nodes 
 def broadcast_file(file_path):
     # essential variables
@@ -45,7 +48,7 @@ def broadcast_file(file_path):
 
     # send the file to each node
     for node in known_nodes:
-        send_message(1994, "broadcast", payload, destination_id=node)
+        send_message(1994, "broadcast_file", payload, destination_id=node)
 
 
 # verify a received signature
@@ -615,6 +618,9 @@ def handle_connection(connection):
 
     elif command == "execute":
         execute_command(message, sender_ip)
+
+    elif command == "broadcast_file":
+        receive_broadcast(message, sender_ip)
 
     # implement rest of the commands
     
