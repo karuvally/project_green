@@ -28,7 +28,7 @@ from subprocess import Popen, PIPE
 thread_lock = threading.Lock()
 
 
-# broadcast a file
+# send a file to all nodes 
 def broadcast_file(file_path):
     # essential variables
     known_nodes = read_configuration("known_nodes")
