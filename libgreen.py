@@ -31,8 +31,8 @@ thread_lock = threading.Lock()
 # receive the file from broadcast
 def receive_broadcast(message, sender_ip):
     # get the file contents
-    filename = message["payload"]["filename"]
-    file_data = message["payload"]["file_data"]
+    filename = message["data"]["payload"]["filename"]
+    file_data = message["data"]["payload"]["file_data"]
 
     # write the file
     with open(os.path.join("/share", filename), "wb") as output_file:
