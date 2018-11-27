@@ -50,8 +50,8 @@ def broadcast_file(file_path):
 
     # generate the payload
     payload = {
-        "filename" = os.path.split(file_path)[-1]
-        "file_data" = file_data
+        "filename": os.path.split(file_path)[-1]
+        "file_data": file_data
     }
 
     # send the file to each node
