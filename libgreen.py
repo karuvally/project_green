@@ -28,6 +28,19 @@ from subprocess import Popen, PIPE
 thread_lock = threading.Lock()
 
 
+# broadcast a file
+def broadcast_file(file_path):
+    # read the file
+    with open(file_path, "rb") as broadcast_file:
+        file_data = broadcast_file.read()
+
+    # generate the payload
+    payload = {
+        "filename" = os.path.split(file_path)[-1]
+        "file_data" = file_data
+    }
+
+
 # verify a received signature
 def verify_signature(message, signature):
     # read sender info

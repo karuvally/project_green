@@ -1,5 +1,6 @@
 TODO
 ----
+* assign alternate hostname if duplicate found
 * fix signature
 * beacon
 * update_ip
