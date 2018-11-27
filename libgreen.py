@@ -50,7 +50,7 @@ def broadcast_file(file_path):
 
     # generate the payload
     payload = {
-        "filename": os.path.split(file_path)[-1]
+        "filename": os.path.split(file_path)[-1],
         "file_data": file_data
     }
 
