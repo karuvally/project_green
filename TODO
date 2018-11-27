@@ -1,5 +1,6 @@
 TODO
 ----
+* faster ping sweep
 * assign alternate hostname if duplicate found
 * fix signature
 * beacon
