@@ -30,6 +30,9 @@ thread_lock = threading.Lock()
 
 # broadcast a file
 def broadcast_file(file_path):
+    # essential variables
+    known_nodes = read_configuration("known_nodes")
+
     # read the file
     with open(file_path, "rb") as broadcast_file:
         file_data = broadcast_file.read()
@@ -39,6 +42,10 @@ def broadcast_file(file_path):
         "filename" = os.path.split(file_path)[-1]
         "file_data" = file_data
     }
+
+    # send the file to each node
+    for node in known_nodes:
+        send_message(1994, "broadcast", payload, destination_id=node)
 
 
 # verify a received signature
