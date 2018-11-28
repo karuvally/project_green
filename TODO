@@ -1,5 +1,6 @@
 TODO
 ----
+* send commands only to online clients
 * faster ping sweep
 * assign alternate hostname if duplicate found
 * fix signature
