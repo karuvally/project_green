@@ -28,6 +28,16 @@ from subprocess import Popen, PIPE
 thread_lock = threading.Lock()
 
 
+# submit command for execution over nodes
+def submit_command(command):
+    # get known nodes
+    known_nodes = read_configuration("known_nodes")
+
+    # run the command on each node
+    for node in known_nodes:
+        send_message(1994, "execute", command, destination_id=node)
+
+
 # receive the file from broadcast
 def receive_broadcast(message, sender_ip):
     # get the file contents
