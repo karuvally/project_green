@@ -498,8 +498,12 @@ def send_message(port, command, payload, destination_id = None,
         destination_ip = known_nodes[destination_id]["last_known_address"]
 
     # create socket, connect to destination IP
-    connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    connection.connect((destination_ip, port))
+    try:
+        connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        connection.connect((destination_ip, port))
+    except:
+        logging.warning("connection to " + str(destination_ip) + " failed")
+        return
 
     # if command not pair, encrypt message
     if command not in do_not_encrypt_list:
