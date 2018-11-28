@@ -23,15 +23,8 @@ def serve_node_list():
     # get the command from user
     command = request.forms.get("command").split()
 
-    # get known nodes
-    known_nodes = read_configuration("known_nodes")
-
-    # run the command on each node
-    for node in known_nodes:
-        send_message(1994, "execute", command, destination_id=node)
-
-    # generate the node list page # debug
-    # return template("select_nodes", known_nodes=known_nodes)
+    # send the command for execution
+    submit_command(command)
 
     # return a happy page # debug
     return static_file("happy_end.html", root="html")
