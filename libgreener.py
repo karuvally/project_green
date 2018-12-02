@@ -2,6 +2,11 @@
 # libgreener, alpha release
 # Copyright 2018, Aswin Babu Karuvally
 
+# import the serious stuff
+from Crypto.PublicKey import RSA
+from Crypto.Cipher import PKCS1_OAEP
+import base64
+
 
 # do the actual decryption
 def decrypt_stuff(blob, key, key_length_bits):
