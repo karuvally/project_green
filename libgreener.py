@@ -8,6 +8,32 @@ from Crypto.Cipher import PKCS1_OAEP
 import base64
 
 
+# get the config directory
+def get_config_dir():
+    # get the username
+    user = pwd.getpwuid(os.getuid())[0]
+
+    # stich the complete path
+    config_dir = os.path.join("/home", user, ".config", "netdog")
+
+    return config_dir
+
+
+# ping ip address and return status
+def ping_address(ip_address, broadcast = False):
+    if broadcast == True:
+        logging.info("checking if network " + str(ip_address) + " is up")
+        ping = Popen(["ping", "-b", "-c", "1", str(ip_address)], stdout = PIPE)
+    else:
+        logging.info("checking if node " + str(ip_address) + " is up")
+        ping = Popen(["ping", "-c", "1", str(ip_address)], stdout = PIPE)
+
+    # do the ping and return result
+    ping_out = ping.communicate()[0]
+    return(not bool(ping.returncode))
+
+
+
 # the ping function for threads 
 def ping_sweep(ip_address, result):
     ping = Popen(["ping", "-c", "1", str(ip_address)], stdout = PIPE)
