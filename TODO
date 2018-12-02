@@ -16,7 +16,7 @@ TODO
 * ping command in netdog protocol
 * why is client not exiting peacfully?
 * properly find broadcast network of address
-* what to do when server can't be reached
+* what to do when server can't be reached (proper policies)
 * handle situation when client finds no server
 * add firewall exceptions during installation
 * elegant code to find network address (without host bit)
