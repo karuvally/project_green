@@ -8,6 +8,18 @@ from Crypto.Cipher import PKCS1_OAEP
 import base64
 
 
+# the ping function for threads 
+def ping_sweep(ip_address, result):
+    ping = Popen(["ping", "-c", "1", str(ip_address)], stdout = PIPE)
+    ping_out = ping.communicate()[0]
+
+    # returncode is 0 if ping is succesful, converting to bool
+    result.append({
+        "ip_address": ip_address,
+        "online": not bool(ping.returncode)
+    })
+
+
 # write configuration to disk in JSON
 def write_configuration(config, filename):
     # essential variables

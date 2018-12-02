@@ -270,24 +270,6 @@ def find_network(interface_dump):
     return None
 
 
-# write configuration to disk in JSON
-def write_configuration(config, filename):
-    # essential variables
-    config_dir = get_config_dir()
-    config_file_path = os.path.join(config_dir, filename)
-    global thread_lock
-
-    # acquire thread lock
-    thread_lock.acquire()
-    
-    # write configuration
-    with open(config_file_path, "w") as config_file:
-        config_file.write(json.dumps(config))
-
-    # release lock
-    thread_lock.release()
-
-
 # probe interfaces, the new way
 def probe_interfaces():
     # essential variables
@@ -457,18 +439,6 @@ def request_to_pair(network_info):
     logging.info("sending pairing request")
     send_message(1337, "pair", public_key,
         destination_ip = server[0]["ip_address"])
-
-
-# the ping function for threads 
-def ping_sweep(ip_address, result):
-    ping = Popen(["ping", "-c", "1", str(ip_address)], stdout = PIPE)
-    ping_out = ping.communicate()[0]
-
-    # returncode is 0 if ping is succesful, converting to bool
-    result.append({
-        "ip_address": ip_address,
-        "online": not bool(ping.returncode)
-    })
 
 
 # ping ip address and return status
