@@ -2,7 +2,7 @@
 # libgreen, alpha release
 # Copyright 2018, Aswin Babu Karuvally
 
-# import essential libraries
+# import the serious stuff
 import os
 import pwd
 import sys
