@@ -8,6 +8,27 @@ from Crypto.Cipher import PKCS1_OAEP
 import base64
 
 
+# generate public-private key pair
+def generate_keys():
+    # essential variables
+    key_length = 2048
+
+    # set the size for the generated key
+    logging.info("generating public-private key pair")
+    key = RSA.generate(key_length, e = 65537)
+    
+    # create public-private key pair
+    public_key = key.publickey().exportKey("PEM")
+    private_key = key.exportKey("PEM")
+
+    # return key pair as dictionary
+    return({
+        "key_length_bits": key_length,
+        "public_key": public_key.decode(),
+        "private_key": private_key.decode()
+    })
+
+
 # do the actual decryption
 def decrypt_stuff(blob, key, key_length_bits):
     # essential variables
