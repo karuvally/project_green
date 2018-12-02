@@ -8,6 +8,42 @@ from Crypto.Cipher import PKCS1_OAEP
 import base64
 
 
+# write configuration to disk in JSON
+def write_configuration(config, filename):
+    # essential variables
+    config_dir = get_config_dir()
+    config_file_path = os.path.join(config_dir, filename)
+    global thread_lock
+
+    # acquire thread lock
+    thread_lock.acquire()
+    
+    # write configuration
+    with open(config_file_path, "w") as config_file:
+        config_file.write(json.dumps(config))
+
+    # release lock
+    thread_lock.release()
+
+
+# read JSON configuration from disk
+def read_configuration(filename):
+    # essential variables
+    config_dir = get_config_dir()
+    config = None
+    config_file_path = os.path.join(config_dir, filename)
+
+    # read configuration
+    if os.path.exists(config_file_path):
+        with open(config_file_path, "r") as config_file:
+            config = json.loads(config_file.read())
+    else:
+        logging.warning(filename + " does not exist")
+
+    # return configuration
+    return config
+
+
 # generate public-private key pair
 def generate_keys():
     # essential variables
