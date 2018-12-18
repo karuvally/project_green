@@ -3,10 +3,6 @@
 # Copyright 2018, Aswin Babu Karuvally
 
 # import the serious stuff
-from Crypto.PublicKey import RSA
-from Crypto.Cipher import PKCS1_OAEP
-import base64
-import pwd
 
 
 # get the config directory
