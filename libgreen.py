@@ -507,7 +507,8 @@ def store_server_info(message, server_ip):
     server_info = {
         server_id: {
             "last_known_address": server_ip,
-            "public_key": public_key
+            "public_key": public_key,
+            "type": "server"
         }
     }
 
@@ -613,7 +614,8 @@ def accept_pairing_request(node_id, node_ip, public_key):
     node_info = {
         node_id: {
             "public_key": public_key,
-            "last_known_address": node_ip
+            "last_known_address": node_ip,
+            "type": "client"
         }
     }
 
