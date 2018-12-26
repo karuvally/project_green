@@ -859,22 +859,6 @@ def setup_network(server = False):
         known_network_info = interface_dump[usable_interface]
         write_configuration(known_network_info, "known_network")
 
-    # if IP is changed, alert server
-    if known_network_info and not server:
-        last_known_address = known_network_info["localhost_address"]
-        current_interface = known_network_info["interface"]
-        current_address = interface_dump[current_interface][localhost_address]
-
-    # debug: is there way to distinguish server from clients
-
-    """
-        if current_address != last_known_address:
-            send_message(
-                "1337", "ip_update", current_address,
-                destination_ip=server_ip
-            )
-    """
-
     # if localhost is client, do stuff :D
     if not server:
         client_checklist(known_network_info)
