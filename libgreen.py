@@ -372,18 +372,29 @@ def client_checklist(known_network_info):
     # essential variables
     config_dir = get_config_dir()
 
-    # if known network, find it first
-    while True:
-        usable_interface = find_network(interface_dump)
-        if usable_interface:
-            break
-        time.sleep(30)
+    # if no known network, find it first
+    if not known_network_info:
+        while True:
+            usable_interface = find_network(interface_dump)
+            known_network_info = probe_interfaces()["usable_interface"]
+            if usable_interface:
+                break
+            time.sleep(30)
 
     # if no known server, find one and pair
     if not os.path.exists(os.path.join(config_dir, "known_nodes")):
         # start client pairing request
         logging.info("the client is not paired with a server")
         request_to_pair(known_network_info)
+
+    # get last known and current IP address
+    last_known_address = known_network_info["localhost_address"]
+    current_network = probe_interfaces()[known_network_info["interface"]]
+    current_address = current_network["localhost_address"]
+
+    # debug: alert server if there is change in IP
+    if current_address != last_known_address:
+        pass
 
 
 # update a configuration file
@@ -515,11 +526,15 @@ def store_server_info(message, server_ip):
         server_id: {
             "last_known_address": server_ip,
             "public_key": public_key,
+            "type": "server"
         }
     }
 
-    # write the new server info to file
+    # write the new server info to file, debug: write/update?
     write_configuration(server_info, "known_nodes")
+
+    # write server_id to known_network
+    update_configuration({"server_id": server_id}, "known_network")
 
 
 # check if the running program is server
@@ -621,6 +636,7 @@ def accept_pairing_request(node_id, node_ip, public_key):
         node_id: {
             "public_key": public_key,
             "last_known_address": node_ip,
+            "type": "client"
         }
     }
 
