@@ -371,6 +371,7 @@ def encrypt_message(message, receiver_id):
 def client_checklist(known_network_info):
     # essential variables
     config_dir = get_config_dir()
+    interface_dump = probe_interfaces()
 
     # if no known network, find it first
     if not known_network_info:
