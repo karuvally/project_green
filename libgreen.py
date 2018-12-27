@@ -397,7 +397,7 @@ def client_checklist(known_network_info):
         server_id = read_configuration("known_network")["server_id"]
         
         node_info = {
-            "hostname": socket.gethostname(),
+            "node_id": socket.gethostname(),
             "current_address": current_address
         }
 
@@ -497,14 +497,14 @@ def probe_interfaces():
 def update_known_nodes(node_info):
     # check if node is known
     known_nodes = read_configuration("known_nodes")
-    if node_id not in known_nodes:
+    if node_info["node_id"] not in known_nodes:
         logging.warning(node_id + " is unknown, address cannot be updated")
         return None
 
     # generate data to be updated
     update_config = {
-        node_id: {
-            "last_known_address": ip_address
+        node_info["node_id"]: {
+            "last_known_address": node_info["current_address"]
         }
     }
 
