@@ -372,7 +372,14 @@ def client_checklist(known_network_info):
     # essential variables
     config_dir = get_config_dir()
 
-    # if no known_server present, find one and pair
+    # if known network, find it first
+    while True:
+        usable_interface = find_network(interface_dump)
+        if usable_interface:
+            break
+        time.sleep(30)
+
+    # if no known server, find one and pair
     if not os.path.exists(os.path.join(config_dir, "known_nodes")):
         # start client pairing request
         logging.info("the client is not paired with a server")
@@ -844,20 +851,12 @@ def setup_network(server = False):
     if not known_network_info and server:
         usable_interface = interface_chooser(interface_dump)
 
-    # if no known network and client, automatically interface
-    elif not known_network_info and not server:
-        while True:
-            usable_interface = find_network(interface_dump)
-            if usable_interface:
-                break
-            time.sleep(30)
-
     # save the newly found network 
     if not known_network_info:
         known_network_info = interface_dump[usable_interface]
         write_configuration(known_network_info, "known_network")
 
-    # if localhost is client, do stuff :D
+    # do client specific network stuff
     if not server:
         client_checklist(known_network_info)
 
