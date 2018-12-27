@@ -442,7 +442,10 @@ def interface_chooser(interface_dump):
 
 
 # find usable network for client
-def find_network(interface_dump):
+def find_network():
+    # essential variables
+    interface_dump = probe_interfaces()
+
     for interface in interface_dump:
         node_list = find_hosts(interface_dump[interface], "server")
 
