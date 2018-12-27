@@ -401,7 +401,7 @@ def client_checklist(known_network_info):
             "current_address": current_address
         }
 
-        send_message(1337, "update_ip", node_info, destination_id = server_id)
+        send_message(1337, "update_ip", node_info, destination_id=server_id)
 
 
 # update a configuration file
@@ -494,7 +494,7 @@ def probe_interfaces():
 
 
 # update ip addresses in known nodes 
-def update_known_nodes(node_id, ip_address):
+def update_known_nodes(node_info):
     # check if node is known
     known_nodes = read_configuration("known_nodes")
     if node_id not in known_nodes:
@@ -694,6 +694,9 @@ def handle_connection(connection):
 
     elif command == "broadcast_file":
         receive_broadcast(message, sender_ip)
+
+    elif command == "update_ip":
+        update_known_nodes(node_info)
 
     # implement rest of the commands
     
