@@ -1,5 +1,6 @@
 TODO
 ----
+* make update_known_nodes() usable for all purposes
 * add node type to known_nodes
 * send commands only to online clients
 * faster ping sweep
