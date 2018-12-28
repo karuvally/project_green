@@ -376,7 +376,7 @@ def client_checklist(known_network_info):
     if not known_network_info:
         while True:
             usable_interface = find_network()
-            known_network_info = probe_interfaces()["usable_interface"]
+            known_network_info = probe_interfaces()[usable_interface]
             if usable_interface:
                 break
             time.sleep(30)
@@ -752,6 +752,11 @@ def find_hosts(network_info, mode):
     # generate the cidr address
     cidr_address = netaddr.IPNetwork(network_info["network_address"],
         network_info["netmask"])
+
+    # debug
+    print(network_info)
+    print(mode)
+    print(cidr_address)
 
     network = ipaddress.ip_network(cidr_address)
 
