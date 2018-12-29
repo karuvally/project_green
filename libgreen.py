@@ -372,15 +372,6 @@ def client_checklist(known_network_info):
     # essential variables
     config_dir = get_config_dir()
 
-    # if no known network, find it first
-    if not known_network_info:
-        while True:
-            usable_interface = find_network()
-            known_network_info = probe_interfaces()[usable_interface]
-            if usable_interface:
-                break
-            time.sleep(30)
-
     # if no known server, find one and pair
     if not os.path.exists(os.path.join(config_dir, "known_nodes")):
         # start client pairing request
@@ -392,6 +383,7 @@ def client_checklist(known_network_info):
     current_network = probe_interfaces()[known_network_info["interface"]]
     current_address = current_network["localhost_address"]
 
+"""
     # alert server if there is change in IP
     if current_address != last_known_address:
         server_id = read_configuration("known_network")["server_id"]
@@ -402,7 +394,7 @@ def client_checklist(known_network_info):
         }
 
         send_message(1337, "update_ip", node_info, destination_id=server_id)
-
+"""
 
 # update a configuration file
 def update_configuration(config, filename, force = False):
@@ -753,11 +745,6 @@ def find_hosts(network_info, mode):
     cidr_address = netaddr.IPNetwork(network_info["network_address"],
         network_info["netmask"])
 
-    # debug
-    print(network_info)
-    print(mode)
-    print(cidr_address)
-
     network = ipaddress.ip_network(cidr_address)
 
     # try new thread for each host
@@ -884,6 +871,18 @@ def setup_network(server = False):
     # if no known network and is server, launch network chooser
     if not known_network_info and server:
         usable_interface = interface_chooser(interface_dump)
+
+    # if no known network and is client, find network automatically
+    if not known_network_info and not server:
+        while True:
+            usable_interface = find_network()
+            if usable_interface:
+                break
+            time.sleep(30)
+
+    # store the newly found network
+    known_network_info = interface_dump[usable_interface]
+    write_configuration(known_network_info, "known_network")
 
     # do client specific network stuff
     if not server:
