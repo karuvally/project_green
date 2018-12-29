@@ -383,7 +383,7 @@ def client_checklist(known_network_info):
     current_network = probe_interfaces()[known_network_info["interface"]]
     current_address = current_network["localhost_address"]
 
-"""
+
     # alert server if there is change in IP
     if current_address != last_known_address:
         server_id = read_configuration("known_network")["server_id"]
@@ -394,7 +394,6 @@ def client_checklist(known_network_info):
         }
 
         send_message(1337, "update_ip", node_info, destination_id=server_id)
-"""
 
 # update a configuration file
 def update_configuration(config, filename, force = False):
@@ -881,8 +880,9 @@ def setup_network(server = False):
             time.sleep(30)
 
     # store the newly found network
-    known_network_info = interface_dump[usable_interface]
-    write_configuration(known_network_info, "known_network")
+    if not known_network_info:
+        known_network_info = interface_dump[usable_interface]
+        write_configuration(known_network_info, "known_network")
 
     # do client specific network stuff
     if not server:
