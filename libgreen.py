@@ -690,7 +690,7 @@ def handle_connection(connection):
         receive_broadcast(message, sender_ip)
 
     elif command == "update_ip":
-        update_known_nodes(node_info)
+        update_known_nodes(message["data"]["payload"])
 
     # implement rest of the commands
     

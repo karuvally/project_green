@@ -1,5 +1,7 @@
 TODO
 ----
+* fix update_known_nodes overwriting existing data in known_nodes
+* update client side last_known_address after update
 * inhouse CIDR generator
 * make update_known_nodes() usable for all purposes
 * add node type to known_nodes
