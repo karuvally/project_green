@@ -1,6 +1,5 @@
 TODO
 ----
-* fix update_known_nodes overwriting existing data in known_nodes
 * update client side last_known_address after update
 * file bug report to netaddr
 * make update_known_nodes() usable for all purposes
@@ -28,6 +27,7 @@ TODO
 
 DONE
 ----
+* fix update_known_nodes overwriting existing data in known_nodes
 * implement signature
 * add timestamp to log
 * do encryption

@@ -405,6 +405,10 @@ def client_checklist(known_network_info):
 
         send_message(1337, "update_ip", node_info, destination_id=server_id)
 
+        # update local last_known_address, debug: implement proper ACK
+        update_configuration({"localhost_address": current_address}, "known_network")
+            
+
 
 # update a configuration file
 def update_configuration(config, filename, force = False):
