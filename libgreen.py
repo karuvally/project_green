@@ -419,7 +419,7 @@ def update_configuration(config, filename, force = False):
     elif not config_from_file and force:
         new_configuration = config
     
-    elif configuration_file:
+    elif config_from_file:
         new_configuration = recursive_dict_update(config_from_file, config)
 
     # write configuration to file
