@@ -30,10 +30,10 @@ thread_lock = threading.Lock()
 
 
 # update specific values in dict without destroying others
-def recursive_dict_update(original_config, new_config):
+def dict_update(original_config, new_config):
     for key, value in new_config.items():
         if isinstance(value, collections.Mapping):
-            original_config[key] = update(original_config.get(key, {}), value)
+            original_config[key] = dict_update(original_config.get(key, {}), value)
         else:
             original_config[key] = value
     return original_config
@@ -420,7 +420,7 @@ def update_configuration(config, filename, force = False):
         new_configuration = config
     
     elif config_from_file:
-        new_configuration = recursive_dict_update(config_from_file, config)
+        new_configuration = dict_update(config_from_file, config)
 
     # write configuration to file
     write_configuration(new_configuration, filename)
