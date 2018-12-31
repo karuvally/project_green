@@ -28,6 +28,11 @@ from subprocess import Popen, PIPE
 thread_lock = threading.Lock()
 
 
+# update specific values in dict without destroying others
+def recursive_dict_update(original_config, new_config):
+    pass
+
+
 # get the config directory
 def get_config_dir():
     # get the username
@@ -406,13 +411,13 @@ def update_configuration(config, filename, force = False):
 
     # continue if force is True
     elif not config_from_file and force:
-        config_from_file = {}
-
-    # update configuration
-    config_from_file.update(config)
+        new_configuration = config
+    
+    elif configuration_file:
+        new_configuration = recursive_dict_update(config_from_file, config)
 
     # write configuration to file
-    write_configuration(config_from_file, filename)
+    write_configuration(new_configuration, filename)
 
 
 # cli for choosing network interface
