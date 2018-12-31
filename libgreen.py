@@ -383,7 +383,6 @@ def client_checklist(known_network_info):
     current_network = probe_interfaces()[known_network_info["interface"]]
     current_address = current_network["localhost_address"]
 
-
     # alert server if there is change in IP
     if current_address != last_known_address:
         server_id = read_configuration("known_network")["server_id"]
@@ -394,6 +393,7 @@ def client_checklist(known_network_info):
         }
 
         send_message(1337, "update_ip", node_info, destination_id=server_id)
+
 
 # update a configuration file
 def update_configuration(config, filename, force = False):
