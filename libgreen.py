@@ -18,6 +18,7 @@ import json
 import ast
 import base64
 import pwd
+import collections
 from Crypto.PublicKey import RSA
 from Crypto.Cipher import PKCS1_OAEP
 from Crypto.Signature import pkcs1_15
@@ -30,7 +31,12 @@ thread_lock = threading.Lock()
 
 # update specific values in dict without destroying others
 def recursive_dict_update(original_config, new_config):
-    pass
+    for key, value in new_config.items():
+        if isinstance(value, collections.Mapping):
+            original_config[key] = update(original_config.get(key, {}), value)
+        else:
+            original_config[key] = value
+    return original_config
 
 
 # get the config directory
