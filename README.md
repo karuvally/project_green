@@ -41,6 +41,18 @@ get it up and running using the following instructions.
 - Run netdog_client.py on the client computer as user netdog
 - Use webserver at server_ip:9000 to access the interface
 
+## Roadmap  
+
+- Full featured web interface with control panel
+- Easy to use deployer
+- Beacon signal
+- Client hardware configuration change warning
+- Prewritten scripts for common tasks
+- Scheduled command execution
+- Fine grained permission control for clients
+- Port scanner performance improvements
+- Stable signature verification system
+
 ## Contributing to NetDog
 
 - Fork the current repo
