@@ -4,7 +4,6 @@
 
 # import serious stuff
 from libgreen import *
-from web_server import start_web_server
 
 
 # the main function
@@ -20,9 +19,6 @@ def main():
         args = [1337])
 
     listen_thread.start()
-
-    # start web server
-    start_web_server()
 
 
 # call the main function
