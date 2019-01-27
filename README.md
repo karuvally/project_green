@@ -62,7 +62,7 @@ get it up and running using the following instructions.
 ## Built With
 
 * [Python](http://www.python.org) - An awesome language
-* [Bottle](https://bottlepy.org) - Web framework for those who like things simple
+* [Flask](http://flask.pocoo.org) - A mature, non bulky web framework 
 * [PyCryptodome](https://github.com/Legrandin/pycryptodome) - A sweet cryptography library
 
 ## Authors
