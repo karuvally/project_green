@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # NetDog Server module, alpha release
-# Copyright 2018, Aswin Babu Karuvally
+# Copyright 2018, 2019 Aswin Babu Karuvally
 
 # import serious stuff
 from libgreen import *
