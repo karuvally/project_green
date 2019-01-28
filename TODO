@@ -9,7 +9,6 @@ TODO
 * assign alternate hostname if duplicate found
 * fix signature
 * beacon
-* update_ip
 * execute acknowledgement
 * easy to use prewritten scripts
 * scheduled command execution
@@ -27,6 +26,7 @@ TODO
 
 DONE
 ----
+* update_ip
 * update client side last_known_address after update
 * fix update_known_nodes overwriting existing data in known_nodes
 * implement signature
