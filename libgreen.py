@@ -18,7 +18,6 @@ import json
 import ast
 import base64
 import pwd
-import collections
 from Crypto.PublicKey import RSA
 from Crypto.Cipher import PKCS1_OAEP
 from Crypto.Signature import pkcs1_15
@@ -32,7 +31,7 @@ thread_lock = threading.Lock()
 # update specific values in dict without destroying others
 def dict_update(original_config, new_config):
     for key, value in new_config.items():
-        if isinstance(value, collections.Mapping):
+        if isinstance(value, dict):
             original_config[key] = dict_update(original_config.get(key, {}), value)
         else:
             original_config[key] = value
