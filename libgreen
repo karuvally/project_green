@@ -429,7 +429,7 @@ def update_configuration(config, filename, force = False):
     write_configuration(new_configuration, filename)
 
 
-# cli for choosing network interface
+# cli for choosing network interface, debug
 def interface_chooser(interface_dump):
     # essential variables
     user_choice = None
