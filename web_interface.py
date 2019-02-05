@@ -8,10 +8,14 @@ from flask import Flask
 
 
 # create the webapp
-app = Flask("web_interface")
+app = Flask(__name__)
 
 
 # the homepage
 @app.route("/")
 def landing_page():
     return "It Works!"
+
+
+# run the webapp
+app.run()
