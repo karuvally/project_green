@@ -7,15 +7,12 @@ from libgreen import *
 from flask import Flask
 
 
-# create the webapp
-app = Flask("web_interface")
+# create the webweb_server
+web_server = Flask("web_interface")
 
 
 # the homepage
-@app.route("/")
+@web_server.route("/")
 def landing_page():
     return "It Works!"
 
-
-# run the webapp
-app.run()
