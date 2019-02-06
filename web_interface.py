@@ -8,7 +8,7 @@ from flask import Flask
 
 
 # create the webapp
-app = Flask(__name__)
+app = Flask("web_interface")
 
 
 # the homepage
