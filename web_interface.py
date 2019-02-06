@@ -4,15 +4,19 @@
 
 # import serious stuff
 from libgreen import *
-from flask import Flask
+from bottle import post, get, static_file, run, request, template
+
+# global variables
+command = None
+node_list = None
 
 
-# create the webweb_server
-web_server = Flask("web_interface")
+# serve the landing page
+@get("/")
+def home_page():
+    return static_file("index.html", root="static")
 
 
-# the homepage
-@web_server.route("/")
-def landing_page():
-    return "It Works!"
-
+# the main function
+def start_web_server():
+run(host="0.0.0.0", port=9000, debug=True)
