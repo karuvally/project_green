@@ -17,14 +17,10 @@ def home_page():
     # get config directory
     config_dir = get_config_dir()
 
-    # display the welcome page on first run
-    if not os.path.exists(os.path.join(config_dir, "credentials")):
-        return static_file("welcome.html", root="static")
-
     # else return the normal page
-    return static_file("index.html", root="static")
+    return static_file("index.html", root="html")
 
 
 # the main function
 def start_web_server():
-run(host="0.0.0.0", port=9000, debug=True)
+    run(host="0.0.0.0", port=9000, debug=True)
