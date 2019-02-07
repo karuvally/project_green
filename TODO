@@ -1,5 +1,9 @@
 TODO
 ----
+* first time run screen
+* password creation page
+* login page
+* network interface selection page
 * update client side localhost_address only after ACK from server
 * file bug report to netaddr
 * make update_known_nodes() usable for all purposes
