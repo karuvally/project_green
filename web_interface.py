@@ -18,7 +18,13 @@ def home_page():
     config_dir = get_config_dir()
 
     # else return the normal page
-    return static_file("html/index.html", root="html/dist")
+    return static_file("index.html", root="html")
+    
+    
+# serve the stylesheets
+@get("/css/<css_file>")
+def retrieve_assets(css_file):
+    return static_file(css_file, root="html/css")
 
 
 # the main function
