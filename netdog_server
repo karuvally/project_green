@@ -21,11 +21,9 @@ def main():
 
     listen_thread.start()
 
-    # start web server
-    web_server.run(
-        host = "0.0.0.0",
-        debug = True # debug
-    )
+    # start web interface
+    start_web_server()
+
 
 # call the main function
 main()

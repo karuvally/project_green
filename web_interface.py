@@ -18,7 +18,7 @@ def home_page():
     config_dir = get_config_dir()
 
     # else return the normal page
-    return static_file("index.html", root="html")
+    return static_file("html/index.html", root="html/dist")
 
 
 # the main function
