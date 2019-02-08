@@ -23,8 +23,14 @@ def home_page():
     
 # serve the stylesheets
 @get("/css/<css_file>")
-def retrieve_assets(css_file):
+def retrieve_stylesheets(css_file):
     return static_file(css_file, root="html/css")
+    
+
+# serve the assets
+@get("/assets/<asset_file>")
+def retrieve_assets(asset_file):
+    return static_file(asset_file, root="html/assets")
 
 
 # the main function
