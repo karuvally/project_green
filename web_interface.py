@@ -35,4 +35,4 @@ def retrieve_assets(asset_file):
 
 # the main function
 def start_web_server():
-    run(host="0.0.0.0", port=9000, debug=True)
+    run(host="localhost", port=9000, debug=True)
