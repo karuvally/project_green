@@ -59,9 +59,9 @@ def create_account():
     password_hash = SHA256.new(password.encode()).hexdigest()
     
     # insert processed data to dictionary
-    user_data.append({"full_name": full_name})
-    user_data.append({"username": username_hash})
-    user_data.append({"password": password_hash})
+    user_data.update({"full_name": full_name})
+    user_data.update({"username": username_hash})
+    user_data.update({"password": password_hash})
     
     # write data to passwd file
     update_configuration(config=user_data, filename="passwd", force=True)
