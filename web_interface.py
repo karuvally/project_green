@@ -20,6 +20,12 @@ def home_page():
     # else return the normal page
     return static_file("index.html", root="html")
     
+
+# serve the rest of the pages
+@get("/<html_file>")
+def retrieve_page(html_file):
+    return static_file(html_file, root="html")
+    
     
 # serve the stylesheets
 @get("/css/<css_file>")
