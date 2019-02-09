@@ -41,6 +41,19 @@ def retrieve_stylesheets(css_file):
 @get("/assets/<asset_file>")
 def retrieve_assets(asset_file):
     return static_file(asset_file, root="html/assets")
+    
+
+# create a new account for user
+@post("/signup.html")
+def create_account():
+    # get the form data
+    full_name = request.forms.get("full_name")
+    username = request.forms.get("username")
+    password = request.forms.get("password")
+    
+    # generate hash of username, password
+    
+    # write data to passwd file
 
 
 # the main function
