@@ -16,6 +16,10 @@ node_list = None
 def home_page():
     # get config directory
     config_dir = get_config_dir()
+    
+    # if first run, return welcome page
+    if not os.path.exists(os.path.join(config_dir, passwd)):
+        return static_file("welcome.html", root="html")
 
     # else return the normal page
     return static_file("index.html", root="html")
