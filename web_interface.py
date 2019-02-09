@@ -46,14 +46,16 @@ def retrieve_assets(asset_file):
 # create a new account for user
 @post("/signup.html")
 def create_account():
-    # get the form data
-    full_name = request.forms.get("full_name")
-    username = request.forms.get("username")
-    password = request.forms.get("password")
+    # empty dictionary to store user info
+    user_data = {}
     
-    # generate hash of username, password
+    # get the form data
+    user_data.update({"full_name": request.forms.get("full_name")})
+    user_data.update({"username": SHA256.new(request.forms.get("username"))})
+    user_data.update({"password": SHA256.new(request.forms.get("password"))})
     
     # write data to passwd file
+    update_configuration(config=user_data, filename="passwd", force=True)
 
 
 # the main function
