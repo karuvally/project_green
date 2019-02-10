@@ -78,8 +78,8 @@ def handle_login():
     password = request.forms.get("password")
     
     # generate hash of username and password
-    username_hash = SHA256.new(username.decode()).hexdigest()
-    password_hash = SHA256.new(password.decode()).hexdigest()
+    username_hash = SHA256.new(username.encode()).hexdigest()
+    password_hash = SHA256.new(password.encode()).hexdigest()
     
     # return homepage if the submitted data is correct
     if user_data["username"] == username_hash:
