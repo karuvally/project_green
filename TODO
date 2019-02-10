@@ -1,6 +1,6 @@
 TODO
 ----
-* login page
+* standard error page
 * network interface selection page
 * update client side localhost_address only after ACK from server
 * file bug report to netaddr
@@ -28,6 +28,7 @@ TODO
 
 DONE
 ----
+* login page
 * password creation page
 * first time run screen
 * update_ip

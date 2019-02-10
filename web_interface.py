@@ -65,7 +65,30 @@ def create_account():
     
     # write data to passwd file
     update_configuration(config=user_data, filename="passwd", force=True)
+    
 
+# handle the login
+@post("/login.html")
+def handle_login():
+    # get the stored user data
+    user_data = read_configuration("passwd")
+    
+    # get the form data
+    username = request.forms.get("username")
+    password = request.forms.get("password")
+    
+    # generate hash of username and password
+    username_hash = SHA256.new(username.decode()).hexdigest()
+    password_hash = SHA256.new(password.decode()).hexdigest()
+    
+    # return homepage if the submitted data is correct
+    if user_data["username"] == username_hash:
+        if user_data["password"] = password_hash:
+            return static_file("index.html", root="html")
+            
+    # return the error page otherwise
+    return static_file("login_error.html", root="html")
+    
 
 # the main function
 def start_web_server():
