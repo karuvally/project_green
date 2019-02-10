@@ -1,0 +1,6 @@
+#!/usr/bin/env python3
+
+# import serious stuff
+from test_session import *
+
+run_server()
