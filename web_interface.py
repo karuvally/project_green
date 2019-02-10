@@ -83,7 +83,7 @@ def handle_login():
     
     # return homepage if the submitted data is correct
     if user_data["username"] == username_hash:
-        if user_data["password"] = password_hash:
+        if user_data["password"] == password_hash:
             return static_file("index.html", root="html")
             
     # return the error page otherwise
