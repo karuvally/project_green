@@ -1,5 +1,6 @@
 TODO
 ----
+* setup session
 * standard error page
 * network interface selection page
 * update client side localhost_address only after ACK from server
