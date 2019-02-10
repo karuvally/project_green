@@ -1,7 +1,5 @@
 TODO
 ----
-* first time run screen
-* password creation page
 * login page
 * network interface selection page
 * update client side localhost_address only after ACK from server
@@ -30,6 +28,8 @@ TODO
 
 DONE
 ----
+* password creation page
+* first time run screen
 * update_ip
 * update client side last_known_address after update
 * fix update_known_nodes overwriting existing data in known_nodes

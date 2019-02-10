@@ -21,8 +21,8 @@ def home_page():
     if not os.path.exists(os.path.join(config_dir, "passwd")):
         return static_file("welcome.html", root="html")
 
-    # else return the normal page
-    return static_file("index.html", root="html")
+    # else return the normal page, debug
+    return static_file("login.html", root="html")
     
 
 # serve the rest of the pages
