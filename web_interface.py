@@ -10,9 +10,13 @@ import bottle_session
 
 # serve the landing page
 @get("/")
-def home_page():
+def home_page(session):
     # get config directory
     config_dir = get_config_dir()
+    
+    # if session is already set, return homepage
+    if session.get("username"):
+        return static_file("index.html", root="html")
     
     # if first run, return welcome page
     if not os.path.exists(os.path.join(config_dir, "passwd")):
