@@ -66,7 +66,7 @@ def create_account():
 
 # handle the login
 @post("/login.html")
-def handle_login():
+def handle_login(session):
     # get the stored user data
     user_data = read_configuration("passwd")
     
@@ -78,9 +78,10 @@ def handle_login():
     username_hash = SHA256.new(username.encode()).hexdigest()
     password_hash = SHA256.new(password.encode()).hexdigest()
     
-    # return homepage if the submitted data is correct
+    # set session and return homepage if submitted data is correct
     if user_data["username"] == username_hash:
         if user_data["password"] == password_hash:
+            session["username"] = username_hash
             return static_file("index.html", root="html")
             
     # return the error page otherwise
