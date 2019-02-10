@@ -8,11 +8,6 @@ from bottle import post, get, static_file, run, request, template, install
 import bottle_session
 
 
-# setup the session plugin
-plugin = bottle_session.SessionPlugin(cookie_lifetime=None)
-install(plugin)
-
-
 # serve the landing page
 @get("/")
 def home_page(session):
@@ -99,5 +94,9 @@ def handle_login(session):
 
 # the main function
 def start_web_server():
+    # setup the session plugin
+    plugin = bottle_session.SessionPlugin(cookie_lifetime=None)
+    install(plugin)
+    
     # run the webserver
     run(host="localhost", port=9000, debug=True)

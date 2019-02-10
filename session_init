@@ -3,4 +3,7 @@
 # import serious stuff
 from test_session import *
 
-run_server()
+def main():
+    run_server()
+
+main()
