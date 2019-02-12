@@ -18,7 +18,7 @@ def home_page(session):
         return static_file("index.html", root="html")
     
     # if first run, return welcome page
-    if not os.path.exists(os.path.join(config_dir, "passwd")):
+    elif not os.path.exists(os.path.join(config_dir, "passwd")):
         return static_file("welcome.html", root="html")
 
     # else return the normal page, debug
@@ -85,7 +85,6 @@ def handle_login(session):
     # set session and return homepage if submitted data is correct
     if user_data["username"] == username_hash:
         if user_data["password"] == password_hash:
-            session["username"] = username_hash
             return static_file("index.html", root="html")
             
     # return the error page otherwise
@@ -94,9 +93,5 @@ def handle_login(session):
 
 # the main function
 def start_web_server():
-    # setup the session plugin
-    plugin = bottle_session.SessionPlugin(cookie_lifetime=None)
-    install(plugin)
-    
     # run the webserver
     run(host="localhost", port=9000, debug=True)
