@@ -67,6 +67,9 @@ def create_account():
     # write data to passwd file
     update_configuration(config=user_data, filename="passwd", force=True)
     
+    # return the login page
+    return static_file("login.html", root="html")
+    
 
 # handle the login
 @post("/login.html")
