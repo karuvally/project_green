@@ -4,8 +4,7 @@
 
 # import serious stuff
 from libgreen import *
-from bottle import post, get, static_file, run, request, template, install
-import bottle_session
+from bottle import post, get, static_file, run, request, template
 
 
 # serve the landing page
