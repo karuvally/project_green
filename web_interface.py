@@ -9,14 +9,14 @@ from bottle import post, get, static_file, run, request, template, response
 
 # serve the landing page
 @get("/")
-def home_page(session):
+def home_page():
     # get config directory
     config_dir = get_config_dir()
     
     # get cookie data
     cookie_data = response.get_cookie("username")
     
-    # if session is already set, return homepage
+    # if cookie is already set, return homepage
     if cookie_data:
         return static_file("index.html", root="html")
     
@@ -76,7 +76,7 @@ def create_account():
 
 # handle the login
 @post("/login.html")
-def handle_login(session):
+def handle_login():
     # get the stored user data
     user_data = read_configuration("passwd")
     
@@ -88,7 +88,7 @@ def handle_login(session):
     username_hash = SHA256.new(username.encode()).hexdigest()
     password_hash = SHA256.new(password.encode()).hexdigest()
     
-    # set session and return homepage if submitted data is correct
+    # check login details and set cookie
     if user_data["username"] == username_hash:
         if user_data["password"] == password_hash:
             response.set_cookie("username", username_hash)
