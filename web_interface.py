@@ -4,7 +4,7 @@
 
 # import serious stuff
 from libgreen import *
-from bottle import post, get, static_file, run, request, template
+from bottle import post, get, static_file, run, request, template, response
 
 
 # serve the landing page
@@ -22,7 +22,8 @@ def home_page(session):
         return static_file("welcome.html", root="html")
 
     # else return the normal page, debug
-    return static_file("login.html", root="html")
+    else:
+        return static_file("login.html", root="html")
     
 
 # serve the rest of the pages
