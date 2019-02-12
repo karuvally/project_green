@@ -13,8 +13,11 @@ def home_page(session):
     # get config directory
     config_dir = get_config_dir()
     
+    # get cookie data
+    cookie_data = response.get_cookie("username")
+    
     # if session is already set, return homepage
-    if session.get("username"):
+    if cookie_data:
         return static_file("index.html", root="html")
     
     # if first run, return welcome page
