@@ -13,9 +13,6 @@ def home_page():
     # get config directory
     config_dir = get_config_dir()
     
-    # get cookie data
-    cookie_data = request.get_cookie("username")
-    
     # if cookie is already set, return homepage
     if cookie_data:
         return static_file("index.html", root="html")
@@ -91,7 +88,7 @@ def handle_login():
     # check login details and set cookie
     if user_data["username"] == username_hash:
         if user_data["password"] == password_hash:
-            response.set_cookie("username", username_hash, path="/")
+            response.set_cookie("username", username_hash)
             return static_file("index.html", root="html")
             
     # return the error page otherwise
