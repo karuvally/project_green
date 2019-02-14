@@ -97,5 +97,8 @@ def handle_login():
 
 # the main function
 def start_web_server():
+    # setup the webapp
+    webapp = Flask("web_interface")
+    
     # run the webserver
     run(host="localhost", port=9000, debug=True)
