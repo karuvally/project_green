@@ -27,25 +27,25 @@ def home_page():
     
 
 # serve the rest of the pages
-@get("/<html_file>")
+@web_app.route("/<html_file>", methods=["GET"])
 def retrieve_page(html_file):
     return static_file(html_file, root="html")
     
     
 # serve the stylesheets
-@get("/css/<css_file>")
+@web_app.route("/css/<css_file>", methods=["GET"])
 def retrieve_stylesheets(css_file):
     return static_file(css_file, root="html/css")
     
 
 # serve the assets
-@get("/assets/<asset_file>")
+@web_app.route("/assets/<asset_file>", methods=["GET"])
 def retrieve_assets(asset_file):
     return static_file(asset_file, root="html/assets")
     
 
 # create a new account for user
-@post("/signup.html")
+@web_app.route("/signup.html", methods=["POST"])
 def create_account():
     # empty dictionary to store user info
     user_data = {}
@@ -72,7 +72,7 @@ def create_account():
     
 
 # handle the login
-@post("/login.html")
+@web_app.route("/login.html", method=["POST"])
 def handle_login():
     # get the stored user data
     user_data = read_configuration("passwd")
