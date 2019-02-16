@@ -8,7 +8,7 @@ from flask import Flask, render_template
 
 
 # serve the landing page
-@get("/")
+@web_app.route("/", methods=["GET"])
 def home_page():
     # get config directory
     config_dir = get_config_dir()
@@ -98,7 +98,7 @@ def handle_login():
 # the main function
 def start_web_server():
     # setup the webapp
-    webapp = Flask("web_interface")
+    web_app = Flask("web_interface")
     
     # run the webserver
-    run(host="localhost", port=9000, debug=True)
+    web_app.run()
