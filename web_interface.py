@@ -7,6 +7,10 @@ from libgreen import *
 from flask import Flask, render_template
 
 
+# setup the webapp
+web_app = Flask("web_interface")
+
+
 # serve the landing page
 @web_app.route("/", methods=["GET"])
 def home_page():
@@ -14,7 +18,7 @@ def home_page():
     config_dir = get_config_dir()
     
     # if first run, return welcome page
-    elif not os.path.exists(os.path.join(config_dir, "passwd")):
+    if not os.path.exists(os.path.join(config_dir, "passwd")):
         return render_template("welcome.html")
 
     # else return the normal page, debug
@@ -93,9 +97,6 @@ def handle_login():
 
 # the main function
 def start_web_server():
-    # setup the webapp
-    web_app = Flask("web_interface")
-    
     # run the webserver
     web_app.run(
         debug = True,
