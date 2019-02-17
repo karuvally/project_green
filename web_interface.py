@@ -25,19 +25,13 @@ def home_page():
     else:
         return render_template("login.html")
     
-
-# serve the rest of the pages
-@web_app.route("/<html_file>", methods=["GET"])
-def retrieve_page(html_file):
-    return static_file(html_file, root="html")
-    
     
 # serve the stylesheets
 @web_app.route("/css/<css_file>", methods=["GET"])
 def retrieve_stylesheets(css_file):
     return static_file(css_file, root="html/css")
     
-
+"""
 # serve the assets
 @web_app.route("/assets/<asset_file>", methods=["GET"])
 def retrieve_assets(asset_file):
@@ -93,7 +87,7 @@ def handle_login():
             
     # return the error page otherwise
     return static_file("login_error.html", root="html")
-
+"""
 
 # the main function
 def start_web_server():
