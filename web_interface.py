@@ -15,7 +15,7 @@ def home_page():
     
     # if cookie is already set, return homepage
     if cookie_data:
-        return static_file("index.html", root="html")
+        return render_template("index.html", root="html")
     
     # if first run, return welcome page
     elif not os.path.exists(os.path.join(config_dir, "passwd")):
