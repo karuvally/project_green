@@ -13,17 +13,13 @@ def home_page():
     # get config directory
     config_dir = get_config_dir()
     
-    # if cookie is already set, return homepage
-    if cookie_data:
-        return render_template("index.html", root="html")
-    
     # if first run, return welcome page
     elif not os.path.exists(os.path.join(config_dir, "passwd")):
-        return static_file("welcome.html", root="html")
+        return render_template("welcome.html")
 
     # else return the normal page, debug
     else:
-        return static_file("login.html", root="html")
+        return render_template("login.html")
     
 
 # serve the rest of the pages
@@ -101,4 +97,6 @@ def start_web_server():
     web_app = Flask("web_interface")
     
     # run the webserver
-    web_app.run()
+    web_app.run(
+        debug = True,
+    )
