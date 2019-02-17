@@ -27,18 +27,6 @@ def home_page():
 
 
 """
-# serve the stylesheets
-@web_app.route("/css/<css_file>", methods=["GET"])
-def retrieve_stylesheets(css_file):
-    return static_file(css_file, root="html/css")
-    
-
-# serve the assets
-@web_app.route("/assets/<asset_file>", methods=["GET"])
-def retrieve_assets(asset_file):
-    return static_file(asset_file, root="html/assets")
-    
-
 # create a new account for user
 @web_app.route("/signup.html", methods=["POST"])
 def create_account():
