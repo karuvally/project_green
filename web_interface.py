@@ -4,7 +4,7 @@
 
 # import serious stuff
 from libgreen import *
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 
 # setup the webapp
