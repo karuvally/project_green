@@ -881,9 +881,9 @@ def setup_network(server = False):
     # get last known network information
     logging.info("getting network information")
 
-    # if no known network and is server, launch network chooser
+    # if no known network and is server, pause, debug
     if not known_network_info and server:
-        usable_interface = interface_chooser(interface_dump)
+        return
 
     # if no known network and is client, find network automatically
     if not known_network_info and not server:
