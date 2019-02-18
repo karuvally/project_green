@@ -56,7 +56,7 @@ def create_account():
 
 
 # handle the login
-@web_app.route("/login.html", method=["POST"])
+@web_app.route("/login.html", methods=["POST"])
 def handle_login():
     # get the stored user data
     user_data = read_configuration("passwd")
