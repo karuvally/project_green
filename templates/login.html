@@ -40,7 +40,7 @@
             
             <!-- the content goes here -->
 			<section class="container" id="login">
-				<form method="post" action="login.html">
+				<form method="post" action="{{ url_for('handle_login') }}">
 					<fieldset>
 						<input type="text" placeholder="Username" id="username" name="username">
 						<input type="password" placeholder="Password" id="password" name="password">
