@@ -27,8 +27,12 @@ def home_page():
 
 
 # create a new account for user
-@web_app.route("/signup.html", methods=["POST"])
+@web_app.route("/signup.html", methods=["GET", "POST"])
 def create_account():
+    # if GET, return the signup page
+    if request.method == "GET":
+        return render_template("signup.html")
+    
     # empty dictionary to store user info
     user_data = {}
     
