@@ -40,7 +40,7 @@
             
             <!-- the content goes here -->
 			<section class="container" id="signup">
-				<form method="post" action="signup.html">
+				<form method="post" action="{{ url_for('create_account') }}">
 					<fieldset>
 						<input type="text" placeholder="Full Name" id="full_name" name="full_name">
 						<input type="text" placeholder="Username" id="username" name="username">
