@@ -4,48 +4,31 @@
 
 # import serious stuff
 from libgreen import *
-from bottle import post, get, static_file, run, request, template, response
+from flask import Flask, render_template, request
+
+
+# setup the webapp
+web_app = Flask("web_interface")
 
 
 # serve the landing page
-@get("/")
+@web_app.route("/", methods=["GET"])
 def home_page():
     # get config directory
     config_dir = get_config_dir()
     
-    # if cookie is already set, return homepage
-    if cookie_data:
-        return static_file("index.html", root="html")
-    
     # if first run, return welcome page
-    elif not os.path.exists(os.path.join(config_dir, "passwd")):
-        return static_file("welcome.html", root="html")
+    if not os.path.exists(os.path.join(config_dir, "passwd")):
+        return render_template("welcome.html")
 
     # else return the normal page, debug
     else:
-        return static_file("login.html", root="html")
-    
+        return render_template("login.html")
 
-# serve the rest of the pages
-@get("/<html_file>")
-def retrieve_page(html_file):
-    return static_file(html_file, root="html")
-    
-    
-# serve the stylesheets
-@get("/css/<css_file>")
-def retrieve_stylesheets(css_file):
-    return static_file(css_file, root="html/css")
-    
 
-# serve the assets
-@get("/assets/<asset_file>")
-def retrieve_assets(asset_file):
-    return static_file(asset_file, root="html/assets")
-    
-
+"""
 # create a new account for user
-@post("/signup.html")
+@web_app.route("/signup.html", methods=["POST"])
 def create_account():
     # empty dictionary to store user info
     user_data = {}
@@ -69,17 +52,18 @@ def create_account():
     
     # return the login page
     return static_file("login.html", root="html")
-    
+"""
+
 
 # handle the login
-@post("/login.html")
+@web_app.route("/login.html", methods=["POST"])
 def handle_login():
     # get the stored user data
     user_data = read_configuration("passwd")
     
     # get the form data
-    username = request.forms.get("username")
-    password = request.forms.get("password")
+    username = request.form["username"]
+    password = request.form["password"]
     
     # generate hash of username and password
     username_hash = SHA256.new(username.encode()).hexdigest()
@@ -88,14 +72,15 @@ def handle_login():
     # check login details and set cookie
     if user_data["username"] == username_hash:
         if user_data["password"] == password_hash:
-            response.set_cookie("username", username_hash)
-            return static_file("index.html", root="html")
+            return render_template("index.html")
             
     # return the error page otherwise
-    return static_file("login_error.html", root="html")
+    return render_template("login_error.html")
 
 
 # the main function
 def start_web_server():
     # run the webserver
-    run(host="localhost", port=9000, debug=True)
+    web_app.run(
+        debug = True,
+    )
