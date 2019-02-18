@@ -52,7 +52,8 @@ def create_account():
     
     # return the login page
     return static_file("login.html", root="html")
-    
+"""
+
 
 # handle the login
 @web_app.route("/login.html", method=["POST"])
@@ -61,8 +62,8 @@ def handle_login():
     user_data = read_configuration("passwd")
     
     # get the form data
-    username = request.forms.get("username")
-    password = request.forms.get("password")
+    username = request.form["username"]
+    password = request.form["password"]
     
     # generate hash of username and password
     username_hash = SHA256.new(username.encode()).hexdigest()
@@ -75,8 +76,7 @@ def handle_login():
             return static_file("index.html", root="html")
             
     # return the error page otherwise
-    return static_file("login_error.html", root="html")
-"""
+    return render_template("login_error.html")
 
 
 # the main function
