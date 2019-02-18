@@ -26,7 +26,6 @@ def home_page():
         return render_template("login.html")
 
 
-"""
 # create a new account for user
 @web_app.route("/signup.html", methods=["POST"])
 def create_account():
@@ -34,9 +33,9 @@ def create_account():
     user_data = {}
     
     # get the form data
-    full_name = request.forms.get("full_name")
-    username = request.forms.get("username")
-    password = request.forms.get("password")
+    full_name = request.form["full_name"]
+    username = request.form["username"]
+    password = request.form["password"]
     
     # generate hash of username, password
     username_hash = SHA256.new(username.encode()).hexdigest()
@@ -51,8 +50,7 @@ def create_account():
     update_configuration(config=user_data, filename="passwd", force=True)
     
     # return the login page
-    return static_file("login.html", root="html")
-"""
+    return render_template("login.html")
 
 
 # handle the login
