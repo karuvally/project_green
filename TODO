@@ -1,11 +1,16 @@
 TODO
 ----
+* network interface selection page
+* index page
+* custom command
+* execute task
 * favorites
 * scheduled tasks
+* broadcast file
+* health monitor
 * accessible only from local machine switch
-* setup session
+* setup cookies
 * standard error page
-* network interface selection page
 * update client side localhost_address only after ACK from server
 * file bug report to netaddr
 * make update_known_nodes() usable for all purposes
@@ -38,6 +43,9 @@ DONE
 * update_ip
 * update client side last_known_address after update
 * fix update_known_nodes overwriting existing data in known_nodes
+
+PHASE-I
+----
 * implement signature
 * add timestamp to log
 * do encryption
