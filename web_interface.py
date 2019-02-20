@@ -4,7 +4,7 @@
 
 # import serious stuff
 from libgreen import *
-from flask import Flask, render_template, request, make_response
+from flask import Flask, render_template, request, make_response, url_for
 
 
 # setup the webapp
@@ -104,8 +104,8 @@ def handle_login():
     # check login details and set cookie
     if user_data["username"] == username_hash:
         if user_data["password"] == password_hash:
-            index_page = make_response(render_template("index.html"))
-            index_page.set_cookie("username", username_hash)
+            home_page = make_response(url_for("home_page"))
+            home_page.set_cookie("username", username_hash)
             return index_page
             
     # return the error page otherwise
