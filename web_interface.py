@@ -22,6 +22,9 @@ def submit_interface():
     
     # write the information gathered to known_network
     write_configuration(network_info, "known_network")
+    
+    # return the homepage
+    return render_template("index.html")
 
 
 # serve the landing page
