@@ -41,7 +41,7 @@
             <!-- the content goes here -->
 			<section class="container" id="welcome">
 				<h3>Choose Network Interface</h3>
-				<form method="post" action="{{ url_for('handle_login') }}">
+				<form method="post" action="{{ url_for('submit_interface') }}">
 					<fieldset>
 						<table>
 							<thead>
@@ -61,6 +61,7 @@
 								{% endfor %}
 							</tbody>
 						</table>
+						<input class="button-primary" type="submit" value="Done">
 					</fieldset>
 				</form>
 			</section>
