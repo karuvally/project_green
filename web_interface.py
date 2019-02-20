@@ -11,6 +11,19 @@ from flask import Flask, render_template, request, make_response
 web_app = Flask("web_interface")
 
 
+# accept the choosen interface
+@web_app.route("/submit_interface", methods=["POST"])
+def submit_interface():
+    # get the user selected interface
+    chosen_interface = request.form["interface"]
+    
+    # get the network info from interface
+    network_info = probe_interfaces()[chosen_interface]
+    
+    # write the information gathered to known_network
+    write_configuration(network_info, "known_network")
+
+
 # serve the landing page
 @web_app.route("/", methods=["GET"])
 def home_page():
