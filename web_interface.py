@@ -83,7 +83,9 @@ def handle_login():
     # check login details and set cookie
     if user_data["username"] == username_hash:
         if user_data["password"] == password_hash:
-            return render_template("index.html")
+            index_page = make_response(render_template("index.html"))
+            index_page.set_cookie("username", username_hash)
+            return index_page
             
     # return the error page otherwise
     return render_template("login_error.html")
