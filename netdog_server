@@ -11,6 +11,9 @@ from web_interface import *
 def main():
     # initialize the system
     initialize_system()
+    
+    # start web interface
+    start_web_server()
 
     # make sure NetDog can connect to network
     setup_network(server = True)
@@ -20,9 +23,6 @@ def main():
         args = [1337])
 
     listen_thread.start()
-
-    # start web interface
-    start_web_server()
 
 
 # call the main function
