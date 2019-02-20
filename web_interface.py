@@ -29,6 +29,8 @@ def home_page():
         return render_template("login.html")
         
     # if no known_network, return network chooser
+    if not os.path.exists(os.path.join(config_dir, "known_network")):
+        return render_template("network_chooser.html")
     
     # else, simply return the homepage
     else:
