@@ -10,7 +10,6 @@ TODO
 * health monitor
 * System status + Log
 * accessible only from local machine switch
-* setup cookies
 * standard error page
 * update client side localhost_address only after ACK from server
 * file bug report to netaddr
@@ -38,6 +37,7 @@ TODO
 
 DONE
 ----
+* setup cookies
 * login page
 * password creation page
 * first time run screen
