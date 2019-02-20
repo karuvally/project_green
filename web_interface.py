@@ -17,13 +17,19 @@ def home_page():
     # get config directory
     config_dir = get_config_dir()
     
+    # get the cookie
+    
     # if first run, return welcome page
     if not os.path.exists(os.path.join(config_dir, "passwd")):
         return render_template("welcome.html")
 
-    # else return the normal page, debug
+    # if not logged in return login page
     else:
         return render_template("login.html")
+        
+    # if no known_network, return network chooser
+    
+    # else, simply return the homepage
 
 
 # create a new account for user
