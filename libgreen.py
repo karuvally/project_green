@@ -882,19 +882,18 @@ def setup_network(server = False):
     logging.info("getting network information")
 
     # if no known network and is server, pause, debug
-    if not known_network_info and server:
-        return
+    while not known_network_info and server:
+        time.sleep(10)
+        known_network_info = read_configuration("known_network")
 
     # if no known network and is client, find network automatically
-    if not known_network_info and not server:
+    if not known_network_info:
         while True:
             usable_interface = find_network()
             if usable_interface:
                 break
             time.sleep(30)
 
-    # store the newly found network
-    if not known_network_info:
         known_network_info = interface_dump[usable_interface]
         write_configuration(known_network_info, "known_network")
 
