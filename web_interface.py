@@ -106,7 +106,7 @@ def handle_login():
         if user_data["password"] == password_hash:
             home_page = make_response(url_for("home_page"))
             home_page.set_cookie("username", username_hash)
-            return index_page
+            return home_page
             
     # return the error page otherwise
     return render_template("login_error.html")
