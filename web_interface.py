@@ -12,6 +12,12 @@ from flask import redirect
 web_app = Flask("web_interface")
 
 
+# handle execution of commands
+@web_app.route("/command", methods=["POST", "GET"])
+def handle_command_exec():
+    pass
+
+
 # accept the choosen interface
 @web_app.route("/submit_interface", methods=["POST"])
 def submit_interface():
