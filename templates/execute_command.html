@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="author" content="Aswin Babu Karuvally">
 		<meta name="description" content="Welcome to Netdog!">
-		<title>Netdog | Home</title>
+		<title>Netdog | Execute command</title>
 		<link rel="icon" href="https://milligram.github.io/images/icon.png">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
@@ -40,40 +40,13 @@
 			</nav>
             
             <!-- the content goes here -->
-			<section class="container" id="home_page">
-				
-				<div class="row">
-					
-					<div class="column">
-						<a href="{{ url_for('handle_command_execution') }}">
-							<i class="fas fa-terminal fa-5x"></i> <br>
-							Execute a custom command
-						</a>
-					</div>
-					
-					<div class="column">
-						<a href="#">
-							<i class="fas fa-terminal fa-5x"></i> <br>
-							Execute a custom command
-						</a>
-					</div>
-					
-					<div class="column">
-						<a href="#">
-							<i class="fas fa-terminal fa-5x"></i> <br>
-							Execute a custom command
-						</a>
-					</div>
-					
-					<div class="column">
-						<a href="#">
-							<i class="fas fa-terminal fa-5x"></i> <br>
-							Execute a custom command
-						</a>
-					</div>
-										
-				</div>
-				
+			<section class="container" id="execute_command">
+				<form method="post" action="{{ url_for('handle_command_execution') }}">
+					<fieldset>
+						<input type="text" placeholder="Type command here" id="command" name="command">
+						<input class="button-primary" type="submit" value="Proceed">
+					</fieldset>
+				</form>
 			</section>
             
 		</main>

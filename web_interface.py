@@ -14,10 +14,11 @@ web_app = Flask("web_interface")
 
 # handle execution of commands
 @web_app.route("/command", methods=["POST", "GET"])
-def handle_command_exec():
+def handle_command_execution():
     # return execute command page on simple GET request
     if request.method == "GET":
         return render_template("execute_command.html")
+
 
 # accept the choosen interface
 @web_app.route("/submit_interface", methods=["POST"])
