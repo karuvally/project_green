@@ -1,6 +1,5 @@
 TODO
 ----
-* network interface selection page
 * index page
 * custom command
 * execute task
@@ -37,6 +36,7 @@ TODO
 
 DONE
 ----
+* network interface selection page
 * setup cookies
 * login page
 * password creation page
