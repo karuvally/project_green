@@ -18,6 +18,11 @@ def handle_command_execution():
     # return execute command page on simple GET request
     if request.method == "GET":
         return render_template("execute_command.html")
+        
+    # get command from user and return client list
+    elif request.method == "POST":
+        command = request.form["command"]
+        # return client list
 
 
 # accept the choosen interface
