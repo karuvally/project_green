@@ -54,12 +54,12 @@ def ping_address(ip_address, broadcast = False):
     if broadcast == True:
         logging.info("checking if network " + str(ip_address) + " is up")
         ping = Popen(
-            ["ping", "-b", "-c", "1", "-w", "1" str(ip_address)], stdout = PIPE
+            ["ping", "-b", "-c", "1", "-w", "1", str(ip_address)], stdout = PIPE
         )
     else:
         logging.info("checking if node " + str(ip_address) + " is up")
         ping = Popen(
-            ["ping", "-c", "1", "-w", "1" str(ip_address)], stdout = PIPE
+            ["ping", "-c", "1", "-w", "1", str(ip_address)], stdout = PIPE
         )
 
     # do the ping and return result
