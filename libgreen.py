@@ -26,6 +26,17 @@ from subprocess import Popen, PIPE
 
 # global variables
 configuration_lock = threading.Lock()
+beacon_lock = threading.Lock()
+
+
+# send status beacon
+def send_status_beacon():
+    # get id of server
+    server_id = read_configuration("known_network")["server_id"]
+
+    # collect various system stats
+
+    # send the beacon
 
 
 # update specific values in dict without destroying others
