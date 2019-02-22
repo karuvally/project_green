@@ -25,7 +25,7 @@ from Crypto.Hash import SHA256
 from subprocess import Popen, PIPE
 
 # global variables
-thread_lock = threading.Lock()
+configuration_lock = threading.Lock()
 
 
 # update specific values in dict without destroying others
@@ -84,17 +84,17 @@ def write_configuration(config, filename):
     # essential variables
     config_dir = get_config_dir()
     config_file_path = os.path.join(config_dir, filename)
-    global thread_lock
+    global configuration_lock
 
     # acquire thread lock
-    thread_lock.acquire()
+    configuration_lock.acquire()
     
     # write configuration
     with open(config_file_path, "w") as config_file:
         config_file.write(json.dumps(config))
 
     # release lock
-    thread_lock.release()
+    configuration_lock.release()
 
 
 # read JSON configuration from disk

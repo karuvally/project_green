@@ -22,7 +22,7 @@ def handle_command_execution():
     # get command from user and return client list
     elif request.method == "POST":
         command = request.form["command"]
-        # return client list
+        # debug, return client list, complete beacon system first
 
 
 # accept the choosen interface
