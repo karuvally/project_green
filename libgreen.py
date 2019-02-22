@@ -35,8 +35,16 @@ def send_status_beacon():
     server_id = read_configuration("known_network")["server_id"]
 
     # collect various system stats
+    system_load = Popen(["cat", "/proc/loadavg"], stdout=PIPE)
+    system_load = system_load.stdout.read().decode().split()[0]
+
+    # prepare the payload
+    system_stats = {
+        "system_load": system_load
+    }
 
     # send the beacon
+    send_message(1337, "beacon", system_stats, destination_id=server_id) 
 
 
 # update specific values in dict without destroying others
