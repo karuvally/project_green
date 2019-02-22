@@ -69,7 +69,7 @@ def ping_address(ip_address, broadcast = False):
 
 # the ping function for threads 
 def ping_sweep(ip_address, result):
-    ping = Popen(["ping", "-c", "1", str(ip_address)], stdout = PIPE)
+    ping = Popen(["ping", "-c", "1", "-w", "1", str(ip_address)], stdout = PIPE)
     ping_out = ping.communicate()[0]
 
     # returncode is 0 if ping is succesful, converting to bool
