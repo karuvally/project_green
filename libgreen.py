@@ -29,6 +29,11 @@ configuration_lock = threading.Lock()
 beacon_lock = threading.Lock()
 
 
+# update the beacon database
+def update_beacon_db():
+    pass
+
+
 # send status beacon
 def send_beacon():
     # get id of server
@@ -729,7 +734,8 @@ def handle_connection(connection):
     elif command == "update_ip":
         update_known_nodes(message["data"]["payload"])
         
-
+    elif command == "beacon":
+        update_beacon_db(message["data"]["payload"])
 
     # implement rest of the commands
     
