@@ -30,7 +30,7 @@ beacon_lock = threading.Lock()
 
 
 # send status beacon
-def send_status_beacon():
+def send_beacon():
     # get id of server
     server_id = read_configuration("known_network")["server_id"]
 
@@ -713,7 +713,7 @@ def handle_connection(connection):
 
     # debug: verify the message signature 
 
-    # act according to received command
+    # act according to received command, debug: replace with case?
     if command == "pair":
         pair_if_necessary(message, sender_ip)
     
@@ -728,6 +728,8 @@ def handle_connection(connection):
 
     elif command == "update_ip":
         update_known_nodes(message["data"]["payload"])
+        
+
 
     # implement rest of the commands
     
