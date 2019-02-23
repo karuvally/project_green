@@ -30,7 +30,7 @@ beacon_lock = threading.Lock()
 
 
 # update the beacon database
-def update_beacon_db():
+def update_beacon_db(client_id, payload):
     pass
 
 
@@ -735,7 +735,7 @@ def handle_connection(connection):
         update_known_nodes(message["data"]["payload"])
         
     elif command == "beacon":
-        update_beacon_db(message["data"]["payload"])
+        update_beacon_db(message["hostname"], message["data"]["payload"])
 
     # implement rest of the commands
     
