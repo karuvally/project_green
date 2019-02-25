@@ -974,8 +974,13 @@ def setup_network(server = False):
 
         known_network_info = interface_dump[usable_interface]
         write_configuration(known_network_info, "known_network")
+        
+    # start beacon_db cleanup thread
+    if server:
+        cleanup_beacon_db_thread = threading.Thread(target=cleanup_beacon_db)
+        cleanup_beacon_db_thread.start()
 
-    # do client specific network stuff
-    if not server:
+    # else do client specific network stuff
+    else:
         client_checklist(known_network_info)
 
