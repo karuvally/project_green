@@ -33,13 +33,20 @@ configuration_lock = threading.Lock()
 beacon_lock = threading.Lock()
 
 
-# remove offline clients from beacon_db
+# remove older beacons from beacon_db
 def cleanup_beacon_db():
     # get the global variables
     global beacon_db
     global beacon_lock
     
     while True:
+        # sleep for 30s
+        time.sleep(30)
+        
+        # skip if empty beacon_db
+        if not beacon_db:
+            continue
+        
         # acquire lock
         beacon_lock.acquire()
         
@@ -53,9 +60,6 @@ def cleanup_beacon_db():
         
         # release lock
         beacon_lock.release()
-        
-        # sleep for 30s
-        time.sleep(30)
 
 
 # update the beacon database
@@ -479,7 +483,6 @@ def client_checklist(known_network_info):
         # update local last_known_address, debug: implement proper ACK
         update_configuration({"localhost_address": current_address}, "known_network")
             
-
 
 # update a configuration file
 def update_configuration(config, filename, force = False):
