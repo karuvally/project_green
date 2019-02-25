@@ -25,13 +25,20 @@ from Crypto.Hash import SHA256
 from subprocess import Popen, PIPE
 
 # global variables
+beacon_db = {}
+
+# thread locks
 configuration_lock = threading.Lock()
 beacon_lock = threading.Lock()
 
 
 # update the beacon database
 def update_beacon_db(client_id, payload):
-    pass
+    # use global becon_db
+    
+    # get current time, insert it to payload
+    
+    # insert client_id, payload to beacon_db
 
 
 # send status beacon
