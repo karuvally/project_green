@@ -35,24 +35,40 @@ beacon_lock = threading.Lock()
 
 # remove offline clients from beacon_db
 def cleanup_beacon_db():
-    # use global beacon_db
+    # get the global variables
+    global beacon_db
+    global beacon_lock
+    
+    # acquire lock
     
     # get current time
+    current_time = int(datetime.now().timestamp())
     
     # remove clients with beacons older than 30s
+    
+    # release lock
+    
+    # sleep and loop infinitely
 
 
 # update the beacon database
 def update_beacon_db(client_id, payload):
     # use global becon_db
     global beacon_db
+    global beacon_lock
+    
+    # acquire lock
+    beacon_lock.acquire()
     
     # get current time, insert it to payload
-    current_time = datetime.now().timestamp()
+    current_time = int(datetime.now().timestamp())
     payload.update({"beacon_time": current_time})
     
     # insert client_id, payload to beacon_db
     beacon_db.update({client_id: payload})
+    
+    # release lock
+    beacon_lock.release()
 
 
 # send status beacon
