@@ -23,6 +23,7 @@ from Crypto.Cipher import PKCS1_OAEP
 from Crypto.Signature import pkcs1_15
 from Crypto.Hash import SHA256
 from subprocess import Popen, PIPE
+from datetime import datetime
 
 # global variables
 beacon_db = {}
@@ -35,10 +36,14 @@ beacon_lock = threading.Lock()
 # update the beacon database
 def update_beacon_db(client_id, payload):
     # use global becon_db
+    global beacon_db
     
     # get current time, insert it to payload
+    current_time = datetime.now().timestamp()
+    payload.update({"beacon_time": current_time})
     
     # insert client_id, payload to beacon_db
+    beacon_db.update({client_id: payload})
 
 
 # send status beacon
