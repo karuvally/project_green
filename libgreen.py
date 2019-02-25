@@ -39,16 +39,23 @@ def cleanup_beacon_db():
     global beacon_db
     global beacon_lock
     
-    # acquire lock
-    
-    # get current time
-    current_time = int(datetime.now().timestamp())
-    
-    # remove clients with beacons older than 30s
-    
-    # release lock
-    
-    # sleep and loop infinitely
+    while True:
+        # acquire lock
+        beacon_lock.acquire()
+        
+        # get current time
+        current_time = int(datetime.now().timestamp())
+        
+        # remove clients with beacons older than 30s
+        for client in beacon_db:
+            if current_time - client["beacon_time"] > 30:
+                beacon_db.pop(client)
+        
+        # release lock
+        beacon_lock.release()
+        
+        # sleep for 30s
+        time.sleep(30)
 
 
 # update the beacon database
