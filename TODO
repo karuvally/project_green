@@ -18,7 +18,6 @@ TODO
 * faster ping sweep
 * assign alternate hostname if duplicate found
 * fix signature
-* beacon
 * execute acknowledgement
 * easy to use prewritten scripts
 * scheduled command execution
@@ -44,6 +43,7 @@ DONE
 * update_ip
 * update client side last_known_address after update
 * fix update_known_nodes overwriting existing data in known_nodes
+* beacon
 
 PHASE-I
 ----

@@ -33,6 +33,15 @@ configuration_lock = threading.Lock()
 beacon_lock = threading.Lock()
 
 
+# remove offline clients from beacon_db
+def cleanup_beacon_db():
+    # use global beacon_db
+    
+    # get current time
+    
+    # remove clients with beacons older than 30s
+
+
 # update the beacon database
 def update_beacon_db(client_id, payload):
     # use global becon_db
