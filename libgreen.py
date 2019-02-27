@@ -57,6 +57,7 @@ def cleanup_beacon_db():
         for client in beacon_db:
             if current_time - client["beacon_time"] > 30:
                 beacon_db.pop(client)
+                logging.info("beacon from client " + client + " expired")
         
         # release lock
         beacon_lock.release()
