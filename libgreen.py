@@ -80,6 +80,9 @@ def update_beacon_db(client_id, payload):
     
     # release lock
     beacon_lock.release()
+    
+    # log the incident
+    logging.info("beacon received from " + client_id)
 
 
 # send status beacon
