@@ -12,13 +12,17 @@ def main():
     initialize_system()
 
     # start listening for connections
-    listen_thread = threading.Thread(target = create_new_listen_socket,
+    listen_thread = threading.Thread(target=create_new_listen_socket,
         args = [1994])
 
     listen_thread.start()
 
     # make sure we have usable network
     setup_network()
+    
+    # start beacon system
+    beacon_thread = threading.Thread(target=beacon_system)
+    beacon_thread.start()
 
 # call the main function
 main()
