@@ -1,5 +1,7 @@
 TODO
 ----
+* separate process for web server
+* ignore NAT interfaces?
 * custom command
 * list clients
 * index page

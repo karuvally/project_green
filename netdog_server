@@ -5,6 +5,7 @@
 # import serious stuff
 from libgreen import *
 from web_interface import *
+import multiprocessing
 
 
 # the main function
@@ -12,8 +13,9 @@ def main():
     # initialize the system
     initialize_system()
     
-    # start web interface
-    start_web_server()
+    # start web server as child process
+    web_server_process = multiprocessing.Process(target=start_web_server)
+    web_server_process.start()
 
     # make sure NetDog can connect to network
     setup_network(server = True)

@@ -969,7 +969,7 @@ def setup_network(server = False):
         known_network_info = read_configuration("known_network")
 
     # if no known network and is client, find network automatically
-    if not known_network_info:
+    if not known_network_info and not server:
         while True:
             usable_interface = find_network()
             if usable_interface:
