@@ -33,6 +33,13 @@ configuration_lock = threading.Lock()
 beacon_lock = threading.Lock()
 
 
+# send a beacon every 30s
+def beacon_system():
+    while True:
+        send_beacon()
+        time.sleep(30)
+
+
 # remove older beacons from beacon_db
 def cleanup_beacon_db():
     # get the global variables
