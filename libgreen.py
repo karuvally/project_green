@@ -62,7 +62,7 @@ def cleanup_beacon_db():
         
         # remove clients with beacons older than 30s
         for client in beacon_db:
-            if current_time - client["beacon_time"] > 30:
+            if current_time - beacon_db[client]["beacon_time"] > 30:
                 beacon_db.pop(client)
                 logging.info("beacon from client " + client + " expired")
         
