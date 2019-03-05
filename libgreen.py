@@ -85,7 +85,7 @@ def cleanup_beacon_db():
         # release lock
         beacon_lock.release()
 
-        # write to beacon_db to file
+        # write beacon_db to in memory file
         write_beacon_db_to_mem()
 
 
@@ -107,6 +107,9 @@ def update_beacon_db(client_id, payload):
     
     # release lock
     beacon_lock.release()
+
+    # write to beacon_db to in memory file
+    write_beacon_db_to_mem()
     
     # log the incident
     logging.info("beacon received from " + client_id)
