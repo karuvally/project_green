@@ -1,6 +1,5 @@
 TODO
 ----
-* separate process for web server
 * ignore NAT interfaces?
 * custom command
 * list clients
@@ -38,6 +37,9 @@ TODO
 
 DONE
 ----
+* switch to flask
+* create account
+* separate process for web server
 * network interface selection page
 * setup cookies
 * login page
@@ -47,6 +49,8 @@ DONE
 * update client side last_known_address after update
 * fix update_known_nodes overwriting existing data in known_nodes
 * beacon
+* beacon_db
+* beacon_db cleanup service
 
 PHASE-I
 ----
