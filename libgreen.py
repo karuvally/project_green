@@ -41,7 +41,7 @@ def write_beacon_db_to_mem():
     # open beacon_db file
     beacon_db_file = open("/dev/shm/beacon_db", "w")
 
-    # write beacon_db to file
+    # write beacon_db to in memory file
     beacon_db_file.write(str(beacon_db))
 
     # close the file
@@ -84,6 +84,9 @@ def cleanup_beacon_db():
         
         # release lock
         beacon_lock.release()
+
+        # write to beacon_db to file
+        write_beacon_db_to_mem()
 
 
 # update the beacon database
