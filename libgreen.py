@@ -33,6 +33,22 @@ configuration_lock = threading.Lock()
 beacon_lock = threading.Lock()
 
 
+# write beacon_db to /dev/shm
+def write_beacon_db_to_mem():
+    # use global beacon_db variable
+    global beacon_db
+
+    # open beacon_db file
+    beacon_db_file = open("/dev/shm/beacon_db", "w")
+
+    # write beacon_db to file
+    beacon_db_file.write(str(beacon_db))
+
+    # close the file
+    beacon_db_file.close()
+
+
+
 # send a beacon every 30s
 def beacon_system():
     while True:
