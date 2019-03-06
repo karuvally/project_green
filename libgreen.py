@@ -38,6 +38,11 @@ def write_beacon_db_to_mem():
     # use global beacon_db variable
     global beacon_db
 
+    # place lock file
+    lock_file = open("/dev/shm/beacon_db.lock", "w")
+    lock_file.write("")
+    lock_file.close()
+
     # open beacon_db file
     beacon_db_file = open("/dev/shm/beacon_db", "w")
 
@@ -47,6 +52,8 @@ def write_beacon_db_to_mem():
     # close the file
     beacon_db_file.close()
 
+    # delete the lock file
+    os.remove("/dev/shm/beacon_db.lock")
 
 
 # send a beacon every 30s
