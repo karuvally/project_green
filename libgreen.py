@@ -33,6 +33,15 @@ configuration_lock = threading.Lock()
 beacon_lock = threading.Lock()
 
 
+# read beacon_db from in memory file
+def read_beacon_db():
+    # if beacon_db lock exists, wait
+
+    # read beacon_db into a dictionary
+
+    # return the dictionary
+
+
 # write beacon_db to /dev/shm
 def write_beacon_db_to_mem():
     # use global beacon_db variable
