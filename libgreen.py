@@ -36,10 +36,19 @@ beacon_lock = threading.Lock()
 # read beacon_db from in memory file
 def read_beacon_db():
     # if beacon_db lock exists, wait
+    while True:
+        if os.path.exists("/dev/shm/beacon_db.lock"):
+            time.sleep(.2)
+        else:
+            break
 
     # read beacon_db into a dictionary
+    beacon_db_file = open("/dev/shm/beacon_db")
+    beacon_db = ast.literal_eval(beacon_db_file.read())
+    beacon_db_file.close()
 
     # return the dictionary
+    return beacon_db
 
 
 # write beacon_db to /dev/shm
