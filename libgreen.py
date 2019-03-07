@@ -51,8 +51,8 @@ def read_beacon_db():
     return beacon_db
 
 
-# write beacon_db to /dev/shm
-def write_beacon_db_to_mem():
+# write beacon_db to in memory file 
+def write_beacon_db():
     # use global beacon_db variable
     global beacon_db
 
@@ -111,7 +111,7 @@ def cleanup_beacon_db():
         beacon_lock.release()
 
         # write beacon_db to in memory file
-        write_beacon_db_to_mem()
+        write_beacon_db()
 
 
 # update the beacon database
@@ -134,7 +134,7 @@ def update_beacon_db(client_id, payload):
     beacon_lock.release()
 
     # write to beacon_db to in memory file
-    write_beacon_db_to_mem()
+    write_beacon_db()
     
     # log the incident
     logging.info("beacon received from " + client_id)
