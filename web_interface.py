@@ -15,6 +15,9 @@ web_app = Flask("web_interface")
 # handle execution of commands
 @web_app.route("/command", methods=["POST", "GET"])
 def handle_command_execution():
+    # essential variables
+    active_clients = {}
+
     # return execute command page on simple GET request
     if request.method == "GET":
         return render_template("execute_command.html")
@@ -23,7 +26,18 @@ def handle_command_execution():
     elif request.method == "POST":
         command = request.form["command"]
         
-        # read client_db
+        # read beacon db
+        beacon_db = read_beacon_db()
+        
+        # fetch active clients and their info
+        for client in beacon_db:
+            active_clients.update({
+                client: read_configuration(
+                    "known_nodes")[client]["last_known_address"]
+            })
+
+        # generate the target clients page
+        
 
 
 # accept the choosen interface
