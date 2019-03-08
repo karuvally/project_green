@@ -76,6 +76,14 @@ def write_beacon_db():
 
 # send a beacon every 30s
 def beacon_system():
+    # essential variables
+    config_dir = get_config_dir()
+    
+    # wait if known_network file does not exist yet
+    while not os.path.exists(os.path.join(config_dir, "known_network")):
+        time.sleep(2)
+    
+    # start the loop
     while True:
         send_beacon()
         time.sleep(30)
