@@ -570,22 +570,6 @@ def update_configuration(config, filename, force = False):
     write_configuration(new_configuration, filename)
 
 
-# cli for choosing network interface, debug
-def interface_chooser(interface_dump):
-    # essential variables
-    user_choice = None
-
-    print("choose network interface")
-
-    while user_choice not in interface_dump:
-        for interface in interface_dump:
-            print(interface, ":", interface_dump[interface]["network_address"])
-
-        user_choice = input(">")
-
-    return user_choice
-
-
 # find usable network for client
 def find_network():
     # essential variables
@@ -1025,7 +1009,7 @@ def setup_network(server = False):
     # get last known network information
     logging.info("getting network information")
 
-    print("Hello")
+    print("Hello") # debug
 
     # if no known network and is server, pause, debug
     while not known_network_info and server:
