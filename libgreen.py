@@ -1025,6 +1025,8 @@ def setup_network(server = False):
     # get last known network information
     logging.info("getting network information")
 
+    print("Hello")
+
     # if no known network and is server, pause, debug
     while not known_network_info and server:
         time.sleep(10)
