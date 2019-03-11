@@ -96,7 +96,7 @@ def cleanup_beacon_db():
     global beacon_lock
     
     while True:
-        # sleep for 30s
+        # cleanup to be done every 30s 
         time.sleep(30)
         
         # skip if empty beacon_db
