@@ -1038,6 +1038,7 @@ def setup_network(server = False):
                 break
             time.sleep(30)
 
+        # write the found network to config
         known_network_info = interface_dump[usable_interface]
         write_configuration(known_network_info, "known_network")
         
