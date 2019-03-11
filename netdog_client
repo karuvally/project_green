@@ -25,4 +25,5 @@ def main():
     beacon_thread.start()
 
 # call the main function
-main()
+if __name__ == "__main__":
+    main()
