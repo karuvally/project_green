@@ -12,21 +12,25 @@ import multiprocessing
 def main():
     # initialize the system
     initialize_system()
-    
-    # start web server as child process
-    web_server_process = multiprocessing.Process(target=start_web_server)
-    web_server_process.start()
 
     # make sure NetDog can connect to network
-    setup_network(server = True)
+    setup_network(server=True)
 
     # listen for message from clients
-    listen_thread = threading.Thread(target = create_new_listen_socket,
-        args = [1337])
+    listen_thread = threading.Thread(
+        target=create_new_listen_socket,
+        args = [1337]
+    )
 
     listen_thread.start()
 
 
 # call the main function
 if __name__ == "__main__":
+    # start the main function
     main()
+
+    # start web server as child process
+    web_server_process = multiprocessing.Process(target=start_web_server)
+    web_server_process.start()
+
