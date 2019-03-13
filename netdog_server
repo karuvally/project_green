@@ -12,10 +12,11 @@ import multiprocessing
 def main():
     # initialize the system
     initialize_system()
-
-    # start web server as child process
-    multiprocessing.set_start_method("spawn")
-    web_server_process = multiprocessing.Process(target=start_web_server)
+    
+    # start web server
+    web_server_process = multiprocessing.Process(
+        target = start_web_server
+    )
     web_server_process.start()
 
     # make sure NetDog can connect to network
