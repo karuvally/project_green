@@ -233,6 +233,9 @@ def write_configuration(config, filename):
 
     # release lock
     configuration_lock.release()
+    
+    # log the event
+    logging.info("writing configuration into " + filename)
 
 
 # read JSON configuration from disk
