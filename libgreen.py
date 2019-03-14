@@ -247,7 +247,7 @@ def read_configuration(filename):
         with open(config_file_path, "r") as config_file:
             config = json.loads(config_file.read())
     else:
-        logging.warning(filename + " does not exist")
+        logging.warning("trying to read " + filename + ", but it does not exist")
 
     # return configuration
     return config
@@ -1008,8 +1008,6 @@ def setup_network(server = False):
 
     # get last known network information
     logging.info("getting network information")
-
-    print(os.getpid()) # debug
 
     # if no known network and is server, pause, debug
     while not known_network_info and server:
