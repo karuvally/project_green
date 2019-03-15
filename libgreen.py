@@ -237,7 +237,7 @@ def write_configuration(config, filename, log=True):
     
     # log the event
     if log:
-        logging.info("writing configuration into " + filename)
+        logging.info("creating " + filename + " with configuraiton")
 
 
 # read JSON configuration from disk
@@ -556,7 +556,7 @@ def client_checklist(known_network_info):
             
 
 # update a configuration file
-def update_configuration(config, filename, force = False):
+def update_configuration(config, filename, force=False):
     # read configuration from file
     config_from_file = read_configuration(filename)
 
@@ -572,7 +572,12 @@ def update_configuration(config, filename, force = False):
         new_configuration = dict_update(config_from_file, config)
 
     # write configuration to file
-    write_configuration(new_configuration, filename)
+    try:
+        write_configuration(new_configuration, filename, log=False)
+        if config_from_file:
+            logging.info("updating " + filename + " with new configuration")
+        else:
+            logging_info("creating " + filename + " with configuration")
 
 
 # find usable network for client
