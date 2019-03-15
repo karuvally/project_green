@@ -219,7 +219,7 @@ def ping_sweep(ip_address, result):
 
 
 # write configuration to disk in JSON
-def write_configuration(config, filename):
+def write_configuration(config, filename, log=True):
     # essential variables
     config_dir = get_config_dir()
     config_file_path = os.path.join(config_dir, filename)
@@ -236,7 +236,8 @@ def write_configuration(config, filename):
     configuration_lock.release()
     
     # log the event
-    logging.info("writing configuration into " + filename)
+    if log:
+        logging.info("writing configuration into " + filename)
 
 
 # read JSON configuration from disk

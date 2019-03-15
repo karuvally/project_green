@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="author" content="Aswin Babu Karuvally">
 		<meta name="description" content="Welcome to Netdog!">
-		<title>Netdog | Choose Network</title>
+		<title>Netdog | Choose Nodes</title>
 		<link rel="icon" href="https://milligram.github.io/images/icon.png">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
@@ -46,13 +46,13 @@
 						<table>
 							<thead>
 								<tr>
-									<th>Interface</th>
+									<th>Hostname</th>
 									<th>Network Address</th>
 									<th>Select</th>
 								</tr>
 							</thead>
 							<tbody>
-								{% for interface in interface_dump %}
+								{% for node in active_nodes %}
 									<tr>
 										<td>{{ interface }}</td>
 										<td>{{ interface_dump[interface]["network_address"] }}</td>
