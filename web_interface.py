@@ -144,6 +144,4 @@ def handle_login():
 # the main function
 def start_web_server():
     # run the webserver
-    web_app.run(
-        debug = False
-    )
+    web_app.run(debug = False, port=9000)
