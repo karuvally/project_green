@@ -1,6 +1,5 @@
 TODO
 ----
-* start running web interface on 9000 port
 * ignore NAT interfaces?
 * custom command
 * list clients
@@ -38,6 +37,7 @@ TODO
 
 DONE
 ----
+* start running web interface on 9000 port
 * switch to flask
 * create account
 * separate process for web server
