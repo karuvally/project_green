@@ -19,7 +19,7 @@ def execute_command():
 
 
 # handle execution of commands
-@web_app.route("/command", methods=["POST", "GET"])
+@web_app.route("/gather_exec_data", methods=["POST", "GET"])
 def gather_cmd_exec_data():
     # essential variables
     active_clients = {}
