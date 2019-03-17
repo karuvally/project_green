@@ -30,7 +30,7 @@ def handle_command_execution():
         beacon_db = read_beacon_db()
         
         if not beacon_db:
-            render_template("error_page.html", reason="No active clients!")
+            return render_template("error_page.html", reason="No active clients!")
         
         # fetch active clients and their info
         for client in beacon_db:
@@ -40,7 +40,7 @@ def handle_command_execution():
             })
 
         # generate the target clients page
-        render_template("target_nodes.html", active_clients=active_clients)
+        return render_template("target_nodes.html", active_clients=active_clients)
         
 
 

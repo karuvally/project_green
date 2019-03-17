@@ -37,6 +37,7 @@ TODO
 
 DONE
 ----
+* templating functionality to standard error page
 * start running web interface on 9000 port
 * switch to flask
 * create account
