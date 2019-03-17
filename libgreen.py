@@ -41,6 +41,10 @@ def read_beacon_db():
             time.sleep(.2)
         else:
             break
+    
+    # if beacon_db does not exist, return None
+    if not os.path.exists("/dev/shm/beacon_db"):
+        return None
 
     # read beacon_db into a dictionary
     beacon_db_file = open("/dev/shm/beacon_db")

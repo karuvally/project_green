@@ -29,6 +29,9 @@ def handle_command_execution():
         # read beacon db
         beacon_db = read_beacon_db()
         
+        if not beacon_db:
+            render_template("std_error.html") # debug
+        
         # fetch active clients and their info
         for client in beacon_db:
             active_clients.update({
