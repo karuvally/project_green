@@ -1,5 +1,6 @@
 TODO
 ----
+* setup command flow
 * ignore NAT interfaces?
 * custom command
 * list clients

@@ -12,9 +12,15 @@ from flask import redirect
 web_app = Flask("web_interface")
 
 
+# start the actual execution of commands
+@web_app.route("/execute_command", methods=["POST"])
+def execute_command():
+    pass
+
+
 # handle execution of commands
 @web_app.route("/command", methods=["POST", "GET"])
-def handle_command_execution():
+def gather_cmd_exec_data():
     # essential variables
     active_clients = {}
 
@@ -40,7 +46,11 @@ def handle_command_execution():
             })
 
         # generate the target clients page
-        return render_template("target_nodes.html", active_clients=active_clients)
+        return render_template(
+            "target_nodes.html", 
+            active_clients = active_clients,
+            command = command
+        )
         
 
 

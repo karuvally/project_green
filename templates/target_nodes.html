@@ -41,7 +41,7 @@
             <!-- the content goes here -->
 			<section class="container" id="network">
 				<h3>Choose Network Interface</h3>
-				<form method="post" action="{{ url_for('submit_interface') }}">
+				<form method="post" action="{{ url_for('execute_command') }}">
 					<fieldset>
 						<table>
 							<thead>
@@ -56,7 +56,7 @@
 									<tr>
 										<td>{{ client }}</td>
 										<td>{{ active_clients[client] }}</td>
-										<td><input type="radio" name="interface" value="{{ interface }}"></td>
+										<td><input type="checkbox" name="interface" value="{{ interface }}"></td>
 									</tr>
 								{% endfor %}
 							</tbody>
