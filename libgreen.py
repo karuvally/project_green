@@ -578,6 +578,8 @@ def update_configuration(config, filename, force=False):
             logging.info("updating " + filename + " with new configuration")
         else:
             logging_info("creating " + filename + " with configuration")
+    except:
+        logging.warning("unable to write to " + filename)
 
 
 # find usable network for client

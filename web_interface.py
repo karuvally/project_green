@@ -37,6 +37,7 @@ def handle_command_execution():
             })
 
         # generate the target clients page
+        render_template("target_nodes.html", active_clients=active_clients)
         
 
 

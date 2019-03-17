@@ -52,10 +52,10 @@
 								</tr>
 							</thead>
 							<tbody>
-								{% for node in active_nodes %}
+								{% for client in active_clients %}
 									<tr>
-										<td>{{ interface }}</td>
-										<td>{{ interface_dump[interface]["network_address"] }}</td>
+										<td>{{ client }}</td>
+										<td>{{ active_clients[client] }}</td>
 										<td><input type="radio" name="interface" value="{{ interface }}"></td>
 									</tr>
 								{% endfor %}
