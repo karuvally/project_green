@@ -576,14 +576,12 @@ def update_configuration(config, filename, force=False):
         new_configuration = dict_update(config_from_file, config)
 
     # write configuration to file
-    try:
-        write_configuration(new_configuration, filename, log=False)
-        if config_from_file:
-            logging.info("updating " + filename + " with new configuration")
-        else:
-            logging_info("creating " + filename + " with configuration")
-    except:
-        logging.warning("unable to write to " + filename)
+    write_configuration(new_configuration, filename, log=False)
+    
+    if config_from_file:
+        logging.info("updating " + filename + " with new configuration")
+    else:
+        logging_info("creating " + filename + " with configuration")
 
 
 # find usable network for client
