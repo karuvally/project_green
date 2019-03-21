@@ -700,8 +700,8 @@ def is_server():
 
 
 # send data through network
-def send_message(port, command, payload, destination_id = None,
-        destination_ip = None):
+def send_message(port, command, payload, destination_id=None,
+        destination_ip=None):
     # essential variables
     encrypt_flag = False
     signature = None

@@ -19,7 +19,14 @@ def execute_command():
     # get execution data
     execution_data = request.form.to_dict(flat=False)
     
-    return "Okay" # debug
+    # execute the commands!
+    for client in execution_data["client"]:
+        send_message(
+            port = 1994, 
+            command = "execute", 
+            payload = execution_data["command"], 
+            destination_id = client
+        )
 
 
 # handle execution of commands
