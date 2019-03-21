@@ -5,6 +5,7 @@
 # import serious stuff
 from libgreen import *
 from flask import Flask, render_template, request, make_response, url_for
+from werkzeug.datastructures import ImmutableMultiDict
 from flask import redirect
 
 
@@ -15,8 +16,10 @@ web_app = Flask("web_interface")
 # start the actual execution of commands
 @web_app.route("/execute_command", methods=["POST"])
 def execute_command():
-    print(request.form)
-    return "Okay"
+    # get execution data
+    execution_data = request.form.to_dict(flat=False)
+    
+    return "Okay" # debug
 
 
 # handle execution of commands
