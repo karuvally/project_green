@@ -1,8 +1,6 @@
 TODO
 ----
-* setup command flow
 * ignore NAT interfaces?
-* custom command
 * list clients
 * index page
 * execute task
@@ -38,6 +36,10 @@ TODO
 
 DONE
 ----
+* custom command
+* fix command not fully received bug
+* fix command execution bug
+* setup command flow
 * templating functionality to standard error page
 * start running web interface on 9000 port
 * switch to flask
