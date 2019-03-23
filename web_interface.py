@@ -27,6 +27,8 @@ def execute_command():
             payload = execution_data["command"], 
             destination_id = client
         )
+        
+    return "Okay" # debug
 
 
 # handle execution of commands
