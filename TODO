@@ -1,7 +1,6 @@
 TODO
 ----
 * ignore NAT interfaces?
-* list clients
 * index page
 * execute task
 * favorites
@@ -36,6 +35,8 @@ TODO
 
 DONE
 ----
+* list clients
+* checkboxes in target_nodes.html now checked by default
 * custom command
 * fix command not fully received bug
 * fix command execution bug
