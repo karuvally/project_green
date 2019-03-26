@@ -1,6 +1,5 @@
 TODO
 ----
-* index page
 * ignore NAT interfaces?
 * execute task
 * favorites
@@ -35,6 +34,7 @@ TODO
 
 DONE
 ----
+* index page
 * welcome page
 * design header
 * list clients
