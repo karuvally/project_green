@@ -581,7 +581,7 @@ def update_configuration(config, filename, force=False):
     if config_from_file:
         logging.info("updating " + filename + " with new configuration")
     else:
-        logging_info("creating " + filename + " with configuration")
+        logging.info("creating " + filename + " with configuration")
 
 
 # find usable network for client

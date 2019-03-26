@@ -1,7 +1,7 @@
 TODO
 ----
-* ignore NAT interfaces?
 * index page
+* ignore NAT interfaces?
 * execute task
 * favorites
 * scheduled tasks
@@ -35,6 +35,8 @@ TODO
 
 DONE
 ----
+* welcome page
+* design header
 * list clients
 * checkboxes in target_nodes.html now checked by default
 * custom command
