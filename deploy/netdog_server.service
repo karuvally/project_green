@@ -3,9 +3,8 @@ Description=NetDog service
 After=multi-user.target
 
 [Service]
-User=netdog
+User=aswin
 Type=idle
-ExecStart=/home/netdog/netdog/bin/python3 /home/netdog/netdog/src/netdog_client.py
-
+ExecStart=/opt/netdog_server/bin/python3 /opt/netdog_server/src/netdog_server
 [Install]
 WantedBy=multi-user.target

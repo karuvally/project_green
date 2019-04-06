@@ -10,16 +10,19 @@ import argparse
 def main():
     # setup the argument parser
     parser = argparse.ArgumentParser(
-        description = "Netdog deployer utility, alpha"
+        description = "Netdog deployer utility, alpha release"
     )
     parser.add_argument(
         "-s", 
         "--server", 
         help = "install the server", 
         action = "store_true",
-        dest = "install_server"
+        dest = "server"
     )
     arguments = parser.parse_args()
+    
+    # if not root, quit
+    
     
 
 if __name__ == "__main__":
