@@ -63,7 +63,7 @@ def gather_cmd_exec_data():
             "target_nodes.html", 
             active_clients = active_clients,
             command = command,
-            called_by = "gather_cmd_exec_data"
+            target = "execute_command"
         )
         
 
