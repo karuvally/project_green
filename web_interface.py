@@ -62,7 +62,8 @@ def gather_cmd_exec_data():
         return render_template(
             "target_nodes.html", 
             active_clients = active_clients,
-            command = command
+            command = command,
+            called_by = "gather_cmd_exec_data"
         )
         
 
