@@ -1,0 +1,10 @@
+[Unit]
+Description=NetDog service
+After=multi-user.target
+
+[Service]
+User=aswin
+Type=idle
+ExecStart=/opt/netdog_client/bin/python3 /opt/netdog_client/src/netdog_client
+[Install]
+WantedBy=multi-user.target
