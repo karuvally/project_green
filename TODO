@@ -1,5 +1,6 @@
 TODO
 ----
+* file chooser form
 * broadcast_file dir create in post_install script
 * broadcast files
 * shutdown clients
