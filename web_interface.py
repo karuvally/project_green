@@ -13,6 +13,11 @@ from flask import redirect
 web_app = Flask("web_interface")
 
 
+@web_app.route("/broadcast", methods=["GET", "POST"])
+def gather_broadcast_data():
+    pass
+
+
 # start the actual execution of commands
 @web_app.route("/execute_command", methods=["POST"])
 def execute_command():
