@@ -1,5 +1,6 @@
 TODO
 ----
+* broadcast_file dir create in post_install script
 * broadcast files
 * shutdown clients
 * Turn off monitors

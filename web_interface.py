@@ -63,10 +63,9 @@ def gather_cmd_exec_data():
             "target_nodes.html", 
             active_clients = active_clients,
             command = command,
-            target = "execute_command"
+            target_page = "execute_command"
         )
         
-
 
 # accept the choosen interface
 @web_app.route("/submit_interface", methods=["POST"])
