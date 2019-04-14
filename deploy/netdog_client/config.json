@@ -1,0 +1,24 @@
+{
+    "basics": {
+        "title": "Netdog Client",
+        "source_dir": "src",
+        "verbose": true,
+        "requirements_file": "src/requirements.txt",
+        "install_path": "/opt/netdog_client"
+    },
+
+    "systemd_service": {
+        "enable": true,
+        "unit_file": "src/deploy/netdog_client.service"
+    },
+
+    "archive": {
+        "filename": "netdog_client",
+        "format": "zip"
+    },
+
+    "post_install_script": {
+        "enable": false,
+        "script_file": "src/deploy/post_install.py"
+    }
+}
