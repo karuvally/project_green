@@ -9,7 +9,7 @@
 
     "systemd_service": {
         "enable": true,
-        "unit_file": "src/deploy/netdog_server.service"
+        "unit_file": "src/deploy/netdog_server/netdog_server.service"
     },
 
     "archive": {
@@ -19,6 +19,6 @@
 
     "post_install_script": {
         "enable": false,
-        "script_file": "src/deploy/post_install.py"
+        "script_file": "src/deploy/netdog_server/post_install.py"
     }
 }
