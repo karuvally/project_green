@@ -1,6 +1,6 @@
 TODO
 ----
-* file chooser form
+* create get_active_clients()
 * broadcast_file dir create in post_install script
 * broadcast files
 * shutdown clients
@@ -36,6 +36,7 @@ TODO
 
 DONE
 ----
+* file chooser form
 * send commands only to online clients
 * move logging to higher level functions
 * standard error page

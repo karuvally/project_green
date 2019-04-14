@@ -15,9 +15,8 @@ web_app = Flask("web_interface")
 
 @web_app.route("/broadcast", methods=["GET", "POST"])
 def gather_broadcast_data():
-    # return file chooser if GET
-    if request.method == "GET":
-        return render_template("choose_file.html")
+    return "OK"
+
 
 
 # start the actual execution of commands
