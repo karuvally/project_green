@@ -19,10 +19,12 @@ def gather_broadcast_data():
     if request.method == "GET":
         return render_template("choose_file.html")
 
-    # if POST, store uploaded file onto tmp dir 
+    # if POST, store uploaded file onto tmp dir
     if request.method == "POST":
-        print("files", request.files)
-        print("form", request.form)
+        data = request.files["upload"]
+        filename = data.filename
+        file.save(os.path.join("/share", filename))
+
         return "OK"
 
 
