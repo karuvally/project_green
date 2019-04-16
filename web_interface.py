@@ -23,7 +23,7 @@ def gather_broadcast_data():
     if request.method == "POST":
         data = request.files["upload"]
         filename = data.filename
-        file.save(os.path.join("/share", filename))
+        data.save(os.path.join("/share", filename))
 
         return "OK"
 
