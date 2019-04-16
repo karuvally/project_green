@@ -21,8 +21,8 @@ def gather_broadcast_data():
 
     # if POST, store uploaded file onto tmp dir 
     if request.method == "POST":
-        filename = request.form["upload"]
-        print(request.files)
+        print("files", request.files)
+        print("form", request.form)
         return "OK"
 
 
