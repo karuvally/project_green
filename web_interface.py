@@ -19,11 +19,12 @@ def exec_broadcast():
     broadcast_data = request.form.to_dict(flat=False)
 
     # get the file to be broadcasted
-    broadcast_file = os.listdir("/share")[0]
+    filename = os.listdir("/share")[0]
+    broadcast_file = os.path.join("/share", filename)
 
     # broadcast the files!
     for client in broadcast_data["client"]:
-        pass
+        send_file(broadcast_file, client) 
 
     return "OK" # debug
 
