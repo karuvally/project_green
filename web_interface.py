@@ -48,9 +48,6 @@ def execute_command():
 # handle execution of commands
 @web_app.route("/gather_exec_data", methods=["POST", "GET"])
 def gather_cmd_exec_data():
-    # essential variables
-    active_clients = {}
-
     # return execute command page on simple GET request
     if request.method == "GET":
         return render_template("execute_command.html")
@@ -58,20 +55,12 @@ def gather_cmd_exec_data():
     # get command from user and return client list
     elif request.method == "POST":
         command = request.form["command"]
+
+        active_clients = get_active_clients()
         
-        # read beacon db
-        beacon_db = read_beacon_db()
-        
-        if not beacon_db:
+        if not active_clients:
             return render_template("error_page.html", reason="No active clients!")
         
-        # fetch active clients and their info
-        for client in beacon_db:
-            active_clients.update({
-                client: read_configuration(
-                    "known_nodes")[client]["last_known_address"]
-            })
-
         # generate the target clients page
         return render_template(
             "target_nodes.html", 
