@@ -5,7 +5,6 @@
 # import serious stuff
 from libgreen import *
 from flask import Flask, render_template, request, make_response, url_for
-from werkzeug.datastructures import ImmutableMultiDict
 from flask import redirect
 
 
