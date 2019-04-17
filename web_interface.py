@@ -12,6 +12,12 @@ from flask import redirect
 web_app = Flask("web_interface")
 
 
+# broadcast the file to list of clients
+@web_app_route("/exec_broadcast", methods=["POST"])
+def exec_broadcast():
+    return "OK"
+
+
 @web_app.route("/broadcast", methods=["GET", "POST"])
 def gather_broadcast_data():
     # if GET, return file chooser page
@@ -24,7 +30,13 @@ def gather_broadcast_data():
         filename = data.filename
         data.save(os.path.join("/share", filename))
 
-        return "OK"
+    active_clients = get_active_clients()
+
+    return render_template(
+        "target_nodes.html",
+        active_clients = active_clients,
+        target_page = "exec_broadcast"
+    )
 
 
 # start the actual execution of commands
