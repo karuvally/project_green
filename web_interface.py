@@ -13,9 +13,19 @@ web_app = Flask("web_interface")
 
 
 # broadcast the file to list of clients
-@web_app_route("/exec_broadcast", methods=["POST"])
+@web_app.route("/exec_broadcast", methods=["POST"])
 def exec_broadcast():
-    return "OK"
+    # get broadcast data
+    broadcast_data = request.form.to_dict(flat=False)
+
+    # get the file to be broadcasted
+    broadcast_file = os.listdir("/share")[0]
+
+    # broadcast the files!
+    for client in broadcast_data["client"]:
+        pass
+
+    return "OK" # debug
 
 
 @web_app.route("/broadcast", methods=["GET", "POST"])

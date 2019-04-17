@@ -394,10 +394,7 @@ def receive_broadcast(message, sender_ip):
 
 
 # send a file to all nodes 
-def broadcast_file(file_path):
-    # essential variables
-    known_nodes = read_configuration("known_nodes")
-
+def send_file(file_path, target_node):
     # read the file
     with open(file_path, "rb") as broadcast_file:
         file_data = broadcast_file.read()
@@ -409,8 +406,7 @@ def broadcast_file(file_path):
     }
 
     # send the file to each node
-    for node in known_nodes:
-        send_message(1994, "broadcast_file", payload, destination_id=node)
+    send_message(1994, "broadcast_file", payload, destination_id=target_node)
 
 
 # verify a received signature
