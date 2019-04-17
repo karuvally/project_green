@@ -33,6 +33,28 @@ configuration_lock = threading.Lock()
 beacon_lock = threading.Lock()
 
 
+# generate list of active clients
+def get_active_clients():
+    # essential variables
+    active_clients = {}
+
+    # read beacon db
+    beacon_db = read_beacon_db()
+
+    # return None if empty beacon_db
+    if not beacon_db:
+        return None
+
+    # fetch active clients and their info
+    for client in beacon_db:
+        active_clients.update({
+            client: read_configuration(
+                "known_nodes")[client]["last_known_address"]
+        })
+
+    return active_clients
+
+
 # read beacon_db from in memory file
 def read_beacon_db():
     # if beacon_db lock exists, wait
