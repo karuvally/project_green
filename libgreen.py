@@ -405,7 +405,7 @@ def send_file(file_path, target_node):
         "file_data": file_data
     }
 
-    # send the file to each node
+    # send the file to node 
     send_message(1994, "broadcast_file", payload, destination_id=target_node)
 
 
