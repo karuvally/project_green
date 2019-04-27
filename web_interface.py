@@ -22,7 +22,7 @@ def shutdown_clients():
     return render_template(
         "target_nodes.html", 
         active_clients = active_clients,
-        command = "shutdown -h 0",
+        command = "sudo shutdown -h 0",
         target_page = "execute_command"
     )
 
