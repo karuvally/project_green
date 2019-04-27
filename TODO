@@ -1,5 +1,6 @@
 TODO
 ----
+* upgrade pip in post install
 * third party encryption function
 * create "netdog" dir in tmpfs
 * create get_active_clients()
