@@ -1,5 +1,6 @@
 TODO
 ----
+* third party encryption function
 * create "netdog" dir in tmpfs
 * create get_active_clients()
 * broadcast_file dir create in post_install script
