@@ -13,14 +13,18 @@ web_app = Flask("web_interface")
 
 
 # shutdown clients
-@web_app.route("/shutdown_clients", methods=["GET", "POST"])
+@web_app.route("/shutdown_clients", methods=["GET"])
 def shutdown_clients():
-    # if GET, return client chooser page
+    # get active clients
+    active_clients = get_active_clients()
 
-    # if POST, shutdown clients in POST
-
-    # debug
-    return OK 
+    # return client chooser page
+    return render_template(
+        "target_nodes.html", 
+        active_clients = active_clients,
+        command = "shutdown -h 0",
+        target_page = "execute_command"
+    )
 
 
 # broadcast the file to list of clients
