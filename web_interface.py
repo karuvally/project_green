@@ -12,6 +12,17 @@ from flask import redirect
 web_app = Flask("web_interface")
 
 
+# shutdown clients
+@web_app.route("/shutdown_clients", methods=["GET", "POST"])
+def shutdown_clients():
+    # if GET, return client chooser page
+
+    # if POST, shutdown clients in POST
+
+    # debug
+    return OK 
+
+
 # broadcast the file to list of clients
 @web_app.route("/exec_broadcast", methods=["POST"])
 def exec_broadcast():
