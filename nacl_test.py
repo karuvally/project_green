@@ -25,6 +25,34 @@ def generate_keys():
     })
 
 
+# decrypt an incoming message
+def decrypt_message(message):
+    # load localhost's keys
+    keys = read_configuration("keys")
+    receiver_priv_key = Privatekey(
+        keys["private_key"],
+        encoder = nacl.encoding.HexEncoder
+    )
+
+    # load sender's keys
+
+    # decrypt the message
+    message = decrypt_stuff(message, private_key, key_length)
+
+    # decrypt the message
+
+    # recover the dictionary from message
+    message = ast.literal_eval(message.decode())
+
+    # load public key of sender
+    known_nodes = read_configuration("known_nodes")
+    sender_id = message["hostname"]
+    public_key = known_nodes[sender_id]["public_key"] 
+
+    # return decrypted message
+    return message
+
+
 # encrypt data to be send inside message
 def encrypt_message(message, receiver_id):
     # read the know_nodes file
