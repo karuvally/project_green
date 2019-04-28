@@ -27,19 +27,17 @@ def generate_keys():
 
 # encrypt data to be send inside message
 def encrypt_message(message, receiver_id):
-    # load public key of receiver
+    # read the know_nodes file
     known_nodes = read_configuration("known_nodes")
-    receiver_pub_key_raw = known_nodes[receiver_id]["public_key"]
-    sender_priv_key_raw = read_configuration("keys")["private_key"]
 
     # decode keys
     receiver_pub_key = PublicKey(
-        receiver_pub_key_raw,
+        known_nodes[receiver_id]["public_key"],
         encoder = nacl.encoding.HexEncoder
     )
 
     sender_priv_key = PrivateKey(
-        sender_priv_key_raw,
+        read_configuration("keys")["private_key"],
         encoder = nacl.encoding.HexEncoder
     )
 
