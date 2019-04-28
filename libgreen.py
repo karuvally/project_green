@@ -293,22 +293,18 @@ def read_configuration(filename):
 
 # generate public-private key pair
 def generate_keys():
-    # essential variables
-    key_length = 2048
-
-    # set the size for the generated key
     logging.info("generating public-private key pair")
-    key = RSA.generate(key_length, e = 65537)
-    
-    # create public-private key pair
-    public_key = key.publickey().exportKey("PEM")
-    private_key = key.exportKey("PEM")
+
+    # create public/private pair
+    private_key = PrivateKey.generate()
+    public_key = private_key.public_key
+    key_length = private_key.SIZE * 8
 
     # return key pair as dictionary
     return({
         "key_length_bits": key_length,
-        "public_key": public_key.decode(),
-        "private_key": private_key.decode()
+        "public_key": public_key.encode(encoder=nacl.encoding.HexEncoder),
+        "private_key": private_key.encode(encoder=nacl.encoding.HexEncoder)
     })
 
 
