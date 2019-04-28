@@ -675,13 +675,13 @@ def send_message(port, command, payload, destination_id=None,
     # if command not pair, encrypt message
     if command not in do_not_encrypt_list:
         encrypt_flag = True
-        message = encrypt_message(message, destination_id)
+        encrypted_message = encrypt_message(message, destination_id)
 
     # generate final output
     output = {
         "encrypted": encrypt_flag,
         "sender_id": hostname,
-        "message": message
+        "message": encrypted_message
     }
 
     # convert output to bytes
