@@ -15,8 +15,8 @@ web_app = Flask("web_interface")
 
 
 # powersave clients
-@web_app.route("/powersave_clients", methods=["GET"])
-def powersave_clients():
+@web_app.route("/suspend_clients", methods=["GET"])
+def suspend_clients():
     # get active clients
     active_clients = get_active_clients()
 
