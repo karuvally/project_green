@@ -138,6 +138,8 @@ def cleanup_beacon_db():
                 logging.info("beacon from client " + client + " expired")
 
         # remove expired clients from beacon_db
+        for client in expired_clients:
+            beacon_db.pop(client)
         
         # release lock
         beacon_lock.release()
