@@ -3,6 +3,7 @@ TODO
 * create "netdog" dir in tmpfs
 * Turn off monitors
 * System status
+* remove hostname from message
 * execute acknowledgement
 * auto rename hosts
 * ignore NAT interfaces?
@@ -17,7 +18,6 @@ TODO
 * add node type to known_nodes
 * faster ping sweep
 * assign alternate hostname if duplicate found
-* fix signature
 * easy to use prewritten scripts
 * scheduled command execution
 * group clients
@@ -33,6 +33,7 @@ TODO
 
 DONE
 ----
+* fix signature
 * fix file broadcast bug
 * third party encryption function
 * pass input_transmission to decrypt_message
