@@ -456,7 +456,7 @@ def encrypt_message(message, receiver_id):
 
     # encrypt message with public key of receiver
     encrypt_box = Box(sender_priv_key, receiver_pub_key)
-    encrypted_message = encrypt_box.encrypt(message.encode())
+    encrypted_message = encrypt_box.encrypt(str(message).encode())
 
     # return the encrypted message
     return encrypted_message
