@@ -4,7 +4,7 @@
 # import the serious stuff
 from libgreen import *
 import nacl.utils
-from nacl.public import PrivateKey, Box
+from nacl.public import PrivateKey, PublicKey, Box
 import pdb
 
 
@@ -33,7 +33,7 @@ def encrypt_message(message, receiver_id):
     sender_priv_key_raw = read_configuration("keys")["private_key"]
 
     # decode keys
-    receiver_pub_key = nacl.public.PublicKey(
+    receiver_pub_key = PublicKey(
         receiver_pub_key_raw,
         encoder = nacl.encoding.HexEncoder
     )
