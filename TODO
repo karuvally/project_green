@@ -1,5 +1,6 @@
 TODO
 ----
+* fix cleanup_beacon_db() error
 * upgrade pip in post install
 * third party encryption function
 * create "netdog" dir in tmpfs

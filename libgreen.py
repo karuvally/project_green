@@ -113,6 +113,9 @@ def cleanup_beacon_db():
     # get the global variables
     global beacon_db
     global beacon_lock
+
+    # essential variables
+    expired_clients = []
     
     while True:
         # cleanup to be done every 30s 
@@ -128,11 +131,13 @@ def cleanup_beacon_db():
         # get current time
         current_time = int(datetime.now().timestamp())
         
-        # remove clients with beacons older than 30s
+        # generate expired clients list
         for client in beacon_db:
             if current_time - beacon_db[client]["beacon_time"] > 30:
-                beacon_db.pop(client)
+                expired_clients.append(client)
                 logging.info("beacon from client " + client + " expired")
+
+        # remove expired clients from beacon_db
         
         # release lock
         beacon_lock.release()
