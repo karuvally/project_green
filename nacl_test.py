@@ -20,8 +20,8 @@ def generate_keys():
     # return key pair as dictionary
     return({
         "key_length_bits": key_length,
-        "public_key": public_key.encode(),
-        "private_key": private_key.encode()
+        "public_key": public_key.encode(encoder=nacl.encoding.HexEncoder),
+        "private_key": private_key.encode(encoder=nacl.encoding.HexEncoder)
     })
 
 
@@ -29,8 +29,8 @@ def generate_keys():
 def encrypt_message(message, receiver_id):
     # load public key of receiver
     known_nodes = read_configuration("known_nodes")
-    receiver_pub_key = known_nodes[receiver_id]["public_key"]
-    sender_priv_key = read_configuration("keys")["private_key"]
+    receiver_pub_key_raw = known_nodes[receiver_id]["public_key"]
+    sender_priv_key_raw = read_configuration("keys")["private_key"]
 
     # encrypt message with public key of receiver
     encrypt_box = Box(sender_priv_key, receiver_pub_key)
