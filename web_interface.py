@@ -14,6 +14,21 @@ from Crypto.Hash import SHA256
 web_app = Flask("web_interface")
 
 
+# powersave clients
+@web_app.route("/powersave_clients", methods=["GET"])
+def powersave_clients():
+    # get active clients
+    active_clients = get_active_clients()
+
+    # return client chooser page
+    return render_template(
+        "target_nodes.html", 
+        active_clients = active_clients,
+        command = "systemctl suspend",
+        target_page = "execute_command"
+    )
+
+
 # shutdown clients
 @web_app.route("/shutdown_clients", methods=["GET"])
 def shutdown_clients():
