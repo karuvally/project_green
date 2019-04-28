@@ -18,12 +18,14 @@ import json
 import ast
 import base64
 import pwd
+import nacl.utils
 from Crypto.PublicKey import RSA
 from Crypto.Cipher import PKCS1_OAEP
 from Crypto.Signature import pkcs1_15
 from Crypto.Hash import SHA256
 from subprocess import Popen, PIPE
 from datetime import datetime
+from nacl.public import PrivateKey, PublicKey, Box
 
 # global variables
 beacon_db = {}
