@@ -308,44 +308,6 @@ def generate_keys():
     })
 
 
-# do the actual encryption
-def encrypt_stuff(blob, key, key_length_bits):
-    # essential variables
-    offset = 0
-    encrypted_blob = b""
-    end_loop = False
-    
-    # convert blob to bytes
-    blob = str(blob).encode()
-
-    # generate key object
-    rsa_key = RSA.importKey(key)
-    rsa_key = PKCS1_OAEP.new(rsa_key)
-
-    # calculate chunk size
-    key_length_bytes = key_length_bits / 8
-    chunk_size = int(key_length_bytes - 42)
-
-    # loop over blob till encryption completes 
-    while not end_loop:
-        # get the chunk
-        chunk = blob[offset : offset + chunk_size]
-
-        # if chunk is too small, do padding
-        if len(chunk) % chunk_size != 0:
-            end_loop = True
-            chunk += b" " * (chunk_size - len(chunk))
-
-        # append chunk to overall blob 
-        encrypted_blob += rsa_key.encrypt(chunk)
-
-        # increase offset by chunk size
-        offset += chunk_size
-
-    # return encrypted blob in base64
-    return base64.b64encode(encrypted_blob)
-
-
 # submit command for execution over nodes
 def submit_command(command):
     # get known nodes
