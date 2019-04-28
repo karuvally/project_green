@@ -1,11 +1,8 @@
 TODO
 ----
+* send_message() sends unencrypted sender_id
 * third party encryption function
 * create "netdog" dir in tmpfs
-* create get_active_clients()
-* broadcast_file dir create in post_install script
-* broadcast files
-* shutdown clients
 * Turn off monitors
 * System status
 * execute acknowledgement
@@ -38,6 +35,10 @@ TODO
 
 DONE
 ----
+* shutdown clients
+* broadcast files
+* broadcast_file dir create in post_install script
+* create get_active_clients()
 * upgrade pip in during install
 * fix cleanup_beacon_db() error
 * file chooser form
