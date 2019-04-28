@@ -1,6 +1,6 @@
 TODO
 ----
-* send_message() sends unencrypted sender_id
+* pass input_transmission to decrypt_message
 * third party encryption function
 * create "netdog" dir in tmpfs
 * Turn off monitors
@@ -35,6 +35,7 @@ TODO
 
 DONE
 ----
+* send_message() sends unencrypted sender_id
 * shutdown clients
 * broadcast files
 * broadcast_file dir create in post_install script

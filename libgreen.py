@@ -939,7 +939,7 @@ def receive_transmission(connection):
 
     # decrypt if transmission is encrypted
     if transmission["encrypted"]:
-        message = decrypt_message(transmission["message"])
+        message = decrypt_message(transmission)
         transmission.update({"message": message})
 
     # return message
