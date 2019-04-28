@@ -3,9 +3,11 @@
 # Copyright 2018, 2019 Aswin Babu Karuvally
 
 # import serious stuff
+import nacl.pwhash
 from libgreen import *
 from flask import Flask, render_template, request, make_response, url_for
 from flask import redirect
+from Crypto.Hash import SHA256
 
 
 # setup the webapp
