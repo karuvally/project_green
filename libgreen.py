@@ -18,6 +18,7 @@ import json
 import ast
 import base64
 import pwd
+import pdb
 import nacl.utils
 from subprocess import Popen, PIPE
 from datetime import datetime
@@ -303,11 +304,15 @@ def generate_keys():
     public_key = private_key.public_key
     key_length = private_key.SIZE * 8
 
+    # get key strings
+    public_key = public_key.encode(encoder=nacl.encoding.HexEncoder).decode()
+    private_key = private_key.encode(encoder=nacl.encoding.HexEncoder).decode() 
+
     # return key pair as dictionary
     return({
         "key_length_bits": key_length,
-        "public_key": public_key.encode(encoder=nacl.encoding.HexEncoder),
-        "private_key": private_key.encode(encoder=nacl.encoding.HexEncoder)
+        "public_key": public_key,
+        "private_key": private_key 
     })
 
 

@@ -1,5 +1,7 @@
 TODO
 ----
+* make sure string keys are converted to binary before processing
+* make sure keys are strings before writing 
 * pass input_transmission to decrypt_message
 * third party encryption function
 * create "netdog" dir in tmpfs
