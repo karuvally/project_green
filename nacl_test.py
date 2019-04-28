@@ -25,4 +25,17 @@ def generate_keys():
     })
 
 
-print(generate_keys())
+# encrypt data to be send inside message
+def encrypt_message(message, receiver_id):
+    # load public key of receiver
+    known_nodes = read_configuration("known_nodes")
+    receiver_pub_key = known_nodes[receiver_id]["public_key"]
+    sender_sec_key = read_configuration("keys")["public_key"]
+
+    # encrypt message with public key of receiver
+    encrypt_box = Box(sender_sec_key, receiver_pbkey)
+    encrypted_message = encrypt_box.encrypt(message.encode())
+
+    # return the encrypted message
+    return encrypted_message
+
