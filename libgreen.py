@@ -490,25 +490,33 @@ def execute_command(message, sender_ip):
 
 
 # decrypt an incoming message
-def decrypt_message(message):
+def decrypt_message(input_transmission):
+    # load essential data
+    keys = read_configuration("keys")
+    known_nodes = read_configuration("known_nodes")
+    message = input_transmission["message"]
+
     # load localhost's keys
-    key_info = read_configuration("keys")
-    key_length = key_info["key_length_bits"]
-    private_key = key_info["private_key"]
+    receiver_priv_key = Privatekey(
+        keys["private_key"],
+        encoder = nacl.encoding.HexEncoder
+    )
+
+    # load sender's keys
+    sender_id = input_transmission["sender_id"]
+    sender_pub_key = PublicKey(
+        known_nodes[sender_id]["public_key"]
+    )
 
     # decrypt the message
-    message = decrypt_stuff(message, private_key, key_length)
+    decrypt_box = Box(receiver_priv_key, sender_pub_key)
+    decrypted_message = decrypt_box.decrypt(message)
 
     # recover the dictionary from message
-    message = ast.literal_eval(message.decode())
-
-    # load public key of sender
-    known_nodes = read_configuration("known_nodes")
-    sender_id = message["hostname"]
-    public_key = known_nodes[sender_id]["public_key"] 
+    decrypted_message = ast.literal_eval(decrypted_message.decode())
 
     # return decrypted message
-    return message
+    return decrypted_message
 
 
 # pair with client if necessary
