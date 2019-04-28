@@ -32,6 +32,17 @@ def encrypt_message(message, receiver_id):
     receiver_pub_key_raw = known_nodes[receiver_id]["public_key"]
     sender_priv_key_raw = read_configuration("keys")["private_key"]
 
+    # decode keys
+    receiver_pub_key = nacl.public.PublicKey(
+        receiver_pub_key_raw,
+        encoder = nacl.encoding.HexEncoder
+    )
+
+    sender_priv_key = PrivateKey(
+        sender_priv_key_raw,
+        encoder = nacl.encoding.HexEncoder
+    )
+
     # encrypt message with public key of receiver
     encrypt_box = Box(sender_priv_key, receiver_pub_key)
     encrypted_message = encrypt_box.encrypt(message.encode())
