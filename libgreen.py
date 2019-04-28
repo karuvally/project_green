@@ -353,24 +353,6 @@ def send_file(file_path, target_node):
     send_message(1994, "broadcast_file", payload, destination_id=target_node)
 
 
-# sign the message
-def generate_signature(message):
-    # load private key of localhost
-    key_info = read_configuration("keys")
-    private_key = key_info["private_key"]
-    private_key = RSA.import_key(private_key)
-
-    # create the signature of message
-    message_hash = SHA256.new(str(message).encode())
-    signature = pkcs1_15.new(private_key).sign(message_hash)
-
-    # encode the signature in base64
-    signature = base64.b64encode(signature)
-
-    # return the signature
-    return signature
-
-
 # check if the host is a netdog client/server
 def check_if_node(host, port_list, node_list):
     # try connecting to the host
