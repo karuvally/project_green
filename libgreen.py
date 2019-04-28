@@ -353,31 +353,6 @@ def send_file(file_path, target_node):
     send_message(1994, "broadcast_file", payload, destination_id=target_node)
 
 
-# verify a received signature
-def verify_signature(message, signature):
-    # read sender info
-    sender_id = message["hostname"]
-    known_nodes = read_configuration("known_nodes")
-
-    # read the public_key of sender 
-    public_key = known_nodes[sender_id]["public_key"]
-    public_key = RSA.import_key(public_key)
-
-    # generate hash from received message
-    message_hash = SHA256.new(str(message).encode())
-
-    # decode the signature to bytes
-    signature = base64.b64decode(signature)
-
-    # verify the signature
-    try:
-        pkcs1_15.new(public_key).verify(message_hash, signature)
-        return True
-    except ValueError:
-        logging.warning("message with invalid signature received")
-        return False
-
-
 # sign the message
 def generate_signature(message):
     # load private key of localhost
@@ -681,7 +656,6 @@ def send_message(port, command, payload, destination_id=None,
         destination_ip=None):
     # essential variables
     encrypt_flag = False
-    signature = None
 
     # following commands won't get encrypted
     do_not_encrypt_list = [
@@ -719,13 +693,11 @@ def send_message(port, command, payload, destination_id=None,
     # if command not pair, encrypt message
     if command not in do_not_encrypt_list:
         encrypt_flag = True
-        signature = generate_signature(message)
         message = encrypt_message(message, destination_id)
 
     # generate final output
     output = {
         "encrypted": encrypt_flag,
-        "signature": signature,
         "sender_id": hostname,
         "message": message
     }
@@ -802,10 +774,7 @@ def handle_connection(connection):
 
     # extract essential info from transmission
     message = input_transmission["message"]
-    signature = input_transmission["signature"]
     command = message["data"]["command"]
-
-    # debug: verify the message signature 
 
     # act according to received command, debug: replace with case?
     if command == "pair":
