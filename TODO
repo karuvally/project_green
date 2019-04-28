@@ -1,7 +1,5 @@
 TODO
 ----
-* fix cleanup_beacon_db() error
-* upgrade pip in post install
 * third party encryption function
 * create "netdog" dir in tmpfs
 * create get_active_clients()
@@ -40,6 +38,8 @@ TODO
 
 DONE
 ----
+* upgrade pip in during install
+* fix cleanup_beacon_db() error
 * file chooser form
 * send commands only to online clients
 * move logging to higher level functions
