@@ -30,6 +30,7 @@ def decrypt_message(input_transmission):
     # load essential data
     keys = read_configuration("keys")
     known_nodes = read_configuration("known_nodes")
+    message = input_transmission["message"]
 
     # load localhost's keys
     receiver_priv_key = Privatekey(
@@ -39,18 +40,19 @@ def decrypt_message(input_transmission):
 
     # load sender's keys
     sender_id = input_transmission["sender_id"]
-    send_pub_key = PublicKey(
+    sender_pub_key = PublicKey(
         known_nodes[sender_id]["public_key"]
     )
 
     # decrypt the message
-    message = decrypt_stuff(message, private_key, key_length)
+    decrypt_box = Box(receiver_priv_key, sender_pub_key)
+    decrypted_message = decrypt_box.decrypt(message)
 
     # recover the dictionary from message
-    message = ast.literal_eval(message.decode())
+    decrypted_message = ast.literal_eval(decrypted_message.decode())
 
     # return decrypted message
-    return message
+    return decrypted_message
 
 
 # encrypt data to be send inside message
