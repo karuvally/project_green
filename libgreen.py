@@ -542,16 +542,23 @@ def pair_if_necessary(message, node_ip):
 
 # encrypt data to be send inside message
 def encrypt_message(message, receiver_id):
-    # load public key of receiver
+    # read the know_nodes file
     known_nodes = read_configuration("known_nodes")
-    public_key = known_nodes[receiver_id]["public_key"]
 
-    # get key_length
-    key_info = read_configuration("keys")
-    key_length = key_info["key_length_bits"]
+    # decode keys
+    receiver_pub_key = PublicKey(
+        known_nodes[receiver_id]["public_key"],
+        encoder = nacl.encoding.HexEncoder
+    )
+
+    sender_priv_key = PrivateKey(
+        read_configuration("keys")["private_key"],
+        encoder = nacl.encoding.HexEncoder
+    )
 
     # encrypt message with public key of receiver
-    encrypted_message = encrypt_stuff(message, public_key, key_length)
+    encrypt_box = Box(sender_priv_key, receiver_pub_key)
+    encrypted_message = encrypt_box.encrypt(message.encode())
 
     # return the encrypted message
     return encrypted_message
