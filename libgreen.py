@@ -308,35 +308,6 @@ def generate_keys():
     })
 
 
-# do the actual decryption
-def decrypt_stuff(blob, key, key_length_bits):
-    # essential variables
-    offset = 0
-    decrypted_stuff = b""
-    chunk_size = int(key_length_bits / 8)
-
-    # do base64 decode
-    blob = base64.b64decode(blob)
-
-    # generate key object
-    rsakey = RSA.importKey(key)
-    rsakey = PKCS1_OAEP.new(rsakey)
-
-    # loop till entire blob is decrypted
-    while offset < len(blob):
-        # get the chunk
-        chunk = blob[offset : offset + chunk_size]
-
-        # decrypt chunk, add it to decrypted stuff
-        decrypted_stuff += rsakey.decrypt(chunk)
-
-        # increase offset by chunk size
-        offset += chunk_size
-
-    # return stuff
-    return decrypted_stuff
-
-
 # do the actual encryption
 def encrypt_stuff(blob, key, key_length_bits):
     # essential variables
