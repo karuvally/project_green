@@ -33,6 +33,7 @@ TODO
 
 DONE
 ----
+* fix file broadcast bug
 * third party encryption function
 * pass input_transmission to decrypt_message
 * make sure keys are strings before writing 

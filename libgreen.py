@@ -24,11 +24,6 @@ from subprocess import Popen, PIPE
 from datetime import datetime
 from nacl.public import PrivateKey, PublicKey, Box
 
-from Crypto.PublicKey import RSA
-from Crypto.Cipher import PKCS1_OAEP
-from Crypto.Signature import pkcs1_15
-from Crypto.Hash import SHA256
-
 # global variables
 beacon_db = {}
 
