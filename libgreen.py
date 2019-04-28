@@ -395,7 +395,7 @@ def decrypt_message(input_transmission):
     message = input_transmission["message"]
 
     # load localhost's keys
-    receiver_priv_key = Privatekey(
+    receiver_priv_key = PrivateKey(
         keys["private_key"],
         encoder = nacl.encoding.HexEncoder
     )
@@ -403,7 +403,8 @@ def decrypt_message(input_transmission):
     # load sender's keys
     sender_id = input_transmission["sender_id"]
     sender_pub_key = PublicKey(
-        known_nodes[sender_id]["public_key"]
+        known_nodes[sender_id]["public_key"],
+        encoder = nacl.encoding.HexEncoder
     )
 
     # decrypt the message
