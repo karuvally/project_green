@@ -1,5 +1,12 @@
 TODO
 ----
+* Get relevant stats (conky/lm_sensors/uptime/release etc.)
+* Network usage
+* File System
+* Uptime
+* Temperature
+* RAM Usage
+* CPU Load
 * create shortcut of "/share" to desktop
 * completion of tasks return to homepage
 * create "netdog" dir in tmpfs
