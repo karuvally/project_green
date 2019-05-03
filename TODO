@@ -1,5 +1,6 @@
 TODO
 ----
+* migrate passwd storing to pwhash
 * Get relevant stats (conky/lm_sensors/uptime/release etc.)
 * Network usage
 * File System
