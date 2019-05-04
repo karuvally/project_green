@@ -1,13 +1,7 @@
 TODO
 ----
+* update post_install script to install conky
 * migrate passwd storing to pwhash
-* Get relevant stats (conky/lm_sensors/uptime/release etc.)
-* Network usage
-* File System
-* Uptime
-* Temperature
-* RAM Usage
-* CPU Load
 * create shortcut of "/share" to desktop
 * completion of tasks return to homepage
 * create "netdog" dir in tmpfs
@@ -42,6 +36,12 @@ TODO
 
 DONE
 ----
+* File System
+* Uptime
+* Temperature
+* RAM Usage
+* CPU Load
+* Get relevant stats (conky/lm_sensors/uptime/release etc.)
 * fix signature
 * fix file broadcast bug
 * third party encryption function
