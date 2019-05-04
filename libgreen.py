@@ -187,7 +187,10 @@ def send_beacon():
             server_id = read_configuration("known_network")["server_id"]
 
             # collect various system stats
-            system_load = Popen(["cat", "/proc/loadavg"], stdout=PIPE)
+            system_load = Popen(
+                ["conky", "/opt/netdog/src/conky.conf"],
+                stdout=PIPE
+            )
             system_load = system_load.stdout.read().decode().split()[0]
 
             # prepare the payload
