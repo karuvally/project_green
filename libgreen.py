@@ -193,7 +193,7 @@ def send_beacon():
             )
             
             # prepare the payload
-            system_stats = system_load.stdout.read().decode()
+            system_stats = system_stats.stdout.read().decode()
             system_stats = ast.literal_eval(system_stats)
 
             # send the beacon
