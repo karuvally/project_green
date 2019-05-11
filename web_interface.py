@@ -14,6 +14,17 @@ from Crypto.Hash import SHA256
 web_app = Flask("web_interface")
 
 
+# monitor clients
+@web_app.route("/stats", methods=["GET"])
+def system_stats():
+    beacon_db = read_beacon_db()
+
+    return render_template(
+        "system_stats.html",
+        beacon_db = beacon_db
+    )
+
+
 # powersave clients
 @web_app.route("/suspend_clients", methods=["GET"])
 def suspend_clients():
