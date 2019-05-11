@@ -35,39 +35,20 @@
 			</nav>
             
             <!-- the content goes here -->
-			<section class="container" id="home_page" style="text-align: center; padding-top: 26.5rem">
+			<section class="container" id="home_page" style="padding-top: 26.5rem">
 				
-				<div class="row">
-					
-					<div class="column">
-						<a href="{{ url_for('gather_cmd_exec_data') }}">
-							<i class="fas fa-terminal fa-5x"></i> <br>
-							Execute command
-						</a>
-					</div>
-					
-					<div class="column">
-						<a href="{{ url_for('gather_broadcast_data') }}">
-							<i class="fas fa-broadcast-tower fa-5x"></i> <br>
-							Broadcast file
-						</a>
-					</div>
-
-					<div class="column">
-						<a href="{{ url_for('shutdown_clients') }}">
-							<i class="fas fa-power-off fa-5x"></i> <br>
-					    Power off 
-						</a>
-					</div>
-
-					<div class="column">
-						<a href="{{ url_for('suspend_clients') }}">
-							<i class="fas fa-leaf fa-5x"></i> <br>
-					    Powersave 
-						</a>
-					</div>
-
-        </div>
+        {% for client in beacon_db %}
+          <pre><code>
+            Hostname: {{ client }} <br>
+            Distribution: {{ beacon_db[client]["distro"] }} <br>
+            Uptime: {{ beacon_db[client]["uptime"] }} <br>
+            CPU Freq: {{ beacon_db[client]["frequency"] }} <br>
+            CPU Usage: {{ beacon_db[client]["cpu_usage"] }} <br>
+            Memory: {{ beacon_db[client]["memory"] }} <br>
+            File System: {{ beacon_db[client]["fs_usage"] }} <br>
+            Temperature: {{ beacon_db[client]["temp"] }} <br>
+          </code></pre>
+        {% endfor %}
 				
 			</section>
             
