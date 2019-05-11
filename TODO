@@ -1,11 +1,9 @@
 TODO
 ----
-* update post_install script to install conky
 * migrate passwd storing to pwhash
 * create shortcut of "/share" to desktop
 * completion of tasks return to homepage
 * create "netdog" dir in tmpfs
-* System status
 * remove hostname from message
 * execute acknowledgement
 * auto rename hosts
@@ -36,6 +34,8 @@ TODO
 
 DONE
 ----
+* System status
+* update post_install script to install conky
 * File System
 * Uptime
 * Temperature
