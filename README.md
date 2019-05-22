@@ -63,7 +63,7 @@ get it up and running using the following instructions.
 
 * [Python](http://www.python.org) - An awesome language
 * [Flask](http://flask.pocoo.org) - A mature, non bulky web framework 
-* [PyCryptodome](https://github.com/Legrandin/pycryptodome) - A sweet cryptography library
+* [PyNaCl](https://pynacl.readthedocs.io/en/stable/) - A cryptography library which just works 
 
 ## Authors
 
