@@ -6,6 +6,16 @@ import os
 import subprocess
 
 
+# create desktop shortcut
+def desktop_shortcut(target):
+    for home_dir in os.listdir("/home"):
+        if home_dir == "lost+found":
+            continue
+
+        shortcut_path = os.path.join("/home", home_dir, "Desktop")
+        execute_command("ln -s /share " + shortcut_path)
+
+
 # execute command
 def execute_command(command):
     return_code = subprocess.call(command, shell=True)
@@ -34,6 +44,7 @@ def main():
     # create share directory
     execute_command("mkdir /share")
     execute_command("chown netdog /share")
+    desktop_shortcut("/share")
 
 
 if __name__ == "__main__":
