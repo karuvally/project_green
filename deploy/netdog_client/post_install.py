@@ -41,7 +41,7 @@ def main():
     sudo_file.write("netdog ALL=(ALL) NOPASSWD:ALL")
     sudo_file.close()
 
-    # create share directory
+    # create share dir and create shortcut
     execute_command("mkdir /share")
     execute_command("chown netdog /share")
     desktop_shortcut("/share")
