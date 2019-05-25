@@ -900,7 +900,7 @@ def receive_transmission(connection):
 
 
 # check and set up essential stuff
-def initialize_system():
+def initialize_system(server=False):
     # essential variables
     config_dir = get_config_dir()
     
@@ -915,6 +915,10 @@ def initialize_system():
             # show error and exit the application
             print("error: config dir cannot be created! exiting")
             sys.exit(1)
+
+    # setup tmpfs dir
+    if server:
+        os.mkdir("/dev/shm/netdog")
     
     # set up logging
     format_string = "[%(asctime)s] %(message)s"
@@ -940,7 +944,7 @@ def initialize_system():
 
 
 # make sure NetDog can connect to network
-def setup_network(server = False):
+def setup_network(server=False):
     # essential variables
     config_dir = get_config_dir()
     interface_dump = probe_interfaces()
