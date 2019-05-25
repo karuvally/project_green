@@ -58,17 +58,17 @@ def get_active_clients():
 def read_beacon_db():
     # if beacon_db lock exists, wait
     while True:
-        if os.path.exists("/dev/shm/beacon_db.lock"):
+        if os.path.exists("/dev/shm/netdog/beacon_db.lock"):
             time.sleep(.2)
         else:
             break
     
     # if beacon_db does not exist, return None
-    if not os.path.exists("/dev/shm/beacon_db"):
+    if not os.path.exists("/dev/shm/netdog/beacon_db"):
         return None
 
     # read beacon_db into a dictionary
-    beacon_db_file = open("/dev/shm/beacon_db")
+    beacon_db_file = open("/dev/shm/netdog/beacon_db")
     beacon_db = ast.literal_eval(beacon_db_file.read())
     beacon_db_file.close()
 
@@ -82,12 +82,12 @@ def write_beacon_db():
     global beacon_db
 
     # place lock file
-    lock_file = open("/dev/shm/beacon_db.lock", "w")
+    lock_file = open("/dev/shm/netdog/beacon_db.lock", "w")
     lock_file.write("")
     lock_file.close()
 
     # open beacon_db file
-    beacon_db_file = open("/dev/shm/beacon_db", "w")
+    beacon_db_file = open("/dev/shm/netdog/beacon_db", "w")
 
     # write beacon_db to in memory file
     beacon_db_file.write(str(beacon_db))
@@ -96,7 +96,7 @@ def write_beacon_db():
     beacon_db_file.close()
 
     # delete the lock file
-    os.remove("/dev/shm/beacon_db.lock")
+    os.remove("/dev/shm/netdog/beacon_db.lock")
 
 
 # send a beacon every 30s
