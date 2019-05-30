@@ -2,7 +2,6 @@ TODO
 ----
 * migrate passwd storing to pwhash
 * completion of tasks return to homepage
-* create "netdog" dir in tmpfs
 * remove hostname from message
 * execute acknowledgement
 * auto rename hosts
@@ -33,6 +32,7 @@ TODO
 
 DONE
 ----
+* create "netdog" dir in tmpfs
 * create shortcut of "/share" to desktop
 * System status
 * update post_install script to install conky
