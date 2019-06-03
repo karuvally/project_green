@@ -1,6 +1,5 @@
 TODO
 ----
-* fix links
 * migrate passwd storing to pwhash
 * completion of tasks return to homepage
 * remove hostname from message
@@ -33,6 +32,7 @@ TODO
 
 DONE
 ----
+* fix links
 * create "netdog" dir in tmpfs
 * create shortcut of "/share" to desktop
 * System status
