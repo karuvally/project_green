@@ -1,5 +1,6 @@
 TODO
 ----
+* fix links
 * migrate passwd storing to pwhash
 * completion of tasks return to homepage
 * remove hostname from message
