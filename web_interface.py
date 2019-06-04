@@ -76,7 +76,7 @@ def exec_broadcast():
     # delete the temp file
     os.remove(os.path.join("/share", filename))
 
-    return "OK" # debug
+    return render_template("index.html") 
 
 
 @web_app.route("/broadcast", methods=["GET", "POST"])
@@ -115,7 +115,7 @@ def execute_command():
             destination_id = client
         )
         
-    return "Okay" # debug
+    return render_template("index.html")
 
 
 # handle execution of commands
