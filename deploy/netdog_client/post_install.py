@@ -13,7 +13,7 @@ def desktop_shortcut(target):
             continue
 
         shortcut_path = os.path.join("/home", directory, "Desktop")
-        execute_command("ln -s /share " + shortcut_path)
+        execute_command("ln -s /share " + shortcut_path + "/share")
 
 
 # execute command
