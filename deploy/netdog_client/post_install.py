@@ -12,8 +12,11 @@ def desktop_shortcut(target):
         if directory == "lost+found":
             continue
 
-        shortcut_path = os.path.join("/home", directory, "Desktop")
-        execute_command("ln -s /share " + shortcut_path + "/share")
+        shortcut_path = os.path.join("/home", directory, "Desktop", "share")
+        if not os.path.isdir(shortcut_path):
+            continue
+
+        execute_command("ln -s /share " + shortcut_path)
 
 
 # execute command
