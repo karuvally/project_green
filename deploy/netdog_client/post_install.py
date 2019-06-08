@@ -8,11 +8,11 @@ import subprocess
 
 # create desktop shortcut
 def desktop_shortcut(target):
-    for home_dir in os.listdir("/home"):
-        if home_dir == "lost+found":
+    for directory in os.listdir("/home"):
+        if directory == "lost+found":
             continue
 
-        shortcut_path = os.path.join("/home", home_dir, "Desktop")
+        shortcut_path = os.path.join("/home", directory, "Desktop")
         execute_command("ln -s /share " + shortcut_path)
 
 
