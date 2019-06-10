@@ -18,7 +18,7 @@
     },
 
     "post_install_script": {
-        "enable": false,
+        "enable": true,
         "script_file": "src/deploy/netdog_client/post_install.py"
     }
 }
