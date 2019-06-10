@@ -31,10 +31,6 @@ def main():
     sudo_file.write("netdog ALL=(ALL) NOPASSWD:ALL")
     sudo_file.close()
 
-    # create share directory
-    execute_command("mkdir /share")
-    execute_command("chown netdog /share")
-
 
 if __name__ == "__main__":
     main()
