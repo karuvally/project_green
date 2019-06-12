@@ -40,7 +40,7 @@ def main():
     execute_command("gpasswd -a netdog sudo")
 
     # disable password prompt on sudo
-    sudo_file = open("/etc/sudoers.d/netdog")
+    sudo_file = open("/etc/sudoers.d/netdog", "w")
     sudo_file.write("netdog ALL=(ALL) NOPASSWD:ALL")
     sudo_file.close()
 
