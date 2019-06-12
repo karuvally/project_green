@@ -11,7 +11,7 @@ def execute_command(command):
     return_code = subprocess.call(command, shell=True)
 
     if return_code != 0:
-        logging.warning(command + " cannot be executed, exiting")
+        print(command + " cannot be executed, exiting")
         sys.exit(1)
 
 
