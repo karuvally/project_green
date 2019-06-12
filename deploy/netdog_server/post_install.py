@@ -17,9 +17,6 @@ def execute_command(command):
 
 # the main function
 def main():
-    # install conky
-    execute_command("apt-get install conky-cli -y")
-
     # create netdog user
     execute_command("adduser --disabled-password --gecos Netdog netdog")
 
