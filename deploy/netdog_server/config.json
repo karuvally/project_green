@@ -21,6 +21,7 @@
         "enable": true,
         "script_file": "src/deploy/netdog_server/post_install.py"
     },
+
     "symlink": {
         "enable": false,
         "link_path": null
