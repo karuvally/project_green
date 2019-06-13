@@ -1,5 +1,7 @@
 TODO
 ----
+* set host=0.0.0.0
+* directory existance check for /dev/shm
 * migrate passwd storing to pwhash
 * completion of tasks return to homepage
 * remove hostname from message

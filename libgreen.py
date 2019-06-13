@@ -917,7 +917,7 @@ def initialize_system(server=False):
             sys.exit(1)
 
     # setup tmpfs dir
-    if server:
+    if server and not os.path.isdir("/dev/shm/netdog"):
         os.mkdir("/dev/shm/netdog")
     
     # set up logging
