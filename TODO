@@ -1,6 +1,5 @@
 TODO
 ----
-* update target user in systemd service
 * exception handling if no hosts
 * migrate passwd storing to pwhash
 * completion of tasks return to homepage
@@ -34,6 +33,7 @@ TODO
 
 DONE
 ----
+* update target user in systemd service
 * set host=0.0.0.0
 * directory existance check for /dev/shm
 * fix links
