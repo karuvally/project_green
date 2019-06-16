@@ -1,5 +1,7 @@
 TODO
 ----
+* update target user in systemd service
+* exception handling if no hosts
 * migrate passwd storing to pwhash
 * completion of tasks return to homepage
 * remove hostname from message
