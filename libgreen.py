@@ -188,7 +188,7 @@ def send_beacon():
 
             # collect various system stats
             system_stats = Popen(
-                ["conky", "-c", "/opt/netdog/src/conky.conf"],
+                ["conky", "-c", "/opt/netdog_client/src/conky.conf"],
                 stdout=PIPE
             )
             
