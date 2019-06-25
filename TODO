@@ -1,5 +1,6 @@
 TODO
 ----
+* fix conky_script
 * exception handling if no hosts
 * migrate passwd storing to pwhash
 * completion of tasks return to homepage
