@@ -23,6 +23,10 @@ def main():
     # add user to sudo group
     execute_command("gpasswd -a netdog sudo")
 
+    # create /share directory
+    execute_command("mkdir /share")
+    execute_command("chown netdog /share")
+
     # disable password prompt on sudo
     sudo_file = open("/etc/sudoers.d/netdog", "w")
     sudo_file.write("netdog ALL=(ALL) NOPASSWD:ALL")
