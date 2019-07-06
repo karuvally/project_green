@@ -17,6 +17,11 @@ web_app = Flask("web_interface")
 # monitor clients
 @web_app.route("/stats", methods=["GET"])
 def system_stats():
+    active_clients = get_active_clients()
+
+    if not active_clients:
+        return render_template("error_page.html", reason="No active clients!")
+
     beacon_db = read_beacon_db()
 
     return render_template(
