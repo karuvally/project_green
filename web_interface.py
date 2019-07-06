@@ -31,6 +31,9 @@ def suspend_clients():
     # get active clients
     active_clients = get_active_clients()
 
+    if not active_clients:
+        return render_template("error_page.html", reason="No active clients!")
+
     # return client chooser page
     return render_template(
         "target_nodes.html", 
