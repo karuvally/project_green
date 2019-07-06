@@ -93,6 +93,9 @@ def gather_broadcast_data():
 
     active_clients = get_active_clients()
 
+    if not active_clients:
+        return render_template("error_page.html", reason="No active clients!")
+
     return render_template(
         "target_nodes.html",
         active_clients = active_clients,

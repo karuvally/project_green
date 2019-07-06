@@ -1,7 +1,6 @@
 TODO
 ----
 * install_dir variable in netdog configuration 
-* fix conky_script
 * exception handling if no hosts
 * migrate passwd storing to pwhash
 * completion of tasks return to homepage
@@ -35,6 +34,7 @@ TODO
 
 DONE
 ----
+* fix conky_script
 * update target user in systemd service
 * set host=0.0.0.0
 * directory existance check for /dev/shm
