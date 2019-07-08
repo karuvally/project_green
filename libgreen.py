@@ -385,14 +385,18 @@ def execute_command(message, sender_ip):
 
 # decrypt an incoming message
 def decrypt_message(input_transmission):
-    # check for empty transmission
-    if not input_transmission:
-        return None
-
     # load essential data
     keys = read_configuration("keys")
     known_nodes = read_configuration("known_nodes")
     message = input_transmission["message"]
+
+    # check if client is valid
+    if input_transmission["sender_id"] not in known_nodes:
+        logging.warning(
+            "recieved message from unknown client",
+            input_transmission["sender_id"] + ", ignoring"
+        )
+        return None
 
     # load localhost's keys
     receiver_priv_key = PrivateKey(
