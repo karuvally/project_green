@@ -901,11 +901,6 @@ def receive_transmission(connection):
     # decrypt if transmission is encrypted
     if transmission["encrypted"]:
         message = decrypt_message(transmission)
-    
-        if not message:
-            logging.warning("empty message received!")
-            return None
-
         transmission.update({"message": message})
 
     # return message
