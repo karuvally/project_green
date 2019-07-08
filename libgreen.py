@@ -385,6 +385,10 @@ def execute_command(message, sender_ip):
 
 # decrypt an incoming message
 def decrypt_message(input_transmission):
+    # check for empty transmission
+    if not input_transmission:
+        return None
+
     # load essential data
     keys = read_configuration("keys")
     known_nodes = read_configuration("known_nodes")
@@ -893,6 +897,11 @@ def receive_transmission(connection):
     # decrypt if transmission is encrypted
     if transmission["encrypted"]:
         message = decrypt_message(transmission)
+    
+        if not message:
+            logging.warning("empty message received!")
+            return None
+
         transmission.update({"message": message})
 
     # return message

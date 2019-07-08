@@ -1,9 +1,10 @@
 TODO
 ----
+* exception: another server's client contacts server
+* libnotify support
+* skip interface selection if only one interface
 * install_dir variable in netdog configuration 
-* exception handling if no hosts
 * migrate passwd storing to pwhash
-* completion of tasks return to homepage
 * remove hostname from message
 * execute acknowledgement
 * auto rename hosts
@@ -34,6 +35,8 @@ TODO
 
 DONE
 ----
+* completion of tasks return to homepage
+* exception handling if no hosts
 * fix conky_script
 * update target user in systemd service
 * set host=0.0.0.0
