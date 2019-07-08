@@ -390,7 +390,10 @@ def decrypt_message(input_transmission):
     known_nodes = read_configuration("known_nodes")
     message = input_transmission["message"]
 
-    # check if client is valid
+    # the checks!
+    if not known_nodes:
+        return None
+
     if input_transmission["sender_id"] not in known_nodes:
         logging.warning(
             "recieved message from unknown client",
