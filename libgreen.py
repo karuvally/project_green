@@ -389,16 +389,14 @@ def decrypt_message(input_transmission):
     keys = read_configuration("keys")
     known_nodes = read_configuration("known_nodes")
     message = input_transmission["message"]
+    sender_id = input_transmission["sender_id"]
 
-    # the checks!
+    # check if the data is usable 
     if not known_nodes:
         return None
 
-    if input_transmission["sender_id"] not in known_nodes:
-        logging.warning(
-            "recieved message from unknown client",
-            input_transmission["sender_id"] + ", ignoring"
-        )
+    elif sender_id not in known_nodes:
+        logging.warning("recieved message from unknown client", sender_id)
         return None
 
     # load localhost's keys
@@ -408,7 +406,6 @@ def decrypt_message(input_transmission):
     )
 
     # load sender's keys
-    sender_id = input_transmission["sender_id"]
     sender_pub_key = PublicKey(
         known_nodes[sender_id]["public_key"],
         encoder = nacl.encoding.HexEncoder
