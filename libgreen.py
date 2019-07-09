@@ -755,6 +755,10 @@ def handle_connection(connection):
         logging.info("ping received from " + sender_ip)
         connection.close()
         return
+    
+    elif not input_transmission["message"]:
+        connection.close()
+        return
 
     # report the received connection
     logging.info("connection received from " + sender_ip)
