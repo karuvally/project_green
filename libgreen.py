@@ -86,17 +86,17 @@ def write_beacon_db():
     lock_file.write("")
     lock_file.close()
 
-    # open beacon_db file
+    # write to beacon_db file
     beacon_db_file = open("/dev/shm/netdog/beacon_db", "w")
-
-    # write beacon_db to in memory file
     beacon_db_file.write(str(beacon_db))
-
-    # close the file
     beacon_db_file.close()
 
     # delete the lock file
     os.remove("/dev/shm/netdog/beacon_db.lock")
+
+    # debug
+    with open("/dev/shm/netdog/beacon_db") as beacon_db_file:
+        print(beacon_db_file.read())
 
 
 # send a beacon every 30s
@@ -113,10 +113,9 @@ def cleanup_beacon_db():
     global beacon_db
     global beacon_lock
 
-    # essential variables
-    expired_clients = []
-    
     while True:
+        expired_clients = []
+
         # cleanup to be done every 30s 
         time.sleep(30)
         

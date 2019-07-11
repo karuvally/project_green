@@ -1,6 +1,5 @@
 TODO
 ----
-* exception: another server's client contacts server
 * libnotify support
 * skip interface selection if only one interface
 * install_dir variable in netdog configuration 
@@ -35,6 +34,8 @@ TODO
 
 DONE
 ----
+* client not detected if restarted
+* exception: another server's client contacts server
 * completion of tasks return to homepage
 * exception handling if no hosts
 * fix conky_script
