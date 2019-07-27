@@ -5,6 +5,7 @@
 import os
 import subprocess
 import sys
+import shutil
 
 
 # execute command
@@ -24,7 +25,10 @@ def main():
     execute_command("deluser --remove-all-files netdog")
 
     # remove sudoer file
+    os.remove("etc/sudoers.d/netdog")
+
     # remove share directory
+    shutil.rmtree("/share")
 
 
 if __name__ == "__main__":
