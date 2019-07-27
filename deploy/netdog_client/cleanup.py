@@ -7,6 +7,14 @@ import subprocess
 import sys
 
 
+# execute command
+def execute_command(command):
+    return_code = subprocess.call(command, shell=True)
+
+    if return_code != 0:
+        print(command + " cannot be executed, skipping")
+
+
 # the main function
 def main():
     # remove conky
