@@ -18,7 +18,11 @@ def execute_command(command):
 # the main function
 def main():
     # remove conky
+    execute_command("apt-get remove conky-cli -y")
+
     # remove netdog user
+    execute_command("deluser --remove-all-files netdog")
+
     # remove sudoer file
     # remove share directory
 
