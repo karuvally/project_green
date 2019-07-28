@@ -25,5 +25,11 @@
     "symlink": {
         "enable": false,
         "link_path": null
+    },
+
+    "cleanup_script": {
+        "enable": true,
+        "script_file": "src/deploy/netdog_server/cleanup.py"
     }
+
 }
