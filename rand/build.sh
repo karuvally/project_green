@@ -9,3 +9,10 @@ cp /home/aswin/project/netdog/src /home/aswin/tmp/ -r -v
 
 # try building the package
 cd /home/aswin/tmp/deploy_it
+./build.py
+
+# extract the builds
+rm ../builds/* -rv
+cd ../builds
+unzip ../deploy_it/netdog_server.zip
+unzip ../deploy_it/netdog_clients.zip
