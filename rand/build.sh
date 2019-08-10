@@ -23,5 +23,5 @@ else
     rm ../builds/* -rf
 fi
 cd ../builds
-unzip ../deploy_it/netdog_server.zip -q
-unzip ../deploy_it/netdog_client.zip -q
+unzip -q ../deploy_it/netdog_server.zip
+unzip -q ../deploy_it/netdog_client.zip
