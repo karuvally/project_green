@@ -12,7 +12,11 @@ cd /home/aswin/tmp/deploy_it
 ./build.py
 
 echo extracting the builds from zip
-rm ../builds/* -rf
+if [ ! -d ../builds ];
+    mkdir ../builds
+else
+    rm ../builds/* -rf
+fi
 cd ../builds
 unzip ../deploy_it/netdog_server.zip
 unzip ../deploy_it/netdog_clients.zip
