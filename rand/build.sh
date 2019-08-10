@@ -12,7 +12,7 @@ cd /home/aswin/tmp/deploy_it
 ./build.py
 
 echo extracting the builds from zip
-if [ ! -d ../builds ];
+if [ ! -d ../builds ]; then
     mkdir ../builds
 else
     rm ../builds/* -rf
