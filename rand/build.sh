@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# delete existing files
-rm /home/aswin/tmp/deploy_it -r -v
+echo deleting existing files
+rm /home/aswin/tmp/deploy_it -rf
 
-# copy new files 
-cp /home/aswin/project/deploy_it /home/aswin/tmp/ -r -v
-cp /home/aswin/project/netdog/src /home/aswin/tmp/ -r -v
+echo copying new files
+cp /home/aswin/project/deploy_it /home/aswin/tmp/ -rf
+cp /home/aswin/project/netdog/src /home/aswin/tmp/deploy_it -rf
 
-# try building the package
+echo trying to build the package
 cd /home/aswin/tmp/deploy_it
 ./build.py
 
-# extract the builds
-rm ../builds/* -rv
+echo extracting the builds from zip
+rm ../builds/* -rf
 cd ../builds
 unzip ../deploy_it/netdog_server.zip
 unzip ../deploy_it/netdog_clients.zip
