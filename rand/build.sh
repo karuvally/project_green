@@ -24,4 +24,4 @@ else
 fi
 cd ../builds
 unzip ../deploy_it/netdog_server.zip
-unzip ../deploy_it/netdog_clients.zip
+unzip ../deploy_it/netdog_client.zip
