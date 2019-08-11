@@ -25,7 +25,7 @@ def main():
     execute_command("deluser --remove-home netdog")
 
     # remove sudoer file
-    os.remove("etc/sudoers.d/netdog")
+    os.remove("/etc/sudoers.d/netdog")
 
     # remove share directory
     shutil.rmtree("/share")
